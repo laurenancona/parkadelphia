@@ -37,14 +37,14 @@
   <!-- Depends -->
   <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
   <link href='css/mapbox.css' rel='stylesheet' />
-  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+  <!--  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
   <!--
   Use a local copy of mapbox-gl library, because of a bug in how it deals with
   404'd tiles.
   <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl-dev.js"></script>
 -->
 
-  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>
+  <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
 
   <script src="js/mapbox-gl-dev.js"></script>
   <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css" rel="stylesheet" />
@@ -114,9 +114,28 @@
       font-family: -apple-system-font, Arial;
     }
     
+    h5 {
+      font-family: 'montserrat', sans-serif;
+      text-transform: uppercase;
+      font-size: 1em;
+      color: grey;
+    }
+    
     .mdl-layout__drawer {
       padding-left: 15px!important;
       padding-right: 10px;
+    }
+    
+    .app-title {
+      margin-top: 10px;
+    }
+    
+    .mdl-layout-title {
+      font-family: 'montserrat', sans-serif;
+      text-transform: uppercase;
+      font-size: 1em;
+      color: grey;
+      text-align: center;
     }
     
     ul {
@@ -167,16 +186,15 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <!-- SIDE DRAWER MENU -->
     <div class="mdl-layout__drawer">
-      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon.png" width="40px"/>Parkadelphia</span>
-      <!--      <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-button--accent" href="/timeline.html">VIEW TIMELINE</a>-->
+      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon.png" width="30px"/><span class="app-title">Parkadelphia</span></span>
       <nav class="mdl-navigation">
-        <!-- ADD MORE LINKS HERE-->
+        <!-- TAB MENU -->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
           <div class="mdl-tabs__tab-bar">
             <a href="#options" class="mdl-tabs__tab is-active">Options</a>
             <a href="#about" class="mdl-tabs__tab">About</a>
           </div>
-          <!-- TAB SELECTORS -->
+          <!-- OPTIONS TAB -->
           <div class="mdl-tabs__panel is-active" id="options">
             <h5>Residential</h5>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
@@ -187,16 +205,19 @@
               <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
               <span class="mdl-switch__label">District Boundaries</span>
             </label>
+            <hr>
             <h5>On-Street Metered</h5>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
               <input type="checkbox" id="scooters" class="mdl-switch__input">
               <span class="mdl-switch__label">Motorcycle/Scooter</span>
             </label>
+            <hr>
             <h5>Lots</h5>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
               <input type="checkbox" id="lots" class="mdl-switch__input">
               <span class="mdl-switch__label">Residential Lots</span>
             </label>
+            <!--
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="transit">
               <input type="checkbox" id="transit" class="mdl-switch__input" checked>
               <span class="mdl-switch__label">Transit <small>(updated 9/26)</small></span>
@@ -212,9 +233,11 @@
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="parking">
               <input type="checkbox" id="parking" class="mdl-switch__input">
               <span class="mdl-switch__label">Parking/Towing Info</span>
+-->
             </label>
             <p></p>
           </div>
+          <!-- ABOUT TAB-->
           <div class="mdl-tabs__panel" id="about">
             <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
             <div id="contributors">
@@ -237,6 +260,7 @@
               <ul>
                 <li><s>Residential permit parking district (boundaries)</s> 6/14</li>
                 <li><s>Residential permit parking blocks</s> 6/15</li>
+                <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
                 <li>On-street Metered parking blocks</li>
                 <li>Search by geolocation</li>
                 <li>Search by address</li>
@@ -261,7 +285,7 @@
       <!-- plugins and other scripts -->
       <script src="js/feature-geojson.js" type="text/javascript"></script>
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
-      <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
+      <!--      <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>-->
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
       <script src='js/mbgl.Control.Locate.js'></script>
       <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />

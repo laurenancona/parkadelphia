@@ -4,7 +4,10 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots', 'transit', 'entrances', 'poperide', 'parking'];
+  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots'];
+
+  //  Deprecated layers, keep until tested:
+  //  , 'transit', 'entrances', 'poperide', 'parking'
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
 
@@ -58,14 +61,14 @@ var ParkingMap = ParkingMap || {};
 
     map = ParkingMap.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/laurenancona/ciitgyqwn00huzwmank64be59',
+      style: 'mapbox://styles/laurenancona/ciiya39oq00ndzwmajm6lwhvq',
       center: [-75.1575, 39.9572],
       bearing: 9.2, // Rotate Philly ~9° off of north
-      zoom: 14,
+      zoom: 12,
       maxZoom: 18,
       minZoom: 12,
       //   maxBounds: bounds,
-      hash: true,
+      hash: true
     });
 
     map.addControl(new mapboxgl.Navigation({
@@ -77,15 +80,18 @@ var ParkingMap = ParkingMap || {};
       }));
     });
 
-
     // L.control.locate().addTo(ParkingMap.map);
 
-    // map.dragRotate.disable();
+    // disable map rotation using right click + drag
+    map.dragRotate.disable();
+
+    // disable map rotation using touch rotation gesture
+    map.touchZoomRotate.disableRotation();
 
     var getPoint = function (evt) {
       // MapboxGL will call it `point`, leaflet `containerPoint`.
       return evt.point || evt.containerPoint;
-    }
+    };
 
     ParkingMap.map.on('mousemove', function (evt) {
       if (map.loaded()) {
@@ -135,14 +141,15 @@ var ParkingMap = ParkingMap || {};
 
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
-        'rppblocks': ['rppblocks.i', 'rppblocks.casing.i', 'rppblocks.label'],
+        'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.casing.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
         'scooters': ['scooters.i'],
-        'lots': ['lots.i'],
-        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
-        'entrances': ['gates.i'],
-        'poperide': ['poperide.point.i', 'poperide.route.i'],
-        'parking': ['parking.i']
+        'lots': ['lots.i']
+          //        'valet': ['valet.i']
+          //        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
+          //        'entrances': ['gates.i'],
+          //        'poperide': ['poperide.point.i', 'poperide.route.i'],
+          //        'parking': ['parking.i']
       };
 
       layerNames.forEach(function (layerName, index) {
@@ -168,7 +175,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
   };
-
+  //========================= LEAFLET-BASED VECTOR TILE FALLBACK ====
   // Vector tiles fallback == these will all be Leaflet-based functions
   ParkingMap.initClassicMap = function () {
     var map;
@@ -219,21 +226,21 @@ var ParkingMap = ParkingMap || {};
     lots.loadURL('data/lots.geojson');
     mapLayers['lots'] = lots;
 
-    var transit = L.mapbox.featureLayer().addTo(map);
-    transit.loadURL('https://gist.githubusercontent.com/laurenancona/f6fc6dee346781538cf7/raw/9ef66b848017b61a972eaa27179541ddfe90d990/septa-train-stations.geojson')
-    mapLayers['transit'] = transit;
-
-    var entrances = L.mapbox.featureLayer(); //.addTo(map);
-    entrances.loadURL('https://gist.githubusercontent.com/laurenancona/222ac7fbcb959208a93a/raw/b8953400ac6c945380203e98d6107505f9e9f0c9/entrances.geojson');
-    mapLayers['entrances'] = entrances;
-
-    var poperide = L.mapbox.featureLayer(); //.addTo(map);
-    poperide.loadURL('data/poperide.geojson');
-    mapLayers['poperide'] = poperide;
-
-    var parking = L.mapbox.featureLayer().addTo(map);
-    parking.loadURL('data/parking.geojson');
-    mapLayers['parking'] = parking;
+    //    var transit = L.mapbox.featureLayer().addTo(map);
+    //    transit.loadURL('https://gist.githubusercontent.com/laurenancona/f6fc6dee346781538cf7/raw/9ef66b848017b61a972eaa27179541ddfe90d990/septa-train-stations.geojson')
+    //    mapLayers['transit'] = transit;
+    //
+    //    var entrances = L.mapbox.featureLayer(); //.addTo(map);
+    //    entrances.loadURL('https://gist.githubusercontent.com/laurenancona/222ac7fbcb959208a93a/raw/b8953400ac6c945380203e98d6107505f9e9f0c9/entrances.geojson');
+    //    mapLayers['entrances'] = entrances;
+    //
+    //    var poperide = L.mapbox.featureLayer(); //.addTo(map);
+    //    poperide.loadURL('data/poperide.geojson');
+    //    mapLayers['poperide'] = poperide;
+    //
+    //    var parking = L.mapbox.featureLayer().addTo(map);
+    //    parking.loadURL('data/parking.geojson');
+    //    mapLayers['parking'] = parking;
 
     layerNames.forEach(function (layerName, index) {
       var layer = mapLayers[layerName];
@@ -256,35 +263,35 @@ var ParkingMap = ParkingMap || {};
 
     // Listen for individual marker clicks.
 
-    entrances.on('click', function (e) {
-      e.layer.closePopup(); // Force the popup closed.
-      showInfo('entrances', e.layer.feature);
-    });
-
-    transit.on('click', function (e) {
-      e.layer.closePopup();
-      showInfo('transit', e.layer.feature);
-    });
-
-    poperide.on('click', function (e) {
-      e.layer.closePopup();
-      showInfo('poperide', e.layer.feature);
-    });
-
-    parking.on('click', function (e) {
-      e.layer.closePopup();
-      showInfo('parking', e.layer.feature);
-    });
-
-    rppblocks.on('click', function (e) {
-      e.layer.closePopup();
-      showInfo('rppblocks', e.layer.feature);
-    });
-
-    lots.on('click', function (e) {
-      e.layer.closePopup();
-      showInfo('lots', e.layer.feature);
-    });
+    //    entrances.on('click', function (e) {
+    //      e.layer.closePopup(); // Force the popup closed.
+    //      showInfo('entrances', e.layer.feature);
+    //    });
+    //
+    //    transit.on('click', function (e) {
+    //      e.layer.closePopup();
+    //      showInfo('transit', e.layer.feature);
+    //    });
+    //
+    //    poperide.on('click', function (e) {
+    //      e.layer.closePopup();
+    //      showInfo('poperide', e.layer.feature);
+    //    });
+    //
+    //    parking.on('click', function (e) {
+    //      e.layer.closePopup();
+    //      showInfo('parking', e.layer.feature);
+    //    });
+    //
+    //    rppblocks.on('click', function (e) {
+    //      e.layer.closePopup();
+    //      showInfo('rppblocks', e.layer.feature);
+    //    });
+    //
+    //    lots.on('click', function (e) {
+    //      e.layer.closePopup();
+    //      showInfo('lots', e.layer.feature);
+    //    });
   };
 
 
@@ -294,40 +301,41 @@ var ParkingMap = ParkingMap || {};
     var content;
 
     switch (tpl) {
-      case 'rppblocks.i':
+      case 'rppblocks_bothsides.i':
+      case 'rppblocks_1side.i':
         content = '<div><strong>' + feature.properties.block_street + '</strong>' +
           '<p>' + feature.properties.sos + '</p></div>';
         break;
 
-      case 'transit':
-      case 'transit.i':
-      case 'transit-stations.i':
-      case 'septa-rr.lines.i':
-      case 'septa-rr.lines.casing.i':
-        content = '<div><strong>' + feature.properties.name + '</strong>' +
-          (feature.properties.description || '') + '</div>';
-        //          '<p>' + feature.properties.Tickets + '</p>' +
-        //          '<p><a href=' + '"' + feature.properties.info + '"' + ' target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
-        break;
+        //      case 'transit':
+        //      case 'transit.i':
+        //      case 'transit-stations.i':
+        //      case 'septa-rr.lines.i':
+        //      case 'septa-rr.lines.casing.i':
+        //        content = '<div><strong>' + feature.properties.name + '</strong>' +
+        //          (feature.properties.description || '') + '</div>';
+        //        //          '<p>' + feature.properties.Tickets + '</p>' +
+        //        //          '<p><a href=' + '"' + feature.properties.info + '"' + ' target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
+        //        break;
 
-      case 'poperide':
-      case 'poperide.route.i':
-      case 'poperide.point.i':
-        content = '<div><strong>Pope Bike Ride</strong>' +
-          '<p>' + feature.properties.name + '</p></div>';
-        break;
+        //      case 'poperide':
+        //      case 'poperide.route.i':
+        //      case 'poperide.point.i':
+        //        content = '<div><strong>Pope Bike Ride</strong>' +
+        //          '<p>' + feature.properties.name + '</p></div>';
+        //        break;
 
-      case 'parking':
-      case 'parking.i':
-        content = '<div><strong>' + feature.properties.name + '</strong>' +
-          '<p> Deadline to move vehicles: ' + '</p>' +
-          '<p>' + feature.properties.desc + '</p>' +
-          '<p><a href="http://www.philapark.org/2015/09/the-papal-visit-what-the-ppa-is-doing/" target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
-        break;
+        //      case 'parking':
+        //      case 'parking.i':
+        //        content = '<div><strong>' + feature.properties.name + '</strong>' +
+        //          '<p> Deadline to move vehicles: ' + '</p>' +
+        //          '<p>' + feature.properties.desc + '</p>' +
+        //          '<p><a href="http://www.philapark.org/2015/09/the-papal-visit-what-the-ppa-is-doing/" target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
+        //        break;
 
-      case 'rppblocks':
-      case 'rppblocks.i':
-      case 'rppblocks.label.i':
+      case 'rppdistricts':
+      case 'rppdistricts.line':
+      case 'rppdistricts.label':
         content = '<div><strong>' + feature.properties.name + '</strong>';
         break;
 
@@ -344,6 +352,11 @@ var ParkingMap = ParkingMap || {};
           (feature.properties.hours ?
             '<p> Hours: ' + feature.properties.hours + '</p>' : '');
         break;
+
+        //      case 'valet':
+        //        content = '<div>' + (feature.properties.name ?
+        //          '<strong>' + feature.properties.name + '</strong>' : '')
+        //        break;
 
       default:
         content = '<div>' + (feature.properties.name ?
