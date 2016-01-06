@@ -4,7 +4,7 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots'];
+  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots', 'valet'];
 
   //  Deprecated layers, keep until tested:
   //  , 'transit', 'entrances', 'poperide', 'parking'
@@ -83,10 +83,10 @@ var ParkingMap = ParkingMap || {};
     // L.control.locate().addTo(ParkingMap.map);
 
     // disable map rotation using right click + drag
-    map.dragRotate.disable();
+    //    map.dragRotate.disable();
 
     // disable map rotation using touch rotation gesture
-    map.touchZoomRotate.disableRotation();
+    //    map.touchZoomRotate.disableRotation();
 
     var getPoint = function (evt) {
       // MapboxGL will call it `point`, leaflet `containerPoint`.
@@ -144,8 +144,8 @@ var ParkingMap = ParkingMap || {};
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.casing.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
         'scooters': ['scooters.i'],
-        'lots': ['lots.i']
-          //        'valet': ['valet.i']
+        'lots': ['lots.i'],
+        'valet': ['valet.i']
           //        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
           //        'entrances': ['gates.i'],
           //        'poperide': ['poperide.point.i', 'poperide.route.i'],
@@ -336,7 +336,7 @@ var ParkingMap = ParkingMap || {};
       case 'rppdistricts':
       case 'rppdistricts.line':
       case 'rppdistricts.label':
-        content = '<div><strong>' + feature.properties.name + '</strong>';
+        content = '<div><strong>' + feature.properties.name + '</strong></div>';
         break;
 
       case 'lots':
@@ -346,17 +346,17 @@ var ParkingMap = ParkingMap || {};
           (feature.properties.address ?
             '<p>' + feature.properties.address + '</p>' : '') +
           (feature.properties.phone ?
-            '<p>' + feature.properties.phone + '</p></div>' : '') +
+            '<p>' + feature.properties.phone + '</p>' : '') +
           (feature.properties.capacity ?
             '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') +
           (feature.properties.hours ?
-            '<p> Hours: ' + feature.properties.hours + '</p>' : '');
+            '<p> Hours: ' + feature.properties.hours + '</p>' : '') + '</div>';
         break;
 
-        //      case 'valet':
-        //        content = '<div>' + (feature.properties.name ?
-        //          '<strong>' + feature.properties.name + '</strong>' : '')
-        //        break;
+      case 'valet.i':
+        content = '<div>' + (feature.properties.Name ?
+          '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
+        break;
 
       default:
         content = '<div>' + (feature.properties.name ?
@@ -366,7 +366,7 @@ var ParkingMap = ParkingMap || {};
           (feature.properties.description ?
             '<p> ' + feature.properties.description + '</p>' : '') +
           (feature.properties.capacity ?
-            '<p> Capacity: ' + feature.properties.capacity + '</p>' : '');
+            '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
         break;
     }
     info.innerHTML = content;

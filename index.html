@@ -38,18 +38,17 @@
   <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
   <link href='css/mapbox.css' rel='stylesheet' />
   <!--  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
-  <!--
-  Use a local copy of mapbox-gl library, because of a bug in how it deals with
-  404'd tiles.
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl-dev.js"></script>
--->
+
+  <!--  Use a local copy of mapbox-gl library, because of a bug in how it deals with 404'd tiles.-->
+  <!--  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.js"></script>-->
+
 
   <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
 
   <script src="js/mapbox-gl-dev.js"></script>
-  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css" rel="stylesheet" />
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css" rel="stylesheet" />
 
-  <script src="js/leaflet-mapbox-gl.js"></script>
+  <!--  <script src="js/leaflet-mapbox-gl.js"></script>-->
 
   <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -216,6 +215,12 @@
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
               <input type="checkbox" id="lots" class="mdl-switch__input">
               <span class="mdl-switch__label">Residential Lots</span>
+            </label>
+            <h5>Exceptions</h5>
+            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
+              <input type="checkbox" id="valet" class="mdl-switch__input">
+              <span class="mdl-switch__label">Valet Parking</span>
+              <p><small>Businesses with valid valet parking permits</small></p>
             </label>
             <!--
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="transit">
