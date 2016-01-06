@@ -1,0 +1,82 @@
+<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 33 13.5" xml:space="preserve" enable-background="new 0 0 33 13.5">
+  <style type="text/css">
+    
+	.st0{fill:#595A5C;}
+	.st1{fill:#231F20;stroke:#000000;stroke-miterlimit:10;}
+	.st2{fill:#D1D2D3;}
+	.st3{fill:none;stroke:#231F20;stroke-width:27;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:#FFFFFF;}
+	.st5{fill:#231F20;}
+	.st6{fill:none;stroke:#231F20;stroke-width:27;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st7{display:none;fill:none;stroke:#FFFFFF;stroke-width:5;stroke-miterlimit:10;}
+	.st8{fill:none;}
+	.st9{fill:#FFFFFF;stroke:#231F20;stroke-miterlimit:10;}
+	.st10{fill:#ABABAB;}
+	.st11{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st12{fill:#808184;}
+
+  </style>
+  <switch>
+    <foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1">
+      <i:pgfRef xlink:href="#adobe_illustrator_pgf"/>
+    </foreignObject>
+    <g i:extraneous="self">
+      <g>
+        <g>
+          <g>
+            <path class="st4" d="M18.3 10c-0.4-0.3-0.7-0.7-0.9-1.2 -0.1-0.3-0.3-0.6-0.3-1 0-0.4 0-0.8 0-1.1 0-0.4 0-0.8-0.1-1.2 -0.1-0.2-0.2-0.5-0.3-0.7C16.9 5.2 17 5.6 17 6.1c0 0 0 0 0 0 0-0.4-0.1-0.8-0.4-1.2 -0.1-0.1-0.2-0.3-0.3-0.4 -0.1-0.1-0.2-0.2-0.3-0.3C15.9 4.1 15.8 4 15.7 4c-0.1-0.1-0.2-0.1-0.3-0.1 -0.3-0.1-0.7-0.2-1.1-0.2 0 0 0 0 0 0 0 0 0 0-0.1 0 -1.1 0-2 0.6-2.5 1.4 0 0 0 0 0 0 0 0 0 0 0 0 -0.2 0.3-0.3 0.7-0.3 1 0 0 0 0 0 0 0-0.4 0.1-0.7 0.3-1.1 -0.2 0.4-0.3 0.8-0.3 1.2 0 0.4 0 0.8 0 1.2 0 0.9-0.3 1.6-0.8 2.3 -0.1 0.1-0.2 0.3-0.4 0.4h0v0 1.6h3c0 0 0 0 0 0 0.1 0.5 0.5 0.9 1 0.9 0 0 0 0 0.1 0 0 0 0.1 0 0.1 0 0.1 0 0.2 0 0.3-0.1 0.1 0 0.1-0.1 0.2-0.1 0.2-0.2 0.4-0.4 0.5-0.7 0 0 0 0 0 0h3 0L18.3 10 18.3 10z"/>
+            <polygon class="st4" points="18.6 1.8 9.9 1.8 9.9 4.6 11.2 4.6 11.2 3.2 17.3 3.2 17.3 4.6 18.6 4.6 18.6 3.2 18.6 3.2 "/>
+          </g>
+          <g>
+            <g>
+              <g>
+                <path class="st4" d="M7.1 10.8c-0.1 0-0.2 0-0.2-0.1L1 7.8c0 0 0 0-0.1 0C0.8 7.7 0.7 7.5 0.7 7.4S0.8 7 1 6.9c0 0 0 0 0 0l5.9-2.9c0.3-0.1 0.6 0 0.7 0.2 0.1 0.3 0 0.6-0.2 0.7L2.4 7.4l4.9 2.5c0.3 0.1 0.4 0.4 0.2 0.7C7.5 10.7 7.3 10.8 7.1 10.8z"/>
+              </g>
+              <g>
+                <path class="st4" d="M25.9 10.8c-0.2 0-0.4-0.1-0.5-0.3 -0.1-0.3 0-0.6 0.2-0.7l4.9-2.5 -4.9-2.5c-0.3-0.1-0.4-0.4-0.2-0.7 0.1-0.3 0.4-0.4 0.7-0.2L32 6.9c0 0 0 0 0.1 0 0.2 0.1 0.3 0.3 0.3 0.5 0 0.2-0.1 0.4-0.3 0.5 0 0 0 0 0 0l-5.9 2.9C26 10.8 26 10.8 25.9 10.8z"/>
+              </g>
+            </g>
+            <g>
+              <path class="st4" d="M21.4 11.4c-0.1 0-0.1 0-0.2 0 -0.3-0.1-0.5-0.4-0.4-0.7l2.7-7.8c0.1-0.3 0.4-0.5 0.7-0.4 0.3 0.1 0.5 0.4 0.4 0.7l-2.7 7.8C21.8 11.3 21.6 11.4 21.4 11.4z"/>
+            </g>
+          </g>
+        </g>
+        <g>
+          <g>
+            <path class="st12" d="M18.3 10c-0.4-0.3-0.7-0.7-0.9-1.2 -0.1-0.3-0.3-0.6-0.3-1 0-0.4 0-0.8 0-1.1 0-0.4 0-0.8-0.1-1.2 -0.1-0.2-0.2-0.5-0.3-0.7C16.9 5.2 17 5.6 17 6.1c0 0 0 0 0 0 0-0.4-0.1-0.8-0.4-1.2 -0.1-0.1-0.2-0.3-0.3-0.4 -0.1-0.1-0.2-0.2-0.3-0.3C15.9 4.1 15.8 4 15.7 4c-0.1-0.1-0.2-0.1-0.3-0.1 -0.3-0.1-0.7-0.2-1.1-0.2 0 0 0 0 0 0 0 0 0 0-0.1 0 -1.1 0-2 0.6-2.5 1.4 0 0 0 0 0 0 0 0 0 0 0 0 -0.2 0.3-0.3 0.7-0.3 1 0 0 0 0 0 0 0-0.4 0.1-0.7 0.3-1.1 -0.2 0.4-0.3 0.8-0.3 1.2 0 0.4 0 0.8 0 1.2 0 0.9-0.3 1.6-0.8 2.3 -0.1 0.1-0.2 0.3-0.4 0.4h0v0 1.6h3c0 0 0 0 0 0 0.1 0.5 0.5 0.9 1 0.9 0 0 0 0 0.1 0 0 0 0.1 0 0.1 0 0.1 0 0.2 0 0.3-0.1 0.1 0 0.1-0.1 0.2-0.1 0.2-0.2 0.4-0.4 0.5-0.7 0 0 0 0 0 0h3 0L18.3 10 18.3 10z"/>
+            <polygon class="st12" points="18.6 1.8 9.9 1.8 9.9 4.6 11.2 4.6 11.2 3.2 17.3 3.2 17.3 4.6 18.6 4.6 18.6 3.2 18.6 3.2 "/>
+          </g>
+          <g>
+            <g>
+              <g>
+                <path class="st12" d="M7.1 10.8c-0.1 0-0.2 0-0.2-0.1L1 7.8c0 0 0 0-0.1 0C0.8 7.7 0.7 7.5 0.7 7.4S0.8 7 1 6.9c0 0 0 0 0 0l5.9-2.9c0.3-0.1 0.6 0 0.7 0.2 0.1 0.3 0 0.6-0.2 0.7L2.4 7.4l4.9 2.5c0.3 0.1 0.4 0.4 0.2 0.7C7.5 10.7 7.3 10.8 7.1 10.8z"/>
+              </g>
+              <g>
+                <path class="st12" d="M25.9 10.8c-0.2 0-0.4-0.1-0.5-0.3 -0.1-0.3 0-0.6 0.2-0.7l4.9-2.5 -4.9-2.5c-0.3-0.1-0.4-0.4-0.2-0.7 0.1-0.3 0.4-0.4 0.7-0.2L32 6.9c0 0 0 0 0.1 0 0.2 0.1 0.3 0.3 0.3 0.5 0 0.2-0.1 0.4-0.3 0.5 0 0 0 0 0 0l-5.9 2.9C26 10.8 26 10.8 25.9 10.8z"/>
+              </g>
+            </g>
+            <g>
+              <path class="st12" d="M21.4 11.4c-0.1 0-0.1 0-0.2 0 -0.3-0.1-0.5-0.4-0.4-0.7l2.7-7.8c0.1-0.3 0.4-0.5 0.7-0.4 0.3 0.1 0.5 0.4 0.4 0.7l-2.7 7.8C21.8 11.3 21.6 11.4 21.4 11.4z"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </switch>
+  <i:pgf id="adobe_illustrator_pgf">
+    
+	CfB9AnyfAN8nwPcJ8J1y7QnwfQJ8nwDfJ8D3CfB9AnyfAN8nwPcJ8H0CfJ8A3yfA9wnw/Q8J+P5R
+4eQnTPgJE37ChJ8w4X+fmPAfiZw9wcZPsPG/U9j4T3pi4CqseNIdhRbbcAfixXO8gxDjZbSjMOM5
+3mGo8TLeUbjxsp8HIcfLcEdhx3O8w9BjG+84/HgOdxiCPMc7DEO28Y5DkWcDw8Nw5GW8Y5Bk64l5
+HJZswx2HJt8NdxCePMc7DFG28Q7ElO/GOwZVXrbzKFx5Wd5RyPIy3lHY8hzvMHTZxrsCX36Y7hJh
+foBug0MtQu0xlPmO7iCceY53FNK8tN49CmteNNdRaPMc7zC8eRoeRyHOi51zEOY8hzsIdX7AT969
+olcgz/tku4LmGvR5vjJwFQI9hdKjGPQ+3RbJnUL6URx6n26L5y6u/2NY9D7d/riP49F7VA+MeQUm
+fd1Z/Fu9MXAVUr00uz8Iq2a4x9HqheoYvHqOdgxiPQc7CrNedvIY1Hoy06O49cKcRyHX84WFw7Br
+2/Ur0Ou5D4/i13P+hyHYc7zDMOw/532BayDrSXcYaG3jHQhb23hXANfLPjwGXc/5HwZez3kdBl/P
+J1AeBbAXumMg7DnaQSD2HO0gGHvZyaOA7MlRj0LZk+4wMPsHe2HgKvx6oTsKwZ7jHYVh23BXoNh2
+yAfi2HO8w5Bs24crsOxJdxia/Se+MuDtZy8+uHn2/k/zy4/efPHi1R9ef3t7e/Ps2d+8+vXrv/32
+1Zdfvf725tffvfr/Xp9evXlDr+zXv9XfnH797evv3n7z7Wt5UN/8np/oVxbyZ88++sXHN/8bDwMk
+XQ==
+	
+  </i:pgf>
+</svg>
