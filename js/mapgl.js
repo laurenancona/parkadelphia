@@ -66,19 +66,19 @@ var ParkingMap = ParkingMap || {};
       bearing: 9.2, // Rotate Philly ~9° off of north
       zoom: 12,
       maxZoom: 18,
-      minZoom: 12,
+      minZoom: 13,
       //   maxBounds: bounds,
       hash: true
     });
 
-    map.addControl(new mapboxgl.Navigation({
-      position: 'top-left'
-    }));
-    map.on('load', function () {
-      map.addControl(new mapboxgl.Control.Locate({
-        position: 'top-left'
-      }));
-    });
+    //      map.addControl(new mapboxgl.Navigation({
+    //        position: 'top-left'
+    //      }));
+    //      map.on('load', function () {
+    //          map.addControl(new mapboxgl.Control.Locate({
+    //            position: 'top-left'
+    //          }));
+    //              });
 
     // disable map rotation using right click + drag
     //    map.dragRotate.disable();
@@ -87,7 +87,7 @@ var ParkingMap = ParkingMap || {};
     //    map.touchZoomRotate.disableRotation();
 
     var getPoint = function (evt) {
-    // MapboxGL will call it `point`, leaflet `containerPoint`.
+      // MapboxGL will call it `point`, leaflet `containerPoint`.
       return evt.point || evt.containerPoint;
     };
 
@@ -102,6 +102,8 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
+
+
 
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
@@ -137,6 +139,26 @@ var ParkingMap = ParkingMap || {};
       }
     };
 
+    // Geocoder with autocomplete
+
+    map.addControl(new mapboxgl.Geocoder());
+
+    // Navigation
+
+    map.addControl(new mapboxgl.Navigation({
+      position: 'top-left'
+    }));
+
+    // Geolocate User 
+
+    map.on('load', function () {
+      map.addControl(new mapboxgl.Control.Locate({
+        position: 'top-left'
+      }));
+    });
+
+    // Define layers & interactivity
+
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.casing.i', 'rppblocks.label'],
@@ -170,7 +192,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
   };
-  //========================= LEAFLET-BASED VECTOR TILE FALLBACK ====
+  // LEAFLET-BASED VECTOR TILE FALLBACK ============================= 
   // Vector tiles fallback == these will all be Leaflet-based functions
   ParkingMap.initClassicMap = function () {
     var map;
@@ -221,6 +243,7 @@ var ParkingMap = ParkingMap || {};
     lots.loadURL('data/lots.geojson');
     mapLayers['lots'] = lots;
 
+
     //    var transit = L.mapbox.featureLayer().addTo(map);
     //    transit.loadURL('https://gist.githubusercontent.com/laurenancona/f6fc6dee346781538cf7/raw/9ef66b848017b61a972eaa27179541ddfe90d990/septa-train-stations.geojson')
     //    mapLayers['transit'] = transit;
@@ -246,6 +269,7 @@ var ParkingMap = ParkingMap || {};
           map.removeLayer(layer);
       });
     });
+
 
     //============================================================//
 
@@ -295,58 +319,58 @@ var ParkingMap = ParkingMap || {};
     var content;
 
     switch (tpl) {
-      case 'rppblocks_bothsides.i':
-      case 'rppblocks_1side.i':
-        content = '<div><strong>' + feature.properties.block_street + '</strong>' +
-          '<p>' + feature.properties.sos + '</p></div>';
-        break;
+    case 'rppblocks_bothsides.i':
+    case 'rppblocks_1side.i':
+      content = '<div><strong>' + feature.properties.block_street + '</strong>' +
+        '<p>' + feature.properties.sos + '</p></div>';
+      break;
 
-        //      case 'transit':
-        //      case 'transit.i':
-        //      case 'transit-stations.i':
-        //      case 'septa-rr.lines.i':
-        //      case 'septa-rr.lines.casing.i':
-        //        content = '<div><strong>' + feature.properties.name + '</strong>' +
-        //          (feature.properties.description || '') + '</div>';
-        //        //          '<p>' + feature.properties.Tickets + '</p>' +
-        //        //          '<p><a href=' + '"' + feature.properties.info + '"' + ' target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
-        //        break;
+      //      case 'transit':
+      //      case 'transit.i':
+      //      case 'transit-stations.i':
+      //      case 'septa-rr.lines.i':
+      //      case 'septa-rr.lines.casing.i':
+      //        content = '<div><strong>' + feature.properties.name + '</strong>' +
+      //          (feature.properties.description || '') + '</div>';
+      //        //          '<p>' + feature.properties.Tickets + '</p>' +
+      //        //          '<p><a href=' + '"' + feature.properties.info + '"' + ' target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
+      //        break;
 
-      case 'rppdistricts':
-      case 'rppdistricts.line':
-      case 'rppdistricts.label':
-        content = '<div><strong>' + feature.properties.name + '</strong></div>';
-        break;
+    case 'rppdistricts':
+    case 'rppdistricts.line':
+    case 'rppdistricts.label':
+      content = '<div><strong>' + feature.properties.name + '</strong></div>';
+      break;
 
-      case 'lots':
-      case 'lots.i':
-        content = '<div>' + (feature.properties.name ?
-            '<strong>' + feature.properties.name + '</strong>' : '') +
-          (feature.properties.address ?
-            '<p>' + feature.properties.address + '</p>' : '') +
-          (feature.properties.phone ?
-            '<p>' + feature.properties.phone + '</p>' : '') +
-          (feature.properties.capacity ?
-            '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') +
-          (feature.properties.hours ?
-            '<p> Hours: ' + feature.properties.hours + '</p>' : '') + '</div>';
-        break;
+    case 'lots':
+    case 'lots.i':
+      content = '<div>' + (feature.properties.name ?
+          '<strong>' + feature.properties.name + '</strong>' : '') +
+        (feature.properties.address ?
+          '<p>' + feature.properties.address + '</p>' : '') +
+        (feature.properties.phone ?
+          '<p>' + feature.properties.phone + '</p>' : '') +
+        (feature.properties.capacity ?
+          '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') +
+        (feature.properties.hours ?
+          '<p> Hours: ' + feature.properties.hours + '</p>' : '') + '</div>';
+      break;
 
-      case 'valet.i':
-        content = '<div>' + (feature.properties.Name ?
-          '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
-        break;
+    case 'valet.i':
+      content = '<div>' + (feature.properties.Name ?
+        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
+      break;
 
-      default:
-        content = '<div>' + (feature.properties.name ?
-            '<strong>' + feature.properties.name + '</strong>' : '') +
-          (feature.properties.title ?
-            '<strong>' + feature.properties.title + '</strong>' : '') +
-          (feature.properties.description ?
-            '<p> ' + feature.properties.description + '</p>' : '') +
-          (feature.properties.capacity ?
-            '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
-        break;
+    default:
+      content = '<div>' + (feature.properties.name ?
+          '<strong>' + feature.properties.name + '</strong>' : '') +
+        (feature.properties.title ?
+          '<strong>' + feature.properties.title + '</strong>' : '') +
+        (feature.properties.description ?
+          '<p> ' + feature.properties.description + '</p>' : '') +
+        (feature.properties.capacity ?
+          '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
+      break;
     }
     info.innerHTML = content;
   };
@@ -368,6 +392,7 @@ var ParkingMap = ParkingMap || {};
   }
 
 })();
+
 
 
 // ht @konklone for console.log-fication example
