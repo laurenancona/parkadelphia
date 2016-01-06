@@ -80,8 +80,6 @@ var ParkingMap = ParkingMap || {};
       }));
     });
 
-    // L.control.locate().addTo(ParkingMap.map);
-
     // disable map rotation using right click + drag
     //    map.dragRotate.disable();
 
@@ -89,7 +87,7 @@ var ParkingMap = ParkingMap || {};
     //    map.touchZoomRotate.disableRotation();
 
     var getPoint = function (evt) {
-      // MapboxGL will call it `point`, leaflet `containerPoint`.
+    // MapboxGL will call it `point`, leaflet `containerPoint`.
       return evt.point || evt.containerPoint;
     };
 
@@ -147,9 +145,6 @@ var ParkingMap = ParkingMap || {};
         'lots': ['lots.i'],
         'valet': ['valet.i']
           //        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
-          //        'entrances': ['gates.i'],
-          //        'poperide': ['poperide.point.i', 'poperide.route.i'],
-          //        'parking': ['parking.i']
       };
 
       layerNames.forEach(function (layerName, index) {
@@ -294,7 +289,6 @@ var ParkingMap = ParkingMap || {};
     //    });
   };
 
-
   //============================================================//
 
   var showInfo = function (tpl, feature) {
@@ -316,21 +310,6 @@ var ParkingMap = ParkingMap || {};
         //          (feature.properties.description || '') + '</div>';
         //        //          '<p>' + feature.properties.Tickets + '</p>' +
         //        //          '<p><a href=' + '"' + feature.properties.info + '"' + ' target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
-        //        break;
-
-        //      case 'poperide':
-        //      case 'poperide.route.i':
-        //      case 'poperide.point.i':
-        //        content = '<div><strong>Pope Bike Ride</strong>' +
-        //          '<p>' + feature.properties.name + '</p></div>';
-        //        break;
-
-        //      case 'parking':
-        //      case 'parking.i':
-        //        content = '<div><strong>' + feature.properties.name + '</strong>' +
-        //          '<p> Deadline to move vehicles: ' + '</p>' +
-        //          '<p>' + feature.properties.desc + '</p>' +
-        //          '<p><a href="http://www.philapark.org/2015/09/the-papal-visit-what-the-ppa-is-doing/" target="_blank" /><strong>VISIT SITE</strong></a></p></div>';
         //        break;
 
       case 'rppdistricts':
