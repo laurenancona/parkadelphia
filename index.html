@@ -117,13 +117,25 @@
       color: grey;
     }
     
+    #contributors a {
+      text-decoration: none!important;
+      color: grey;
+      font-size: 0.8rem;
+    }
+    
     .mdl-layout__drawer {
       padding-left: 15px!important;
       padding-right: 10px;
     }
     
     .app-title {
-      margin-top: 10px;
+      margin-top: 12px;
+    }
+    
+    .app-title a {
+      text-decoration: none!important;
+      color: grey;
+      font-size: 0.8rem;
     }
     
     .mdl-layout-title {
@@ -181,7 +193,7 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <!-- SIDE DRAWER MENU -->
     <div class="mdl-layout__drawer">
-      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon.png" width="30px"/><span class="app-title">Parkadelphia</span></span>
+      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon.png" width="30px"/><span class="app-title" style="text-decoration: none!important; color: grey!important;"><a href="/">Parkadelphia</a></span></span>
       <nav class="mdl-navigation">
         <!-- TAB MENU -->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -241,21 +253,23 @@
           <!-- ABOUT TAB-->
           <div class="mdl-tabs__panel" id="about">
             <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
-            <div id="contributors">
-              <p><strong>Contributors: </strong></p>
-              <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
-              <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
-              <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
-              <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
-              <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
-            </div>
-            <br>
+
             <!--            <p>Original map is <a href="/old.html" target="_blank">here</a>.</p>-->
             <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
             <!--<p><a class="" href="/sources.html"><strong>Sources</strong></a></p>-->
 
             <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
-
+            <hr>
+            <div id="contributors">
+              <h5>Contributors: </h5>
+              <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
+              <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
+              <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
+              <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
+              <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
+              <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
+            </div>
+            <br>
             <div id="roadmap">
               <h5>Roadmap</h5>
               <ul>
