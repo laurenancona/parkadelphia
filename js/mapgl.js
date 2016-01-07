@@ -61,12 +61,12 @@ var ParkingMap = ParkingMap || {};
 
     map = ParkingMap.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/laurenancona/ciiya39oq00ndzwmajm6lwhvq',
+      style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt',
       center: [-75.1575, 39.9572],
       bearing: 9.2, // Rotate Philly ~9° off of north
       zoom: 12,
       maxZoom: 18,
-      minZoom: 13,
+      minZoom: 12,
       //   maxBounds: bounds,
       hash: true
     });
@@ -211,7 +211,7 @@ var ParkingMap = ParkingMap || {};
       infoControl: false,
       attributionControl: false,
       maxZoom: 18,
-      minZoom: 13,
+      minZoom: 12,
       center: [39.9572, -75.1575],
       zoom: 14
     });
