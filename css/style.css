@@ -5,10 +5,12 @@ body {
   height: 100%;
   width: 100%;
 }
+
 #container {
   overflow-x: hidden;
   position: relative;
 }
+
 
 /*
 p {
@@ -29,6 +31,7 @@ p {
   text-transform: uppercase;
   text-align: center;
 }
+
 #map {
   position: absolute;
   top: 0;
@@ -37,12 +40,14 @@ p {
   z-index: 1;
   /*  height: 90%;*/
 }
+
 #attrib {
   position: absolute;
   float: left;
   margin-bottom: 15px;
   margin-left: 10px;
 }
+
 #share-buttons {
   position: relative;
   float: right;
@@ -52,6 +57,7 @@ p {
   opacity: .6;
   width: 20px;
 }
+
 
 /*
   .img {
@@ -74,23 +80,28 @@ p {
 .leaflet-control-layers-toggle {
   /*  left: 10px;*/
 }
+
 .leaflet-control-layers-expanded {
   background: #fff;
   padding: 6px 10px 6px 6px;
   color: #404040!important;
   color: rgba(0, 0, 0, .75)
 }
+
 .leaflet-right {
   right: 15px!important;
   position: fixed;
 }
+
 .leaflet-top {
   top: 0px;
 }
+
 .leaflet-container a {
   line-height: 1;
   color: #fff;
 }
+
 #credits {
   position: fixed;
   z-index: 5;
@@ -101,6 +112,7 @@ p {
   opacity: .8;
   box-shadow: 1px #0FF;
 }
+
 #warning {
   position: absolute;
   z-index: 100;
@@ -111,6 +123,7 @@ p {
   text-align: center!important;
   color: #fff!important;
 }
+
 #warning-text {
   font-family: 'Cabin', sans-serif;
   text-transform: uppercase;
@@ -120,10 +133,12 @@ p {
   opacity: 1!important;
   font-weight: 700;
 }
+
 #warning a:link,
 #warning a:visited {
   color: #fff!important;
 }
+
 .leaflet-control-attribution {
   color: #CCC;
   /*font-family: 'Cabin', sans-serif;*/
@@ -133,15 +148,18 @@ p {
   background-color: #404040!important;
   opacity: .8;
 }
+
 .leaflet-control-attribution a:link,
 .leaflet-control-attribution a:visited {
   color: #CCC;
   /*font-family: 'Cabin', sans-serif;*/
   font-size: 10px;
 }
+
 .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
   display: none;
 }
+
 .map-legend,
 .wax-legend {
   position: fixed;
@@ -155,16 +173,20 @@ p {
   /*font-family: 'Cabin', sans-serif;*/
   /*font-size: 10px;*/
 }
+
 .map-legend a:link,
 .map-legend a:visited,
 .map-legend a:active,
 .map-legend a:hover {
   color: #CCC;
 }
+
 .map-legend {
   padding-left: 10px!important;
 }
+
 #info-bar {}
+
 
 /*
 .map-layout-transparent .mdl-layout-title, .map-layout-transparent .mdl-layout__header, .map-layout-transparent .mdl-layout__drawer-button {
@@ -181,38 +203,46 @@ p {
   /*  overflow-x: hidden;*/
   margin-right: 120px;
 }
+
 .info p {
   line-height: 1em;
   /*  text-decoration: none;*/
 }
+
 .info a {
   /*  color: red;*/
   font-size: 0.9em;
   /*  text-decoration: none;*/
 }
+
 #info div {
   /*  background: #434343;*/
-  background: rgba(67, 67, 67, 0.7);
+  background: rgba(67, 67, 67, 0.9);
   position: relative;
   padding: 10px 10px 5px 10px;
   /*  width: 100%;*/
   margin-bottom: 0px;
   z-index: 100;
 }
+
 .span.side.mdl-layout-title {
   color: #434343;
 }
+
 #options {
   /*  padding-top: 15px;*/
 }
+
 .li a {
   /*  font-size: 1.6em!important;*/
 }
+
 #map.interacting .mapboxgl-canvas-container.mapboxgl-interactive,
 #map.interacting .mapboxgl-ctrl-nav-compass,
 #map.interacting.leaflet-container {
   cursor: pointer;
 }
+
 .ui-select {
   background: #fff;
   position: absolute;
@@ -222,14 +252,17 @@ p {
   padding: 10px;
   border-radius: 3px;
 }
+
 #map {
   margin-left: 240px;
 }
+
 @media only screen and (min-width: 992px) {
   .mapboxgl-control-container .leaflet-control-locate {
     /*      display: none;*/
   }
 }
+
 @media only screen and (max-width: 992px) {
   #map,
   .info {
@@ -244,13 +277,14 @@ p {
     left: 1px;
   }
 }
+
 .mapbox-maplogo {
   position: absolute;
   display: block;
   height: 20px;
   width: 65px;
   right: 10px;
-  bottom: 10px;
+  top: 10px;
   text-indent: -9999px;
   z-index: 99999;
   overflow: hidden;
@@ -259,15 +293,18 @@ p {
   background-position: 0 0;
   background-size: 65px 20px;
 }
+
 .mapboxgl-control-container .leaflet-control-locate a {
   padding-left: 10px;
   padding-top: 4px;
 }
+
 .mapboxgl-control-container .leaflet-bar a {
   width: 20px;
   height: 25px;
   border-bottom: none;
 }
+
 .mapboxgl-control-container .leaflet-bar a {
   border-color: rgba(.75, .75, .75, .4);
 }
