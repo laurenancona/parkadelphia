@@ -126,6 +126,7 @@
     .mdl-layout__drawer {
       padding-left: 15px!important;
       padding-right: 10px;
+      background-color: #eee;
     }
     
     .app-title {
@@ -193,7 +194,7 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <!-- SIDE DRAWER MENU -->
     <div class="mdl-layout__drawer">
-      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon.png" width="30px"/><span class="app-title" style="text-decoration: none!important; color: grey!important;"><a href="/">Parkadelphia</a></span></span>
+      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon_Icon.svg" width="30px"/><span class="app-title" style="text-decoration: none!important; color: grey!important;"><a href="/">Parkadelphia</a></span></span>
       <nav class="mdl-navigation">
         <!-- TAB MENU -->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -203,17 +204,21 @@
           </div>
           <!-- OPTIONS TAB -->
           <div class="mdl-tabs__panel is-active" id="options">
-            <h5>Residential</h5>
+            <h5>Residential Permits</h5>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
               <input type="checkbox" id="rppblocks" class="mdl-switch__input" checked>
-              <span class="mdl-switch__label">Permit Blocks</span>
+              <span class="mdl-switch__label">Blocks</span>
             </label>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
               <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
-              <span class="mdl-switch__label">District Boundaries</span>
+              <span class="mdl-switch__label">Districts</span>
             </label>
             <hr>
-            <h5>On-Street Metered</h5>
+            <h5>Meters</h5>
+            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
+              <input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
+              <span class="mdl-switch__label">Automobile</span>
+            </label>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
               <input type="checkbox" id="scooters" class="mdl-switch__input">
               <span class="mdl-switch__label">Motorcycle/Scooter</span>
