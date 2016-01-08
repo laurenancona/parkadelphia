@@ -217,7 +217,8 @@ p {
 
 #info div {
   /*  background: #434343;*/
-  background: rgba(67, 67, 67, 0.9);
+  background: #71767E;
+  /*rgba(67, 67, 67, 0.9);*/
   position: relative;
   padding: 10px 10px 5px 10px;
   /*  width: 100%;*/

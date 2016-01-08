@@ -71,15 +71,6 @@ var ParkingMap = ParkingMap || {};
       hash: true
     });
 
-    //      map.addControl(new mapboxgl.Navigation({
-    //        position: 'top-left'
-    //      }));
-    //      map.on('load', function () {
-    //          map.addControl(new mapboxgl.Control.Locate({
-    //            position: 'top-left'
-    //          }));
-    //              });
-
     // disable map rotation using right click + drag
     //    map.dragRotate.disable();
 
@@ -102,8 +93,6 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
-
-
 
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
@@ -183,17 +172,20 @@ var ParkingMap = ParkingMap || {};
         });
 
         // Bind the checkbox change to update layer visibility.
+
         document.getElementById(layerName).addEventListener('change', function () {
           updateLayerVisibility(layerName);
         });
 
         // Set the initial layer visibility to match the toggle.
+
         updateLayerVisibility(layerName);
       });
     });
   };
   // LEAFLET-BASED VECTOR TILE FALLBACK ============================= 
   // Vector tiles fallback == these will all be Leaflet-based functions
+
   ParkingMap.initClassicMap = function () {
     var map;
 
@@ -216,7 +208,7 @@ var ParkingMap = ParkingMap || {};
       zoom: 14
     });
 
-    // Map controls and additions for URL hash, geocoding, and locate-me
+    // Map controls and additions for URL hash, geocoding, and geolocate-me
 
     ParkingMap.map.addControl(L.mapbox.geocoderControl('mapbox.places', {
       autocomplete: true
@@ -342,18 +334,25 @@ var ParkingMap = ParkingMap || {};
       content = '<div><strong>' + feature.properties.name + '</strong></div>';
       break;
 
-    case 'lots':
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
           '<strong>' + feature.properties.name + '</strong>' : '') +
+        (feature.properties.description ?
+          '<p>' + feature.properties.description + '</p>' : '') +
         (feature.properties.address ?
           '<p>' + feature.properties.address + '</p>' : '') +
-        (feature.properties.phone ?
-          '<p>' + feature.properties.phone + '</p>' : '') +
+        (feature.properties.Type ?
+          '<p>' + feature.properties.Type + '</p>' : '') +
         (feature.properties.capacity ?
-          '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') +
-        (feature.properties.hours ?
-          '<p> Hours: ' + feature.properties.hours + '</p>' : '') + '</div>';
+          '<p>Capacity: ' + feature.properties.capacity + '</p>' : '') +
+        (feature.properties.Hours ?
+          '<p>' + feature.properties.Hours : '') + ' | ' +
+        (feature.properties.days ?
+          feature.properties.days + '</p>' : '') +
+        (feature.properties.times ?
+          '<p>' + feature.properties.times + '</p>' : '') +
+        (feature.properties.Rates ?
+          '<p>Rates: ' + feature.properties.Rates + '</p>' : '') + '</div>';
       break;
 
     case 'valet.i':

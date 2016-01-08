@@ -114,29 +114,36 @@
       font-family: 'montserrat', sans-serif;
       text-transform: uppercase;
       font-size: 1em;
-      color: grey;
+      color: #eee;
     }
     
     #contributors a {
       text-decoration: none!important;
-      color: grey;
+      color: #eee;
       font-size: 0.8rem;
     }
     
     .mdl-layout__drawer {
+      background-color: #71767E;
+    }
+    
+    .mdl-navigation {
       padding-left: 15px!important;
       padding-right: 10px;
-      background-color: #eee;
+      background-color: #71767E;
+      color: #eee;
+      padding-top: 0px!important;
     }
     
     .app-title {
       margin-top: 12px;
+      color: #eee;
     }
     
     .app-title a {
       text-decoration: none!important;
-      color: grey;
-      font-size: 0.8rem;
+      color: #eee;
+      font-size: 1rem;
     }
     
     .mdl-layout-title {
@@ -168,7 +175,7 @@
     }
     
     .mdl-tabs__panel {
-      padding-top: 20px;
+      /*      padding-top: 20px;*/
     }
     
     .pad {
@@ -180,11 +187,14 @@
     
     .mdl-layout__drawer>.mdl-layout-title {
       padding-left: 0px;
+      letter-spacing: .1rem;
     }
     
     .mdl-layout__drawer>.mdl-layout-title img {
+      margin-top: -3px;
       padding-right: 6px;
       padding-left: 0px;
+      width: 20px;
     }
     
     .leaflet-control-attribution {
@@ -215,12 +225,12 @@
             </label>
             <hr>
             <h5>Meters</h5>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
-              <input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
+            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
+              <input type="checkbox" id="meters" class="mdl-switch__input" disabled>
               <span class="mdl-switch__label">Automobile</span>
             </label>
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
-              <input type="checkbox" id="scooters" class="mdl-switch__input">
+              <input type="checkbox" id="scooters" class="mdl-switch__input" checked>
               <span class="mdl-switch__label">Motorcycle/Scooter</span>
             </label>
             <hr>
@@ -236,10 +246,12 @@
               <p><small>Businesses with valid valet parking permits</small></p>
             </label>
             <!--
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="transit">
+            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
               <input type="checkbox" id="transit" class="mdl-switch__input" checked>
-              <span class="mdl-switch__label">Transit <small>(updated 9/26)</small></span>
+              <span class="mdl-switch__label">Meters <small>(updated 5/15)</small></span>
             </label>
+-->
+            <!--
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="entrances">
               <input type="checkbox" id="entrances" class="mdl-switch__input" checked>
               <span class="mdl-switch__label">Festival Entrances</span>
