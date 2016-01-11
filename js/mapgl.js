@@ -4,7 +4,7 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots', 'valet'];
+  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots', 'valet', 'meters'];
 
   //  Deprecated layers, keep until tested:
   //  , 'transit', 'entrances', 'poperide', 'parking'
@@ -154,7 +154,8 @@ var ParkingMap = ParkingMap || {};
         'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
         'scooters': ['scooters.i'],
         'lots': ['lots.i'],
-        'valet': ['valet.i']
+        'valet': ['valet.i'],
+        'meters': ['meters.i']
           //        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
       };
 
@@ -359,16 +360,25 @@ var ParkingMap = ParkingMap || {};
       content = '<div>' + (feature.properties.Name ?
         '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
       break;
-
+        
+    case 'meters.i':
+        content = '<div>' + (feature.properties.street ?
+          '<strong>' + feature.properties.street + '</strong>' : '') +
+        (feature.properties.from_day ?
+         '<p>' + feature.properties.from_day + '-' + feature.properties.to_day + '</p>' : '') +
+        (feature.properties.from_time ?
+         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
+      break;
+        
     default:
       content = '<div>' + (feature.properties.name ?
           '<strong>' + feature.properties.name + '</strong>' : '') +
         (feature.properties.title ?
           '<strong>' + feature.properties.title + '</strong>' : '') +
         (feature.properties.description ?
-          '<p> ' + feature.properties.description + '</p>' : '') +
+          feature.properties.description : '') +
         (feature.properties.capacity ?
-          '<p> Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
+          'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
       break;
     }
     info.innerHTML = content;
