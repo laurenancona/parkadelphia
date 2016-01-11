@@ -202,6 +202,8 @@ p {
   margin-bottom: 0px;
   /*  overflow-x: hidden;*/
   margin-right: 120px;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .info p {
