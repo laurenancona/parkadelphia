@@ -49,7 +49,7 @@ var ParkingMap = ParkingMap || {};
 
     // Call mapboxgl.Map.featuresAt with the hijacked callback function.
     map.featuresAt(point, options, hijacked);
-  };
+    };
 
   ParkingMap.initFancyMap = function () {
     var map;
@@ -62,7 +62,7 @@ var ParkingMap = ParkingMap || {};
     // var southWest = L.latLng(39.864439, -75.387541),
     //     northEast = L.latLng(40.156325, -74.883544),
     //     bounds = L.latLngBounds(southWest, northEast);
-
+      
     map = ParkingMap.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt',
@@ -73,29 +73,31 @@ var ParkingMap = ParkingMap || {};
       minZoom: 12,
       //   maxBounds: bounds,
       hash: true
-    });
-
+    });        
+    
     // disable map rotation using right click + drag
     //    map.dragRotate.disable();
 
     // disable map rotation using touch rotation gesture
     //    map.touchZoomRotate.disableRotation();
 
+    // Change cursor state when hovering on interavtive features
     var getPoint = function (evt) {
       // MapboxGL will call it `point`, leaflet `containerPoint`.
       return evt.point || evt.containerPoint;
     };
 
     ParkingMap.map.on('mousemove', function (evt) {
-      if (map.loaded()) {
+//      if (map.loaded()) {
         var point = getPoint(evt);
         featuresAt(map, point, {
           radius: 15
         }, function (err, features) {
           if (err) throw err;
           ParkingMap.map._container.classList.toggle('interacting', features.length > 0);
+          document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
         });
-      }
+//      }
     });
 
     ParkingMap.map.on('click', function (evt) {
@@ -113,7 +115,12 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) {
             feature = features[0];
             layerName = feature.layer.id;
-            showInfo(layerName, feature);
+            if (layerName === 'meters.i'){
+              showInfo(layerName, features);
+            }
+            else {
+              showInfo(layerName, feature);
+            }
           }
         });
       }
@@ -134,7 +141,7 @@ var ParkingMap = ParkingMap || {};
 
     // Geocoder with autocomplete
 
-    map.addControl(new mapboxgl.Geocoder());
+//    map.addControl(new mapboxgl.Geocoder());
 
     // Navigation
 
@@ -144,11 +151,11 @@ var ParkingMap = ParkingMap || {};
 
     // Geolocate User 
 
-    map.on('load', function () {
-      map.addControl(new mapboxgl.Control.Locate({
-        position: 'top-left'
-      }));
-    });
+//    map.on('load', function () {
+//      map.addControl(new mapboxgl.Control.Locate({
+//        position: 'top-left'
+//      }));
+//    });
 
     // Define layers & interactivity
 
@@ -160,7 +167,6 @@ var ParkingMap = ParkingMap || {};
         'lots': ['lots.i'],
        // 'valet': ['valet.i'],
         'meters': ['meters.i']
-          //        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
       };
 
       layerNames.forEach(function (layerName, index) {
@@ -366,13 +372,22 @@ var ParkingMap = ParkingMap || {};
 //        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
 //      break;
         
-    case 'meters.i':
-        content = '<div>' + (feature.properties.street ?
-          '<strong>' + feature.properties.street + '</strong>' : '') +
-        (feature.properties.from_day ?
-         '<p>' + feature.properties.from_day + '-' + feature.properties.to_day + '</p>' : '') +
-        (feature.properties.from_time ?
-         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
+//    case 'meters.i':
+//        content = '<div>' + (feature.properties.street ?
+//          '<strong>' + feature.properties.street + '</strong>' : '') +
+//        (feature.properties.from_day ?
+//         '<p>' + feature.properties.from_day + '-' + feature.properties.to_day + '</p>' : '') +
+//        (feature.properties.from_time ?
+//         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
+//      break;
+      
+      case 'meters.i':
+        var template = '<div>{{#features}}' +
+            'Seg ID: {{properties.seg_id}} &nbsp; | &nbsp; {{properties.street}} &nbsp; | &nbsp; {{properties.side}} Side <br>' + 
+            '{{properties.from_day}} - {{properties.to_day}} &nbsp; | &nbsp;  {{properties.from_time}} - {{properties.to_time}} <br>' +
+            '{{properties.rate}}/hr &nbsp; | &nbsp; Limit: {{#properties.limit_hr}}{{.}} hr{{/properties.limit_hr}} {{#properties.limit_min}}{{.}} min {{/properties.limit_min}} <br><br>' +
+        '{{/features}}</div>';
+        content = Mustache.render(template, {'features' : feature})
       break;
         
     default:
