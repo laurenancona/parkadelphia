@@ -4,7 +4,12 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks', 'rppdistricts', 'scooters', 'lots', 'valet', 'meters'];
+  var layerNames = ['rppblocks', 
+                    'rppdistricts', 
+                    //'scooters', 
+                    'lots', 
+                    //'valet', 
+                    'meters'];
 
   //  Deprecated layers, keep until tested:
   //  , 'transit', 'entrances', 'poperide', 'parking'
@@ -42,8 +47,7 @@ var ParkingMap = ParkingMap || {};
       callback(err, filteredFeatures);
     };
 
-    // Call mapboxgl.Map.featuresAt with the hijacked
-    // callback function.
+    // Call mapboxgl.Map.featuresAt with the hijacked callback function.
     map.featuresAt(point, options, hijacked);
   };
 
@@ -152,9 +156,9 @@ var ParkingMap = ParkingMap || {};
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.casing.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
-        'scooters': ['scooters.i'],
+       // 'scooters': ['scooters.i'],
         'lots': ['lots.i'],
-        'valet': ['valet.i'],
+       // 'valet': ['valet.i'],
         'meters': ['meters.i']
           //        'transit': ['transit-stations.i', 'septa-rr.lines.i', 'market-st', 'broad-st', 'patco'],
       };
@@ -184,8 +188,9 @@ var ParkingMap = ParkingMap || {};
       });
     });
   };
+  
   // LEAFLET-BASED VECTOR TILE FALLBACK ============================= 
-  // Vector tiles fallback == these will all be Leaflet-based functions
+  // Vector tile map == these will all be Leaflet-based functions
 
   ParkingMap.initClassicMap = function () {
     var map;
@@ -355,11 +360,11 @@ var ParkingMap = ParkingMap || {};
         (feature.properties.Rates ?
           '<p>Rates: ' + feature.properties.Rates + '</p>' : '') + '</div>';
       break;
-
-    case 'valet.i':
-      content = '<div>' + (feature.properties.Name ?
-        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
-      break;
+//
+//    case 'valet.i':
+//      content = '<div>' + (feature.properties.Name ?
+//        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
+//      break;
         
     case 'meters.i':
         content = '<div>' + (feature.properties.street ?
