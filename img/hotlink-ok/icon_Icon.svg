@@ -4,9 +4,10 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="154px" height="182px" viewBox="0 0 154 182" enable-background="new 0 0 154 182" xml:space="preserve">
 <g>
-	<g>
-		<path fill="#CDDC39" d="M77,18.166l-0.063,0.146L14.045,163.834L77,136.565h0l62.955,27.269L77,18.166z M77.281,26.586
-			l56.704,131.188l-56.113-24.217L77.281,26.586z"/>
-	</g>
+	<path fill="#FFFFFF" d="M77,18.166l-0.063,0.146L14.045,163.834L77,136.565h0l62.955,27.269L77,18.166z"/>
+</g>
+<g>
+	<path fill="#CDDC39" d="M77,18.166l-0.063,0.146L14.045,163.834L77,136.565h0l62.955,27.269L77,18.166z M77.281,26.586
+		l56.704,131.188l-56.113-24.217L77.281,26.586z"/>
 </g>
 </svg>
