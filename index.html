@@ -202,6 +202,13 @@
       display: none!important;
     }
     
+    .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active  {
+      color: white!important;
+    }
+    .mdl-tabs__ripple-container mdl-js-ripple-effect  {
+      color: white!important;
+    }
+    
     #features {
       position: absolute;
       top: 0;
@@ -255,13 +262,11 @@
               <span class="mdl-switch__label">Residential Lots</span>
             </label>
             <h5>Exceptions</h5>
-<!--
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
-              <input type="checkbox" id="valet" class="mdl-switch__input" disabled>
+              <input type="checkbox" id="valet" class="mdl-switch__input">
               <span class="mdl-switch__label">Valet Parking</span>
               <p><small>Businesses with valid valet parking permits</small></p>
             </label>
--->
             <!--
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
               <input type="checkbox" id="transit" class="mdl-switch__input" checked>
@@ -308,6 +313,7 @@
                 <li><s>Residential permit parking blocks</s> 6/15</li>
                 <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
                 <li><s>On-street Metered parking blocks</s> 1/16</li>
+                <li>Truck/Package Delivery Zones</li>
                 <li><s>Search by geolocation</s> 1/16</li>
                 <li>Search by address</li>
                 <li>Search by time, day, length and cost</li>

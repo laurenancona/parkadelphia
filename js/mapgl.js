@@ -8,7 +8,7 @@ var ParkingMap = ParkingMap || {};
                     'rppdistricts', 
                     //'scooters', 
                     'lots', 
-                    //'valet', 
+                    'valet', 
                     'meters'];
 
   //  Deprecated layers, keep until tested:
@@ -165,7 +165,7 @@ var ParkingMap = ParkingMap || {};
         'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
        // 'scooters': ['scooters.i'],
         'lots': ['lots.i'],
-       // 'valet': ['valet.i'],
+        'valet': ['valet.i'],
         'meters': ['meters.i']
       };
 
@@ -366,11 +366,11 @@ var ParkingMap = ParkingMap || {};
         (feature.properties.Rates ?
           '<p>Rates: ' + feature.properties.Rates + '</p>' : '') + '</div>';
       break;
-//
-//    case 'valet.i':
-//      content = '<div>' + (feature.properties.Name ?
-//        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
-//      break;
+
+    case 'valet.i':
+      content = '<div>' + (feature.properties.Name ?
+        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
+      break;
         
 //    case 'meters.i':
 //        content = '<div>' + (feature.properties.street ?
@@ -385,7 +385,7 @@ var ParkingMap = ParkingMap || {};
         var template = '<div>{{#features}}' +
             'Seg ID: {{properties.seg_id}} &nbsp; | &nbsp; {{properties.street}} &nbsp; | &nbsp; {{properties.side}} Side <br>' + 
             '{{properties.from_day}} - {{properties.to_day}} &nbsp; | &nbsp;  {{properties.from_time}} - {{properties.to_time}} <br>' +
-            '{{properties.rate}}/hr &nbsp; | &nbsp; Limit: {{#properties.limit_hr}}{{.}} hr{{/properties.limit_hr}} {{#properties.limit_min}}{{.}} min {{/properties.limit_min}} <br><br>' +
+            '${{properties.rate}}/hr &nbsp; | &nbsp; Limit: {{#properties.limit_hr}}{{.}} hr{{/properties.limit_hr}} {{#properties.limit_min}}{{.}} min {{/properties.limit_min}} <br><br>' +
         '{{/features}}</div>';
         content = Mustache.render(template, {'features' : feature})
       break;
