@@ -145,6 +145,7 @@
       text-decoration: none!important;
       color: #eee;
       font-size: 1rem;
+      letter-spacing: 4px;
     }
     
     .mdl-layout-title {
@@ -202,13 +203,18 @@
       display: none!important;
     }
     
-    .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active  {
+    .mdl-tabs__tab  {
       color: white!important;
-    }
-    .mdl-tabs__ripple-container mdl-js-ripple-effect  {
-      color: white!important;
+      font-size:  .8rem!important;
     }
     
+    #meter-info {
+      margin-left: auto;
+      margin-right: auto;
+      
+    }
+    
+/* For debugging */
     #features {
       position: absolute;
       top: 0;
@@ -329,13 +335,17 @@
     <div class="page-content">
       <!-- Add mapbox watermark -->
       <a href="//mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-      <div id="map">
-        <div id='info' class='info'>
+      <div class="mdl-grid">
+        <div id="map" class="mdl-cell--12-col">
+          <div id='info' class='mdl-cell--12-col info'>
+          
+          </div>
+        <!-- For debugging featuresAt -->
+        <pre id="features"></pre>
+          <div id="bottom-icons" class="mdl-cell--12-col">
+        </div>
           
         </div>
-        <pre id="features"></pre>
-      </div>
-      <div id="icons">
       </div>
       <!-- plugins and other scripts -->
 <!--      <script src="js/feature-geojson.js" type="text/javascript"></script>-->

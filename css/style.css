@@ -1,9 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  /*  background-color: #404040;*/
+/*
+    background-color: #404040;
   height: 100%;
   width: 100%;
+*/
 }
 
 #container {
@@ -195,19 +197,22 @@ p {
 
 .info {
   position: absolute;
-  bottom: 0px;
+  bottom: 50px;
   color: white;
   width: 100%;
   z-index: 100;
   margin-bottom: 0px;
   /*  overflow-x: hidden;*/
-  margin-right: 120px;
   max-height: 300px;
   overflow: auto;
-}
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #71767E;
+} 
 
 .info p {
-  line-height: 1em;
+  line-height: 1.2em;
   /*  text-decoration: none;*/
 }
 
@@ -226,6 +231,7 @@ p {
   /*  width: 100%;*/
   margin-bottom: 0px;
   z-index: 100;
+
 }
 
 .span.side.mdl-layout-title {
@@ -238,6 +244,7 @@ p {
 
 .li a {
   /*  font-size: 1.6em!important;*/
+  text-decoration: none!important;
 }
 
 #map.interacting .mapboxgl-canvas-container.mapboxgl-interactive,
@@ -257,7 +264,8 @@ p {
 }
 
 #map {
-  margin-left: 240px;
+  margin-left: 230px;
+  padding-left:0px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -270,7 +278,7 @@ p {
   #map,
   .info {
     padding-left: 0px;
-    margin-left: 0px;
+    margin-left: -10px;
   }
   .leaflet-top {
     top: 50px;
@@ -279,6 +287,19 @@ p {
     top: 50px;
     left: 1px;
   }
+}
+
+#bottom-icons {
+  clear:both;
+  float: left;
+  position: fixed;
+  right:0px;
+  bottom: 0px;
+  z-index: 1000;
+  background-color: #222D46;
+  color: white;
+  height: 50px;
+  width: 100%
 }
 
 .mapbox-maplogo {

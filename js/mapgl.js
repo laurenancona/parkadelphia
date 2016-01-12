@@ -164,7 +164,7 @@ var ParkingMap = ParkingMap || {};
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.casing.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
        // 'scooters': ['scooters.i'],
-        'lots': ['lots.i'],
+        'lots': ['lots.i', 'lots-labels'],
         'valet': ['valet.i'],
         'meters': ['meters.i']
       };
@@ -348,9 +348,9 @@ var ParkingMap = ParkingMap || {};
 
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
-          '<strong>' + feature.properties.name + '</strong>' : '') +
+          '<strong>' + feature.properties.name + ' </strong>' : '') +
         (feature.properties.description ?
-          '<p>' + feature.properties.description + '</p>' : '') +
+          ': ' + feature.properties.description  : '') +
         (feature.properties.address ?
           '<p>' + feature.properties.address + '</p>' : '') +
         (feature.properties.Type ?
@@ -369,7 +369,12 @@ var ParkingMap = ParkingMap || {};
 
     case 'valet.i':
       content = '<div>' + (feature.properties.Name ?
-        '<strong>' + feature.properties.Name + '</strong>' : '') + '</div>';
+        '<strong>' + feature.properties.Name + '</strong>' : '') + 
+        (feature.properties.Hours ?
+        '<p>Hours: ' + feature.properties.Hours +'<br>' : '') + 
+        (feature.properties.Spaces ?
+        'Spaces: ' + feature.properties.Spaces : '') +
+         '</p></div>';
       break;
         
 //    case 'meters.i':
@@ -382,10 +387,10 @@ var ParkingMap = ParkingMap || {};
 //      break;
       
       case 'meters.i':
-        var template = '<div>{{#features}}' +
-            'Seg ID: {{properties.seg_id}} &nbsp; | &nbsp; {{properties.street}} &nbsp; | &nbsp; {{properties.side}} Side <br>' + 
+        var template = '<div id="meter-info" style="margin-left:auto;margin-right:auto; width:30%;max-width:350px;">{{#features}}' +
+            '{{properties.street}} &nbsp; | &nbsp; {{properties.side}} Side <br>' + 
             '{{properties.from_day}} - {{properties.to_day}} &nbsp; | &nbsp;  {{properties.from_time}} - {{properties.to_time}} <br>' +
-            '${{properties.rate}}/hr &nbsp; | &nbsp; Limit: {{#properties.limit_hr}}{{.}} hr{{/properties.limit_hr}} {{#properties.limit_min}}{{.}} min {{/properties.limit_min}} <br><br>' +
+            '${{properties.rate}}/hr &nbsp; | &nbsp; Limit: {{#properties.limit_hr}}{{.}} hr{{/properties.limit_hr}} {{#properties.limit_min}}{{.}} min {{/properties.limit_min}} &nbsp; | &nbsp; {{properties.seg_id}}  <br><br>' +
         '{{/features}}</div>';
         content = Mustache.render(template, {'features' : feature})
       break;
