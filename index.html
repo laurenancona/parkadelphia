@@ -118,20 +118,26 @@
       color: #eee;
     }
     
+    s {
+      color: darkgrey;
+    }
+    
     #contributors a {
       text-decoration: none!important;
-      color: #eee;
+      color: rgb(205,220,57);
       font-size: 0.8rem;
     }
     
     .mdl-layout__drawer {
-      background-color: #71767E;
+/*      background-color: #71767E;*/
+      background-color: #46474A;
+      border-right: 1px solid #46474A;
     }
     
     .mdl-navigation {
       padding-left: 15px!important;
       padding-right: 10px;
-      background-color: #71767E;
+/*      background-color: #71767E;*/
       color: #eee;
       padding-top: 0px!important;
     }
@@ -164,6 +170,11 @@
     p {
       font-size: 12px;
       line-height: 1.4em;
+    }
+    
+   p a {
+      color: rgb(205,220,57)!important;
+      text-decoration: none!important;
     }
     
     .mdl-layout__header-row,
@@ -209,9 +220,23 @@
     }
     
     #meter-info {
+      margin-top: 5px;
       margin-left: auto;
       margin-right: auto;
-      
+    }
+    
+    .info {
+/*      margin-left: 10px;*/
+      padding-left: 10px;
+      padding-top: 5px;
+    }
+    
+    .location {
+      letter-spacing: .1rem;  
+      font-weight: bold;
+      font-family: 'montserrat', sans-serif;
+      font-size: 1.1rem;
+      line-height: .8;
     }
     
 /* For debugging */
@@ -297,7 +322,7 @@
           </div>
           <!-- ABOUT TAB-->
           <div class="mdl-tabs__panel" id="about">
-            <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
+            <br><p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
             <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
             <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
             <hr>
@@ -341,7 +366,7 @@
           
           </div>
         <!-- For debugging featuresAt -->
-        <pre id="features"></pre>
+<!--        <pre id="features"></pre>-->
           <div id="bottom-icons" class="mdl-cell--12-col">
         </div>
           
@@ -350,6 +375,7 @@
       <!-- plugins and other scripts -->
 <!--      <script src="js/feature-geojson.js" type="text/javascript"></script>-->
       <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+      
 <!--      <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>-->
 <!--      <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>-->
 <!--      <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />-->
@@ -361,7 +387,7 @@
         var ParkingMap = ParkingMap || {};
         ParkingMap.allowFancyMap = true;
       </script>
-      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
       <!-- Core map functionality-->
       <script src='js/mapgl.js'></script>
     </div>

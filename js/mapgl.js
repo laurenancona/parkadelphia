@@ -95,7 +95,7 @@ var ParkingMap = ParkingMap || {};
         }, function (err, features) {
           if (err) throw err;
           ParkingMap.map._container.classList.toggle('interacting', features.length > 0);
-          document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
+//          document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
         });
 //      }
     });
@@ -387,12 +387,27 @@ var ParkingMap = ParkingMap || {};
 //      break;
       
       case 'meters.i':
-        var template = '<div id="meter-info" style="margin-left:auto;margin-right:auto; width:30%;max-width:350px;">{{#features}}' +
-            '{{properties.street}} &nbsp; | &nbsp; {{properties.side}} Side <br>' + 
-            '{{properties.from_day}} - {{properties.to_day}} &nbsp; | &nbsp;  {{properties.from_time}} - {{properties.to_time}} <br>' +
-            '${{properties.rate}}/hr &nbsp; | &nbsp; Limit: {{#properties.limit_hr}}{{.}} hr{{/properties.limit_hr}} {{#properties.limit_min}}{{.}} min {{/properties.limit_min}} &nbsp; | &nbsp; {{properties.seg_id}}  <br><br>' +
-        '{{/features}}</div>';
-        content = Mustache.render(template, {'features' : feature})
+        
+        var template = _.template(
+          '<div id="meter-info" style="margin-left:auto;margin-right:auto; width:30%;max-width:350px;">' + 
+          '<% _.each(features,function(regulations,key){ %>' + 
+            '<span class="location"><%= key %></span><br>' + 
+            '<% _.each(regulations,function(regulation){ %>' + 
+            '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' + 
+            ' | &nbsp;  <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> <br>' + 
+            '$<%= regulation.properties.rate %>/hr &nbsp; | &nbsp;' +
+            'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
+            '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
+            '| &nbsp; <%= regulation.properties.seg_id %><hr>' + 
+            '<% }) %>' +
+          '<% }) %></div>');
+
+        var byStreet = _.groupBy(feature, function(value){
+          return value.properties.street + ', ' + value.properties.side + ' Side';
+        });
+//        content = Mustache.render(template, {'features' : feature})
+        
+        content = template({'features' : byStreet});
       break;
         
     default:

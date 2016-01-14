@@ -187,9 +187,6 @@ p {
   padding-left: 10px!important;
 }
 
-#info-bar {}
-
-
 /*
 .map-layout-transparent .mdl-layout-title, .map-layout-transparent .mdl-layout__header, .map-layout-transparent .mdl-layout__drawer-button {
   color: white;
@@ -230,6 +227,7 @@ p {
   padding: 10px 10px 5px 10px;
   /*  width: 100%;*/
   margin-bottom: 0px;
+  margin-top: 5px;
   z-index: 100;
 
 }
@@ -265,7 +263,7 @@ p {
 
 #map {
   margin-left: 230px;
-  padding-left:0px;
+  padding-left: 0px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -296,7 +294,8 @@ p {
   right:0px;
   bottom: 0px;
   z-index: 1000;
-  background-color: #222D46;
+/*  background-color: #222D46;*/
+  background-color: #46474A;
   color: white;
   height: 50px;
   width: 100%
