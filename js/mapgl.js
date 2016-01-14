@@ -9,7 +9,8 @@ var ParkingMap = ParkingMap || {};
                     //'scooters', 
                     'lots', 
                     'valet', 
-                    'meters'];
+                    'meters',
+                    'satellite'];
 
   //  Deprecated layers, keep until tested:
   //  , 'transit', 'entrances', 'poperide', 'parking'
@@ -167,7 +168,8 @@ var ParkingMap = ParkingMap || {};
        // 'scooters': ['scooters.i'],
         'lots': ['lots.i', 'lots-labels'],
         'valet': ['valet.i'],
-        'meters': ['meters.i']
+        'meters': ['meters.i'],
+        'satellite': ['satellite']
       };
 
       layerNames.forEach(function (layerName, index) {
