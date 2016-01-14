@@ -57,21 +57,22 @@ var ParkingMap = ParkingMap || {};
     L.mapbox.accessToken = accessToken;
     mapboxgl.accessToken = accessToken;
 
-    // Construct a bounding box
+    // Set bounds to Philadelphia metro
 
-    // var southWest = L.latLng(39.864439, -75.387541),
-    //     northEast = L.latLng(40.156325, -74.883544),
-    //     bounds = L.latLngBounds(southWest, northEast);
+     var bounds = [
+           [-75.387541, 39.864439],
+           [-74.883544, 40.156325]
+         ];
       
     map = ParkingMap.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt',
-      center: [-75.1575, 39.9572],
+      center: [-75.1543, 39.9462],
       bearing: 9.2, // Rotate Philly ~9° off of north
-      zoom: 12,
+      zoom: 13,
       maxZoom: 18,
       minZoom: 12,
-      //   maxBounds: bounds,
+      maxBounds: bounds,
       hash: true
     });        
     

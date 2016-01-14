@@ -205,7 +205,8 @@ p {
   float: left;
   margin-left: auto;
   margin-right: auto;
-  background-color: #71767E;
+/*  background-color: #71767E;*/
+  background-color: #434343;
 } 
 
 .info p {
@@ -221,7 +222,7 @@ p {
 
 #info div {
   /*  background: #434343;*/
-  background: #71767E;
+/*  background: #71767E;*/
   /*rgba(67, 67, 67, 0.9);*/
   position: relative;
   padding: 10px 10px 5px 10px;
@@ -295,7 +296,8 @@ p {
   bottom: 0px;
   z-index: 1000;
 /*  background-color: #222D46;*/
-  background-color: #46474A;
+/*  background-color: #46474A;*/
+  background-color: rgb(205,220,57);
   color: white;
   height: 50px;
   width: 100%
