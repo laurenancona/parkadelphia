@@ -118,7 +118,7 @@ p {
 #warning-text {
   font-family: 'Cabin', sans-serif;
   text-transform: uppercase;
-  font-size: .6em;
+  font-size: .7em;
   z-index: 100;
   width: 100%;
   opacity: 1!important;
@@ -276,6 +276,7 @@ li a {
   }
 }
 
+/*
 @media only screen and (max-width: 992px) {
   #map, 
   .info {
@@ -290,6 +291,7 @@ li a {
     left: 1px;
   }
 }
+*/
 
 #bottom-icons {
   clear:both;

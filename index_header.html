@@ -51,12 +51,12 @@
 
     <script src="js/leaflet-mapbox-gl.js"></script>
 
-  <link href="css/style.css" type="text/css" rel='stylesheet'>
+  <link href="css/app-style.css" type="text/css" rel='stylesheet'>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
   <!--  TODO: Bring these local  -->
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
@@ -179,6 +179,7 @@
       font-size: 1em;
       color: grey;
       text-align: center;
+      letter-spacing: .1rem;
     }
     
     ul {
@@ -196,9 +197,18 @@
       text-decoration: none!important;
     }
     
-    .mdl-layout__header-row,
     .mdl-layout__drawer-button {
-      color: white;
+      width: 25px!important;
+      padding-left: 10px!important;
+    }
+    
+    .mdl-layout__header {
+     height: 40px!important;
+    }
+    
+    .mdl-layout__header,
+    .mdl-layout__drawer-button {
+      background-color: #46474A!important;
     }
     
     .mdl-switch__label {
@@ -217,17 +227,19 @@
     /* .page-content {padding-top: } */
     /* div {padding-bottom: 10px;} */
     
-    .mdl-layout__drawer>.mdl-layout-title {
+   .mdl-layout-title {
       padding-left: 0px;
       letter-spacing: .1rem;
     }
     
+/*
     .mdl-layout__drawer>.mdl-layout-title img {
       margin-top: -3px;
       padding-right: 6px;
       padding-left: 0px;
       width: 20px;
     }
+*/
     
     .leaflet-control-attribution {
       display: none!important;
@@ -258,6 +270,13 @@
       line-height: .8;
     }
     
+    i.material-icons {
+      display: none!important;
+    }
+    div.mdl-layout__drawer-button {
+background-image:url("data:PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTU0cHgiIGhlaWdodD0iMTgycHgiIHZpZXdCb3g9IjAgMCAxNTQgMTgyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxNTQgMTgyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik03NywxOC4xNjZsLTAuMDYzLDAuMTQ2TDE0LjA0NSwxNjMuODM0TDc3LDEzNi41NjVoMGw2Mi45NTUsMjcuMjY5TDc3LDE4LjE2NnoiLz4NCjwvZz4NCjxnPg0KCTxwYXRoIGZpbGw9IiNDRERDMzkiIGQ9Ik03NywxOC4xNjZsLTAuMDYzLDAuMTQ2TDE0LjA0NSwxNjMuODM0TDc3LDEzNi41NjVoMGw2Mi45NTUsMjcuMjY5TDc3LDE4LjE2NnogTTc3LjI4MSwyNi41ODYNCgkJbDU2LjcwNCwxMzEuMTg4bC01Ni4xMTMtMjQuMjE3TDc3LjI4MSwyNi41ODZ6Ii8+DQo8L2c+DQo8L3N2Zz4NCg==")!important;
+    }
+    
 /* For debugging */
     #features {
       position: absolute;
@@ -271,16 +290,22 @@
       
       
   </style>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-    <header class="mdl-layout__header mdl-layout__header--transparent">
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">Title</span>
+        <!-- Title -->
+        <img src="img/hotlink-ok/icon_Icon.svg" width="20px" class="mdl-layout__drawer-button"/>
+        <span class="mdl-layout-title app-title">
+          <a href="/">Parkadelphia</a></span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+          
       </div>
-      <div class="mdl-layout-spacer"></div>
     </header>
-    <!-- SIDE DRAWER MENU -->
     <div class="mdl-layout__drawer">
-      <span class="side mdl-layout-title"><img src="img/hotlink-ok/icon_Icon.svg" width="20px"/><span class="app-title" style="text-decoration: none!important; color: grey!important;"><a href="/">Parkadelphia</a></span></span>
+      <span class="mdl-layout-title app-title"><a href="/">Parkadelphia</a></span>
       <nav class="mdl-navigation">
         <!-- TAB MENU -->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -305,11 +330,11 @@
               <input type="checkbox" id="meters" class="mdl-switch__input" checked>
               <span class="mdl-switch__label">Automobile</span>
             </label>
-<!--
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
-              <input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
-              <span class="mdl-switch__label">Motorcycle/Scooter</span>
-            </label>
+            <!--
+<label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
+<input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
+<span class="mdl-switch__label">Motorcycle/Scooter</span>
+</label>
 -->
             <hr>
             <h5>Lots</h5>   
@@ -321,7 +346,7 @@
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
               <input type="checkbox" id="valet" class="mdl-switch__input">
               <span class="mdl-switch__label">Valet Parking</span>
-<!--              <p><small>Businesses with valid valet parking permits</small></p>-->
+              <!--              <p><small>Businesses with valid valet parking permits</small></p>-->
             </label>
             <hr>
             <h5>Map</h5>
@@ -334,80 +359,49 @@
           <div class="mdl-tabs__panel" id="about">
             <br><p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
             <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
-            <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
-            <hr>
-            <div id="contributors">
-              <h5>Contributors: </h5>
-              <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
-              <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
-              <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
-              <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
-              <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
-              <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
-              <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
-            </div>
-            <br>
-            <div id="roadmap">
-              <h5>Roadmap</h5>
-              <ul>
-                <li><s>Residential permit parking district (boundaries)</s> 6/14</li>
-                <li><s>Residential permit parking blocks</s> 6/15</li>
-                <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
-                <li><s>On-street Metered parking blocks</s> 1/16</li>
-                <li>Truck/Package Delivery Zones</li>
-                <li><s>Search by geolocation</s> 1/16</li>
-                <li>Search by address</li>
-                <li>Search by time, day, length and cost</li>
-              </ul>
-            </div>
-          </div>
+        <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
+        <hr>
+        <div id="contributors">
+          <h5>Contributors: </h5>
+          <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
+          <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
+          <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
+          <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
+          <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
+          <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
+          <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
+        </div>
+        <br>
+        <div id="roadmap">
+          <h5>Roadmap</h5>
+          <ul>
+            <li><s>Residential permit parking district (boundaries)</s> 6/14</li>
+            <li><s>Residential permit parking blocks</s> 6/15</li>
+            <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
+            <li><s>On-street Metered parking blocks</s> 1/16</li>
+            <li>Truck/Package Delivery Zones</li>
+            <li><s>Search by geolocation</s> 1/16</li>
+            <li>Search by address</li>
+            <li>Search by time, day, length and cost</li>
+          </ul>
+        </div>
         </div>
     </div>
-    </nav>
   </div>
-  <!-- MAIN CONTENT -->
-  <main class="mdl-layout__content">
-    <div class="page-content">
-      <!-- Add mapbox watermark -->
-      <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-      <div class="mdl-grid">
-        <div id="map" class="mdl-cell--12-col">
-          <div id="warning"><span id="warning-text">
-            Warning! This jawn is in alpha!</span>
-          </div>
-          <div id='info' class='mdl-cell--12-col info'>        
-          </div>
-        <!-- For debugging featuresAt -->
-<!--        <pre id="features"></pre>-->
-          <div id="bottom-icons" class="mdl-cell--12-col">
-            <div id="locate" class="mdl-cell--4-col"><a href="#"><i class="icon ion-ios-navigate"></i></a></div>
-            <div id="" class="mdl-cell--4-col"></div>
-            <div id="" class="mdl-cell--4-col"></div>
-        </div>
-          
-        </div>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <!-- Your content goes here -->
       </div>
-      <!-- plugins and other scripts -->
-<!--      <script src="js/feature-geojson.js" type="text/javascript"></script>-->
-      <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
-      
-<!--      <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>-->
-<!--      <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>-->
-<!--      <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />-->
-      <!--[if lt IE 9]>
-<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
-<![endif]-->
-      <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
-      <script>
-        var ParkingMap = ParkingMap || {};
-        ParkingMap.allowFancyMap = true;
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-      <!-- Core map functionality-->
-      <script src='js/mapgl.js'></script>
-    </div>
-    </div>
-  </main>
+    </main>
+    <footer>
+      <div id="bottom-icons" class="mdl-grid">
+        <div id="locate" class="mdl-cell mdl-cell--4-col"><a href="#"><i class="icon ion-ios-navigate"></i></a></div>
+        <div id="" class="mdl-cell mdl-cell--4-col"></div>
+        <div id="" class="mdl-cell mdl-cell--4-col"></div>
+      </div>
+    </footer>
   </div>
 </body>
 
