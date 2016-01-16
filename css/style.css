@@ -263,6 +263,9 @@ p a {
   color: white;
 }*/
 
+.mdl-grid {
+  padding: 0px!important;
+}
 .mdl-layout__header-row,
 .mdl-layout__drawer-button {
   color: white!important;
