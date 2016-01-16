@@ -147,9 +147,9 @@ var ParkingMap = ParkingMap || {};
 
     // Navigation
 
-    map.addControl(new mapboxgl.Navigation({
-      position: 'top-left'
-    }));
+//    map.addControl(new mapboxgl.Navigation({
+//      position: 'top-left'
+//    }));
 
     // Geolocate User 
 
