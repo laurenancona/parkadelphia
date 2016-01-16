@@ -1,0 +1,925 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.17926,
+          39.96395
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway Stage Left (South side of Eakins Oval)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": "39.963950",
+        "LON": "-75.179260",
+        "LOCATION": "Benjamin Franklin Parkway Stage Left (South side of Eakins Oval)",
+        "NUMBER": "1.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.178745,
+          39.964334
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway Stage Right (North side of Eakins Oval)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.964334,
+        "LON": -75.178745,
+        "LOCATION": "Benjamin Franklin Parkway Stage Right (North side of Eakins Oval)",
+        "NUMBER": "2.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.178252,
+          39.962225
+        ]
+      },
+      "properties": {
+        "name": "24th Street & Park Towne Place",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.962225,
+        "LON": -75.178252,
+        "LOCATION": "24th Street & Park Towne Place",
+        "NUMBER": "3.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.177359,
+          39.962759
+        ]
+      },
+      "properties": {
+        "name": "Binswanger Triangle (South Side)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.962759,
+        "LON": -75.177359,
+        "LOCATION": "Binswanger Triangle (South Side)",
+        "NUMBER": "4.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.177131,
+          39.962944
+        ]
+      },
+      "properties": {
+        "name": "Binswanger Triangle (North Side)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.962944,
+        "LON": -75.177131,
+        "LOCATION": "Binswanger Triangle (North Side)",
+        "NUMBER": "5.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.176412,
+          39.963076
+        ]
+      },
+      "properties": {
+        "name": "Von Colln Field South West",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.963076,
+        "LON": -75.176412,
+        "LOCATION": "Von Colln Field South West",
+        "NUMBER": "6.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.175972,
+          39.963685
+        ]
+      },
+      "properties": {
+        "name": "Von Colln Field North West",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.963685,
+        "LON": -75.175972,
+        "LOCATION": "Von Colln Field North West",
+        "NUMBER": "7.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.169395,
+          39.963389
+        ]
+      },
+      "properties": {
+        "name": "19th & Spring Garden Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.963389,
+        "LON": -75.169395,
+        "LOCATION": "19th & Spring Garden Streets",
+        "NUMBER": "8.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.165415,
+          39.96294
+        ]
+      },
+      "properties": {
+        "name": "Spring Garden Street between 16th and 17th Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": "39.962940",
+        "LON": -75.165415,
+        "LOCATION": "Spring Garden Street between 16th and 17th Streets",
+        "NUMBER": "9.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.161096,
+          39.963779
+        ]
+      },
+      "properties": {
+        "name": "Broad & Green Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.963779,
+        "LON": -75.161096,
+        "LOCATION": "Broad & Green Streets",
+        "NUMBER": "10.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.17638,
+          39.961855
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway between Oval & 22nd (West) Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.961855,
+        "LON": "-75.176380",
+        "LOCATION": "Benjamin Franklin Parkway between Oval & 22nd (West) Street",
+        "NUMBER": "11.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1758,
+          39.962139
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway between Oval & 22nd (East) Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.962139,
+        "LON": "-75.175800",
+        "LOCATION": "Benjamin Franklin Parkway between Oval & 22nd (East) Street",
+        "NUMBER": "12.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.175055,
+          39.961324
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway & 22nd Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.961324,
+        "LON": -75.175055,
+        "LOCATION": "Benjamin Franklin Parkway & 22nd Street",
+        "NUMBER": "13.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.174416,
+          39.960765
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway between 22nd & 21st Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.960765,
+        "LON": -75.174416,
+        "LOCATION": "Benjamin Franklin Parkway between 22nd & 21st Streets",
+        "NUMBER": "14.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.17367,
+          39.960235
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway & 21st Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.960235,
+        "LON": "-75.173670",
+        "LOCATION": "Benjamin Franklin Parkway & 21st Street",
+        "NUMBER": "15.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.172893,
+          39.95911
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway & Winter Street (On triangle grass area)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": "39.959110",
+        "LON": -75.172893,
+        "LOCATION": "Benjamin Franklin Parkway & Winter Street (On triangle grass area)",
+        "NUMBER": "16.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.172509,
+          39.958913
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway & Winter Street (Corner)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.958913,
+        "LON": -75.172509,
+        "LOCATION": "Benjamin Franklin Parkway & Winter Street (Corner)",
+        "NUMBER": "17.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.171999,
+          39.958983
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway & 20th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.958983,
+        "LON": -75.171999,
+        "LOCATION": "Benjamin Franklin Parkway & 20th Street",
+        "NUMBER": "18.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.172077,
+          39.958428
+        ]
+      },
+      "properties": {
+        "name": "Logan Square & 20th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.958428,
+        "LON": -75.172077,
+        "LOCATION": "Logan Square & 20th Street",
+        "NUMBER": "19.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.170457,
+          39.958551
+        ]
+      },
+      "properties": {
+        "name": "Logan Square & 19th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.958551,
+        "LON": -75.170457,
+        "LOCATION": "Logan Square & 19th Street",
+        "NUMBER": "20.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.169277,
+          39.957128
+        ]
+      },
+      "properties": {
+        "name": "Logan Square & 18th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.957128,
+        "LON": -75.169277,
+        "LOCATION": "Logan Square & 18th Street",
+        "NUMBER": "21.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.167807,
+          39.955895
+        ]
+      },
+      "properties": {
+        "name": "Benjamin Franklin Parkway & 17th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.955895,
+        "LON": -75.167807,
+        "LOCATION": "Benjamin Franklin Parkway & 17th Street",
+        "NUMBER": "22.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1666,
+          39.953818
+        ]
+      },
+      "properties": {
+        "name": "John F. Kennedy Boulevard & 16th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.953818,
+        "LON": "-75.166600",
+        "LOCATION": "John F. Kennedy Boulevard & 16th Street",
+        "NUMBER": "23.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.164862,
+          39.954624
+        ]
+      },
+      "properties": {
+        "name": "Arch Street & 15th Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.954624,
+        "LON": -75.164862,
+        "LOCATION": "Arch Street & 15th Street",
+        "NUMBER": "24.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.164779,
+          39.953763
+        ]
+      },
+      "properties": {
+        "name": "Municipal Services Building Plaza (Southwest)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.953763,
+        "LON": -75.164779,
+        "LOCATION": "Municipal Services Building Plaza (Southwest)",
+        "NUMBER": "25.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.163717,
+          39.954022
+        ]
+      },
+      "properties": {
+        "name": "Municipal Services Building Plaza (East)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.954022,
+        "LON": -75.163717,
+        "LOCATION": "Municipal Services Building Plaza (East)",
+        "NUMBER": "26.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.162719,
+          39.952274
+        ]
+      },
+      "properties": {
+        "name": "City Hall - Market Street East",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.952274,
+        "LON": -75.162719,
+        "LOCATION": "City Hall - Market Street East",
+        "NUMBER": "27.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.163848,
+          39.950063
+        ]
+      },
+      "properties": {
+        "name": "Sansom Street (East of Broad Street)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.950063,
+        "LON": -75.163848,
+        "LOCATION": "Sansom Street (East of Broad Street)",
+        "NUMBER": "28.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.164784,
+          39.946983
+        ]
+      },
+      "properties": {
+        "name": "Broad & Spruce Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.946983,
+        "LON": -75.164784,
+        "LOCATION": "Broad & Spruce Streets",
+        "NUMBER": "29.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.16529,
+          39.944657
+        ]
+      },
+      "properties": {
+        "name": "Broad & Lombard Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.944657,
+        "LON": "-75.165290",
+        "LOCATION": "Broad & Lombard Streets",
+        "NUMBER": "30.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.162205,
+          39.958847
+        ]
+      },
+      "properties": {
+        "marker-color": "#4e535b",
+        "marker-size": "small",
+        "marker-symbol": "square",
+        "name": "Broad & Wood Streets",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.958847,
+        "LON": -75.162205,
+        "LOCATION": "Broad & Wood Streets",
+        "NUMBER": "31.000000",
+        "ROTATE": "1.000000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149748,
+          39.94931
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Stage Left (North of Chestnut)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": "39.949310",
+        "LON": -75.149748,
+        "LOCATION": "Independence Hall Stage Left (North of Chestnut)",
+        "NUMBER": "32.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149657,
+          39.949956
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Stage Left (Block One Center)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.949956,
+        "LON": -75.149657,
+        "LOCATION": "Independence Hall Stage Left (Block One Center)",
+        "NUMBER": "33.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.150032,
+          39.949994
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Stage Right(Block One Center)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.949994,
+        "LON": -75.150032,
+        "LOCATION": "Independence Hall Stage Right(Block One Center)",
+        "NUMBER": "34.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149276,
+          39.951718
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Stage Left (Block Two Center)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.951718,
+        "LON": -75.149276,
+        "LOCATION": "Independence Hall Stage Left (Block Two Center)",
+        "NUMBER": "35.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149598,
+          39.951776
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Stage Right(Block Two Center)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.951776,
+        "LON": -75.149598,
+        "LOCATION": "Independence Hall Stage Right(Block Two Center)",
+        "NUMBER": "36.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149431,
+          39.9518
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Block Two Center",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": "39.951800",
+        "LON": -75.149431,
+        "LOCATION": "Independence Hall Block Two Center",
+        "NUMBER": "37.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14904,
+          39.952835
+        ]
+      },
+      "properties": {
+        "name": "Independence Hall Block Three South",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.952835,
+        "LON": "-75.149040",
+        "LOCATION": "Independence Hall Block Three South",
+        "NUMBER": "38.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149206,
+          39.949255
+        ]
+      },
+      "properties": {
+        "name": "5th Street, North of Chestnut Street",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.949255,
+        "LON": -75.149206,
+        "LOCATION": "5th Street, North of Chestnut Street",
+        "NUMBER": "39.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.151139,
+          39.956746
+        ]
+      },
+      "properties": {
+        "name": "Franklin Square (North West Corner)",
+        "styleUrl": "#jumboicon",
+        "styleHash": "165171ce",
+        "LAT": 39.956746,
+        "LON": -75.151139,
+        "LOCATION": "Franklin Square (North West Corner)",
+        "NUMBER": "40.000000",
+        "ROTATE": "1.000000",
+        "marker-symbol": "square",
+        "marker-size": "small",
+        "marker-color": "#4e535b"
+      }
+    }
+  ]
+}

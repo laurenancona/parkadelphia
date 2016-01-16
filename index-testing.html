@@ -40,13 +40,13 @@ window.location.protocol = "https";
 Use a local copy of mapbox-gl library, because of a bug in how it deals with
 404'd tiles.
 
-<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl-dev.js"></script>
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl-dev.js"></script>
 -->
 
 <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>
 
 <script src="js/mapbox-gl-dev.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.0/mapbox-gl.css" rel="stylesheet" />
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css" rel="stylesheet" />
 
 <script src="js/leaflet-mapbox-gl.js"></script>
 
@@ -180,6 +180,7 @@ padding-left: 0px;
 <span class="mdl-switch__label">Secure Areas</span>
 </label>
 -->
+<!--
 <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="highways">
 <input type="checkbox" id="highways" class="mdl-switch__input">
 <span class="mdl-switch__label">Closed Highways</span>
@@ -211,6 +212,7 @@ padding-left: 0px;
 <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="parking">
 <input type="checkbox" id="parking" class="mdl-switch__input">
 <span class="mdl-switch__label">Parking/Towing Info</span>
+-->
 <!--  -->
 </label>
 <p></p>  
@@ -276,8 +278,8 @@ padding-left: 0px;
 <!--      <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>-->
 
 <script>
-var PopeMap = PopeMap || {};
-PopeMap.allowFancyMap = true;
+var ParkingMap = ParkingMap || {};
+ParkingMap.allowFancyMap = true;
 </script>
 
 <script src='js/mapgl.js'></script>

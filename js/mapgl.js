@@ -234,21 +234,21 @@ var ParkingMap = ParkingMap || {};
 
     // Here be our data layers
 
-    var rppblocks = L.mapbox.featureLayer(); //.addTo(map);
-    rppblocks.loadURL('data/rppblocks.geojson');
-    mapLayers['rppblocks'] = rppblocks;
-
-    var rppdistricts = L.mapbox.featureLayer(); //.addTo(map);
-    rppdistricts.loadURL('data/rppdistricts.geojson');
-    mapLayers['rppdistricts'] = rppdistricts;
-
-    var scooters = L.mapbox.featureLayer(); //.addTo(map);
-    scooters.loadURL('data/jumbotrons.geojson');
-    mapLayers['scooters'] = scooters;
-
-    var lots = L.mapbox.featureLayer(); //.addTo(map);
-    lots.loadURL('data/lots.geojson');
-    mapLayers['lots'] = lots;
+//    var rppblocks = L.mapbox.featureLayer(); //.addTo(map);
+//    rppblocks.loadURL('data/rppblocks.geojson');
+//    mapLayers['rppblocks'] = rppblocks;
+//
+//    var rppdistricts = L.mapbox.featureLayer(); //.addTo(map);
+//    rppdistricts.loadURL('data/rppdistricts.geojson');
+//    mapLayers['rppdistricts'] = rppdistricts;
+//
+//    var scooters = L.mapbox.featureLayer(); //.addTo(map);
+//    scooters.loadURL('data/jumbotrons.geojson');
+//    mapLayers['scooters'] = scooters;
+//
+//    var lots = L.mapbox.featureLayer(); //.addTo(map);
+//    lots.loadURL('data/lots.geojson');
+//    mapLayers['lots'] = lots;
 
 
     //    var transit = L.mapbox.featureLayer().addTo(map);
