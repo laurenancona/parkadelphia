@@ -77,11 +77,6 @@ var ParkingMap = ParkingMap || {};
       hash: true
     });        
     
-    // disable map rotation using right click + drag
-    //    map.dragRotate.disable();
-
-    // disable map rotation using touch rotation gesture
-    //    map.touchZoomRotate.disableRotation();
 
     // Change cursor state when hovering on interavtive features
     var getPoint = function (evt) {
@@ -196,8 +191,10 @@ var ParkingMap = ParkingMap || {};
         updateLayerVisibility(layerName);
       });
     });
+    
   };
   
+
   // LEAFLET-BASED VECTOR TILE FALLBACK ============================= 
   // Vector tile map == these will all be Leaflet-based functions
 
@@ -434,7 +431,7 @@ var ParkingMap = ParkingMap || {};
   }
 
   // Clear the tooltip when map is clicked.
-  ParkingMap.map.on('move', empty);
+  ParkingMap.map.on('move' && 'click', empty);
 
   // Trigger empty contents when the script has loaded on the page.
   empty();
