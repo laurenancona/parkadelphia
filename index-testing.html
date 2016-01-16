@@ -251,37 +251,28 @@ padding-left: 0px;
 </div>
 <!-- MAIN CONTENT -->
 <main class="mdl-layout__content">
-  <div id="warning"><span id="warning-text">
-    Warning! This jawn is in alpha!</span>
-  </div>
-  <div id="map" class="mapboxgl-map">
-    <!-- plugins and other scripts -->
-    <script src="js/feature-geojson.js" type="text/javascript"></script>
-    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js"></script>
-    <!--      <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>-->
-    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.css' rel='stylesheet' />
-    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.js'></script>
-    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
-    <!--      <script src='js/mbgl.Control.Locate.js'></script>-->
-    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
-    <!--[if lt IE 9]>
+<div class="page-content">
+<!-- Add mapbox watermark -->
+<a href="//mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
+<div id="map"> 
+<!-- plugins and other scripts -->
+<script src="js/feature-geojson.js" type="text/javascript"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+<script src='js/mbgl.Control.Locate.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<!--[if lt IE 9]>
 <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
 <![endif]-->
-    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
-    <div id="warning"><span id="warning-text">
-      Warning! This jawn is in alpha!</span>
-    </div>
-    <div id='info' class='mdl-cell--12-col info'>        
-    </div>
-    <!-- For debugging featuresAt -->
-    <!--        <pre id="features"></pre>-->
-    <div id="bottom-icons" class="mdl-cell--12-col">
-      <div id="locate" class="mdl-cell--4-col"><a href="#"><i class="icon ion-ios-navigate"></i></a></div>
-      <div id="" class="mdl-cell--4-col"></div>
-      <div id="" class="mdl-cell--4-col"></div>
-    </div>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+<div id='info' class='info'></div>
+</div>
+<div id="icons">
+</div>
+<!--      <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>-->
 
-  </div>
 <script>
 var ParkingMap = ParkingMap || {};
 ParkingMap.allowFancyMap = true;
