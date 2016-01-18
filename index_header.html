@@ -40,19 +40,15 @@
   <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet"></script>
 <!--  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
 
-  <!--  Use a local copy of mapbox-gl library, because of a bug in how it deals with 404'd tiles.-->
-<!--    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.js"></script>-->
-<!--  <script src='js/mbgl.Control.Locate.js'></script>-->
 
 
   <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
-
-  <script src="js/mapbox-gl-dev.js"></script>
-  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css" rel="stylesheet" />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
 
     <script src="js/leaflet-mapbox-gl.js"></script>
 
-  <link href="css/app-style.css" type="text/css" rel='stylesheet'>
+  <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
   <!--  TODO: Bring these local  -->
@@ -348,7 +344,6 @@ background-image:url("data:PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NC
             <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
               <input type="checkbox" id="valet" class="mdl-switch__input">
               <span class="mdl-switch__label">Valet Parking</span>
-              <!--              <p><small>Businesses with valid valet parking permits</small></p>-->
             </label>
             <hr>
             <h5>Map</h5>
@@ -407,6 +402,8 @@ background-image:url("data:PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NC
         <div id="" class="mdl-cell mdl-cell--4-col"></div>
       </div>
     </footer>
+    <script src="js/appgl.js"
+    </script>
   </div>
 </body>
 
