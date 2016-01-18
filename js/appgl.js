@@ -1,5 +1,3 @@
-//mapbox://styles/laurenancona/ciji1o3vr003w92kfrfbu9wgk
-
 mapboxgl.accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
 
 // Set bounds to Philadelphia metro
@@ -19,5 +17,5 @@ var map = new mapboxgl.Map({
   minZoom: 12,
   maxBounds: bounds,
   hash: true,
-  touchZoomRotate: false
+//  touchZoomRotate: false
 });
