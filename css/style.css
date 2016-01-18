@@ -24,7 +24,7 @@ li a {
 }
 
 hr {
-  border: 1px dotted grey!important;
+  border-top: 1px dotted grey!important;
 }
 
 h1 {
@@ -46,13 +46,13 @@ s {
 }
 
 ul {
-  font-size: 10px;
-  line-height: 1.3em;
+  font-size: 10px!important;
+  line-height: 1.1em!important;
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.4em;
+  font-size: 0.8rem!important;
+  line-height: 1.4em!important;
 }
 
 p a {
@@ -115,7 +115,7 @@ p a {
 #map {
   position: absolute;
   top: 0;
-  bottom: 0px;
+  right: 0px;
   width: 100%;
   z-index: 1;
   /*  height: 90%;*/
@@ -312,6 +312,34 @@ p a {
   font-size: .8rem!important;
 }
 
+/*TOGGLES*/
+
+.mdl-switch__label {
+  left: 18px
+}
+.mdl-switch__thumb {
+  height: 15px!important;
+  width: 15px!important;
+}
+
+.mdl-switch__track {
+  height: 10px!important;
+  width: 30px!important;
+}
+
+.mdl-switch__ripple-container {
+  height: 24px;
+  width: 24px;
+}
+
+.mdl-layout-title {
+  font-family: 'montserrat', sans-serif!important;
+  text-transform: uppercase!important;
+  font-size: 1em!important;
+  color: grey!important;
+  text-align: center!important;
+}
+
 .app-title {
   margin-top: 12px!important;
   color: #eee!important;
@@ -324,12 +352,8 @@ p a {
   letter-spacing: 4px;
 }
 
-.mdl-layout-title {
-  font-family: 'montserrat', sans-serif!important;
-  text-transform: uppercase!important;
-  font-size: 1em!important;
-  color: grey!important;
-  text-align: center!important;
+.layer-groups {
+  padding: 0 10px!important;
 }
 
 .location {
@@ -352,6 +376,10 @@ p a {
   z-index: 1000;
 }
 
+.info-text {
+  padding: 0 10px;
+}
+
 .info {
   position: absolute;
   bottom: 40px;
@@ -364,7 +392,6 @@ p a {
   max-height: 300px;
   overflow: auto;
   float: left;
-  padding-left: 10px;
   padding-top: 5px;
   margin-left: auto;
   margin-right: auto;
@@ -374,6 +401,8 @@ p a {
 
 .info p {
   line-height: 1rem;
+/*  margin-left: 10px;*/
+
   /*  text-decoration: none;*/
 }
 
@@ -441,7 +470,7 @@ p a {
 }
 
 #map {
-  margin-left: 230px;
+  margin-left: 230px!important;
   padding-left: 0px;
 }
 
@@ -451,11 +480,11 @@ p a {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 855px) {
   #map, 
   .info {
     padding-left: 0px;
-    margin-left: -10px;
+    margin-left: 0px!important;
   }
   .leaflet-top {
     top: 50px;
@@ -483,8 +512,8 @@ p a {
 
 #locate {
   height: 100%;
+  width: 80%;
   z-index: 1000;
-  float: right;
   align-content: center;
   vertical-align: middle;
 }
