@@ -120,7 +120,7 @@ p a {
   position: absolute;
   top: 0px;
   right: 0px;
-  bottom: 40px;
+  bottom: 0px;
   width: 100%;
 /*  z-index: 1;*/
   /*  height: 90%;*/
@@ -592,7 +592,7 @@ div.mdl-layout__drawer-button {
   height: 20px;
   width: 65px;
   right: 10px;
-  top: 10px;
+  top: 75px;
   text-indent: -9999px;
   z-index: 99999;
   overflow: hidden;
