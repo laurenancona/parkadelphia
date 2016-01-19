@@ -67,7 +67,7 @@ var ParkingMap = ParkingMap || {};
       zoom: 13,
       maxZoom: 18,
       minZoom: 12,
-      maxBounds: bounds,
+//      maxBounds: bounds,
       hash: true
         //  touchZoomRotate: false
     });
