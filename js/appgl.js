@@ -166,10 +166,7 @@ map.on('load', function () {
     updateLayerVisibility(layerName);
   });
 });
-//    // Geocoder with autocomplete
-//
-//        map.addControl(new mapboxgl.Geocoder());
-
+};
 
 var showInfo = function (tpl, feature) {
   var content;
