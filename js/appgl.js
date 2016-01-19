@@ -48,8 +48,8 @@ var featuresAt = function (map, point, options, callback) {
   map.featuresAt(point, options, hijacked);
 };
 
-//ParkingMap.initFancyMap = function () {
-//    var map;
+ParkingMap.initFancyMap = function () {
+    var map;
 
 mapboxgl.accessToken = accessToken;
 
@@ -273,6 +273,8 @@ var showInfo = function (tpl, feature) {
   info.innerHTML = content;
 };
   
+  ParkingMap.allowFancyMap = true;
+ 
   if (ParkingMap.allowFancyMap && window.mapboxgl && mapboxgl.supported()) {
     ParkingMap.initFancyMap();
   } else {
