@@ -159,10 +159,10 @@ var ParkingMap = ParkingMap || {};
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.casing.i', 'rppblocks.label'],
-        'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label'],
+        'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
        // 'scooters': ['scooters.i'],
-        'lots': ['lots.i', 'lots-labels'],
-        'valet': ['valet.i'],
+        'lots': ['lots.i', 'lot.label'],
+        'valet': ['valet.i', 'valet.circle.i'],
         'meters': ['meters.i'],
         'satellite': ['satellite']
       };
