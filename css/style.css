@@ -15,7 +15,7 @@ body {
 }
 
 footer {
-  z-index: 3!important;
+/*  z-index: 3!important;*/
 }
 
 li {
@@ -478,11 +478,12 @@ p a {
   color: white;
   width: 100%;
   z-index: 100;
-  margin-bottom: 0px;
+/*  margin-bottom: 0px;*/
   /*  overflow-x: hidden;*/
   max-height: 300px;
+  min-height: 20px;
   overflow: auto;
-  float: left;
+/*  float: left;*/
   padding-top: 5px;
   margin-left: auto;
   margin-right: auto;
@@ -491,8 +492,9 @@ p a {
 } 
 
 .info p {
-  line-height: 1rem;
-/*  margin-left: 10px;*/
+/*  line-height: 1rem;*/
+  margin-left: 10px;
+  margin-bottom: 5px!important;
 
   /*  text-decoration: none;*/
 }
@@ -504,16 +506,15 @@ p a {
 }
 
 #info div {
-  /*  background: #434343;*/
+    background: #434343;
 /*  background: #71767E;*/
   /*rgba(67, 67, 67, 0.9);*/
   position: relative;
+  min-height: 10px;
 /*  padding: 10px 10px 5px 10px;*/
-  /*  width: 100%;*/
-/*
+    width: 100%;
   margin-bottom: 0px;
   margin-top: 5px;
-*/
   z-index: 100;
 
 }

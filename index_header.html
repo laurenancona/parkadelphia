@@ -3,11 +3,13 @@
 
 <head>
   <!--  Force https, because location sharing creeps me out -->
+<!--
   <script type="text/javascript">
     var host = "parkadelphia.com";
     if ((host == window.location.host) && (window.location.protocol != "https:"))
       window.location.protocol = "https";
   </script>
+-->
   <meta charset="UTF-8">
   <title>Parkadelphia</title>
   <!--  OG & Metadata  -->
@@ -21,11 +23,10 @@
   <meta name="twitter:site" content="@laurenancona" />
   <meta name="twitter:creator" content="@laurenancona" />
   <!--  <link rel="image_src" href="" />-->
+  
   <!-- Depends -->
   <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
   <!--  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
-
-
 
   <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script>
@@ -198,17 +199,17 @@
     <div id="bottom-icons" class="mdl-grid">
       <div id="icon-group" class="mdl-cell mdl-cell--12-col">
         <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>
-        <!--          <div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
+        <!--div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
         <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
         <div id="locate" class="icon-menu"><a href="#"><i class="icon ion-location"></i></a></div>
-        <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>
+<!--        <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
         <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
       </div>
     </div>
   </footer>
     <script>
-      var ParkingMap = ParkingMap || {};
-      ParkingMap.allowFancyMap = true;
+     // var ParkingMap = ParkingMap || {};
+     // ParkingMap.allowFancyMap = true;
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="js/appgl.js">
