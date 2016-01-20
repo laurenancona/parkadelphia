@@ -92,7 +92,7 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
-    ParkingMap.map.on('move', function (evt) {
+    ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
         var point = getPoint(evt);
 
@@ -112,6 +112,9 @@ var ParkingMap = ParkingMap || {};
             } else {
               showInfo(layerName, feature);
             }
+          }
+          else {
+            empty();
           }
         });
       }
@@ -170,6 +173,7 @@ var ParkingMap = ParkingMap || {};
   };
 
   var showInfo = function (tpl, feature) {
+    console.log('Here is your stupid info', tpl);
     var content;
 
     switch (tpl) {
@@ -269,12 +273,13 @@ var ParkingMap = ParkingMap || {};
   }
 
   // Clear the tooltip when map is clicked.
-  ParkingMap.map.on('click', empty);
+  ParkingMap.map.on('move', empty);
 
   // Trigger empty contents when the script has loaded on the page.
   empty();
 
   function empty() {
+    console.log('Here is your stupid empty.');
     info.innerHTML = '<div><p><strong>Choose layers at left, then click features for info</strong></p></div>';
   }
 
