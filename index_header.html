@@ -1,48 +1,49 @@
 <!doctype html>
 <html>
 
-<head>
-  <!--  Force https, because location sharing creeps me out -->
-<!--
-  <script type="text/javascript">
-    var host = "parkadelphia.com";
-    if ((host == window.location.host) && (window.location.protocol != "https:"))
-      window.location.protocol = "https";
-  </script>
+  <head>
+    <!--  Force https, because location sharing creeps me out -->
+    <!--
+<script type="text/javascript">
+var host = "parkadelphia.com";
+if ((host == window.location.host) && (window.location.protocol != "https:"))
+window.location.protocol = "https";
+</script>
 -->
-  <meta charset="UTF-8">
-  <title>Parkadelphia</title>
-  <!--  OG & Metadata  -->
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <meta property="og:title" content="Parkadelphia" />
-  <meta property="og:url" content="https://parkadelphia.com" />
-  <meta property="og:site_name" content="Parkadelphia" />
-  <meta property="og:image" content="" />
-  <meta property="og:description" content="Street parking information in Philadelphia" />
-  <meta name="twitter:card" content="photo" />
-  <meta name="twitter:site" content="@laurenancona" />
-  <meta name="twitter:creator" content="@laurenancona" />
-  <!--  <link rel="image_src" href="" />-->
-  <!-- Depends -->
-  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-  <!--  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
+    <meta charset="UTF-8">
+    <title>Parkadelphia</title>
+    <!--  OG & Metadata  -->
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta property="og:title" content="Parkadelphia" />
+    <meta property="og:url" content="https://parkadelphia.com" />
+    <meta property="og:site_name" content="Parkadelphia" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="Street parking information in Philadelphia" />
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:site" content="@laurenancona" />
+    <meta name="twitter:creator" content="@laurenancona" />
+    <!--  <link rel="image_src" href="" />-->
+    <!-- Depends -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <!--  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
 
 
 
-  <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
-  <link href="css/style.css" type="text/css" rel='stylesheet'>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
+<!--    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script>-->
+    <script src="js/mapbox-gl-dev.js"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
+    <link href="css/style.css" type="text/css" rel='stylesheet'>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-  <!--  TODO: Bring these local  -->
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-</head>
+    <!--  TODO: Bring these local  -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
   <style>
     body {
       margin: 0;
@@ -57,145 +58,145 @@
     }
 
   </style>
-<body>
-  <!-- LA Google Tag Manager, of course -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6WFRN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-W6WFRN');
-  </script>
-  <!-- End Google Tag Manager -->
+  <body>
+    <!-- LA Google Tag Manager, of course -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6WFRN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-W6WFRN');
+    </script>
+    <!-- End Google Tag Manager -->
 
-  <!-- Sentry -->
-  <script>
-    //  TODO: Configure monitoring
-    // Raven.config('https://3dc95625e5a44d34afb875ba056cece7@app.getsentry.com/53368').install()
-  </script>
-  <!-- End Sentry -->
+    <!-- Sentry -->
+    <script>
+      //  TODO: Configure monitoring
+      // Raven.config('https://3dc95625e5a44d34afb875ba056cece7@app.getsentry.com/53368').install()
+    </script>
+    <!-- End Sentry -->
 
-  <!-- Always shows a header, even in smaller screens. -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <img src="img/hotlink-ok/icon_Icon.svg" width="20px" class="mdl-layout__drawer-button" />
-        <span class="mdl-layout-title app-title">
-          <a href="/">Parkadelphia</a></span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <img src="img/hotlink-ok/icon_Icon.svg" width="20px" class="mdl-layout__drawer-button" />
+          <span class="mdl-layout-title app-title">
+            <a href="/">Parkadelphia</a></span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
 
-      </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title app-title"><a href="/">Parkadelphia</a></span>
-      <nav class="mdl-navigation">
-        <!-- TAB MENU -->
-        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-          <div class="mdl-tabs__tab-bar">
-            <a href="#options" class="mdl-tabs__tab is-active">Options</a>
-            <a href="#about" class="mdl-tabs__tab">About</a>
-          </div>
-          <!-- OPTIONS TAB -->
-          <div class="mdl-tabs__panel is-active" id="options">
-            <h5>Residential Permits</h5>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
-              <input type="checkbox" id="rppblocks" class="mdl-switch__input" checked>
-              <span class="mdl-switch__label">Blocks</span>
-            </label>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
-              <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
-              <span class="mdl-switch__label">Districts</span>
-            </label>
-            <hr>
-            <h5>Meters</h5>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
-              <input type="checkbox" id="meters" class="mdl-switch__input" checked>
-              <span class="mdl-switch__label">Automobile</span>
-            </label>
-<!--
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
-              <input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
-              <span class="mdl-switch__label">Motorcycle/Scooter</span>
-            </label>
--->
-            <hr>
-            <h5>Lots</h5>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
-              <input type="checkbox" id="lots" class="mdl-switch__input">
-              <span class="mdl-switch__label">Residential Lots</span>
-            </label>
-            <h5>Exceptions</h5>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
-              <input type="checkbox" id="valet" class="mdl-switch__input">
-              <span class="mdl-switch__label">Valet Parking</span>
-            </label>
-            <hr>
-            <h5>Map</h5>
-            <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="satellite">
-              <input type="checkbox" id="satellite" class="mdl-switch__input">
-              <span class="mdl-switch__label">Satellite</span>
-            </label>
-          </div>
-          <!-- ABOUT TAB-->
-          <div class="mdl-tabs__panel" id="about">
-            <br>
-            <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
-            <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
-            <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
-            <hr>
-            <div id="contributors">
-              <h5>Contributors: </h5>
-              <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
-              <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
-              <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
-              <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
-              <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
-              <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
-              <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
-            </div>
-            <br>
-            <div id="roadmap">
-              <h5>Roadmap</h5>
-              <ul>
-                <li><s>Residential permit parking district (boundaries)</s> 6/14</li>
-                <li><s>Residential permit parking blocks</s> 6/15</li>
-                <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
-                <li><s>On-street Metered parking blocks</s> 1/16</li>
-                <li>Truck/Package Delivery Zones</li>
-                <li><s>Search by geolocation</s> 1/16</li>
-                <li>Search by address</li>
-                <li>Search by time, day, length and cost</li>
-              </ul>
-            </div>
-          </div>
         </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title app-title"><a href="/">Parkadelphia</a></span>
+        <nav class="mdl-navigation">
+          <!-- TAB MENU -->
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+              <a href="#options" class="mdl-tabs__tab is-active">Options</a>
+              <a href="#about" class="mdl-tabs__tab">About</a>
+            </div>
+            <!-- OPTIONS TAB -->
+            <div class="mdl-tabs__panel is-active" id="options">
+              <h5>Residential Permits</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
+                <input type="checkbox" id="rppblocks" class="mdl-switch__input" checked>
+                <span class="mdl-switch__label">Blocks</span>
+              </label>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
+                <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
+                <span class="mdl-switch__label">Districts</span>
+              </label>
+              <hr>
+              <h5>Meters</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
+                <input type="checkbox" id="meters" class="mdl-switch__input" checked>
+                <span class="mdl-switch__label">Automobile</span>
+              </label>
+              <!--
+<label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
+<input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
+<span class="mdl-switch__label">Motorcycle/Scooter</span>
+</label>
+-->
+              <hr>
+              <h5>Lots</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
+                <input type="checkbox" id="lots" class="mdl-switch__input">
+                <span class="mdl-switch__label">Residential Lots</span>
+              </label>
+              <h5>Exceptions</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
+                <input type="checkbox" id="valet" class="mdl-switch__input">
+                <span class="mdl-switch__label">Valet Parking</span>
+              </label>
+              <hr>
+              <h5>Map</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="satellite">
+                <input type="checkbox" id="satellite" class="mdl-switch__input">
+                <span class="mdl-switch__label">Satellite</span>
+              </label>
+            </div>
+            <!-- ABOUT TAB-->
+            <div class="mdl-tabs__panel" id="about">
+              <br>
+              <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
+              <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
+          <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
+          <hr>
+          <div id="contributors">
+            <h5>Contributors: </h5>
+            <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
+            <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
+            <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
+            <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
+            <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
+            <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
+            <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
+          </div>
+          <br>
+          <div id="roadmap">
+            <h5>Roadmap</h5>
+            <ul>
+              <li><s>Residential permit parking district (boundaries)</s> 6/14</li>
+              <li><s>Residential permit parking blocks</s> 6/15</li>
+              <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
+              <li><s>On-street Metered parking blocks</s> 1/16</li>
+              <li>Truck/Package Delivery Zones</li>
+              <li><s>Search by geolocation</s> 1/16</li>
+              <li>Search by address</li>
+              <li>Search by time, day, length and cost</li>
+            </ul>
+          </div>
+          </div>
+      </div>
     </div>
     </nav>
   </div>
-  <main class="mdl-layout__content">
-    <div class="page-content">
-      <!-- Add mapbox watermark -->
-      <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-      <div id="map" class="mapboxgl-map">
-        Map!
-        <div id="info" class="info"></div>
-      </div>
-  </main>
+<main class="mdl-layout__content">
+  <div class="page-content">
+    <!-- Add mapbox watermark -->
+    <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
+    <div id="map" class="mapboxgl-map">
+      Map!
+      <div id="info" class="info"></div>
+    </div>
+    </main>
   <footer>
     <div id="bottom-icons" class="mdl-grid">
       <div id="icon-group" class="mdl-cell mdl-cell--12-col">
@@ -203,16 +204,16 @@
         <!--          <div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
         <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
         <div id="locate" class="icon-menu"><a href="#"><i class="icon ion-location"></i></a></div>
-<!--        <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
+        <!--        <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
         <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
       </div>
     </div>
   </footer>
-    <script>
-      var ParkingMap = ParkingMap || {};
-      ParkingMap.allowFancyMap = true;
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script>
+    var ParkingMap = ParkingMap || {};
+    ParkingMap.allowFancyMap = true;
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="js/appgl.js">
   </script>
   </div>
