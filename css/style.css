@@ -7,7 +7,7 @@ html {
 body {
   margin: 0!important;
   padding: 0!important;
-  background-color: #404040;
+/*  background-color: #404040;*/
   height: 100%;
   width: 100%;
 }
@@ -19,10 +19,6 @@ body {
   width: 100%!important;
 /*  z-index: 4;*/
   height: 100%!important;
-}
-
-.mapboxgl-map {
-  
 }
 
 .map-wrapper {
