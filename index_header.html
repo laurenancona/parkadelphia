@@ -2,8 +2,7 @@
 <html>
 
 <head>
-  <!--  Force https, because location sharing creeps me out -->
-  <!--
+  <!--  Force https, because location sharing creeps me out
 <script type="text/javascript">
 var host = "parkadelphia.com";
 if ((host == window.location.host) && (window.location.protocol != "https:"))
@@ -33,15 +32,17 @@ window.location.protocol = "https";
   <!--    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script>-->
   <script src="js/mapbox-gl-dev.js"></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
-  <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
   <!--  TODO: Bring these local  -->
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+  <link href="css/style.css" type="text/css" rel='stylesheet'>
+
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <style>
@@ -89,9 +90,11 @@ window.location.protocol = "https";
   <!--BEGIN NEW LAYOUT-->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
-      <div class="mdl-layout-icon"></div>
+      <div class="mdl-layout-icon">
+        <img src="img/hotlink-ok/icon_Icon.svg" width="20px" class="mdl-layout__drawer-button">
+      </div>
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout__title">Parkadelphia</span>
+        <span class="mdl-layout__title app-title"><a href="/">Parkadelphia</a></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
           <!--SEARCH?-->
@@ -100,7 +103,7 @@ window.location.protocol = "https";
     </header>
     <!--SIDE DRAWER-->
     <div class="mdl-layout__drawer">
-      <span class="mdl-layout__title">Parkadelphia</span>
+      <span class="mdl-layout__title app-title"><a href="/">Parkadelphia</a></span>
       <nav class="mdl-navigation">
         <!-- TAB MENU -->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -191,6 +194,9 @@ window.location.protocol = "https";
       <div id="map">
       </div>
     </div>
+    <div id="warning"><span id="warning-text">
+      Warning! This jawn is in alpha!</span>
+    </div>
     <div id="info" class="info"></div>
     <footer>
       <div id="bottom-icons" class="mdl-grid">
@@ -199,6 +205,7 @@ window.location.protocol = "https";
           <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
           <div id="locate" class="icon-menu"><a href="#"><i class="icon ion-location"></i></a></div>
           <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
+          <!-- TODO: search by time -->
           <!-- <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
           <!--<div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
         </div>
