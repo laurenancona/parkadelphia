@@ -151,25 +151,26 @@ p a {
 }
 
 #bottom-icons {
-/*  float: left;*/
   position: fixed;
-/*  right:0px;*/
   bottom: 0px;
   z-index: 1000;
   /*  background-color: #222D46;*/
   /*  background-color: #46474A;*/
-  background-color: rgb(205,220,57);
+  background-color: rgb(205,220,57)!important;
   color: white;
   height: 40px;
   width: 100%;
+  display: table;
 }
 
 #icon-group {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto 0px;
+  margin-right: auto 0px;
   text-align: center; 
   overflow-x: hidden;
-  display: block;
+  display: table-cell;
+  width: 80%;
+  min-width: 300px;
 }
 
 #settings, 
@@ -185,8 +186,12 @@ p a {
   line-height: 40px!important;
   padding: 0px 0px!important;
   margin-left: auto!important;
-  margin-right: auto;
+  margin-right: auto!important;
   color: #434343!important;
+}
+
+.icon-menu {
+  
 }
 
 /*
@@ -229,7 +234,7 @@ p a {
 /*  z-index: 1;*/
   width: 100%;
   height: 20px;
-  background-color: #E4002B;
+  background-color: #F2360C;
   opacity: 0.8;
   text-align: center!important;
   color: #fff!important;
@@ -350,7 +355,7 @@ p a {
   z-index:auto;
 }
 .mdl-layout__header-row {
-  padding-left: 70px;
+  padding-left: 65px;
   min-height: 54px!important;
   height: 54px!important;
   background-color: #46474A!important;
@@ -376,9 +381,9 @@ header.mdl-layout__header {
   z-index: inherit!important;
 }
 
-.mdl-layout__drawer>.mdl-layout-title {
-  padding-left: 0px!important;
-  letter-spacing: .1rem!important;
+.mdl-layout__drawer>.mdl-layout__title {
+  letter-spacing: .2rem!important;
+  line-height: 54px!important;
 }
 
 /*This is a strange thing that obscures the #map on iOS*/
@@ -407,17 +412,16 @@ header.mdl-layout__header {
 }
 
 .mdl-navigation {
-  padding-left: 10px!important;
-  padding-right: 10px!important;
-  /*      background-color: #71767E;*/
+  padding-left: 15px!important;
+  padding-right: 15px!important;
   color: #eee!important;
   padding-top: 0px!important;
   font-size: .8rem!important;
 }
 
 .mdl-layout__drawer-button {
-  width: 25px!important;
-  padding-left: 14px!important;
+  width: 18px!important;
+  padding-left: 10px!important;
   margin-top: 4px!important;
 }
 
@@ -457,7 +461,7 @@ header.mdl-layout__header {
 }
 
 .app-title {
-/*  margin-top: 12px!important;*/
+  margin-top: 2px!important;
   color: #eee!important;
 }
 
@@ -624,7 +628,7 @@ div.mdl-layout__drawer-button {
   right: 10px;
   bottom: 10px;
   text-indent: -9999px;
-  z-index: 99999;
+  z-index: 1000;
   overflow: hidden;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAAoCAMAAAAFWtJHAAAAwFBMVEUAAAAAAAAAAABtbW0AAAAAAAAAAAAAAAAAAAAAAAClpaUAAADp6ekAAAD5+fna2toAAAAMDAzv7+/Nzc0AAAA2Njb8/Pz9/f3T09MAAAAAAAD7+/sAAAArKyuxsbH39/fs7OwbGxuIiIjz8/N8fHyenp7u7u74+PgAAAC8vLxWVlbx8fF1dXXl5eVcXFyUlJTQ0NDFxcVCQkLAwMC4uLj19fXo6OjW1tarq6ve3t77+/vi4uL6+vrKysrNzc3///8w7gSSAAAAP3RSTlMAOQNdPSYBPywKexLLGPCxNEHXnzFL+v2nGwf1IEiE6dBFad9jd9PuLo1V2mDDV3Cjl06SiuXIq4C3973ym6BQMVUPAAAEXElEQVR4Ae2WCVP6OBiH05L0l1IqrVbkKHJ54I0oHn+PfP9vtUle0z/YdhbH2XVnd58ZnRJIeHiPJOx//mH4vQSAN+8FjAhFxgHIaPvJeZ99hxwEElon5iAQbj85Y98g8ODwjEOMAvGFyeE3FEKgodTBqj0BJGN9DhyNd5Ta3ean9QEopfaA+LsKhnEKRExqg4FSP6Og7oEkAjBWnxSCgBX4xF+kcLoPcOBQrSv0e5kH7s1j37jECQieCTPiFGxL5VHw2zQWCeeJiPt6kjRQw0XSkIdVChf67xGa4alSnZlT6HEQ8CK9ANbhvXUF9xlDkBfTuHDWScgC9+z5FQpPI12TlwC6+sV7ixR8CUMKiwjm2GQeOQWHMGuHGdbnObJAwCEqFJpNU5H6uaPUaEIKiQfg+PHk1+u4OwW9PlWW2ctbA4BHCtp+cNK+H8Jos4gDmC5ar4Nx9waaG/2B13NgDqS7+vm2RgEtEws82P+kwIHhs/pgkQKcFIhfd7CogtGNjYMHTLpurD0ERbYFw4JaD3GlQuNAL/JEsSAF4HqlCnaHACk4WhOn4OgCkMD5hSpYNYDJTD8Y46n+jsE1kPhVCuR6QBXhFK7MUOu9O6b1SWF3b+/9ZVWMGOlu93E8UDaAhgc7bfH+0DHqKXCkHzoNDFfU+zxiVQrUC9QXTuHYtKpN59OA3IxCG4b7jh6ZFuVockaNTW09mkJzOaPU49a6mE9cAchZpQJNpUWcwgV9r6FJswsFKrITp2B5pMBMdnS0z2HZNy2+BNKxSZxZfglkrFYBJxQnpzA5sN/HheR2aFQoZBLAi149dQoyAYYjW0hHlHguBAdMcR0DuDZ5omevX6+AI8qcU7ikKT3GBHCnXwydgmCC0tRwCnGQ2Wp6Be71yNIWfQSkOl9vAI1SBCNWrwC01RROgX7BuT2HI4r7tFAw086p/NwZEdOEa7R1uAFuNmQPuKAEAjYNQ0CyeoUEWHYBnpQVQgpvc0Ph+gsKlAnKg1+vEHsw5LKciLKCAJobiWBzYFGbCKpHqkZZrxBFHEASyFI59vJPCskcwNVGOWZAOqsrR+pKbaNeAMT1CixMEtlnsqopNxUMzVJT3tY35aXZm6a6Y9QhwMN6BUJWbE1lhbMO1WehkO7poO0sK7em9MJGxp1XSbC1gtugzzSLQmGsX7VntJGSwsPZ2d2z3bIPKzdoOp3Wzqt8G4XyMVUoFIxLx1S7+piaHtCvR3FeRVsq0GFdp9C5TbGpcNqsPqyHKxcfd14h21KhuLKUFU4f3osrC7F6uV3WXFnadL7wyAPeKDXw2RoJCO5GY4DouYvb/gepVXheLoewzPseQG9N/vzilrMIjoStE3++zvle4eSurw7XEe76ynI4aq+v7lEyt1x5awiFlFLQbHKIpabnM3eJLym4Szzzc/du7SU+zOXv9UNpECH7IoH/gecURPlN9vdQpeD47yhIFNX0U0QgvID9nENm+yxk/xb+AGAjNfRZuk9qAAAAAElFTkSuQmCC);
   background-repeat: no-repeat;

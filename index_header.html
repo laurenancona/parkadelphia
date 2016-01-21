@@ -37,8 +37,8 @@ window.location.protocol = "https";
   <!--  TODO: Bring these local  -->
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
   <link href="css/style.css" type="text/css" rel='stylesheet'>
 
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
@@ -91,7 +91,7 @@ window.location.protocol = "https";
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout-icon">
-        <img src="img/hotlink-ok/icon_Icon.svg" width="20px" class="mdl-layout__drawer-button">
+        <img src="img/hotlink-ok/icon_Icon.svg" width="20px" class="mdl-layout__drawer-button"/>
       </div>
       <div class="mdl-layout__header-row">
         <span class="mdl-layout__title app-title"><a href="/">Parkadelphia</a></span>
@@ -103,7 +103,9 @@ window.location.protocol = "https";
     </header>
     <!--SIDE DRAWER-->
     <div class="mdl-layout__drawer">
-      <span class="mdl-layout__title app-title"><a href="/">Parkadelphia</a></span>
+      <span class="mdl-layout__title app-title">        
+        <img src="img/hotlink-ok/icon_Icon.svg" class="mdl-layout__drawer-button"/>
+        <a href="/">Parkadelphia</a></span>
       <nav class="mdl-navigation">
         <!-- TAB MENU -->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -168,11 +170,22 @@ window.location.protocol = "https";
               <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
               <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
               <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
+              <li><a href="https://twitter.com/devlintufts" target="_blank">Christopher Tufts</a></li>
             </div>
             <br>
+<!--TODO: Thank yous-->
+<!--
+<h5>Thank you:</h5>
+<li>Bill Wasser, Philadelphia Parking Authority </li>
+<li>Mick McKeown</li>
+<li>Jerry Connors, Bureau of Administrative Adjudication, City of Philadelphia </li>
+<li>Adel Ebied</li>
+<li>Mark Wheeler</li>
+<li>Chris Alfano, Code for Philly</li>
+<li>Mayor Michael Nutter</li>
+-->
             <div id="roadmap">
               <h5>Roadmap</h5>
-              <ul>
                 <li><s>Residential permit parking district (boundaries)</s> 6/14</li>
                 <li><s>Residential permit parking blocks</s> 6/15</li>
                 <li><s>Motorcycle/Scooter Meters</s> 7/15</li>
@@ -181,7 +194,6 @@ window.location.protocol = "https";
                 <li><s>Search by geolocation</s> 1/16</li>
                 <li>Search by address</li>
                 <li>Search by time, day, length and cost</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -198,9 +210,9 @@ window.location.protocol = "https";
       Warning! This jawn is in <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle">alpha!</a></span>
     </div>
     <div id="info" class="info"></div>
-    <footer>
-      <div id="bottom-icons" class="mdl-grid">
-        <div id="icon-group" class="mdl-cell mdl-cell--12-col">
+    <footer class="mdl-grid">
+      <div id="bottom-icons" class="mdl-cell mdl-cell--12-col">
+        <div id="icon-group">
           <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>
           <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
           <div id="locate" class="icon-menu"><a href="#"><i class="icon ion-location"></i></a></div>
