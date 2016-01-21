@@ -7,20 +7,22 @@ html {
 body {
   margin: 0!important;
   padding: 0!important;
-/*
-    background-color: #404040;
+  background-color: #404040;
   height: 100%;
   width: 100%;
-*/
 }
 
 #map {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  width: 100%;
+  position: absolute!important;
+  top: 0px!important;
+  bottom: 0px!important;
+  width: 100%!important;
 /*  z-index: 4;*/
-  height: 100%;
+  height: 100%!important;
+}
+
+.mapboxgl-map {
+  
 }
 
 .map-wrapper {
@@ -48,7 +50,6 @@ hr {
 }
 
 h1 {
-  /*      font-family: -apple-system-font, Arial;*/
 }
 
 h5 {
@@ -177,11 +178,8 @@ p a {
 #locate,
 #time {
   display: inline-block;
-/*  display: -webkit*/
   height: 40px;
   width: 20%;  
-/*  z-index: 1000;*/
-/*  background-color: grey;*/
   text-align: center;
   font-size: 2rem;
   line-height: 40px!important;
@@ -348,9 +346,17 @@ p a {
   margin: 0px!important;
 }
 
+.mdl-layout {
+  z-index:auto;
+}
 .mdl-layout__header-row,
 .mdl-layout__drawer-button {
   color: white!important;
+  background-color: #46474A!important;
+}
+
+.mdl-layout__drawer-button {
+  z-index: inherit!important;
 }
 
 .mdl-switch__label {
@@ -363,14 +369,14 @@ p a {
 }
 
 .mdl-layout__header-row {
-/*  pointer-events: none;  */
+/*  z-index: 1000!important;*/
 }
 
-.mdl-layout__header-row,
-.mdl-layout__header.is-casting-shadow {
+/*.mdl-layout__header-row,*/
+header.mdl-layout__header {
   min-height: 54px!important;
   max-height: 54px!important;
-/*  z-index: 1000!important;*/
+  z-index: inherit!important;
 }
 
 .mdl-layout__drawer>.mdl-layout-title {
@@ -378,6 +384,7 @@ p a {
   letter-spacing: .1rem!important;
 }
 
+/*This is a strange thing that obscures the #map on iOS*/
 .mdl-layout__content {
   -webkit-overflow-scrolling: auto!important;
 }
@@ -442,12 +449,13 @@ p a {
 }
 
 /*TITLE*/
-.mdl-layout-title {
-  font-family: 'montserrat', sans-serif!important;
+.mdl-layout__title {
+  font-family: 'Montserrat', sans-serif!important;
   text-transform: uppercase!important;
   font-size: 1em!important;
   color: grey!important;
   text-align: center!important;
+  letter-spacing: .2rem!important;
 }
 
 .app-title {
@@ -459,7 +467,7 @@ p a {
   text-decoration: none!important;
   color: #eee;
   font-size: 1rem;
-  letter-spacing: 4px;
+  letter-spacing: .2rem;
 }
 
 /*LAYERS*/
@@ -500,7 +508,7 @@ p a {
   font-size: .8rem;
   color: white;
   width: 100%!important;
-  z-index: 100;
+/*  z-index: 100;*/
   margin-bottom: 0px;
   /*  overflow-x: hidden;*/
   max-height: 200px;
@@ -515,7 +523,7 @@ p a {
 
 .info p {
   line-height: 1rem;
-/*  margin-left: 10px;*/
+  margin-left: 10px;
 
   /*  text-decoration: none;*/
 }
@@ -547,7 +555,7 @@ p a {
 }
 
 .span.side.mdl-layout-title {
-  color: #434343;
+/*  color: #434343;*/
 }
 
 #options {
@@ -557,11 +565,13 @@ p a {
 /*ICONS*/
 
 i.material-icons {
-/*  display: none!important;*/
+  display: none!important;
 }
+/*
 div.mdl-layout__drawer-button {
   background-image:url("data:PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTU0cHgiIGhlaWdodD0iMTgycHgiIHZpZXdCb3g9IjAgMCAxNTQgMTgyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxNTQgMTgyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik03NywxOC4xNjZsLTAuMDYzLDAuMTQ2TDE0LjA0NSwxNjMuODM0TDc3LDEzNi41NjVoMGw2Mi45NTUsMjcuMjY5TDc3LDE4LjE2NnoiLz4NCjwvZz4NCjxnPg0KCTxwYXRoIGZpbGw9IiNDRERDMzkiIGQ9Ik03NywxOC4xNjZsLTAuMDYzLDAuMTQ2TDE0LjA0NSwxNjMuODM0TDc3LDEzNi41NjVoMGw2Mi45NTUsMjcuMjY5TDc3LDE4LjE2NnogTTc3LjI4MSwyNi41ODYNCgkJbDU2LjcwNCwxMzEuMTg4bC01Ni4xMTMtMjQuMjE3TDc3LjI4MSwyNi41ODZ6Ii8+DQo8L2c+DQo8L3N2Zz4NCg==")!important;
 }
+*/
 
 
 #map.interacting .mapboxgl-canvas-container.mapboxgl-interactive,
@@ -614,7 +624,7 @@ div.mdl-layout__drawer-button {
   height: 20px;
   width: 65px;
   right: 10px;
-  top: 75px;
+  top: 15px;
   text-indent: -9999px;
   z-index: 99999;
   overflow: hidden;
