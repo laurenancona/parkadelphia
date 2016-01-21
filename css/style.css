@@ -349,14 +349,16 @@ p a {
 .mdl-layout {
   z-index:auto;
 }
-.mdl-layout__header-row,
-.mdl-layout__drawer-button {
-  color: white!important;
+.mdl-layout__header-row {
+  padding-left: 70px;
+  min-height: 54px!important;
+  height: 54px!important;
   background-color: #46474A!important;
 }
 
 .mdl-layout__drawer-button {
   z-index: inherit!important;
+  color: white!important;
 }
 
 .mdl-switch__label {
@@ -368,14 +370,9 @@ p a {
   /*      padding-top: 20px;*/
 }
 
-.mdl-layout__header-row {
-/*  z-index: 1000!important;*/
-}
-
 /*.mdl-layout__header-row,*/
 header.mdl-layout__header {
   min-height: 54px!important;
-  max-height: 54px!important;
   z-index: inherit!important;
 }
 
@@ -419,8 +416,9 @@ header.mdl-layout__header {
 }
 
 .mdl-layout__drawer-button {
-/*  width: 25px!important;*/
-/*  padding-left: 10px!important;*/
+  width: 25px!important;
+  padding-left: 14px!important;
+  margin-top: 4px!important;
 }
 
 .mdl-layout__header
@@ -467,7 +465,7 @@ header.mdl-layout__header {
   text-decoration: none!important;
   color: #eee;
   font-size: 1rem;
-  letter-spacing: .2rem;
+  letter-spacing: .3rem;
 }
 
 /*LAYERS*/
@@ -513,8 +511,8 @@ header.mdl-layout__header {
   /*  overflow-x: hidden;*/
   max-height: 200px;
   overflow: auto;
-  float: left;
-  padding-top: 5px;
+/*  float: left;*/
+  padding: 5px 10px;
   margin-left: auto;
   margin-right: auto;
 /*  background-color: #71767E;*/
@@ -624,7 +622,7 @@ div.mdl-layout__drawer-button {
   height: 20px;
   width: 65px;
   right: 10px;
-  top: 15px;
+  bottom: 10px;
   text-indent: -9999px;
   z-index: 99999;
   overflow: hidden;
