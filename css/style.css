@@ -149,7 +149,7 @@ p a {
 #bottom-icons {
   position: fixed;
   bottom: 0px;
-  z-index: 1000;
+/*  z-index: 1000;*/
   /*  background-color: #222D46;*/
   /*  background-color: #46474A;*/
   background-color: rgb(205,220,57)!important;
@@ -184,6 +184,7 @@ p a {
   margin-left: auto!important;
   margin-right: auto!important;
   color: #434343!important;
+  z-index: 1000;
 }
 
 .icon-menu {
