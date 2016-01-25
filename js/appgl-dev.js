@@ -64,12 +64,12 @@ var ParkingMap = ParkingMap || {};
     var map = ParkingMap.map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt', //stylesheet location
-      center: [-75.1543, 39.9462],
+      center: [-75.1742, 39.9316],
       bearing: 9.2, // Rotate Philly ~9° off of north, thanks William Penn.
       zoom: 12,
       maxZoom: 18,
       minZoom: 12,
-//      pitch: 60,
+      pitch: 60,
 //      maxBounds: bounds,
       hash: true
         //  touchZoomRotate: false

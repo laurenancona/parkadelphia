@@ -67,7 +67,7 @@ var ParkingMap = ParkingMap || {};
       zoom: 13,
       maxZoom: 18,
       minZoom: 12,
-      //      pitch: -60,
+      pitch: 60,
 //      maxBounds: bounds,
       hash: true
         //  touchZoomRotate: false
