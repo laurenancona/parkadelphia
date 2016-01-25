@@ -479,7 +479,7 @@ p a {
   margin-left: auto;
   margin-right: auto;
 }
-
+body > div > div > div > header > img,
 .mdl-layout__drawer-button {
   z-index: inherit!important;
   color: white!important;
@@ -629,15 +629,7 @@ mdl-layout__header.mdl-layout__drawer-button {
   padding: 0 10px!important;
 }
 
-/*DATA FORMAT*/
 
-.location {
-  letter-spacing: .1rem;
-  font-weight: bold;
-  font-family: 'montserrat', sans-serif;
-  font-size: 1.1rem;
-  line-height: .8;
-}
 
 /* For debugging */
 #features {
@@ -661,7 +653,7 @@ mdl-layout__header.mdl-layout__drawer-button {
   font-size: .8rem;
   color: white;
   width: 100%!important;
-/*  z-index: 100;*/
+  z-index: 100;
   margin-bottom: 0px;
   /*  overflow-x: hidden;*/
   max-height: 200px;
@@ -671,6 +663,7 @@ mdl-layout__header.mdl-layout__drawer-button {
   margin-right: auto;
 /*  background-color: #71767E;*/
   background-color: #434343;
+  text-align: center;
 } 
 
 .info p {
@@ -688,10 +681,11 @@ mdl-layout__header.mdl-layout__drawer-button {
 
 #info div {
   /*  background: #434343;*/
-  background: #71767E;
-  /*rgba(67, 67, 67, 0.9);*/
-/*  padding: 10px 10px 5px 10px;*/
-  /*  width: 100%;*/
+/*  background: #71767E;*/
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px 7px;
 /*
   margin-bottom: 0px;
   margin-top: 5px;
@@ -771,12 +765,12 @@ div.mdl-layout__drawer-button {
 }
 
 .mapbox-maplogo {
-  position: absolute;
+  position: fixed;
   display: block;
   height: 20px;
   width: 65px;
   right: 10px;
-  bottom: 30px;
+  bottom: 50px;
   text-indent: -9999px;
   z-index: 10;
   overflow: hidden;

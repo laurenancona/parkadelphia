@@ -1,4 +1,11 @@
+/* DATA FORMATS */
+
 .location {
+  letter-spacing: .1rem;
+  font-weight: bold;
+  font-family: 'montserrat', sans-serif;
+  font-size: 1.1rem;
+  line-height: .8;
   
 }
 .side {
