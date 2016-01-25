@@ -72,10 +72,11 @@ var ParkingMap = ParkingMap || {};
       pitch: 60,
       //    maxBounds: bounds,
       hash: true,
-      touchZoomRotate: false
+      touchRotate: false
     });
 
     // Change cursor state when hovering on interactive features
+    
     var getPoint = function (evt) {
       // MapboxGL will call it `point`, leaflet `containerPoint`.
       return evt.point || evt.containerPoint;
@@ -85,7 +86,7 @@ var ParkingMap = ParkingMap || {};
       if (map.loaded()) {
         var point = getPoint(evt);
         featuresAt(map, point, {
-          radius: 15
+          radius: 10
         }, function (err, features) {
           if (err) throw err;
           ParkingMap.map._container.classList.toggle('interacting', features.length > 0);
@@ -104,7 +105,7 @@ var ParkingMap = ParkingMap || {};
           map.flyTo({
             center: [-75.1650, 39.9433],
             zoom: 13,
-            speed: 0.1,
+            speed: 0.2,
             bearing: 9.2,
             pitch: 0
           });
@@ -129,9 +130,10 @@ var ParkingMap = ParkingMap || {};
         var point = getPoint(evt);
 
         // Find what was clicked on
+        
         featuresAt(map, point, {
           radius: 10
-            //          includeGeometry: true
+          // includeGeometry: true // for recentering map onClick
         }, function (err, features) {
           var layerName, feature;
 
@@ -243,7 +245,7 @@ var ParkingMap = ParkingMap || {};
         });
 
     // disable map rotation using touch rotation gesture
-    //    map.touchZoomRotate.disableRotation();
+        map.touchZoomRotate.disableRotation();
   };
 
   var showInfo = function (tpl, feature) {
@@ -340,6 +342,8 @@ var ParkingMap = ParkingMap || {};
   };
 
   ParkingMap.allowFancyMap = true;
+  
+//  Show a loading screen because we are currently doing it a bit backwards
 
   loading_screen = pleaseWait({
     logo: "../img/hotlink-ok/load-logo-01.svg",
@@ -347,6 +351,8 @@ var ParkingMap = ParkingMap || {};
     loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
   });
 
+  //  TODO: remove extra else below
+  
   if (ParkingMap.allowFancyMap && window.mapboxgl && mapboxgl.supported()) {
     ParkingMap.initFancyMap();
   } else {
@@ -360,7 +366,7 @@ var ParkingMap = ParkingMap || {};
   empty();
 
   function empty() {
-    console.log('Here is your stupid empty.');
+//    console.log('Here is your stupid empty.');
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
 })();
