@@ -193,41 +193,42 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-    // Add Geocoder
-    //    var geocoder = new mapboxgl.Geocoder({
-    //      container: 'geocoder-container'
-    //    });
-    //
-    //    map.addControl(geocoder);
-    //
-    //    // After the map style has loaded on the page, add a source layer and default
-    //    // styling for a single point.
-    //    map.on('style.load', function () {
-    //      map.addSource('single-point', {
-    //        "type": "geojson",
-    //        "data": {
-    //          "type": "FeatureCollection",
-    //          "features": []
-    //        }
-    //      });
-    //
-    //      map.addLayer({
-    //        "id": "point",
-    //        "source": "single-point",
-    //        "type": "circle",
-    //        "paint": {
-    //          "circle-radius": 8,
-    //          "circle-color": "#007cbf"
-    //        }
-    //      });
-    //
-    //      //TODO: FIGURE OUT HOW TO OVERRIDE BUGGY GEOCODER THAT FLYS TO INCORRECT BBOXES 
-    //      // Listen for the `geocoder.input` event that is triggered when a user
-    //      // makes a selection and add a marker that matches the result.
-    //      geocoder.on('geocoder.input', function (ev) {
-    //        map.getSource('single-point').setData(ev.result.geometry);
-    //      });
-    //    });
+//     Add Geocoder
+        var geocoder = new mapboxgl.Geocoder({
+          container: 'geocoder-container'
+        });
+    
+        map.addControl(geocoder);
+    
+        // After the map style has loaded on the page, add a source layer and default
+        // styling for a single point.
+        map.on('style.load', function () {
+          map.addSource('single-point', {
+            "type": "geojson",
+            "data": {
+              "type": "FeatureCollection",
+              "features": []
+            }
+          });
+    
+          map.addLayer({
+            "id": "point",
+            "source": "single-point",
+            "type": "circle",
+            "paint": {
+              "circle-radius": 8,
+              "circle-color": "#007cbf"
+            }
+          });
+    
+          //TODO: FIGURE OUT HOW TO OVERRIDE BUGGY GEOCODER THAT FLYS TO INCORRECT BBOXES 
+          
+          // Listen for the `geocoder.input` event that is triggered when a user
+          // makes a selection and add a marker that matches the result.
+          geocoder.on('geocoder.input', function (ev) {
+            map.getSource('single-point').setData(ev.result.geometry);
+          });
+        });
 
     // disable map rotation using touch rotation gesture
     //    map.touchZoomRotate.disableRotation();
@@ -251,7 +252,7 @@ var ParkingMap = ParkingMap || {};
 
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
-          '<strong>' + feature.properties.name + ' </strong>' : '') +
+          '<span class="location">' + feature.properties.name + ' </span>' : '') +
         (feature.properties.description ?
           ': ' + feature.properties.description : '') +
         (feature.properties.address ?
@@ -272,7 +273,7 @@ var ParkingMap = ParkingMap || {};
 
     case 'valet.i':
       content = '<div>' + (feature.properties.Name ?
-          '<strong>' + feature.properties.Name + '</strong>' : '') +
+          '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
           '<p>Hours: ' + feature.properties.Hours + '<br>' : '') +
         (feature.properties.Spaces ?
@@ -314,7 +315,7 @@ var ParkingMap = ParkingMap || {};
 
     default:
       content = '<div>' + (feature.properties.name ?
-          '<strong>' + feature.properties.name + '</strong>' : '') +
+          '<span class="location">' + feature.properties.name + '</span>' : '') +
         (feature.properties.title ?
           '<strong>' + feature.properties.title + '</strong>' : '') +
         (feature.properties.description ?
@@ -331,7 +332,7 @@ var ParkingMap = ParkingMap || {};
   loading_screen = pleaseWait({
     logo: "../img/hotlink-ok/load-logo-01.svg",
     backgroundColor: '#404040',
-    loadingHtml: "<div>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
+    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
   });
 
   if (ParkingMap.allowFancyMap && window.mapboxgl && mapboxgl.supported()) {

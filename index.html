@@ -45,7 +45,7 @@ window.location.protocol = "https";
   <!--MAPBOX STYLES-->
 
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
-  <!--<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />-->
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
   <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link href="css/data.css" type="text/css" rel='stylesheet'>
 
@@ -55,6 +55,7 @@ window.location.protocol = "https";
   <script src="../js/mapbox-gl-dev.js"></script>
 <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
 <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.js'></script>
 
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -137,7 +138,7 @@ width: 100%;
             </div>
           </span>
           </span>
-          <div class="mdl-layout-spacer"></div>
+<!--          <div class="mdl-layout-spacer"></div>-->
           <nav class="mdl-navigation">
             <!--SEARCH?-->
 <!--
@@ -275,14 +276,13 @@ width: 100%;
     <!--WHERE THE MAGIC HAPPENS-->
 
     <main class="mdl-layout__content">
+      <!-- HERE LIES A MAP-->
       <div class="map-wrapper">
-
-        <!-- HERE LIES A MAP-->
         <!-- Add mapbox watermark -->
         <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
         <div id="map"></div>
       </div>
-
+      <div id="geocoder-container"></div>
       <div id="info" class="info"></div>
 
       <footer class="mdl-grid">
