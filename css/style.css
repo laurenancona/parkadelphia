@@ -80,12 +80,16 @@
 
 /* MAPBOX-GL GEOCODER */
 
+.enabled {
+display: block;
+}
+
 #geocoder-container {
   top: 50px;
+  display: none;
 /*  width: 100%;*/
 /*  margin-top: 10px;*/
   position: fixed!important;
-  /* top: 50px; */
   width: 100%;
 /*  bottom: 80px;*/
 /*  z-index: 10000!important;*/
@@ -98,13 +102,26 @@
 
 .mapboxgl-ctrl-geocoder {
   border-radius: 0;
-  background-color: #404040;
+  background-color: (158, 158, 158, 0.9);
   widows: 100%;
-  opacity: 0.9;
+/*  opacity: 0.9;*/
 }
 
 .mapboxgl-ctrl-geocoder input[type='text'] {
-  color: white!important;
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.71)!important;
+}
+
+#geocoder-container > div > input[type="text"] > div#inner-editor {
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.71)!important;
+}
+
+
+div#placeholder {
+  color: black;
 }
 
 html {
@@ -603,6 +620,7 @@ header.mdl-layout__header {
 
 .mdl-tooltip {
   letter-spacing: normal!important;
+  text-transform: lowercase;
 }
 
 .mdl-tooltip a {

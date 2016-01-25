@@ -94,7 +94,8 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
-
+    // Flatten out pitch on first touch/click for functional use
+    
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
         var p = map.getPitch();
@@ -111,6 +112,17 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
+      //    Taking a shot at onClick function for geocoder
+      //    https://toddmotto.com/creating-jquery-style-functions-in-javascript-hasclass-addclass-removeclass-toggleclass/
+//    function addClass(elem, className) {
+//      if (!hasClass(elem, className)) {
+//        elem.className += ' ' + className;
+//      }
+//    }
+    
+//    document.getElementById('myButton').onclick = function() {
+//      addClass(document.documentElement, 'some-class');
+//    }
 
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
@@ -292,7 +304,7 @@ var ParkingMap = ParkingMap || {};
 
     case 'meters.i':
       var template = _.template(
-        '<div id="meter-info" style="margin-left:auto;margin-right:auto; width:30%;max-width:350px;">' +
+        '<div id="meter-info" style="margin-left:auto;margin-right:auto; max-width:350px;">' +
         '<% _.each(features,function(regulations,key){ %>' +
         '<span class="location"><%= key %></span><br>' +
         '<% _.each(regulations,function(regulation){ %>' +
