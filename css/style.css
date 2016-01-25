@@ -132,7 +132,7 @@ body {
   top: 50px;
   bottom: 80px;
   width: 100%;
-  height: 900px;
+  height: 700px;
   overflow-x: hidden!important;
   overflow-y: hidden!important;
 }
@@ -486,7 +486,7 @@ p a {
   width: 18px!important;
   padding-left: 10px!important;
   margin-top: 4px!important;
-  background-color: none;
+  background-color: none!important;
   /*
   transform: rotate(180deg) ;
   -webkit-transform: rotate(180deg) ;
@@ -613,7 +613,7 @@ font-weight: bold;
 }
 
 mdl-layout__header.mdl-layout__drawer-button {
-  background-color: none;
+  background-color: none!important;
 }
 
 .app-title a {

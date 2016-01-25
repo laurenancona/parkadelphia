@@ -70,7 +70,7 @@ var ParkingMap = ParkingMap || {};
       maxZoom: 18,
       minZoom: 12,
       pitch: 60,
-//      maxBounds: bounds,
+      //      maxBounds: bounds,
       hash: true
         //  touchZoomRotate: false
     });
@@ -94,6 +94,24 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
+
+    ParkingMap.map.on('click', function (evt) {
+      if (map.loaded()) {
+        var p = map.getPitch();
+        console.log(p);
+        if (p > 0) {
+          map.flyTo({
+            center: [-75.1650, 39.9433],
+            zoom: 13,
+            speed: 0.1,
+            bearing: 9.2,
+            pitch: 0
+          });
+        }
+      }
+    });
+
+
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
         var point = getPoint(evt);
@@ -101,7 +119,7 @@ var ParkingMap = ParkingMap || {};
         // Find what was clicked on
         featuresAt(map, point, {
           radius: 10
-//          includeGeometry: true
+            //          includeGeometry: true
         }, function (err, features) {
           var layerName, feature;
 
@@ -115,8 +133,7 @@ var ParkingMap = ParkingMap || {};
             } else {
               showInfo(layerName, feature);
             }
-          } 
-          else {
+          } else {
             empty();
           }
         });
@@ -177,43 +194,43 @@ var ParkingMap = ParkingMap || {};
     });
 
     // Add Geocoder
-//    var geocoder = new mapboxgl.Geocoder({
-//      container: 'geocoder-container'
-//    });
-//
-//    map.addControl(geocoder);
-//
-//    // After the map style has loaded on the page, add a source layer and default
-//    // styling for a single point.
-//    map.on('style.load', function () {
-//      map.addSource('single-point', {
-//        "type": "geojson",
-//        "data": {
-//          "type": "FeatureCollection",
-//          "features": []
-//        }
-//      });
-//
-//      map.addLayer({
-//        "id": "point",
-//        "source": "single-point",
-//        "type": "circle",
-//        "paint": {
-//          "circle-radius": 8,
-//          "circle-color": "#007cbf"
-//        }
-//      });
-//
-//      //TODO: FIGURE OUT HOW TO OVERRIDE BUGGY GEOCODER THAT FLYS TO INCORRECT BBOXES 
-//      // Listen for the `geocoder.input` event that is triggered when a user
-//      // makes a selection and add a marker that matches the result.
-//      geocoder.on('geocoder.input', function (ev) {
-//        map.getSource('single-point').setData(ev.result.geometry);
-//      });
-//    });
-    
+    //    var geocoder = new mapboxgl.Geocoder({
+    //      container: 'geocoder-container'
+    //    });
+    //
+    //    map.addControl(geocoder);
+    //
+    //    // After the map style has loaded on the page, add a source layer and default
+    //    // styling for a single point.
+    //    map.on('style.load', function () {
+    //      map.addSource('single-point', {
+    //        "type": "geojson",
+    //        "data": {
+    //          "type": "FeatureCollection",
+    //          "features": []
+    //        }
+    //      });
+    //
+    //      map.addLayer({
+    //        "id": "point",
+    //        "source": "single-point",
+    //        "type": "circle",
+    //        "paint": {
+    //          "circle-radius": 8,
+    //          "circle-color": "#007cbf"
+    //        }
+    //      });
+    //
+    //      //TODO: FIGURE OUT HOW TO OVERRIDE BUGGY GEOCODER THAT FLYS TO INCORRECT BBOXES 
+    //      // Listen for the `geocoder.input` event that is triggered when a user
+    //      // makes a selection and add a marker that matches the result.
+    //      geocoder.on('geocoder.input', function (ev) {
+    //        map.getSource('single-point').setData(ev.result.geometry);
+    //      });
+    //    });
+
     // disable map rotation using touch rotation gesture
-//    map.touchZoomRotate.disableRotation();
+    //    map.touchZoomRotate.disableRotation();
   };
 
   var showInfo = function (tpl, feature) {
