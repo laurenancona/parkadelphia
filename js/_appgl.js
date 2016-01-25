@@ -1,3 +1,5 @@
+var loading_screen;
+
 var ParkingMap = ParkingMap || {};
 
 (function () {
@@ -5,12 +7,12 @@ var ParkingMap = ParkingMap || {};
 
   var mapLayers = {};
   var layerNames = ['rppblocks',
-'rppdistricts',
-//'scooters', 
-'lots',
-'valet',
-'meters',
-'satellite'];
+  'rppdistricts',
+  //'scooters', 
+  'lots',
+  'valet',
+  'meters',
+  'satellite'];
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
 
@@ -55,19 +57,19 @@ var ParkingMap = ParkingMap || {};
 
     // Set bounds to Philadelphia metro
     var bounds = [
-[-75.387541, 39.864439],
-[-74.883544, 40.156325]
+  [-75.387541, 39.864439],
+  [-74.883544, 40.156325]
 ];
 
     var map = ParkingMap.map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt', //stylesheet location
       center: [-75.1543, 39.9462],
-      bearing: 9.2, // Rotate Philly ~9° off of north
-      zoom: 13,
+      bearing: 9.2, // Rotate Philly ~9° off of north, thanks William Penn.
+      zoom: 12,
       maxZoom: 18,
       minZoom: 12,
-      //      pitch: -60,
+//      pitch: 60,
 //      maxBounds: bounds,
       hash: true
         //  touchZoomRotate: false
@@ -87,7 +89,7 @@ var ParkingMap = ParkingMap || {};
         }, function (err, features) {
           if (err) throw err;
           ParkingMap.map._container.classList.toggle('interacting', features.length > 0);
-          //          document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
+          //  document.getElementById('features').innerHTML = JSON.stringify(features, null, 2);
         });
       }
     });
@@ -98,7 +100,8 @@ var ParkingMap = ParkingMap || {};
 
         // Find what was clicked on
         featuresAt(map, point, {
-          radius: 15
+          radius: 10
+//          includeGeometry: true
         }, function (err, features) {
           var layerName, feature;
 
@@ -112,7 +115,8 @@ var ParkingMap = ParkingMap || {};
             } else {
               showInfo(layerName, feature);
             }
-          } else {
+          } 
+          else {
             empty();
           }
         });
@@ -145,6 +149,8 @@ var ParkingMap = ParkingMap || {};
         'satellite': ['satellite']
       };
 
+      loading_screen.finish();
+
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
         var interactiveLayerNames = layerAssociation[layerName];
@@ -169,6 +175,45 @@ var ParkingMap = ParkingMap || {};
         updateLayerVisibility(layerName);
       });
     });
+
+    // Add Geocoder
+//    var geocoder = new mapboxgl.Geocoder({
+//      container: 'geocoder-container'
+//    });
+//
+//    map.addControl(geocoder);
+//
+//    // After the map style has loaded on the page, add a source layer and default
+//    // styling for a single point.
+//    map.on('style.load', function () {
+//      map.addSource('single-point', {
+//        "type": "geojson",
+//        "data": {
+//          "type": "FeatureCollection",
+//          "features": []
+//        }
+//      });
+//
+//      map.addLayer({
+//        "id": "point",
+//        "source": "single-point",
+//        "type": "circle",
+//        "paint": {
+//          "circle-radius": 8,
+//          "circle-color": "#007cbf"
+//        }
+//      });
+//
+//      //TODO: FIGURE OUT HOW TO OVERRIDE BUGGY GEOCODER THAT FLYS TO INCORRECT BBOXES 
+//      // Listen for the `geocoder.input` event that is triggered when a user
+//      // makes a selection and add a marker that matches the result.
+//      geocoder.on('geocoder.input', function (ev) {
+//        map.getSource('single-point').setData(ev.result.geometry);
+//      });
+//    });
+    
+    // disable map rotation using touch rotation gesture
+//    map.touchZoomRotate.disableRotation();
   };
 
   var showInfo = function (tpl, feature) {
@@ -178,8 +223,8 @@ var ParkingMap = ParkingMap || {};
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-      content = '<div><strong>' + feature.properties.block_street + '</strong>' +
-        '<p>' + feature.properties.sos + '</p></div>';
+      content = '<div class="location">' + feature.properties.block_street + '</div>' +
+        '<div class="side">' + feature.properties.sos + '</div>';
       break;
 
     case 'rppdistricts.i':
@@ -265,10 +310,16 @@ var ParkingMap = ParkingMap || {};
 
   ParkingMap.allowFancyMap = true;
 
+  loading_screen = pleaseWait({
+    logo: "../img/hotlink-ok/load-logo-01.svg",
+    backgroundColor: '#404040',
+    loadingHtml: "<div>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
+  });
+
   if (ParkingMap.allowFancyMap && window.mapboxgl && mapboxgl.supported()) {
     ParkingMap.initFancyMap();
   } else {
-    ParkingMap.initClassicMap();
+    ParkingMap.initFancyMap();
   }
 
   // Clear the tooltip when map is clicked.
@@ -279,7 +330,6 @@ var ParkingMap = ParkingMap || {};
 
   function empty() {
     console.log('Here is your stupid empty.');
-    info.innerHTML = '<div><p><strong>Choose layers at left, then click features for info</strong></p></div>';
+    info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
-
 })();

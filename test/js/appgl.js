@@ -268,7 +268,7 @@ var ParkingMap = ParkingMap || {};
   if (ParkingMap.allowFancyMap && window.mapboxgl && mapboxgl.supported()) {
     ParkingMap.initFancyMap();
   } else {
-    ParkingMap.initClassicMap();
+    ParkingMap.initFancyMap();
   }
 
   // Clear the tooltip when map is clicked.
