@@ -67,7 +67,7 @@ var ParkingMap = ParkingMap || {};
       center: [-75.1694, 39.9294],
       bearing: 9.2, // Rotate Philly ~9° off of north, thanks William Penn.
       zoom: 12,
-      maxZoom: 18,
+      maxZoom: 19,
       minZoom: 12,
       pitch: 60,
       //    maxBounds: bounds,
@@ -96,8 +96,22 @@ var ParkingMap = ParkingMap || {};
     });
 
     // Flatten out pitch on first touch/click for functional use
+  
+    // TODO: setTimeout instead of waiting for user to click
     
-    ParkingMap.map.on('click', function (evt) {
+    //from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
+//    
+//    var timeoutID;
+    
+//    function delayedAlert() {
+//      timeoutID = window.setTimeout(slowAlert, 2000);
+//    }
+    
+//    function slowAlert() {
+//      alert("That was really slow!");
+//    }
+    
+    ParkingMap.map.on('click', function flyHome() {
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
@@ -114,20 +128,25 @@ var ParkingMap = ParkingMap || {};
     });
 
       //    Taking a shot at onClick function for geocoder
-      //    https://toddmotto.com/creating-jquery-style-functions-in-javascript-hasclass-addclass-removeclass-toggleclass/
-//    function addClass(elem, className) {
-//      if (!hasClass(elem, className)) {
-//        elem.className += ' ' + className;
-//      }
-//    }
+        // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
     
-//    document.getElementById('myButton').onclick = function() {
-//      addClass(document.documentElement, 'some-class');
-//    }
-
-    ParkingMap.map.on('click', function (evt) {
-      if (map.loaded()) {
-        var point = getPoint(evt);
+        // div is an object reference to a <div> element with class="foo bar"
+//        div.classList.remove("foo");
+//        div.classList.add("anotherclass");
+//
+//        // if visible is set remove it, otherwise add it
+//        div.classList.toggle("visible");
+//
+//        //  add/remove visible, depending on test conditional, i less than 10
+//        div.classList.toggle("visible", i < 10 );
+//
+//        alert(div.classList.contains("foo"));
+//
+//        div.classList.add("foo","bar"); //add multiple classes
+//
+//        ParkingMap.map.on('click', function (evt) {
+//          if (map.loaded()) {
+            var point = getPoint(evt);
 
         // Find what was clicked on
         
