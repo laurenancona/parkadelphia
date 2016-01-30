@@ -53,8 +53,8 @@ window.location.protocol = "https";
 
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
   <script src="../js/mapbox-gl-dev.js"></script>
-<!--  <script src='js/mbgl.Control.Locate.js'></script>-->
-<!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
+  <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
+  <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.js'></script>
 
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
@@ -128,21 +128,21 @@ width: 100%;
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout-icon">
-<!--          ion-android-bicycle-->
+          <!--          ion-android-bicycle-->
         </div>
         <div class="mdl-layout__header-row">
           <span class="mdl-layout__title"><span class="app-title"><a href="/"><img src="../img/hotlink-ok/icon_Icon.svg" width="20px" />
             Parkadelphia</a></span> &nbsp;
-          <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C;">
-            <div class="mdl-tooltip" for="status-icon">
-              Warning! This jawn is in <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle">alpha!</a>
-            </div>
           </span>
-          </span>
-<!--          <div class="mdl-layout-spacer"></div>-->
+          <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
             <!--SEARCH?-->
-<!--
+            <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C;">
+              <div class="mdl-tooltip" for="status-icon">
+                Warning! This jawn is in <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle">alpha!</a>
+              </div>
+            </span>
+            <!--
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
               <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
                 <span id="search-icon" class="icons ion-ios-search" style="color:#FFF; margin-top: 2px!import;">
@@ -153,114 +153,114 @@ width: 100%;
             </div>
           </div>
 -->
-        </nav>
-      </div>
-    </header>
-      
-    <!--SIDE DRAWER-->
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout__title app-title"><img src="../img/hotlink-ok/icon_Icon.svg" class="mdl-layout__drawer-button"/>
+          </nav>
+        </div>
+      </header>
+
+      <!--SIDE DRAWER-->
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout__title app-title"><img src="../img/hotlink-ok/icon_Icon.svg" class="mdl-layout__drawer-button"/>
 <a href="/">Parkadelphia</a>
       </span>
-    <nav class="mdl-navigation">
+        <nav class="mdl-navigation">
 
-      <!-- TAB MENU -->
+          <!-- TAB MENU -->
 
-      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div class="mdl-tabs__tab-bar">
-          <a href="#options" class="mdl-tabs__tab is-active">Options</a>
-          <a href="#about" class="mdl-tabs__tab">About</a>
-        </div>
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+              <a href="#options" class="mdl-tabs__tab is-active">Options</a>
+              <a href="#about" class="mdl-tabs__tab">About</a>
+            </div>
 
-        <!-- OPTIONS TAB -->
+            <!-- OPTIONS TAB -->
 
-        <div class="mdl-tabs__panel is-active" id="options">
+            <div class="mdl-tabs__panel is-active" id="options">
 
-          <h5>Residential Permits</h5>
-          <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
-            <input type="checkbox" id="rppblocks" class="mdl-switch__input" checked>
-            <span class="mdl-switch__label">Blocks</span>
-          </label>
+              <h5>Residential Permits</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
+                <input type="checkbox" id="rppblocks" class="mdl-switch__input" checked>
+                <span class="mdl-switch__label">Blocks</span>
+              </label>
 
-          <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
-            <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
-            <span class="mdl-switch__label">Districts</span>
-          </label>
-          <hr>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
+                <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
+                <span class="mdl-switch__label">Districts</span>
+              </label>
+              <hr>
 
-          <h5>Meters</h5>
-          <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
-            <input type="checkbox" id="meters" class="mdl-switch__input" checked>
-            <span class="mdl-switch__label">Automobile</span>
-          </label>
-          <!--
+              <h5>Meters</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
+                <input type="checkbox" id="meters" class="mdl-switch__input" checked>
+                <span class="mdl-switch__label">Automobile</span>
+              </label>
+              <!--
 <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
 <input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
 <span class="mdl-switch__label">Motorcycle/Scooter<span id="bicycle" class="icon-menu"><i class="ion-android-bicycle"></i></span>
 </span>
 </label>
 -->
-          <hr>
-          <h5>Lots</h5>
-          <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
-            <input type="checkbox" id="lots" class="mdl-switch__input">
-            <span class="mdl-switch__label">Residential Lots</span>
-          </label>
+              <hr>
+              <h5>Lots</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
+                <input type="checkbox" id="lots" class="mdl-switch__input">
+                <span class="mdl-switch__label">Residential Lots</span>
+              </label>
 
-          <h5>Exceptions</h5>
-          <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
-            <input type="checkbox" id="valet" class="mdl-switch__input">
-            <span class="mdl-switch__label">Valet Parking</span>
-          </label>
-          <hr>
+              <h5>Exceptions</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
+                <input type="checkbox" id="valet" class="mdl-switch__input">
+                <span class="mdl-switch__label">Valet Parking</span>
+              </label>
+              <hr>
 
-          <h5>Map</h5>
-          <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="satellite">
-            <input type="checkbox" id="satellite" class="mdl-switch__input">
-            <span class="mdl-switch__label">Satellite</span>
-          </label>
-        </div>
+              <h5>Map</h5>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="satellite">
+                <input type="checkbox" id="satellite" class="mdl-switch__input">
+                <span class="mdl-switch__label">Satellite</span>
+              </label>
+            </div>
 
-        <!-- ABOUT TAB-->
+            <!-- ABOUT TAB-->
 
-        <div class="mdl-tabs__panel" id="about">
-          <br>
-          <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
-          <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
-          <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
-          
-      <hr>
+            <div class="mdl-tabs__panel" id="about">
+              <br>
+              <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
+              <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
+              <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
 
-          <div id="contributors">
-            <h5>Contributors: </h5>
-            <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
-            <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
-            <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
-            <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
-            <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
-            <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
-            <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
-            <li><a href="https://twitter.com/devlintufts" target="_blank">Christopher Tufts</a></li>
-          </div>
+              <hr>
 
-          <hr>
+              <div id="contributors">
+                <h5>Contributors: </h5>
+                <li><a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></li>
+                <li><a href="https://twitter.com/jeffersi" target="_blank">James Healy</a></li>
+                <li><a href="https://twitter.com/mjumbewu" target="_blank">Mjumbe Poe</a></li>
+                <li><a href="https://twitter.com/timwis" target="_blank">Tim Wisniewski</a></li>
+                <li><a href="https://twitter.com/rbrt_mrtn" target="_blank">Robert Martin</a></li>
+                <li><a href="https://twitter.com/mrsp105" target="_blank">Tom Swanson</a></li>
+                <li><a href="https://twitter.com/StaceyMosley" target="_blank">Stacey Mosley</a></li>
+                <li><a href="https://twitter.com/devlintufts" target="_blank">Christopher Tufts</a></li>
+              </div>
 
-          <div id="roadmap">
-            <h5>Roadmap</h5>
-            <ul>
-              <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Residential permit parking district (boundaries)</s> 6/14</li>
-              <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Municipal Parking Lot polygons</s> 8/14</li>
-              <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Residential permit parking blocks</s> 6/15</li>
-              <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Motorcycle/Scooter Meters</s> 7/15</li>
-              <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>On-street Metered parking blocks</s> 1/16</li>
-              <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Search by geolocation</s> 1/16</li>
-              <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Truck/Package Delivery Zones</li>
-              <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by address</li>
-              <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by time, day, length and cost</li>
-            </ul>
-          </div>
-          <!--TODO: Thank yous-->
-          <!--
+              <hr>
+
+              <div id="roadmap">
+                <h5>Roadmap</h5>
+                <ul>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Residential permit parking district (boundaries)</s> 6/14</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Municipal Parking Lot polygons</s> 8/14</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Residential permit parking blocks</s> 6/15</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Motorcycle/Scooter Meters</s> 7/15</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>On-street Metered parking blocks</s> 1/16</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Search by geolocation</s> 1/16</li>
+                  <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Truck/Package Delivery Zones</li>
+                  <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by address</li>
+                  <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by time, day, length and cost</li>
+                </ul>
+              </div>
+              <!--TODO: Thank yous-->
+              <!--
             <h5>Thank you:</h5>
             <li>Bill Wasser, Philadelphia Parking Authority </li>
             <li>Mick McKeown</li>
@@ -270,57 +270,57 @@ width: 100%;
             <li>Chris Alfano, Code for Philly</li>
             <li>Mayor Michael Nutter</li>
             -->
-        </div>
-      </div>
-    </nav>
-    </div>
-
-    <!--WHERE THE MAGIC HAPPENS-->
-
-    <main class="mdl-layout__content">
-      <!-- HERE LIES A MAP-->
-      <div class="map-wrapper">
-        <!-- Add Mapbox watermark -->
-        <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-        <div id="map"></div>
-<!--        ion-help-circled-->
-<!--        ion-home  -->
-<!--        ion-information-circled-->
-<!--        ion-ios-color-filter-->
-<!--        ion-ios-contact-->
-<!--        ion-ios-email-->
-<!--        ion-ios-flag-->
-<!--        ion-ios-keypad-->
-<!--        ion-ios-list-->
-<!--        ion-ios-toggle-->
-<!--        ion-link-->
-<!--        ion-social-buffer-->
-<!--        ion-social-facebook-->
-<!--        ion-social-reddit-->
-<!--        ion-social-twitter-->
-      </div>
-      <div id="geocoder-container"></div>
-      <div id="info" class="info"></div>
-
-      <footer class="mdl-grid">
-        <div id="bottom-icons" class="mdl-cell mdl-cell--12-col">
-          <div id="icon-group">
-            <div id="locate" class="icon-menu"><a href="#"><i class="icon ion-location"></i></a></div>
-            <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
-            <div id="map-settings" class="icon-menu"><a href="#"><i class="icon ion-map"></i></a></div>
-            <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
-            <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
-            <!-- TODO: search by time -->
-<!--             <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
-            <!--<div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
+            </div>
           </div>
-        </div>
-      </footer>
-      
+        </nav>
       </div>
-      </main>
+
+      <!--WHERE THE MAGIC HAPPENS-->
+
+      <main class="mdl-layout__content">
+        <!-- HERE LIES A MAP-->
+        <div class="map-wrapper">
+          <!-- Add Mapbox watermark -->
+          <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
+          <div id="map"></div>
+          <!--        ion-help-circled-->
+          <!--        ion-home  -->
+          <!--        ion-information-circled-->
+          <!--        ion-ios-color-filter-->
+          <!--        ion-ios-contact-->
+          <!--        ion-ios-email-->
+          <!--        ion-ios-flag-->
+          <!--        ion-ios-keypad-->
+          <!--        ion-ios-list-->
+          <!--        ion-ios-toggle-->
+          <!--        ion-link-->
+          <!--        ion-social-buffer-->
+          <!--        ion-social-facebook-->
+          <!--        ion-social-reddit-->
+          <!--        ion-social-twitter-->
+        </div>
+        <div id="geocoder-container" class="quiet"></div>
+        <div id="info" class="info"></div>
+
+        <footer class="mdl-grid">
+          <div id="bottom-icons" class="mdl-cell mdl-cell--12-col">
+            <div id="icon-group">
+              <div id="locate" class="icon-menu"><i class="icon ion-location"></i></div>
+              <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
+              <div id="map-settings" class="icon-menu"><a href="#"><i class="icon ion-map"></i></a></div>
+              <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
+              <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
+              <!-- TODO: search by time -->
+              <!--             <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
+              <!--<div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
+            </div>
+          </div>
+        </footer>
+
+    </div>
+    </main>
   </div>
-</div>
+  </div>
 
   <!--END .INNER-->
   </div>

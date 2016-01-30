@@ -94,23 +94,22 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
-
-    // Flatten out pitch on first touch/click for functional use
   
     // TODO: setTimeout instead of waiting for user to click
-    
-    //from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
+    // from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
 //    
 //    var timeoutID;
     
 //    function delayedAlert() {
-//      timeoutID = window.setTimeout(slowAlert, 2000);
+//      timeoutID = window.setTimeout(slowAlert, 50);
 //    }
     
 //    function slowAlert() {
 //      alert("That was really slow!");
 //    }
     
+    // Flatten out pitch on first touch/click for functional use
+
     ParkingMap.map.on('click', function flyHome() {
       if (map.loaded()) {
         var p = map.getPitch();
@@ -127,29 +126,32 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
-      //    Taking a shot at onClick function for geocoder
-        // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
+      // TODO: Taking a shot at onClick function to avoid geocoder bbox bug in Philadelphia
     
-        // div is an object reference to a <div> element with class="foo bar"
-//        div.classList.remove("foo");
+      // Add/remove class for bottom button onClicks
+      // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
+    
+        // div is an object reference to a <div> element with class="quiet"
+//        div.classList.remove("quiet");
 //        div.classList.add("anotherclass");
 //
-//        // if visible is set remove it, otherwise add it
-//        div.classList.toggle("visible");
+//        // if class 'quiet' is set remove it, otherwise add it
+        document.getElementById("search").addEventListener('click', function (evt){
+          document.getElementById("geocoder-container").classList.toggle("quiet")
+        });
 //
-//        //  add/remove visible, depending on test conditional, i less than 10
+//        //  add/remove 'quiet', depending on test conditional, i less than 10
 //        div.classList.toggle("visible", i < 10 );
 //
 //        alert(div.classList.contains("foo"));
 //
 //        div.classList.add("foo","bar"); //add multiple classes
-//
-//        ParkingMap.map.on('click', function (evt) {
-//          if (map.loaded()) {
+
+        ParkingMap.map.on('click', function (evt) {
+          if (map.loaded()) {
             var point = getPoint(evt);
 
         // Find what was clicked on
-        
         featuresAt(map, point, {
           radius: 10
           // includeGeometry: true // for recentering map onClick
@@ -157,12 +159,11 @@ var ParkingMap = ParkingMap || {};
           var layerName, feature;
 
           if (err) throw err;
-
-          if (features.length > 0) {
+          if (features.length > 0) { // if there are more than none features
             feature = features[0];
-            layerName = feature.layer.id;
+            layerName = feature.layer.id; 
             if (layerName === 'meters.i') {
-              showInfo(layerName, features);
+              showInfo(layerName, features);  
             } else {
               showInfo(layerName, feature);
             }
