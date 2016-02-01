@@ -110,7 +110,7 @@ var ParkingMap = ParkingMap || {};
     
     // Flatten out pitch on first touch/click for functional use
 
-    ParkingMap.map.on('click', function flyHome() {
+    ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
@@ -262,12 +262,14 @@ var ParkingMap = ParkingMap || {};
           // makes a selection and add a marker that matches the result.
           
           geocoder.on('geocoder.input', function (evt) {
-            var point = map.getSource('single-point').setData(evt.result.geometry);
+            map.getSource('single-point').setData(evt.result.geometry);
             var center = evt.result.geometry.coordinates;
-             console.log(center);
-            
-            // override Philadelphia bounding box bug by forcing center
-            map.flyTo({center, zoom: 15});
+//            console.log(center);
+
+            // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
+            if(center) {
+              map.flyTo({center, zoom: 15});
+            }
           });
         });
 
