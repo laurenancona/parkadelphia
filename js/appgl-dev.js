@@ -264,12 +264,12 @@ var ParkingMap = ParkingMap || {};
           geocoder.on('geocoder.input', function (evt) {
             map.getSource('single-point').setData(evt.result.geometry);
             var center = evt.result.geometry.coordinates;
-//            console.log(center);
+            console.log(center);
 
-            // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
-            if(center) {
-              map.flyTo({center, zoom: 15});
-            }
+          // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
+//            if (center) function () {
+              map.flyTo({center: center, zoom: 15});
+//            }
           });
         });
 
@@ -288,7 +288,7 @@ var ParkingMap = ParkingMap || {};
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
       content = '<div class="location">' + feature.properties.block_street + '</div>' +
-        '<div class="side">Residential permit' + feature.properties.sos + '</div>';
+        '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
       break;
 
     case 'rppdistricts.i':

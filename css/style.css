@@ -332,19 +332,26 @@ p a {
 */
 
 .icon {
+  color: #434343;
 /*
   font-size: 2rem;
   text-align: center;
   line-height: 40px;
-
 */
-  color: #434343;
 }
 
 #menu-icon {
   color: white;
 }
 
+#status-icon {
+  font-size: 1.1rem;
+  top: 12px;
+/*  right: 10px;*/
+  float: right;
+  position: absolute;
+  color: #F2360C;
+}
 /*
   .img {
   	width:20px;
