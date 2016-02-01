@@ -45,7 +45,9 @@ window.location.protocol = "https";
   <!--MAPBOX STYLES-->
 
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
-  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
+<!--  <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
+<!--  <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css" rel="stylesheet">-->
   <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link href="css/data.css" type="text/css" rel='stylesheet'>
 
@@ -53,7 +55,7 @@ window.location.protocol = "https";
 
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
   <script src="../js/mapbox-gl-dev.js"></script>
-  <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
+<!--    <script src='js/mbgl.Control.Locate.js'></script>-->
   <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.js'></script>
 
@@ -75,12 +77,12 @@ bottom: 0;
 width: 100%;
 */
   }
+  
   /*  Hide flash of unstyled markup */
   
   body > .inner {
     opacity: 0;
   }
-  
   body.pg-loaded > .inner {
     display: block;
     opacity: 1;
@@ -112,40 +114,39 @@ width: 100%;
   </script>
   <!-- End Google Tag Manager -->
 
-
   <!-- TODO: Configure monitoring-->
-  <!-- Sentry -->
-  <!--
-    <script>
-      Raven.config('https://3dc95625e5a44d34afb875ba056cece7@app.getsentry.com/53368').install()
-    </script>
-  -->
-  <!-- End Sentry -->
-
+    <!-- Sentry -->
+    <!-- <script>
+        Raven.config('https://3dc95625e5a44d34afb875ba056cece7@app.getsentry.com/53368').install()
+      </script> -->
+    <!-- End Sentry -->
 
   <!--BEGIN HEADER LAYOUT-->
   <div class="inner">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout-icon">
-          <!--          ion-android-bicycle-->
+<!--          <img src="../img/hotlink-ok/icon_Icon.svg" width="20px" />-->
+          <span id="menu-icon" class="mdl-layout__drawer-button"><i class="ion-map"></i></span>
         </div>
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout__title"><span class="app-title"><a href="/"><img src="../img/hotlink-ok/icon_Icon.svg" width="20px" />
+          <span class="mdl-layout__title">
+            <span class="app-title">
+              <a href="/">
             Parkadelphia</a></span> &nbsp;
           </span>
-          <div class="mdl-layout-spacer"></div>
+<!--          <div class="mdl-layout-spacer"></div>-->
           <nav class="mdl-navigation">
             <!--SEARCH?-->
             <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C;">
               <div class="mdl-tooltip" for="status-icon">
-                Warning! This jawn is in <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle">alpha!</a>
+                Warning: this jawn is in <b>beta!</b> Data may not be current.
               </div>
             </span>
             <!--
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
               <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
-                <span id="search-icon" class="icons ion-ios-search" style="color:#FFF; margin-top: 2px!import;">
+                <span id="search-icon" class="icons ion-ios-search" style="color:#FFF; margin-top: 2px!important;">
               </label>
             <div class="mdl-textfield__expandable-holder">
               <input class="mdl-textfield__input" type="text" id="search-expandable">
@@ -158,10 +159,12 @@ width: 100%;
       </header>
 
       <!--SIDE DRAWER-->
+      
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout__title app-title"><img src="../img/hotlink-ok/icon_Icon.svg" class="mdl-layout__drawer-button"/>
-<a href="/">Parkadelphia</a>
-      </span>
+        <img class="drawer-icon" src="../img/hotlink-ok/icon_Icon.svg" style="width: 20px;"/>
+        <span class="mdl-layout__title app-title">
+          <a href="/">Parkadelphia</a>
+        </span>
         <nav class="mdl-navigation">
 
           <!-- TAB MENU -->
@@ -254,8 +257,8 @@ width: 100%;
                   <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Motorcycle/Scooter Meters</s> 7/15</li>
                   <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>On-street Metered parking blocks</s> 1/16</li>
                   <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Search by geolocation</s> 1/16</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Search by address</s>1/16</li>
                   <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Truck/Package Delivery Zones</li>
-                  <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by address</li>
                   <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by time, day, length and cost</li>
                 </ul>
               </div>
@@ -302,8 +305,8 @@ width: 100%;
         <div id="geocoder-container" class="quiet"></div>
         <div id="info" class="info"></div>
 
-        <footer class="mdl-grid">
-          <div id="bottom-icons" class="mdl-cell mdl-cell--12-col">
+        <footer class="">
+          <div id="bottom-icons" class="">
             <div id="icon-group">
               <div id="locate" class="icon-menu"><i class="icon ion-location"></i></div>
               <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
@@ -311,8 +314,8 @@ width: 100%;
               <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
               <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
               <!-- TODO: search by time -->
-              <!--             <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
-              <!--<div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
+              <!-- <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
+              <!-- <div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
             </div>
           </div>
         </footer>
@@ -321,7 +324,6 @@ width: 100%;
     </main>
   </div>
   </div>
-
   <!--END .INNER-->
   </div>
 

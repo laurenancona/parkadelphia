@@ -125,8 +125,6 @@ var ParkingMap = ParkingMap || {};
         }
       }
     });
-
-      // TODO: Taking a shot at onClick function to avoid geocoder bbox bug in Philadelphia
     
       // Add/remove class for bottom button onClicks
       // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
@@ -188,6 +186,7 @@ var ParkingMap = ParkingMap || {};
     };
 
     // Define layers & interactivity
+    // TODO: Refactor using docs so that layers are only loaded when selected (instead of loading everything first, then disabling after UI state check)
 
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
@@ -199,6 +198,10 @@ var ParkingMap = ParkingMap || {};
         'meters': ['meters.i'],
         'satellite': ['satellite']
       };
+      
+//      map.on('load', function () {
+//        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
+//      });
 
       loading_screen.finish();
 
@@ -227,7 +230,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-//     Add Geocoder
+        // Add Geocoder
         var geocoder = new mapboxgl.Geocoder({
           container: 'geocoder-container'
         });
@@ -250,23 +253,30 @@ var ParkingMap = ParkingMap || {};
             "source": "single-point",
             "type": "circle",
             "paint": {
-              "circle-radius": 8,
-              "circle-color": "#007cbf"
+              "circle-radius": 6,
+              "circle-color": "rgb(205,220,57)"
             }
           });
-    
-          //TODO: FIGURE OUT HOW TO OVERRIDE BUGGY GEOCODER THAT FLYS TO INCORRECT BBOXES 
           
           // Listen for the `geocoder.input` event that is triggered when a user
           // makes a selection and add a marker that matches the result.
-          geocoder.on('geocoder.input', function (ev) {
-            map.getSource('single-point').setData(ev.result.geometry);
+          
+          geocoder.on('geocoder.input', function (evt) {
+            var point = map.getSource('single-point').setData(evt.result.geometry);
+            var center = evt.result.geometry.coordinates;
+             console.log(center);
+            
+            // override Philadelphia bounding box bug by forcing center
+            map.flyTo({center, zoom: 15});
           });
         });
 
-    // disable map rotation using touch rotation gesture
+        // disable map rotation using touch rotation gesture because that shit's cray
         map.touchZoomRotate.disableRotation();
+        
+//        map.addControl(new mapboxgl.Navigation());
   };
+  
 
   var showInfo = function (tpl, feature) {
     console.log('Here is your stupid info', tpl);
@@ -276,7 +286,7 @@ var ParkingMap = ParkingMap || {};
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
       content = '<div class="location">' + feature.properties.block_street + '</div>' +
-        '<div class="side">' + feature.properties.sos + '</div>';
+        '<div class="side">Residential permit' + feature.properties.sos + '</div>';
       break;
 
     case 'rppdistricts.i':
