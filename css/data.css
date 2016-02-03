@@ -6,8 +6,10 @@
   font-family: 'montserrat', sans-serif;
   font-size: 1.1rem;
   line-height: .8;
+  padding-top: 8px;
   
 }
 .side {
-  
+  padding-bottom: 3px;
+  padding-top: 3px;
 }

@@ -63,9 +63,9 @@ var ParkingMap = ParkingMap || {};
 
     var map = ParkingMap.map = new mapboxgl.Map({
       container: 'map', // container id
-      style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt', //stylesheet location
+      style: 'mapbox://styles/laurenancona/cij3k82x800018wkmhwgg7tgt', // stylesheet location
       center: [-75.1694, 39.9294],
-      bearing: 9.2, // Rotate Philly ~9° off of north, thanks William Penn.
+      bearing: 9.2, // Rotate Philly ~9° off of north, thanks Billy Penn.
       zoom: 12,
       maxZoom: 19,
       minZoom: 12,
@@ -185,9 +185,11 @@ var ParkingMap = ParkingMap || {};
       }
     };
 
-    // Define layers & interactivity
-    // TODO: Refactor using docs so that layers are only loaded when selected (instead of loading everything first, then disabling after UI state check)
-
+  /* Define layers & interactivity
+  *  TODO: Refactor using docs so that layers are only 
+  *  loaded when selected (instead of loading everything first, 
+  *  then disabling after UI state check)
+  */  
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
@@ -230,7 +232,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-        // Add Geocoder
+       // Add Geocoder
         var geocoder = new mapboxgl.Geocoder({
           container: 'geocoder-container'
         });
@@ -267,9 +269,7 @@ var ParkingMap = ParkingMap || {};
             console.log(center);
 
           // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
-//            if (center) function () {
               map.flyTo({center: center, zoom: 15});
-//            }
           });
         });
 
