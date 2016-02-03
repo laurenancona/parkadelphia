@@ -34,6 +34,7 @@ var ParkingMap = ParkingMap || {};
      * TODO: Allow overriding the isInteractive method from
      * within the options.
      */
+    
     // Hijack the callback.
     var hijacked = function (err, features) {
       var filteredFeatures = [],
@@ -95,22 +96,17 @@ var ParkingMap = ParkingMap || {};
       }
     });
   
-    // TODO: setTimeout instead of waiting for user to click
-    // from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
-//    
-//    var timeoutID;
+    /* TODO: setTimeout instead of waiting for user to click
+       from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
+    */ 
     
-//    function delayedAlert() {
-//      timeoutID = window.setTimeout(slowAlert, 50);
-//    }
+    var timeoutID;
     
-//    function slowAlert() {
-//      alert("That was really slow!");
-//    }
+    function delayedFly() {
+      timeoutID = window.setTimeout(goHome, 500);
+    }
     
-    // Flatten out pitch on first touch/click for functional use
-
-    ParkingMap.map.on('click', function (evt) {
+    function goHome() {
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
@@ -123,8 +119,26 @@ var ParkingMap = ParkingMap || {};
             pitch: 0
           });
         }
-      }
-    });
+      } 
+    }
+    
+// Flatten out pitch on first touch/click for functional use
+
+//    ParkingMap.map.on('click', function (evt) {
+//      if (map.loaded()) {
+//        var p = map.getPitch();
+//        console.log(p);
+//        if (p > 0) {
+//          map.flyTo({
+//            center: [-75.1650, 39.9433],
+//            zoom: 13,
+//            speed: 0.2,
+//            bearing: 9.2,
+//            pitch: 0
+//          });
+//        }
+//      }
+//    });
     
       // Add/remove class for bottom button onClicks
       // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
