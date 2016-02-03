@@ -392,7 +392,7 @@ var ParkingMap = ParkingMap || {};
 //  Show a loading screen because we are currently doing it a bit backwards
 
   loading_screen = pleaseWait({
-    logo: "../img/hotlink-ok/load-logo-01.svg",
+    logo: "img/hotlink-ok/load-logo-01.svg",
     backgroundColor: '#404040',
     loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
   });
