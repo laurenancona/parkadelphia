@@ -414,4 +414,55 @@ var ParkingMap = ParkingMap || {};
 //    console.log('Here is your stupid empty.');
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
+  
+  // populate share buttons with current URL
+  var encodedShareMessage = window.encodeURIComponent('Demystify parking with Parkadelphia');
+  var encodedShareUrl = window.encodeURIComponent(location.href);
+  var copyShareLinkTextarea = null;
+
+  document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedShareUrl;
+  document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodedShareUrl + '&text=' + encodedShareMessage;
+  document.getElementById('share-reddit').href = 'http://www.reddit.com/submit?url=' + encodedShareUrl + '&title=' + encodedShareMessage;
+  document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
+  document.getElementById('share-link').href = 'javascript:copyShareLink()';
+  
+  window.copyShareLink = function() {
+
+    // create off-screen textarea if needed
+    if (!copyShareLinkTextarea) {
+      copyShareLinkTextarea = document.createElement('textarea');
+      copyShareLinkTextarea.style.position = 'absolute';
+      copyShareLinkTextarea.style.left = '-9999px';
+      copyShareLinkTextarea.style.top = '0';
+      document.body.appendChild(copyShareLinkTextarea);
+    }
+
+    // update textarea contents
+    copyShareLinkTextarea.textContent = location.href;
+
+    // remember what user had focused before
+    var currentFocus = document.activeElement;
+
+    // select the textarea content
+    copyShareLinkTextarea.focus();
+    copyShareLinkTextarea.setSelectionRange(0, copyShareLinkTextarea.value.length);
+
+    // copy the selection
+    try {
+      document.execCommand('copy');
+    } catch(e) {
+      // meh
+    }
+
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === 'function') {
+      currentFocus.focus();
+    }
+    
+    // show snackbar
+    document.getElementById('snackbar').MaterialSnackbar.showSnackbar({
+      message: 'Link copied to clipboard',
+      timeout: 2000
+    });
+  };
 })();

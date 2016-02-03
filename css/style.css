@@ -480,6 +480,14 @@ p a {
 
 /*MDL OVERRIDES*/
 
+.mdl-menu__item a {
+  display: block;
+}
+
+.mdl-snackbar--active {
+  transform: translate(0, -40px);
+}
+
 .mdl-layout__container {
 /*  z-index: 10;  */
 }

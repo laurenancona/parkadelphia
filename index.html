@@ -39,7 +39,7 @@ window.location.protocol = "https";
 
   <!-- CSS -->
 
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.lime-blue.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css">
   <link rel="stylesheet" href="css/vendor/please-wait.css" />
@@ -61,7 +61,7 @@ window.location.protocol = "https";
   <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
 
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+  <script defer src="https://code.getmdl.io/1.1.0/material.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
@@ -310,11 +310,21 @@ width: 100%;
         <footer class="">
           <div id="bottom-icons" class="">
             <div id="icon-group">
-              <div id="locate" class="icon-menu"><i class="icon ion-location"></i></div>
-              <div id="search" class="icon-menu"><a href="#"><i class="icon ion-search"></i></a></div>
-              <div id="map-settings" class="icon-menu"><a href="#"><i class="icon ion-map"></i></a></div>
+              <div id="locate" class="icon-menu mdl-button"><i class="icon ion-location"></i></div>
+              <div id="search" class="icon-menu mdl-button"><a href="#"><i class="icon ion-search"></i></a></div>
+              <div id="map-settings" class="icon-menu mdl-button"><a href="#"><i class="icon ion-map"></i></a></div>
               <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
-              <div id="share" class="icon-menu"><a href="#"><i class="icon ion-share"></i></a></div>
+
+
+              <div id="share" class="icon-menu mdl-button"><a href="#"><i class="icon ion-share"></i></a></div>
+
+              <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="share">
+                <li class="mdl-menu__item"><a target="_blank" id="share-facebook">Facebook</a></li>
+                <li class="mdl-menu__item"><a target="_blank" id="share-twitter">Twitter</a></li>
+                <li class="mdl-menu__item"><a target="_blank" id="share-reddit">Reddit</a></li>
+                <li class="mdl-menu__item"><a target="_blank" id="share-email">Email</a></li>
+                <li class="mdl-menu__item"><a target="_blank" id="share-link">Copy Link</a></li>
+              </ul>
               <!-- TODO: search by time -->
               <!-- <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
               <!-- <div id="settings" class="icon-menu"><a href="#"><i class="icon ion-ios-toggle"></i></a></div>-->
@@ -327,6 +337,12 @@ width: 100%;
   </div>
   </div>
   <!--END .INNER-->
+  </div>
+
+  <!-- Snackbar -->
+  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
   </div>
 
   <script>
