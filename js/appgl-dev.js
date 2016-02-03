@@ -34,7 +34,7 @@ var ParkingMap = ParkingMap || {};
      * TODO: Allow overriding the isInteractive method from
      * within the options.
      */
-    
+
     // Hijack the callback.
     var hijacked = function (err, features) {
       var filteredFeatures = [],
@@ -77,7 +77,7 @@ var ParkingMap = ParkingMap || {};
     });
 
     // Change cursor state when hovering on interactive features
-    
+
     var getPoint = function (evt) {
       // MapboxGL will call it `point`, leaflet `containerPoint`.
       return evt.point || evt.containerPoint;
@@ -95,14 +95,13 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
-  
+
     /* TODO: setTimeout instead of waiting for user to click
        from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
-    */ 
-    
-    
+    */
+
     ParkingMap.map.on('load', function (evt) {
-        window.setTimeout(goHome, 2000);
+      window.setTimeout(goHome, 2000);
     });
 
     function goHome() {
@@ -118,63 +117,59 @@ var ParkingMap = ParkingMap || {};
             pitch: 0
           });
         }
-      } 
+      }
     }
-    
-// Flatten out pitch on first touch/click for functional use
 
-//    ParkingMap.map.on('click', function (evt) {
-//      if (map.loaded()) {
-//        var p = map.getPitch();
-//        console.log(p);
-//        if (p > 0) {
-//          map.flyTo({
-//            center: [-75.1650, 39.9433],
-//            zoom: 13,
-//            speed: 0.2,
-//            bearing: 9.2,
-//            pitch: 0
-//          });
-//        }
-//      }
-//    });
-    
-      // Add/remove class for bottom button onClicks
-      // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
-    
-        // div is an object reference to a <div> element with class="quiet"
-//        div.classList.remove("quiet");
-//        div.classList.add("anotherclass");
-//
-//        // if class 'quiet' is set remove it, otherwise add it
-        document.getElementById("search").addEventListener('click', function (evt){
-          document.getElementById("geocoder-container").classList.toggle("quiet")
-        });
-//
-//        //  add/remove 'quiet', depending on test conditional, i less than 10
-//        div.classList.toggle("visible", i < 10 );
-//
-//        alert(div.classList.contains("foo"));
-//
-//        div.classList.add("foo","bar"); //add multiple classes
+    // Flatten out pitch on first click for functional use
 
-        ParkingMap.map.on('click', function (evt) {
-          if (map.loaded()) {
-            var point = getPoint(evt);
+    //    ParkingMap.map.on('click', function (evt) {
+    //      if (map.loaded()) {
+    //        var p = map.getPitch();
+    //        console.log(p);
+    //        if (p > 0) {
+    //          map.flyTo({
+    //            center: [-75.1650, 39.9433],
+    //            zoom: 13,
+    //            speed: 0.2,
+    //            bearing: 9.2,
+    //            pitch: 0
+    //          });
+    //        }
+    //      }
+    //    });
+
+    // Add/remove class for bottom button onClicks
+    // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
+
+    // if class 'quiet' is set remove it, otherwise add it
+    document.getElementById("search").addEventListener('click', function (evt) {
+      document.getElementById("geocoder-container").classList.toggle("quiet")
+    });
+    //
+    //        //  add/remove 'quiet', depending on test conditional, i less than 10
+    //        div.classList.toggle("visible", i < 10 );
+    //
+    //        alert(div.classList.contains("foo"));
+    //
+    //        div.classList.add("foo","bar"); //add multiple classes
+
+    ParkingMap.map.on('click', function (evt) {
+      if (map.loaded()) {
+        var point = getPoint(evt);
 
         // Find what was clicked on
         featuresAt(map, point, {
           radius: 10
-          // includeGeometry: true // for recentering map onClick
+            // includeGeometry: true // for recentering map onClick
         }, function (err, features) {
           var layerName, feature;
 
           if (err) throw err;
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
-            layerName = feature.layer.id; 
+            layerName = feature.layer.id;
             if (layerName === 'meters.i') {
-              showInfo(layerName, features);  
+              showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
             }
@@ -198,11 +193,11 @@ var ParkingMap = ParkingMap || {};
       }
     };
 
-  /* Define layers & interactivity
-  *  TODO: Refactor using docs so that layers are only 
-  *  loaded when selected (instead of loading everything first, 
-  *  then disabling after UI state check)
-  */  
+    /* Define layers & interactivity
+     *  TODO: Refactor using docs so that layers are only 
+     *  loaded when selected (instead of loading everything first, 
+     *  then disabling after UI state check)
+     */
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
         'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
@@ -213,10 +208,10 @@ var ParkingMap = ParkingMap || {};
         'meters': ['meters.i'],
         'satellite': ['satellite']
       };
-      
-//      map.on('load', function () {
-//        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
-//      });
+
+      //      map.on('load', function () {
+      //        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
+      //      });
 
       loading_screen.finish();
 
@@ -245,53 +240,56 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-       // Add Geocoder
-        var geocoder = new mapboxgl.Geocoder({
-          container: 'geocoder-container'
-        });
-    
-        map.addControl(geocoder);
-    
-        // After the map style has loaded on the page, add a source layer and default
-        // styling for a single point.
-        map.on('style.load', function () {
-          map.addSource('single-point', {
-            "type": "geojson",
-            "data": {
-              "type": "FeatureCollection",
-              "features": []
-            }
-          });
-    
-          map.addLayer({
-            "id": "point",
-            "source": "single-point",
-            "type": "circle",
-            "paint": {
-              "circle-radius": 6,
-              "circle-color": "rgb(205,220,57)"
-            }
-          });
-          
-          // Listen for the `geocoder.input` event that is triggered when a user
-          // makes a selection and add a marker that matches the result.
-          
-          geocoder.on('geocoder.input', function (evt) {
-            map.getSource('single-point').setData(evt.result.geometry);
-            var center = evt.result.geometry.coordinates;
-            console.log(center);
+    // Add Geocoder
+    var geocoder = new mapboxgl.Geocoder({
+      container: 'geocoder-container'
+    });
 
-          // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
-              map.flyTo({center: center, zoom: 15});
-          });
-        });
+    map.addControl(geocoder);
 
-        // disable map rotation using touch rotation gesture because that shit's cray
-        map.touchZoomRotate.disableRotation();
-        
-//        map.addControl(new mapboxgl.Navigation());
+    // After the map style has loaded on the page, add a source layer and default
+    // styling for a single point.
+    map.on('style.load', function () {
+      map.addSource('single-point', {
+        "type": "geojson",
+        "data": {
+          "type": "FeatureCollection",
+          "features": []
+        }
+      });
+
+      map.addLayer({
+        "id": "point",
+        "source": "single-point",
+        "type": "circle",
+        "paint": {
+          "circle-radius": 6,
+          "circle-color": "rgb(205,220,57)"
+        }
+      });
+
+      // Listen for the `geocoder.input` event that is triggered when a user
+      // makes a selection and add a marker that matches the result.
+
+      geocoder.on('geocoder.input', function (evt) {
+        map.getSource('single-point').setData(evt.result.geometry);
+        var center = evt.result.geometry.coordinates;
+        console.log(center);
+
+        // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
+        map.flyTo({
+          center: center,
+          zoom: 15
+        });
+      });
+    });
+
+    // disable map rotation using touch rotation gesture because that shit's cray
+    map.touchZoomRotate.disableRotation();
+
+    //        map.addControl(new mapboxgl.Navigation());
   };
-  
+
 
   var showInfo = function (tpl, feature) {
     console.log('Here is your stupid info', tpl);
@@ -387,8 +385,8 @@ var ParkingMap = ParkingMap || {};
   };
 
   ParkingMap.allowFancyMap = true;
-  
-//  Show a loading screen because we are currently doing it a bit backwards
+
+  //  Show a loading screen because we are currently doing it a bit backwards
 
   loading_screen = pleaseWait({
     logo: "img/hotlink-ok/load-logo-01.svg",
@@ -397,7 +395,7 @@ var ParkingMap = ParkingMap || {};
   });
 
   //  TODO: remove extra else below
-  
+
   if (ParkingMap.allowFancyMap && window.mapboxgl && mapboxgl.supported()) {
     ParkingMap.initFancyMap();
   } else {
@@ -411,10 +409,10 @@ var ParkingMap = ParkingMap || {};
   empty();
 
   function empty() {
-//    console.log('Here is your stupid empty.');
+    //    console.log('Here is your stupid empty.');
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
-  
+
   // populate share buttons with current URL
   var encodedShareMessage = window.encodeURIComponent('Demystify parking with Parkadelphia');
   var encodedShareUrl = window.encodeURIComponent(location.href);
@@ -425,8 +423,8 @@ var ParkingMap = ParkingMap || {};
   document.getElementById('share-reddit').href = 'http://www.reddit.com/submit?url=' + encodedShareUrl + '&title=' + encodedShareMessage;
   document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
   document.getElementById('share-link').href = 'javascript:copyShareLink()';
-  
-  window.copyShareLink = function() {
+
+  window.copyShareLink = function () {
 
     // create off-screen textarea if needed
     if (!copyShareLinkTextarea) {
@@ -450,7 +448,7 @@ var ParkingMap = ParkingMap || {};
     // copy the selection
     try {
       document.execCommand('copy');
-    } catch(e) {
+    } catch (e) {
       // meh
     }
 
@@ -458,7 +456,7 @@ var ParkingMap = ParkingMap || {};
     if (currentFocus && typeof currentFocus.focus === 'function') {
       currentFocus.focus();
     }
-    
+
     // show snackbar
     document.getElementById('snackbar').MaterialSnackbar.showSnackbar({
       message: 'Link copied to clipboard',
