@@ -151,7 +151,7 @@ body {
 
 .map-wrapper {
   position: absolute;
-  top: 42px;
+/*  top: 42px;*/
   bottom: 80px;
   width: 100%;
   height: 700px;
