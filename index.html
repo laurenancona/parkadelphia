@@ -3,7 +3,7 @@
 
 <head>
   <!--  Force https, because location sharing creeps me out -->
-  <!--  
+  <!--
 <script type="text/javascript">
 var host = "parkadelphia.com";
 if ((host == window.location.host) && (window.location.protocol != "https:"))
@@ -42,7 +42,7 @@ window.location.protocol = "https";
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-blue.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css">
-  <link rel="stylesheet" href="../css/vendor/please-wait.css" />
+  <link rel="stylesheet" href="css/vendor/please-wait.css" />
 
   <!--MAPBOX STYLES-->
 
@@ -56,7 +56,7 @@ window.location.protocol = "https";
   <!--JS-->
 
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
-  <script src="../js/mapbox-gl-dev.js"></script>
+  <script src="js/mapbox-gl-dev.js"></script>
 <!--    <script src='js/mbgl.Control.Locate.js'></script>-->
   <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
@@ -79,9 +79,9 @@ bottom: 0;
 width: 100%;
 */
   }
-  
+
   /*  Hide flash of unstyled markup */
-  
+
   body > .inner {
     opacity: 0;
   }
@@ -128,14 +128,14 @@ width: 100%;
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout-icon">
-<!--          <img src="../img/hotlink-ok/icon_Icon.svg" width="20px" />-->
+<!--          <img src="img/hotlink-ok/icon_Icon.svg" width="20px" />-->
           <span id="menu-icon" class="mdl-layout__drawer-button"><i class="ion-map"></i></span>
         </div>
         <div class="mdl-layout__header-row">
           <span class="mdl-layout__title">
             <span class="app-title">
-              <a href="/">
-            Parkadelphia</a></span> &nbsp;
+              <a href="./">Parkadelphia</a>
+            </span> &nbsp;
           </span>
 <!--          <div class="mdl-layout-spacer"></div>-->
           <nav class="mdl-navigation">
@@ -161,9 +161,9 @@ width: 100%;
       </header>
 
       <!--SIDE DRAWER-->
-      
+
       <div class="mdl-layout__drawer">
-        <img class="drawer-icon" src="../img/hotlink-ok/icon_Icon.svg" style="width: 20px;"/>
+        <img class="drawer-icon" src="img/hotlink-ok/icon_Icon.svg" style="width: 20px;"/>
         <span class="mdl-layout__title app-title">
           <a href="/">Parkadelphia</a>
         </span>
@@ -334,8 +334,8 @@ width: 100%;
     ParkingMap.allowFancyMap = true;
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <script type="text/javascript" src="../js/vendor/please-wait.js"></script>
-  <script src="../js/appgl-dev.js"></script>
+  <script type="text/javascript" src="js/vendor/please-wait.js"></script>
+  <script src="js/appgl-dev.js"></script>
 </body>
 
 </html>
