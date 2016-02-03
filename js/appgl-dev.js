@@ -100,12 +100,11 @@ var ParkingMap = ParkingMap || {};
        from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
     */ 
     
-    var timeoutID;
     
-    function delayedFly() {
-      timeoutID = window.setTimeout(goHome, 500);
-    }
-    
+    ParkingMap.map.on('load', function (evt) {
+        window.setTimeout(goHome, 2000);
+    });
+
     function goHome() {
       if (map.loaded()) {
         var p = map.getPitch();
