@@ -311,21 +311,23 @@ var ParkingMap = ParkingMap || {};
       content = '<div>' + (feature.properties.name ?
           '<span class="location">' + feature.properties.name + ' </span>' : '') +
         (feature.properties.description ?
-          ': ' + feature.properties.description : '') +
+          feature.properties.description : '') +
         (feature.properties.address ?
-          '<p>' + feature.properties.address + '</p>' : '') +
-        (feature.properties.Type ?
-          '<p>' + feature.properties.Type + '</p>' : '') +
+          '<br>' + feature.properties.address : '') +
+        (feature.properties.type ?
+          '<br>' + feature.properties.type : '') +
         (feature.properties.capacity ?
-          '<p>Capacity: ' + feature.properties.capacity + '</p>' : '') +
-        (feature.properties.Hours ?
-          '<p>' + feature.properties.Hours : '') + ' | ' +
+          ' | Capacity: ' + feature.properties.capacity : '') +
+        (feature.properties.hours ?
+          '<br>' + feature.properties.hours : '') +
         (feature.properties.days ?
-          feature.properties.days + '</p>' : '') +
+          feature.properties.days : '') +
         (feature.properties.times ?
-          '<p>' + feature.properties.times + '</p>' : '') +
-        (feature.properties.Rates ?
-          '<p>Rates: ' + feature.properties.Rates + '</p>' : '') + '</div>';
+          '<br>' + feature.properties.times : '') +
+        (feature.properties.rates ?
+          '<br><span class="detail">Rates: ' + feature.properties.rates + '</span>' : '') + '</div>' +
+        (feature.properties.notes ?
+          '<br>' + feature.properties.notes : '') + '</div>';
       break;
 
     case 'valet.i':
