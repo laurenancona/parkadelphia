@@ -147,6 +147,7 @@ body {
   width: 100%!important;
 /*  z-index: 4;*/
   height: 100%!important;
+  overflow-y: hidden!important;
 }
 
 .map-wrapper {
@@ -182,6 +183,10 @@ footer {
   text-transform: uppercase;
   letter-spacing: .05rem;
   
+}
+
+#contributors li a {
+  color: #CDDC39!important;
 }
 
 #contributors > li {
@@ -325,6 +330,7 @@ p a {
   text-align: center; 
   overflow-x: hidden;
   max-width: 350px;
+  padding-top: 2px;
 }
 
 #map-settings, 
@@ -345,13 +351,6 @@ p a {
   color: #434343!important;
   z-index: 1000;
 }
-
-/*
-#locate a {
-  width: 30px;
-  text-align: center!important;
-}
-*/
 
 .icon a {
   color: #434343!important;
@@ -374,11 +373,6 @@ p a {
   position: absolute;
   color: #F2360C;
 }
-/*
-  .img {
-  	width:20px;
-  }
-*/
 
 /*.legend label,
 .legend span {
@@ -521,9 +515,13 @@ p a {
   color: white;
 }
 
-.mdl-menu--top-right {
+.mdl-menu--top-left {
   background-color: #404040;
   color: white!important;
+}
+
+.mdl-menu__item:hover {
+  background-color: #4A4A4A;
 }
 
 .mdl-grid {
@@ -596,6 +594,9 @@ header.mdl-layout__header {
 /*This is a strange thing that obscures the #map on  iOS*/
 .mdl-layout__content {
   -webkit-overflow-scrolling: auto!important;
+  
+
+overflow-y: hidden;
 }
 
 /*
@@ -747,6 +748,7 @@ mdl-layout__header.mdl-layout__drawer-button {
 /*  background-color: #71767E;*/
   background-color: #434343;
   text-align: center;
+  padding-top: 5px;
 } 
 
 .info p {

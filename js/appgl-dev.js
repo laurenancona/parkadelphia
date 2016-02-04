@@ -414,7 +414,7 @@ var ParkingMap = ParkingMap || {};
   }
 
   // populate share buttons with current URL
-  var encodedShareMessage = window.encodeURIComponent('Demystify parking with Parkadelphia');
+  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia');
   var encodedShareUrl = window.encodeURIComponent(location.href);
   var copyShareLinkTextarea = null;
 
