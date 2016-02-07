@@ -41,7 +41,7 @@ window.location.protocol = "https";
 
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.lime-blue.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" type="text/css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/vendor/please-wait.css" />
 
   <!--MAPBOX STYLES-->
@@ -142,14 +142,14 @@ width: 100%;
               <a href="./">Parkadelphia</a>
             </span> &nbsp;
           </span>
-<!--          <div class="mdl-layout-spacer"></div>-->
+          <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
+            <span class="mdl-tooltip" for="status-icon">
+              Warning: since this jawn is in <b>beta</b>, don't depend on the data.
+            </span>
+          </span>
+          <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
             <!--SEARCH?-->
-            <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.1rem;">
-              <div class="mdl-tooltip" for="status-icon">
-                Warning: since this jawn is in <b>beta</b>, don't depend on the data.
-              </div>
-            </span>
             <!--
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
               <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
@@ -162,6 +162,7 @@ width: 100%;
           </div>
 -->
           </nav>
+          <span id="help-icon" class="icons ion-help" style="font-size: 1.5rem;"></span>
         </div>
       </header>
 
@@ -276,6 +277,7 @@ width: 100%;
             <li>Bill Wasser, Philadelphia Parking Authority </li>
             <li>Mick McKeown</li>
             <li>Jerry Connors, Bureau of Administrative Adjudication, City of Philadelphia </li>
+            <li>Mark Wheeler</li>
             <li>Adel Ebied</li>
             <li>Mark Wheeler</li>
             <li>Chris Alfano, Code for Philly</li>
@@ -318,7 +320,7 @@ width: 100%;
             <div id="icon-group">
               <div id="map-settings" class="icon-menu mdl-button"><a href="/"><i class="icon ion-home"></i></a></div>
               <div id="locate" class="icon-menu mdl-button"><i class="icon ion-location"></i></div>
-              <div id="search" class="icon-menu mdl-button"><a href="#"><i class="icon ion-search"></i></a></div>
+              <div id="search" class="icon-menu mdl-button"><i class="icon ion-search"></i></div>
 <!--              -->
               <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
 

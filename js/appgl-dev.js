@@ -298,7 +298,7 @@ var ParkingMap = ParkingMap || {};
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-      content = '<div class="location">' + feature.properties.block_street + '</div>' +
+        content = '<div class="location"><span class="detail-icon"><img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + feature.properties.block_street + '</div>' +
         '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
       break;
 
@@ -310,31 +310,31 @@ var ParkingMap = ParkingMap || {};
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
           '<span class="location">' + feature.properties.name + ' </span>' : '') +
-        (feature.properties.description ?
+        '<span class="detail">' + (feature.properties.description ?
           feature.properties.description : '') +
         (feature.properties.address ?
           '<br>' + feature.properties.address : '') +
         (feature.properties.type ?
           '<br>' + feature.properties.type : '') +
         (feature.properties.capacity ?
-          ' | Capacity: ' + feature.properties.capacity : '') +
+         '&nbsp; | &nbsp;Capacity: ' + feature.properties.capacity : '') +
         (feature.properties.hours ?
           '<br>' + feature.properties.hours : '') +
         (feature.properties.days ?
-          feature.properties.days : '') +
+          '<br>' + feature.properties.days : '') +
         (feature.properties.times ?
-          '<br>' + feature.properties.times : '') +
+          ' &nbsp;' + feature.properties.times : '') +
         (feature.properties.rates ?
-          '<br><span class="detail">Rates: ' + feature.properties.rates + '</span>' : '') + '</div>' +
+          '<br><span class="detail">Rates: ' + feature.properties.rates + '</span>' : '') +
         (feature.properties.notes ?
-          '<br>' + feature.properties.notes : '') + '</div>';
+          '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
       break;
 
     case 'valet.i':
       content = '<div>' + (feature.properties.Name ?
           '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
-          '<p>Hours: ' + feature.properties.Hours + '<br>' : '') +
+          '<p class="detail">Hours: ' + feature.properties.Hours + '<br>' : '') +
         (feature.properties.Spaces ?
           'Spaces: ' + feature.properties.Spaces : '') +
         '</p></div>';
@@ -351,18 +351,19 @@ var ParkingMap = ParkingMap || {};
 
     case 'meters.i':
       var template = _.template(
-        '<div id="meter-info" style="margin-left:auto;margin-right:auto; max-width:350px;">' +
+        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
         '<% _.each(features,function(regulations,key){ %>' +
         '<span class="location"><%= key %></span><br>' +
-        '<% _.each(regulations,function(regulation){ %>' +
+        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
         '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-        ' | &nbsp;  <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> <br>' +
-        '$<%= regulation.properties.rate %>/hr &nbsp; | &nbsp;' +
+        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
         'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
         '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-        '| &nbsp; <%= regulation.properties.seg_id %><hr>' +
+        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
         '<% }) %>' +
-        '<% }) %></div>');
+        '<% }) %></span></div>');
 
       var byStreet = _.groupBy(feature, function (value) {
         return value.properties.street + ', ' + value.properties.side + ' Side';
@@ -378,9 +379,9 @@ var ParkingMap = ParkingMap || {};
         (feature.properties.title ?
           '<strong>' + feature.properties.title + '</strong>' : '') +
         (feature.properties.description ?
-          feature.properties.description : '') +
+          '<span class="detail">' + feature.properties.description : '') +
         (feature.properties.capacity ?
-          'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
+          'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
       break;
     }
     info.innerHTML = content;
@@ -415,7 +416,15 @@ var ParkingMap = ParkingMap || {};
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
 
-  // populate share buttons with current URL
+  // listen for click on #share
+  
+//  var shareMap = document.getElementById("share");
+//  shareMap.addEventListener("click", getShareURL);
+//  
+  // grab updated URL + hash for sharing
+
+  
+  
   var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia');
   var encodedShareUrl = window.encodeURIComponent(location.href);
   var copyShareLinkTextarea = null;
@@ -426,6 +435,7 @@ var ParkingMap = ParkingMap || {};
   document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
   document.getElementById('share-link').href = 'javascript:copyShareLink()';
 
+  
   window.copyShareLink = function () {
 
     // create off-screen textarea if needed
@@ -437,6 +447,8 @@ var ParkingMap = ParkingMap || {};
       document.body.appendChild(copyShareLinkTextarea);
     }
 
+//    function getShareURL() {
+    
     // update textarea contents
     copyShareLinkTextarea.textContent = location.href;
 
@@ -465,4 +477,5 @@ var ParkingMap = ParkingMap || {};
       timeout: 2000
     });
   };
+//}
 })();

@@ -134,6 +134,7 @@ body {
   margin: 0!important;
   padding: 0!important;
   background-color: #404040;
+  line-height: 15px!important;
 /*
   height: 100%;
   width: 100%;
@@ -165,14 +166,28 @@ footer {
   bottom: 0px!important;
 }
 
+#help-icon {
+  right: 20px;
+  top: 10px;
+  color: white;
+  position: absolute;
+  font-size: 1.5 rem!important;
+}
 .share-icon {
 /*width: 20px;*/
 /*position: absolute;*/
-
 }
 
 .share-icon a{
   color: white!important;
+}
+.detail-icon img {
+  fill: white;
+  width: 12px;
+  margin-right: 10px;
+  border-right: 1px dotted white;
+  padding-right: 10px;
+  
 }
 .share-label {
   position: absolute;
@@ -243,7 +258,8 @@ ul {
 
 p {
   font-size: 0.8rem!important;
-  line-height: 1.4em!important;
+  line-height: 1.6em!important;
+  margin: 0 0 8px;
 }
 
 p a {
@@ -713,8 +729,6 @@ mdl-layout__header.mdl-layout__drawer-button {
   padding: 0 10px!important;
 }
 
-
-
 /* For debugging */
 #features {
   position: absolute;
@@ -733,11 +747,11 @@ mdl-layout__header.mdl-layout__drawer-button {
 
 .info {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   font-size: .8rem;
   color: white;
   width: 100%!important;
-  z-index: 100;
+  z-index: 3;
   margin-bottom: 0px;
   /*  overflow-x: hidden;*/
   max-height: 200px;
@@ -748,7 +762,7 @@ mdl-layout__header.mdl-layout__drawer-button {
 /*  background-color: #71767E;*/
   background-color: #434343;
   text-align: center;
-  padding-top: 5px;
+  padding: 5px 0px;
 } 
 
 .info p {
