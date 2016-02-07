@@ -213,7 +213,7 @@ var ParkingMap = ParkingMap || {};
       //        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
       //      });
 
-      loading_screen.finish();
+//      loading_screen.finish();
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -276,7 +276,7 @@ var ParkingMap = ParkingMap || {};
         var center = evt.result.geometry.coordinates;
         console.log(center);
 
-        // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
+        // override Philadelphia bounding box bug by forcing center
         map.flyTo({
           center: center,
           zoom: 15
@@ -284,7 +284,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-    // disable map rotation using touch rotation gesture because that shit's cray
+    // disable map rotation using touch gesture because that shit's cray
     map.touchZoomRotate.disableRotation();
 
     //        map.addControl(new mapboxgl.Navigation());
@@ -390,11 +390,11 @@ var ParkingMap = ParkingMap || {};
 
   //  Show a loading screen because we are currently doing it a bit backwards
 
-  loading_screen = pleaseWait({
-    logo: "img/hotlink-ok/load-logo-01.svg",
-    backgroundColor: '#404040',
-    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
-  });
+//  loading_screen = pleaseWait({
+//    logo: "img/hotlink-ok/load-logo-01.svg",
+//    backgroundColor: '#404040',
+//    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
+//  });
 
   //  TODO: remove extra else below
 
