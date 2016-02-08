@@ -429,9 +429,6 @@ var ParkingMap = ParkingMap || {};
 
   // update hrefs when share menu button is clicked
   document.getElementById('share').addEventListener('click', function(e) {
-    // stop browser from navigating to #
-    e.preventDefault();
-
     // grab updated URL + hash for sharing
     encodedShareUrl = window.encodeURIComponent(location.href);
 
