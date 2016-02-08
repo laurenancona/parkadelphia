@@ -142,8 +142,11 @@ var ParkingMap = ParkingMap || {};
     // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
 
     // if class 'quiet' is set remove it, otherwise add it
-    document.getElementById("search").addEventListener('click', function (evt) {
-      document.getElementById("geocoder-container").classList.toggle("quiet")
+    var geocoderCt = document.getElementById('geocoder-container');
+
+    document.getElementById('search').addEventListener('click', function (evt) {
+      geocoderCt.classList.toggle('quiet');
+      geocoderCt.querySelector('input').select();
     });
     //
     //        //  add/remove 'quiet', depending on test conditional, i less than 10
