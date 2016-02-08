@@ -152,7 +152,8 @@ var ParkingMap = ParkingMap || {};
         geocoderInput = geocoderCt.querySelector('input');
       }
 
-      geocoderInput.select();
+      geocoderInput.focus();
+      geocoderInput.setSelectionRange(0, 9999);
     });
     //
     //        //  add/remove 'quiet', depending on test conditional, i less than 10
