@@ -16,6 +16,12 @@ var ParkingMap = ParkingMap || {};
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
 
+  // some basic platform detection
+  var is = {
+    // iOS, see http://stackoverflow.com/questions/9038625/detect-if-device-is-ios
+    iOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  };
+
   var INTERACTIVE_PATTERN = /\.i$/;
   var isInteractive = function (feature) {
     /* Check whether the given feature belongs to an
@@ -439,40 +445,43 @@ var ParkingMap = ParkingMap || {};
   var shareLinkDom = document.getElementById('share-link');
   shareLinkDom.href = '#share-link';
   shareLinkDom.addEventListener('click', function(e) {
-    var linkCopied = true;
+    var linkCopied = false;
 
     e.preventDefault();
 
-    // create off-screen textarea if needed
-    if (!copyShareLinkTextarea) {
-      copyShareLinkTextarea = document.createElement('textarea');
-      copyShareLinkTextarea.style.position = 'absolute';
-      copyShareLinkTextarea.style.left = '-9999px';
-      copyShareLinkTextarea.style.top = '0';
-      document.body.appendChild(copyShareLinkTextarea);
-    }
+    // iOS doesn't support the copy command and fails silently
+    if (!is.iOS) {
+      // create off-screen textarea if needed
+      if (!copyShareLinkTextarea) {
+        copyShareLinkTextarea = document.createElement('textarea');
+        copyShareLinkTextarea.style.position = 'absolute';
+        copyShareLinkTextarea.style.left = '-9999px';
+        copyShareLinkTextarea.style.top = '0';
+        document.body.appendChild(copyShareLinkTextarea);
+      }
 
-    // update textarea contents
-    copyShareLinkTextarea.textContent = location.href;
+      // update textarea contents
+      copyShareLinkTextarea.textContent = location.href;
 
-    // remember what user had focused before
-    var currentFocus = document.activeElement;
+      // remember what user had focused before
+      var currentFocus = document.activeElement;
 
-    // select the textarea content
-    copyShareLinkTextarea.focus();
-    copyShareLinkTextarea.setSelectionRange(0, copyShareLinkTextarea.value.length);
+      // select the textarea content
+      copyShareLinkTextarea.focus();
+      copyShareLinkTextarea.setSelectionRange(0, copyShareLinkTextarea.value.length);
 
-    // copy the selection
-    try {
-      document.execCommand('copy');
-      linkCopied = true;
-    } catch (e) {
-      linkCopied = false;
-    }
+      // copy the selection
+      try {
+        document.execCommand('copy');
+        linkCopied = true;
+      } catch (e) {
+        linkCopied = false;
+      }
 
-    // restore original focus
-    if (currentFocus && typeof currentFocus.focus === 'function') {
-      currentFocus.focus();
+      // restore original focus
+      if (currentFocus && typeof currentFocus.focus === 'function') {
+        currentFocus.focus();
+      }
     }
 
     // evaluate success
@@ -483,8 +492,8 @@ var ParkingMap = ParkingMap || {};
         timeout: 2000
       });
     } else {
-      // fallback: show promet
-      window.prompt('Copy URL to share', location.href);
+      // fallback: show prompt
+      window.prompt('Select and copy URL to share', location.href);
     }
   });
 
