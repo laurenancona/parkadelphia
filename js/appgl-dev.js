@@ -416,27 +416,27 @@ var ParkingMap = ParkingMap || {};
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
 
-  // listen for click on #share
-  
-//  var shareMap = document.getElementById("share");
-//  shareMap.addEventListener("click", getShareURL);
-//  
-  // grab updated URL + hash for sharing
 
-  
-  
-  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia');
-  var encodedShareUrl = window.encodeURIComponent(location.href);
-  var copyShareLinkTextarea = null;
+  // setup persistent state for sharing tools
+  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia'),
+      encodedShareUrl, copyShareLinkTextarea;
 
-  document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedShareUrl;
-  document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodedShareUrl + '&text=' + encodedShareMessage;
-  document.getElementById('share-reddit').href = 'http://www.reddit.com/submit?url=' + encodedShareUrl + '&title=' + encodedShareMessage;
-  document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
-  document.getElementById('share-link').href = 'javascript:copyShareLink()';
+  // update hrefs when share menu button is clicked
+  document.getElementById('share').addEventListener('click', function(e) {
+    // grab updated URL + hash for sharing
+    encodedShareUrl = window.encodeURIComponent(location.href);
 
-  
-  window.copyShareLink = function () {
+    document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedShareUrl;
+    document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodedShareUrl + '&text=' + encodedShareMessage;
+    document.getElementById('share-reddit').href = 'http://www.reddit.com/submit?url=' + encodedShareUrl + '&title=' + encodedShareMessage;
+    document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
+  });
+
+  // setup copy link tool
+  var shareLinkDom = document.getElementById('share-link');
+  shareLinkDom.href = '#share-link';
+  shareLinkDom.addEventListener('click', function(e) {
+    var linkCopied = true;
 
     // create off-screen textarea if needed
     if (!copyShareLinkTextarea) {
@@ -447,8 +447,6 @@ var ParkingMap = ParkingMap || {};
       document.body.appendChild(copyShareLinkTextarea);
     }
 
-//    function getShareURL() {
-    
     // update textarea contents
     copyShareLinkTextarea.textContent = location.href;
 
@@ -462,8 +460,9 @@ var ParkingMap = ParkingMap || {};
     // copy the selection
     try {
       document.execCommand('copy');
+      linkCopied = true;
     } catch (e) {
-      // meh
+      linkCopied = false;
     }
 
     // restore original focus
@@ -471,11 +470,17 @@ var ParkingMap = ParkingMap || {};
       currentFocus.focus();
     }
 
-    // show snackbar
-    document.getElementById('snackbar').MaterialSnackbar.showSnackbar({
-      message: 'Link copied to clipboard',
-      timeout: 2000
-    });
-  };
-//}
+    // evaluate success
+    if (linkCopied) {
+      // show snackbar
+      document.getElementById('snackbar').MaterialSnackbar.showSnackbar({
+        message: 'Link copied to clipboard',
+        timeout: 2000
+      });
+    } else {
+      // fallback: show promet
+      window.prompt('Copy URL to share', location.href);
+    }
+  });
+
 })();
