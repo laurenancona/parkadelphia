@@ -142,11 +142,17 @@ var ParkingMap = ParkingMap || {};
     // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
 
     // if class 'quiet' is set remove it, otherwise add it
-    var geocoderCt = document.getElementById('geocoder-container');
+    var geocoderCt = document.getElementById('geocoder-container'),
+        geocoderInput;
 
     document.getElementById('search').addEventListener('click', function (evt) {
       geocoderCt.classList.toggle('quiet');
-      geocoderCt.querySelector('input').select();
+
+      if (!geocoderInput) {
+        geocoderInput = geocoderCt.querySelector('input');
+      }
+
+      geocoderInput.select();
     });
     //
     //        //  add/remove 'quiet', depending on test conditional, i less than 10
@@ -278,6 +284,10 @@ var ParkingMap = ParkingMap || {};
         map.getSource('single-point').setData(evt.result.geometry);
         var center = evt.result.geometry.coordinates;
         console.log(center);
+        
+        if (geocoderInput) {
+          geocoderInput.blur();
+        }
 
         // override Philadelphia bounding box bug by forcing center
         map.flyTo({
