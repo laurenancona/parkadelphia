@@ -96,10 +96,10 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
         control.stop();
         alert(control.options.strings.outsideMapBoundsMsg);
       },
-      setView: true, // automatically sets the map view to the user's location
+      setView: false, // automatically sets the map view to the user's location
       // keep the current map zoom level when displaying the user's location. (if 'false', use maxZoom)
       keepCurrentZoomLevel: false,
-      showPopup: true, // display a popup when the user click on the inner marker
+      showPopup: true, // display a popup when the user clicks on the inner marker
       strings: {
         title: "Show me where I am",
         metersUnit: "meters",

@@ -1,8 +1,13 @@
 /*Spinner styles from Spinkit http://tobiasahlin.com/spinkit/*/
 
 .pg-loading-logo {
-  width: 30%!important;
+  max-width: 250px;
   margin-top: 80px!important;
+}
+
+.loading_text {
+  color: white;
+  font-size: 1.2rem;
 }
 
 .spinner {
@@ -75,12 +80,16 @@
 
 /* MAPBOX-GL GEOCODER */
 
+.quiet {
+display: none;
+}
+
 #geocoder-container {
-  top: 50px;
+  top: 42px;
+/*  display: none;*/
 /*  width: 100%;*/
 /*  margin-top: 10px;*/
   position: fixed!important;
-  /* top: 50px; */
   width: 100%;
 /*  bottom: 80px;*/
 /*  z-index: 10000!important;*/
@@ -93,13 +102,26 @@
 
 .mapboxgl-ctrl-geocoder {
   border-radius: 0;
-  background-color: #404040;
+  background-color: (158, 158, 158, 0.9);
   widows: 100%;
-  opacity: 0.9;
+/*  opacity: 0.9;*/
 }
 
 .mapboxgl-ctrl-geocoder input[type='text'] {
-  color: white!important;
+  font-weight: 300;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.71)!important;
+}
+
+#geocoder-container > div > input[type="text"] > div#inner-editor {
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.71)!important;
+}
+
+
+div#placeholder {
+  color: black;
 }
 
 html {
@@ -112,6 +134,7 @@ body {
   margin: 0!important;
   padding: 0!important;
   background-color: #404040;
+  line-height: 15px!important;
 /*
   height: 100%;
   width: 100%;
@@ -125,12 +148,12 @@ body {
   width: 100%!important;
 /*  z-index: 4;*/
   height: 100%!important;
+  overflow-y: hidden!important;
 }
 
 .map-wrapper {
   position: absolute;
-  top: 50px;
-  bottom: 80px;
+/*  bottom: 40px;*/
   width: 100%;
   height: 800px;
   overflow-x: hidden!important;
@@ -139,6 +162,46 @@ body {
 
 footer {
   z-index: 3!important;
+  position: fixed;
+  bottom: 0px!important;
+}
+
+#help-icon {
+  right: 20px;
+  top: 10px;
+  color: white;
+  position: absolute;
+  font-size: 1.5 rem!important;
+}
+.share-icon {
+/*width: 20px;*/
+/*position: absolute;*/
+}
+
+.share-icon a{
+  color: white!important;
+}
+.detail-icon img {
+  fill: white;
+  width: 12px;
+  margin-right: 10px;
+  border-right: 1px dotted white;
+  padding-right: 10px;
+  
+}
+.share-label {
+  position: absolute;
+  float: left;
+  margin-left: 15px;
+  color: white;
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .05rem;
+  
+}
+
+#contributors li a {
+  color: #CDDC39!important;
 }
 
 #contributors > li {
@@ -157,6 +220,9 @@ footer {
 
 #roadmap > ul {
   list-style-type: none!important;
+}
+a {
+  color: inherit!important;
 }
 
 li a {
@@ -192,7 +258,8 @@ ul {
 
 p {
   font-size: 0.8rem!important;
-  line-height: 1.4em!important;
+  line-height: 1.6em!important;
+  margin: 0 0 8px;
 }
 
 p a {
@@ -260,16 +327,6 @@ p a {
   margin-left: 10px;
 }
 
-#share-buttons {
-  position: relative;
-  float: right;
-  z-index: 4;
-  top: .9em;
-  right: 1.5em;
-  opacity: .6;
-  width: 20px;
-}
-
 #bottom-icons {
   position: fixed;
   bottom: 0px;
@@ -289,6 +346,7 @@ p a {
   text-align: center; 
   overflow-x: hidden;
   max-width: 350px;
+  padding-top: 2px;
 }
 
 #map-settings, 
@@ -301,7 +359,7 @@ p a {
   height: 40px;
   width: 20%;  
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 40px!important;
   padding: 0px 0px!important;
   margin-left: auto!important;
@@ -310,28 +368,27 @@ p a {
   z-index: 1000;
 }
 
-/*
-#locate a {
-  width: 30px;
-  text-align: center!important;
-}
-*/
-
-.icon {
+.icon a {
+  color: #434343!important;
 /*
   font-size: 2rem;
   text-align: center;
   line-height: 40px;
-
 */
-  color: #434343;
 }
 
-/*
-  .img {
-  	width:20px;
-  }
-*/
+#menu-icon {
+  color: white;
+}
+
+#status-icon {
+  font-size: 1.1rem;
+  top: 12px;
+/*  right: 10px;*/
+  float: right;
+  position: absolute;
+  color: #F2360C;
+}
 
 /*.legend label,
 .legend span {
@@ -455,8 +512,32 @@ p a {
 
 /*MDL OVERRIDES*/
 
+.mdl-menu__item a {
+  display: block;
+  z-index: 1000;
+}
+
+.mdl-snackbar--active {
+  transform: translate(0, -40px);
+}
+
 .mdl-layout__container {
 /*  z-index: 10;  */
+}
+
+.mdl-menu__container {
+  bottom: 42px;
+  background-color: #404040;
+  color: white;
+}
+
+.mdl-menu--top-left {
+  background-color: #404040;
+  color: white!important;
+}
+
+.mdl-menu__item:hover {
+  background-color: #4A4A4A;
 }
 
 .mdl-grid {
@@ -473,20 +554,19 @@ p a {
 }
 .mdl-layout__header-row {
   padding-left: 65px;
-  min-height: 54px!important;
-  height: 54px!important;
+/*  min-height: 54px!important;*/
+  height: 42px!important;
   background-color: #46474A!important;
   margin-left: auto;
   margin-right: auto;
 }
-
+body > div > div > div > header > img,
 .mdl-layout__drawer-button {
   z-index: inherit!important;
   color: white!important;
-  width: 18px!important;
-  padding-left: 10px!important;
-  margin-top: 4px!important;
-  background-color: none;
+/*  width: 18px!important;*/
+  margin-top: -3px!important;
+  background-color: none!important;
   /*
   transform: rotate(180deg) ;
   -webkit-transform: rotate(180deg) ;
@@ -518,7 +598,7 @@ body > div > div > div > div.mdl-layout__drawer.is-visible > span > img {
 
 /*.mdl-layout__header-row,*/
 header.mdl-layout__header {
-  min-height: 54px!important;
+  min-height: 42px!important;
   z-index: inherit!important;
 }
 
@@ -530,6 +610,9 @@ header.mdl-layout__header {
 /*This is a strange thing that obscures the #map on  iOS*/
 .mdl-layout__content {
   -webkit-overflow-scrolling: auto!important;
+  
+
+overflow-y: hidden;
 }
 
 /*
@@ -551,6 +634,12 @@ header.mdl-layout__header {
   background-color: #46474A!important;
   border-right: 1px solid #46474A!important;
 }
+.drawer-icon {
+  width: 20px;
+  position: absolute!important;
+  margin-top: 17px!important;
+  margin-left: 20px!important;
+}
 
 .mdl-navigation {
   padding-left: 15px!important;
@@ -564,6 +653,10 @@ header.mdl-layout__header {
 /*.mdl-layout__drawer-button {*/ {
   background-color: #46474A!important;
 }
+
+.mdl-layout__header .mdl-layout__drawer-button {
+  background-color: rgba(0,0,0,0)
+;}
 
 /*TOGGLES*/
 
@@ -604,6 +697,13 @@ header.mdl-layout__header {
 
 .mdl-tooltip {
   letter-spacing: normal!important;
+/*  text-transform: lowercase;*/
+  font-family: 'open sans', sans-serif;
+  font-size: .8rem;
+  color: white;
+  letter-spacing: .1rem;
+  margin-top: 10px;
+  background-color: rgba(242, 54, 12, 0.9);
 }
 
 .mdl-tooltip a {
@@ -613,7 +713,7 @@ font-weight: bold;
 }
 
 mdl-layout__header.mdl-layout__drawer-button {
-  background-color: none;
+  background-color: none!important;
 }
 
 .app-title a {
@@ -627,16 +727,6 @@ mdl-layout__header.mdl-layout__drawer-button {
 
 .layer-groups {
   padding: 0 10px!important;
-}
-
-/*DATA FORMAT*/
-
-.location {
-  letter-spacing: .1rem;
-  font-weight: bold;
-  font-family: 'montserrat', sans-serif;
-  font-size: 1.1rem;
-  line-height: .8;
 }
 
 /* For debugging */
@@ -657,11 +747,11 @@ mdl-layout__header.mdl-layout__drawer-button {
 
 .info {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   font-size: .8rem;
   color: white;
   width: 100%!important;
-/*  z-index: 100;*/
+  z-index: 3;
   margin-bottom: 0px;
   /*  overflow-x: hidden;*/
   max-height: 200px;
@@ -671,6 +761,8 @@ mdl-layout__header.mdl-layout__drawer-button {
   margin-right: auto;
 /*  background-color: #71767E;*/
   background-color: #434343;
+  text-align: center;
+  padding: 5px 0px;
 } 
 
 .info p {
@@ -688,10 +780,11 @@ mdl-layout__header.mdl-layout__drawer-button {
 
 #info div {
   /*  background: #434343;*/
-  background: #71767E;
-  /*rgba(67, 67, 67, 0.9);*/
-/*  padding: 10px 10px 5px 10px;*/
-  /*  width: 100%;*/
+/*  background: #71767E;*/
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+/*  padding: 5px 7px;*/
 /*
   margin-bottom: 0px;
   margin-top: 5px;
@@ -771,14 +864,14 @@ div.mdl-layout__drawer-button {
 }
 
 .mapbox-maplogo {
-  position: absolute;
+  position: fixed;
   display: block;
   height: 20px;
   width: 65px;
   right: 10px;
   bottom: 50px;
   text-indent: -9999px;
-  z-index: 1000;
+  z-index: 3;
   overflow: hidden;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAAoCAMAAAAFWtJHAAAAwFBMVEUAAAAAAAAAAABtbW0AAAAAAAAAAAAAAAAAAAAAAAClpaUAAADp6ekAAAD5+fna2toAAAAMDAzv7+/Nzc0AAAA2Njb8/Pz9/f3T09MAAAAAAAD7+/sAAAArKyuxsbH39/fs7OwbGxuIiIjz8/N8fHyenp7u7u74+PgAAAC8vLxWVlbx8fF1dXXl5eVcXFyUlJTQ0NDFxcVCQkLAwMC4uLj19fXo6OjW1tarq6ve3t77+/vi4uL6+vrKysrNzc3///8w7gSSAAAAP3RSTlMAOQNdPSYBPywKexLLGPCxNEHXnzFL+v2nGwf1IEiE6dBFad9jd9PuLo1V2mDDV3Cjl06SiuXIq4C3973ym6BQMVUPAAAEXElEQVR4Ae2WCVP6OBiH05L0l1IqrVbkKHJ54I0oHn+PfP9vtUle0z/YdhbH2XVnd58ZnRJIeHiPJOx//mH4vQSAN+8FjAhFxgHIaPvJeZ99hxwEElon5iAQbj85Y98g8ODwjEOMAvGFyeE3FEKgodTBqj0BJGN9DhyNd5Ta3ean9QEopfaA+LsKhnEKRExqg4FSP6Og7oEkAjBWnxSCgBX4xF+kcLoPcOBQrSv0e5kH7s1j37jECQieCTPiFGxL5VHw2zQWCeeJiPt6kjRQw0XSkIdVChf67xGa4alSnZlT6HEQ8CK9ANbhvXUF9xlDkBfTuHDWScgC9+z5FQpPI12TlwC6+sV7ixR8CUMKiwjm2GQeOQWHMGuHGdbnObJAwCEqFJpNU5H6uaPUaEIKiQfg+PHk1+u4OwW9PlWW2ctbA4BHCtp+cNK+H8Jos4gDmC5ar4Nx9waaG/2B13NgDqS7+vm2RgEtEws82P+kwIHhs/pgkQKcFIhfd7CogtGNjYMHTLpurD0ERbYFw4JaD3GlQuNAL/JEsSAF4HqlCnaHACk4WhOn4OgCkMD5hSpYNYDJTD8Y46n+jsE1kPhVCuR6QBXhFK7MUOu9O6b1SWF3b+/9ZVWMGOlu93E8UDaAhgc7bfH+0DHqKXCkHzoNDFfU+zxiVQrUC9QXTuHYtKpN59OA3IxCG4b7jh6ZFuVockaNTW09mkJzOaPU49a6mE9cAchZpQJNpUWcwgV9r6FJswsFKrITp2B5pMBMdnS0z2HZNy2+BNKxSZxZfglkrFYBJxQnpzA5sN/HheR2aFQoZBLAi149dQoyAYYjW0hHlHguBAdMcR0DuDZ5omevX6+AI8qcU7ikKT3GBHCnXwydgmCC0tRwCnGQ2Wp6Be71yNIWfQSkOl9vAI1SBCNWrwC01RROgX7BuT2HI4r7tFAw086p/NwZEdOEa7R1uAFuNmQPuKAEAjYNQ0CyeoUEWHYBnpQVQgpvc0Ph+gsKlAnKg1+vEHsw5LKciLKCAJobiWBzYFGbCKpHqkZZrxBFHEASyFI59vJPCskcwNVGOWZAOqsrR+pKbaNeAMT1CixMEtlnsqopNxUMzVJT3tY35aXZm6a6Y9QhwMN6BUJWbE1lhbMO1WehkO7poO0sK7em9MJGxp1XSbC1gtugzzSLQmGsX7VntJGSwsPZ2d2z3bIPKzdoOp3Wzqt8G4XyMVUoFIxLx1S7+piaHtCvR3FeRVsq0GFdp9C5TbGpcNqsPqyHKxcfd14h21KhuLKUFU4f3osrC7F6uV3WXFnadL7wyAPeKDXw2RoJCO5GY4DouYvb/gepVXheLoewzPseQG9N/vzilrMIjoStE3++zvle4eSurw7XEe76ynI4aq+v7lEyt1x5awiFlFLQbHKIpabnM3eJLym4Szzzc/du7SU+zOXv9UNpECH7IoH/gecURPlN9vdQpeD47yhIFNX0U0QgvID9nENm+yxk/xb+AGAjNfRZuk9qAAAAAElFTkSuQmCC);
   background-repeat: no-repeat;
