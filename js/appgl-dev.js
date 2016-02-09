@@ -16,6 +16,12 @@ var ParkingMap = ParkingMap || {};
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
 
+  // some basic platform detection
+  var is = {
+    // iOS, see http://stackoverflow.com/questions/9038625/detect-if-device-is-ios
+    iOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  };
+
   var INTERACTIVE_PATTERN = /\.i$/;
   var isInteractive = function (feature) {
     /* Check whether the given feature belongs to an
@@ -142,8 +148,18 @@ var ParkingMap = ParkingMap || {};
     // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
 
     // if class 'quiet' is set remove it, otherwise add it
-    document.getElementById("search").addEventListener('click', function (evt) {
-      document.getElementById("geocoder-container").classList.toggle("quiet")
+    var geocoderCt = document.getElementById('geocoder-container'),
+        geocoderInput;
+
+    document.getElementById('search').addEventListener('click', function (evt) {
+      geocoderCt.classList.toggle('quiet');
+
+      if (!geocoderInput) {
+        geocoderInput = geocoderCt.querySelector('input');
+      }
+
+      geocoderInput.focus();
+      geocoderInput.setSelectionRange(0, 9999);
     });
     //
     //        //  add/remove 'quiet', depending on test conditional, i less than 10
@@ -275,6 +291,10 @@ var ParkingMap = ParkingMap || {};
         map.getSource('single-point').setData(evt.result.geometry);
         var center = evt.result.geometry.coordinates;
         console.log(center);
+        
+        if (geocoderInput) {
+          geocoderInput.blur();
+        }
 
         // override Philadelphia bounding box bug by forcing center
         map.flyTo({
@@ -416,66 +436,76 @@ var ParkingMap = ParkingMap || {};
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
 
-  // listen for click on #share
-  
-//  var shareMap = document.getElementById("share");
-//  shareMap.addEventListener("click", getShareURL);
-//  
-  // grab updated URL + hash for sharing
 
-  
-  
-  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia');
-  var encodedShareUrl = window.encodeURIComponent(location.href);
-  var copyShareLinkTextarea = null;
+  // setup persistent state for sharing tools
+  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia'),
+      encodedShareUrl, copyShareLinkTextarea;
 
-  document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedShareUrl;
-  document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodedShareUrl + '&text=' + encodedShareMessage;
-  document.getElementById('share-reddit').href = 'http://www.reddit.com/submit?url=' + encodedShareUrl + '&title=' + encodedShareMessage;
-  document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
-  document.getElementById('share-link').href = 'javascript:copyShareLink()';
+  // update hrefs when share menu button is clicked
+  document.getElementById('share').addEventListener('click', function(e) {
+    // grab updated URL + hash for sharing
+    encodedShareUrl = window.encodeURIComponent(location.href);
 
-  
-  window.copyShareLink = function () {
+    document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedShareUrl;
+    document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + encodedShareUrl + '&text=' + encodedShareMessage;
+    document.getElementById('share-reddit').href = 'http://www.reddit.com/submit?url=' + encodedShareUrl + '&title=' + encodedShareMessage;
+    document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
+  });
 
-    // create off-screen textarea if needed
-    if (!copyShareLinkTextarea) {
-      copyShareLinkTextarea = document.createElement('textarea');
-      copyShareLinkTextarea.style.position = 'absolute';
-      copyShareLinkTextarea.style.left = '-9999px';
-      copyShareLinkTextarea.style.top = '0';
-      document.body.appendChild(copyShareLinkTextarea);
+  // setup copy link tool
+  var shareLinkDom = document.getElementById('share-link');
+  shareLinkDom.href = '#share-link';
+  shareLinkDom.addEventListener('click', function(e) {
+    var linkCopied = false;
+
+    e.preventDefault();
+
+    // iOS doesn't support the copy command and fails silently
+    if (!is.iOS) {
+      // create off-screen textarea if needed
+      if (!copyShareLinkTextarea) {
+        copyShareLinkTextarea = document.createElement('textarea');
+        copyShareLinkTextarea.style.position = 'absolute';
+        copyShareLinkTextarea.style.left = '-9999px';
+        copyShareLinkTextarea.style.top = '0';
+        document.body.appendChild(copyShareLinkTextarea);
+      }
+
+      // update textarea contents
+      copyShareLinkTextarea.textContent = location.href;
+
+      // remember what user had focused before
+      var currentFocus = document.activeElement;
+
+      // select the textarea content
+      copyShareLinkTextarea.focus();
+      copyShareLinkTextarea.setSelectionRange(0, copyShareLinkTextarea.value.length);
+
+      // copy the selection
+      try {
+        document.execCommand('copy');
+        linkCopied = true;
+      } catch (e) {
+        linkCopied = false;
+      }
+
+      // restore original focus
+      if (currentFocus && typeof currentFocus.focus === 'function') {
+        currentFocus.focus();
+      }
     }
 
-//    function getShareURL() {
-    
-    // update textarea contents
-    copyShareLinkTextarea.textContent = location.href;
-
-    // remember what user had focused before
-    var currentFocus = document.activeElement;
-
-    // select the textarea content
-    copyShareLinkTextarea.focus();
-    copyShareLinkTextarea.setSelectionRange(0, copyShareLinkTextarea.value.length);
-
-    // copy the selection
-    try {
-      document.execCommand('copy');
-    } catch (e) {
-      // meh
+    // evaluate success
+    if (linkCopied) {
+      // show snackbar
+      document.getElementById('snackbar').MaterialSnackbar.showSnackbar({
+        message: 'Link copied to clipboard',
+        timeout: 2000
+      });
+    } else {
+      // fallback: show prompt
+      window.prompt('Select and copy URL to share', location.href);
     }
+  });
 
-    // restore original focus
-    if (currentFocus && typeof currentFocus.focus === 'function') {
-      currentFocus.focus();
-    }
-
-    // show snackbar
-    document.getElementById('snackbar').MaterialSnackbar.showSnackbar({
-      message: 'Link copied to clipboard',
-      timeout: 2000
-    });
-  };
-//}
 })();
