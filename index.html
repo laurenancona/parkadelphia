@@ -25,48 +25,45 @@ window.location.protocol = "https";
   <meta name="twitter:card" content="photo" />
   <meta name="twitter:site" content="@laurenancona" />
   <meta name="twitter:creator" content="@laurenancona" />
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <!--  <link rel="image_src" href="" />-->
 
 
   <!-- Depends -->
 
-  <!--  TODO: Vendoring  -->
-  <!--ICONS-->
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-
   <!-- CSS -->
 
-  <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.lime-blue.min.css">
+  <link rel="stylesheet" href="css/vendor/material-lime-lt-blue_1-1-0.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" type="text/css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/vendor/please-wait.css" />
 
   <!--MAPBOX STYLES-->
 
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
-<!--  <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
-<!--  <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css" rel="stylesheet">-->
+  <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
+  <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css" rel="stylesheet">-->
   
   <!--CUSTOM STYLES-->
   <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link href="css/data.css" type="text/css" rel='stylesheet'>
 
-
   <!--JS-->
 
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
   <script src="js/mapbox-gl-dev.js"></script>
-<!--    <script src='js/mbgl.Control.Locate.js'></script>-->
+  <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
   <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
 
-  <script defer src="https://code.getmdl.io/1.1.0/material.min.js"></script>
+  <script defer src="js/vendor/material_1-1-0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+  <!--ICONS-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
   <!--TODO: Monitoring-->
   <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
@@ -85,6 +82,7 @@ width: 100%;
 
   /*  Hide flash of unstyled markup */
 
+/*
   body > .inner {
     opacity: 0;
   }
@@ -92,6 +90,7 @@ width: 100%;
     display: block;
     opacity: 1;
   }
+*/
 </style>
 
 <body>
@@ -140,26 +139,16 @@ width: 100%;
               <a href="./">Parkadelphia</a>
             </span> &nbsp;
           </span>
-<!--          <div class="mdl-layout-spacer"></div>-->
+          <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
+            <span class="mdl-tooltip" for="status-icon">
+              Warning: since this jawn is in <b>beta</b>, don't depend on the data.
+            </span>
+          </span>
+          <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
             <!--SEARCH?-->
-            <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.1rem;">
-              <div class="mdl-tooltip" for="status-icon">
-                Warning: since this jawn is in <b>beta</b>, don't depend on the data.
-              </div>
-            </span>
-            <!--
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-              <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
-                <span id="search-icon" class="icons ion-ios-search" style="color:#FFF; margin-top: 2px!important;">
-              </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search-expandable">
-              <label class="mdl-textfield__label" for="search-expandable">Search text</label>
-            </div>
-          </div>
--->
           </nav>
+          <span id="help-icon" class="icons ion-help" style="font-size: 1.5rem;"></span>
         </div>
       </header>
 
@@ -270,14 +259,19 @@ width: 100%;
               </div>
               <!--TODO: Thank yous-->
               <!--
-            <h5>Thank you:</h5>
-            <li>Bill Wasser, Philadelphia Parking Authority </li>
-            <li>Mick McKeown</li>
-            <li>Jerry Connors, Bureau of Administrative Adjudication, City of Philadelphia </li>
-            <li>Adel Ebied</li>
-            <li>Mark Wheeler</li>
-            <li>Chris Alfano, Code for Philly</li>
-            <li>Mayor Michael Nutter</li>
+            <div id="thank-you>
+              <h5>Thank you:</h5>
+                <ul>
+                  <li>Bill Wasser, Philadelphia Parking Authority </li>
+                  <li>Mick McKeown</li>
+                  <li>Jerry Connors, Bureau of Administrative Adjudication, City of Philadelphia </li>
+                  <li>Mark Wheeler</li>
+                  <li>Adel Ebied</li>
+                  <li>Mark Wheeler</li>
+                  <li>Chris Alfano, Code for Philly</li>
+                  <li>Mayor Michael Nutter</li>
+                </ul>
+              <div>
             -->
             </div>
           </div>
@@ -292,21 +286,6 @@ width: 100%;
           <!-- Add Mapbox watermark -->
           <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
           <div id="map"></div>
-          <!--        ion-help-circled-->
-          <!--        ion-home  -->
-          <!--        ion-information-circled-->
-          <!--        ion-ios-color-filter-->
-          <!--        ion-ios-contact-->
-          <!--        ion-ios-email-->
-          <!--        ion-ios-flag-->
-          <!--        ion-ios-keypad-->
-          <!--        ion-ios-list-->
-          <!--        ion-ios-toggle-->
-          <!--        ion-link-->
-          <!--        ion-social-buffer-->
-          <!--        ion-social-facebook-->
-          <!--        ion-social-reddit-->
-          <!--        ion-social-twitter-->
         </div>
         <div id="geocoder-container" class="quiet"></div>
         <div id="info" class="info"></div>
@@ -316,19 +295,17 @@ width: 100%;
             <div id="icon-group">
               <div id="map-settings" class="icon-menu mdl-button"><a href="/"><i class="icon ion-home"></i></a></div>
               <div id="locate" class="icon-menu mdl-button"><i class="icon ion-location"></i></div>
-              <div id="search" class="icon-menu mdl-button"><a href="#"><i class="icon ion-search"></i></a></div>
-<!--              -->
+              <div id="search" class="icon-menu mdl-button"><i class="icon ion-search"></i></div>
               <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
 
+              <div id="share" class="icon-menu mdl-button"><a href="#"><i class="icon ion-android-share-alt"></i></a></div>
 
-              <div id="share" class="icon-menu mdl-button"><a href="#"><i class="icon ion-share"></i></a></div>
-
-              <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="share">
+              <ul class="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect" for="share">
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-facebook"><i class="icon ion-social-facebook"></i> <span class="share-label">Facebook</span></a></li>
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-twitter"><i class="icon ion-social-twitter"></i> <span class="share-label">Twitter</span></a></li>
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-reddit"><i class="icon ion-social-reddit"></i> <span class="share-label">Reddit</span></a></li>
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-email"><i class="icon ion-ios-email"></i> <span class="share-label">Email</span></a></li>
-                <li class="mdl-menu__item share-icon"><a target="_blank" id="share-link"><i class="icon ion-link"></i> <span class="share-label">Copy Link</span></a></li>
+                <li class="mdl-menu__item share-icon"><a id="share-link"><i class="icon ion-link"></i> <span class="share-label">Copy Link</span></a></li>
               </ul>
               <!-- TODO: search by time -->
               <!-- <div id="time" class="icon-menu"><a href="#"><i class="icon ion-android-time"></i></a></div>-->
@@ -355,8 +332,27 @@ width: 100%;
     ParkingMap.allowFancyMap = true;
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <script type="text/javascript" src="js/vendor/please-wait.js"></script>
+<!--  <script type="text/javascript" src="js/vendor/please-wait.js"></script>-->
   <script src="js/appgl-dev.js"></script>
 </body>
 
 </html>
+
+
+<!-- SAVING FOR LATER-->
+
+<!-- ion-help-circled-->
+<!-- ion-home  -->
+<!-- ion-information-circled-->
+<!-- ion-ios-color-filter-->
+<!-- ion-ios-contact-->
+<!-- ion-ios-email-->
+<!-- ion-ios-flag-->
+<!-- ion-ios-keypad-->
+<!-- ion-ios-list-->
+<!-- ion-ios-toggle-->
+<!-- ion-link-->
+<!-- ion-social-buffer-->
+<!-- ion-social-facebook-->
+<!-- ion-social-reddit-->
+<!-- ion-social-twitter-->

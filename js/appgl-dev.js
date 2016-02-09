@@ -213,7 +213,7 @@ var ParkingMap = ParkingMap || {};
       //        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
       //      });
 
-      loading_screen.finish();
+//      loading_screen.finish();
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -276,7 +276,7 @@ var ParkingMap = ParkingMap || {};
         var center = evt.result.geometry.coordinates;
         console.log(center);
 
-        // override Philadelphia bounding box bug by forcing center (why doesn't this work on mobile?)
+        // override Philadelphia bounding box bug by forcing center
         map.flyTo({
           center: center,
           zoom: 15
@@ -284,7 +284,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-    // disable map rotation using touch rotation gesture because that shit's cray
+    // disable map rotation using touch gesture because that shit's cray
     map.touchZoomRotate.disableRotation();
 
     //        map.addControl(new mapboxgl.Navigation());
@@ -298,7 +298,7 @@ var ParkingMap = ParkingMap || {};
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-      content = '<div class="location">' + feature.properties.block_street + '</div>' +
+        content = '<div class="location"><span class="detail-icon"><img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + feature.properties.block_street + '</div>' +
         '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
       break;
 
@@ -310,29 +310,31 @@ var ParkingMap = ParkingMap || {};
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
           '<span class="location">' + feature.properties.name + ' </span>' : '') +
-        (feature.properties.description ?
-          ': ' + feature.properties.description : '') +
+        '<span class="detail">' + (feature.properties.description ?
+          feature.properties.description : '') +
         (feature.properties.address ?
-          '<p>' + feature.properties.address + '</p>' : '') +
-        (feature.properties.Type ?
-          '<p>' + feature.properties.Type + '</p>' : '') +
+          '<br>' + feature.properties.address : '') +
+        (feature.properties.type ?
+          '<br>' + feature.properties.type : '') +
         (feature.properties.capacity ?
-          '<p>Capacity: ' + feature.properties.capacity + '</p>' : '') +
-        (feature.properties.Hours ?
-          '<p>' + feature.properties.Hours : '') + ' | ' +
+         '&nbsp; | &nbsp;Capacity: ' + feature.properties.capacity : '') +
+        (feature.properties.hours ?
+          '<br>' + feature.properties.hours : '') +
         (feature.properties.days ?
-          feature.properties.days + '</p>' : '') +
+          '<br>' + feature.properties.days : '') +
         (feature.properties.times ?
-          '<p>' + feature.properties.times + '</p>' : '') +
-        (feature.properties.Rates ?
-          '<p>Rates: ' + feature.properties.Rates + '</p>' : '') + '</div>';
+          ' &nbsp;' + feature.properties.times : '') +
+        (feature.properties.rates ?
+          '<br><span class="detail">Rates: ' + feature.properties.rates + '</span>' : '') +
+        (feature.properties.notes ?
+          '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
       break;
 
     case 'valet.i':
       content = '<div>' + (feature.properties.Name ?
           '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
-          '<p>Hours: ' + feature.properties.Hours + '<br>' : '') +
+          '<p class="detail">Hours: ' + feature.properties.Hours + '<br>' : '') +
         (feature.properties.Spaces ?
           'Spaces: ' + feature.properties.Spaces : '') +
         '</p></div>';
@@ -349,18 +351,19 @@ var ParkingMap = ParkingMap || {};
 
     case 'meters.i':
       var template = _.template(
-        '<div id="meter-info" style="margin-left:auto;margin-right:auto; max-width:350px;">' +
+        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
         '<% _.each(features,function(regulations,key){ %>' +
         '<span class="location"><%= key %></span><br>' +
-        '<% _.each(regulations,function(regulation){ %>' +
+        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
         '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-        ' | &nbsp;  <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> <br>' +
-        '$<%= regulation.properties.rate %>/hr &nbsp; | &nbsp;' +
+        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
         'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
         '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-        '| &nbsp; <%= regulation.properties.seg_id %><hr>' +
+        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
         '<% }) %>' +
-        '<% }) %></div>');
+        '<% }) %></span></div>');
 
       var byStreet = _.groupBy(feature, function (value) {
         return value.properties.street + ', ' + value.properties.side + ' Side';
@@ -376,9 +379,9 @@ var ParkingMap = ParkingMap || {};
         (feature.properties.title ?
           '<strong>' + feature.properties.title + '</strong>' : '') +
         (feature.properties.description ?
-          feature.properties.description : '') +
+          '<span class="detail">' + feature.properties.description : '') +
         (feature.properties.capacity ?
-          'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</div>';
+          'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
       break;
     }
     info.innerHTML = content;
@@ -388,11 +391,11 @@ var ParkingMap = ParkingMap || {};
 
   //  Show a loading screen because we are currently doing it a bit backwards
 
-  loading_screen = pleaseWait({
-    logo: "img/hotlink-ok/load-logo-01.svg",
-    backgroundColor: '#404040',
-    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
-  });
+//  loading_screen = pleaseWait({
+//    logo: "img/hotlink-ok/load-logo-01.svg",
+//    backgroundColor: '#404040',
+//    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
+//  });
 
   //  TODO: remove extra else below
 
@@ -413,8 +416,16 @@ var ParkingMap = ParkingMap || {};
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
 
-  // populate share buttons with current URL
-  var encodedShareMessage = window.encodeURIComponent('Demystify parking with Parkadelphia');
+  // listen for click on #share
+  
+//  var shareMap = document.getElementById("share");
+//  shareMap.addEventListener("click", getShareURL);
+//  
+  // grab updated URL + hash for sharing
+
+  
+  
+  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia');
   var encodedShareUrl = window.encodeURIComponent(location.href);
   var copyShareLinkTextarea = null;
 
@@ -424,6 +435,7 @@ var ParkingMap = ParkingMap || {};
   document.getElementById('share-email').href = 'mailto:?subject=' + encodedShareMessage + '&body=' + encodedShareUrl;
   document.getElementById('share-link').href = 'javascript:copyShareLink()';
 
+  
   window.copyShareLink = function () {
 
     // create off-screen textarea if needed
@@ -435,6 +447,8 @@ var ParkingMap = ParkingMap || {};
       document.body.appendChild(copyShareLinkTextarea);
     }
 
+//    function getShareURL() {
+    
     // update textarea contents
     copyShareLinkTextarea.textContent = location.href;
 
@@ -463,4 +477,5 @@ var ParkingMap = ParkingMap || {};
       timeout: 2000
     });
   };
+//}
 })();
