@@ -14,7 +14,7 @@ var ParkingMap = ParkingMap || {};
   'meters',
   'satellite'];
 
-  var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
+  var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpa2d4YWpubTAwdXR1eGttcmw5dXYyenIifQ.JeAAAiEbZq3OB4L0cShJMA';
 
   var mapProgressDom = document.getElementById('map-progress');
 
