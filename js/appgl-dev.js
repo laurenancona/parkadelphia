@@ -16,6 +16,8 @@ var ParkingMap = ParkingMap || {};
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
 
+  var mapProgressDom = document.getElementById('map-progress');
+
   // some basic platform detection
   var is = {
     // iOS, see http://stackoverflow.com/questions/9038625/detect-if-device-is-ios
@@ -146,6 +148,31 @@ var ParkingMap = ParkingMap || {};
 
     // Add/remove class for bottom button onClicks
     // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
+
+    var geoLocating = false;
+
+    document.getElementById('locate').addEventListener('click', function(evt) {
+      if (!navigator.geolocation) {
+        alert('no location 4 u!!!!1');
+        return;
+      }
+
+      // bail if we're already waiting for the location
+      if (geoLocating) {
+        return;
+      }
+
+      mapProgressDom.style.visibility = '';
+      geoLocating = true;
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+        mapProgressDom.style.visibility = 'hidden';
+        console.log('got position: lon=%o, lat=%o', position.coords.longitude, position.coords.latitude);
+        geoLocating = false;
+      }, function() {
+        alert('current postion not available');
+      });
+    })
 
     // if class 'quiet' is set remove it, otherwise add it
     var geocoderCt = document.getElementById('geocoder-container'),
