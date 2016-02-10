@@ -167,9 +167,7 @@ var ParkingMap = ParkingMap || {};
     //  add/remove 'quiet', depending on test conditional, i less than 10
     
     // div.classList.toggle("visible", i < 10 );
-
     // alert(div.classList.contains("foo"));
-
     // div.classList.add("foo","bar"); //add multiple classes
     
     // Listen for clicks on features & pass data to templates
@@ -229,10 +227,6 @@ var ParkingMap = ParkingMap || {};
         'satellite': ['satellite']
       };
 
-      //      map.on('load', function () {
-      //        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
-      //      });
-
 //      loading_screen.finish();
 
       layerNames.forEach(function (layerName, index) {
@@ -270,7 +264,6 @@ var ParkingMap = ParkingMap || {};
 
     // After the map style has loaded on the page, add a source layer and default
     // styling for a single point. 
-    // Can we share this layer between geolocation and geocoder?
 
     map.on('style.load', function () {
       map.addSource('single-point', {
@@ -476,7 +469,7 @@ var ParkingMap = ParkingMap || {};
 
   function empty() {
     //    console.log('Here is your stupid empty.');
-    info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
+    info.innerHTML = '';
   }
 
   // setup persistent state for sharing tools
@@ -502,7 +495,7 @@ var ParkingMap = ParkingMap || {};
 
     e.preventDefault();
 
-    // iOS doesn't support the copy command and fails silently
+    // iOS doesn't support the copy command and fails silently like a jerk
     if (!is.iOS) {
       // create off-screen textarea if needed
       if (!copyShareLinkTextarea) {

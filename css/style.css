@@ -440,6 +440,9 @@ p a {
 .mdl-snackbar--active {
   transform: translate(0, -40px);
 }
+.mdl-progress {
+  width: 100%;
+}
 .mdl-layout__container {
 /*  z-index: 10;  */
 }
