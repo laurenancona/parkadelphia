@@ -147,34 +147,9 @@ var ParkingMap = ParkingMap || {};
     //    });
 
     // Add/remove class for bottom button onClicks
-    // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
+    // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
-    var geoLocating = false;
-
-    document.getElementById('locate').addEventListener('click', function(evt) {
-      if (!navigator.geolocation) {
-        alert('no location 4 u!!!!1');
-        return;
-      }
-
-      // bail if we're already waiting for the location
-      if (geoLocating) {
-        return;
-      }
-
-      mapProgressDom.style.visibility = '';
-      geoLocating = true;
-
-      navigator.geolocation.getCurrentPosition(function(position) {
-        mapProgressDom.style.visibility = 'hidden';
-        console.log('got position: lon=%o, lat=%o', position.coords.longitude, position.coords.latitude);
-        geoLocating = false;
-      }, function() {
-        alert('current postion not available');
-      });
-    })
-
-    // if class 'quiet' is set remove it, otherwise add it
+    // if class 'quiet' is set, remove it. Otherwise add it:
     var geocoderCt = document.getElementById('geocoder-container'),
         geocoderInput;
 
@@ -188,14 +163,16 @@ var ParkingMap = ParkingMap || {};
       geocoderInput.focus();
       geocoderInput.setSelectionRange(0, 9999);
     });
-    //
-    //        //  add/remove 'quiet', depending on test conditional, i less than 10
-    //        div.classList.toggle("visible", i < 10 );
-    //
-    //        alert(div.classList.contains("foo"));
-    //
-    //        div.classList.add("foo","bar"); //add multiple classes
+    
+    //  add/remove 'quiet', depending on test conditional, i less than 10
+    
+    // div.classList.toggle("visible", i < 10 );
 
+    // alert(div.classList.contains("foo"));
+
+    // div.classList.add("foo","bar"); //add multiple classes
+    
+    // Listen for clicks on features & pass data to templates
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
         var point = getPoint(evt);
@@ -284,6 +261,7 @@ var ParkingMap = ParkingMap || {};
     });
 
     // Add Geocoder
+
     var geocoder = new mapboxgl.Geocoder({
       container: 'geocoder-container'
     });
@@ -291,7 +269,9 @@ var ParkingMap = ParkingMap || {};
     map.addControl(geocoder);
 
     // After the map style has loaded on the page, add a source layer and default
-    // styling for a single point.
+    // styling for a single point. 
+    // Can we share this layer between geolocation and geocoder?
+
     map.on('style.load', function () {
       map.addSource('single-point', {
         "type": "geojson",
@@ -310,6 +290,43 @@ var ParkingMap = ParkingMap || {};
           "circle-color": "rgb(205,220,57)"
         }
       });
+      
+      // Add Geolocator via HTML5 api
+
+      var geoLocating = false;
+
+      document.getElementById('locate').addEventListener('click', function(evt) {
+        if (!navigator.geolocation) {
+          alert('no location 4 u!!!!1');
+          return;
+        }
+
+        // bail if we're already waiting for the location
+        if (geoLocating) {
+          return;
+        }
+
+        // show a progress bar while we look for you
+        mapProgressDom.style.visibility = '';
+        geoLocating = true;
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var myLocation = {
+            type: 'Point',
+            coordinates: [position.coords.longitude, position.coords.latitude]
+          };
+          mapProgressDom.style.visibility = 'hidden';
+          console.log('got position: lon=%o, lat=%o', position.coords.longitude, position.coords.latitude);
+          geoLocating = false;
+          map.getSource('single-point').setData(myLocation); 
+          map.flyTo({
+            center: myLocation.coordinates,
+            zoom: 15
+          });
+        }, function() {
+          alert('current postion not available');
+        });
+      })
 
       // Listen for the `geocoder.input` event that is triggered when a user
       // makes a selection and add a marker that matches the result.
@@ -320,7 +337,7 @@ var ParkingMap = ParkingMap || {};
         console.log(center);
         
         if (geocoderInput) {
-          geocoderInput.blur();
+          geocoderInput.blur(); // blur so keyboard goes away
         }
 
         // override Philadelphia bounding box bug by forcing center
@@ -334,9 +351,8 @@ var ParkingMap = ParkingMap || {};
     // disable map rotation using touch gesture because that shit's cray
     map.touchZoomRotate.disableRotation();
 
-    //        map.addControl(new mapboxgl.Navigation());
+    // map.addControl(new mapboxgl.Navigation());
   };
-
 
   var showInfo = function (tpl, feature) {
     console.log('Here is your stupid info', tpl);
@@ -462,7 +478,6 @@ var ParkingMap = ParkingMap || {};
     //    console.log('Here is your stupid empty.');
     info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
   }
-
 
   // setup persistent state for sharing tools
   var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia'),
