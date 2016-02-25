@@ -6,9 +6,8 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks',
-  'rppdistricts',
-  //'scooters', 
+  var layerNames = ['rpp',
+  'scooters', 
   'lots',
   'valet',
   'meters',
@@ -186,7 +185,7 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
             layerName = feature.layer.id;
-            if (layerName === 'meters.i') {
+            if (layerName === 'meterblocks.i') {
               showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
@@ -218,12 +217,11 @@ var ParkingMap = ParkingMap || {};
      */
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
-        'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
-        'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
-        // 'scooters': ['scooters.i'],
+        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
+        'scooters': ['scooters.i', 'scooters.circle.i'],
         'lots': ['lots.i', 'lots.label'],
-        'valet': ['valet.i', 'valet.circle.i'],
-        'meters': ['meters.i'],
+        'valet': ['valet.label', 'valet.circle.i'],
+        'meters': ['meterblocks.i', 'meters.i', 'meters.circle.i'],
         'satellite': ['satellite']
       };
 
@@ -386,7 +384,7 @@ var ParkingMap = ParkingMap || {};
           '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
       break;
 
-    case 'valet.i':
+    case 'valet.circle.i':
       content = '<div>' + (feature.properties.Name ?
           '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
@@ -405,7 +403,7 @@ var ParkingMap = ParkingMap || {};
       //         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
       //      break;
 
-    case 'meters.i':
+    case 'meterblocks.i':
       var template = _.template(
         '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
         '<% _.each(features,function(regulations,key){ %>' +
