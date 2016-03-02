@@ -6,15 +6,16 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks',
-  'rppdistricts',
-  //'scooters', 
+  var layerNames = [
+  'scooters', 
   'lots',
   'valet',
+  'snowroutes',
   'meters',
+  'rpp',
   'satellite'];
 
-  var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
+  var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpa2d4YWpubTAwdXR1eGttcmw5dXYyenIifQ.JeAAAiEbZq3OB4L0cShJMA';
 
   var mapProgressDom = document.getElementById('map-progress');
 
@@ -104,7 +105,7 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
-    /* TODO: setTimeout instead of waiting for user to click
+    /* setTimeout instead of waiting for user to click
        from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
     */
 
@@ -167,9 +168,7 @@ var ParkingMap = ParkingMap || {};
     //  add/remove 'quiet', depending on test conditional, i less than 10
     
     // div.classList.toggle("visible", i < 10 );
-
     // alert(div.classList.contains("foo"));
-
     // div.classList.add("foo","bar"); //add multiple classes
     
     // Listen for clicks on features & pass data to templates
@@ -188,7 +187,7 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
             layerName = feature.layer.id;
-            if (layerName === 'meters.i') {
+            if (layerName === 'meterblocks.i') {
               showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
@@ -220,18 +219,14 @@ var ParkingMap = ParkingMap || {};
      */
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
-        'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
-        'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
-        // 'scooters': ['scooters.i'],
+        'scooters': ['scooters.i', 'scooters.circle.i'],
+        'valet': ['valet.label.i', 'valet.circle.i'],
+        'snowroutes': ['snow_emergency_routes'],
         'lots': ['lots.i', 'lots.label'],
-        'valet': ['valet.i', 'valet.circle.i'],
-        'meters': ['meters.i'],
+        'meters': ['meterblocks.i', 'meters.i', 'meters.circle.i'],
+        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'satellite': ['satellite']
       };
-
-      //      map.on('load', function () {
-      //        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
-      //      });
 
 //      loading_screen.finish();
 
@@ -270,7 +265,6 @@ var ParkingMap = ParkingMap || {};
 
     // After the map style has loaded on the page, add a source layer and default
     // styling for a single point. 
-    // Can we share this layer between geolocation and geocoder?
 
     map.on('style.load', function () {
       map.addSource('single-point', {
@@ -365,11 +359,6 @@ var ParkingMap = ParkingMap || {};
         '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
       break;
 
-    case 'rppdistricts.i':
-      content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
-        feature.properties.description + '</div>';
-      break;
-
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
           '<span class="location">' + feature.properties.name + ' </span>' : '') +
@@ -393,7 +382,8 @@ var ParkingMap = ParkingMap || {};
           '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
       break;
 
-    case 'valet.i':
+    case 'valet.circle.i':
+    case 'valet.label.i':
       content = '<div>' + (feature.properties.Name ?
           '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
@@ -412,7 +402,7 @@ var ParkingMap = ParkingMap || {};
       //         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
       //      break;
 
-    case 'meters.i':
+    case 'meterblocks.i':
       var template = _.template(
         '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
         '<% _.each(features,function(regulations,key){ %>' +
@@ -438,14 +428,19 @@ var ParkingMap = ParkingMap || {};
 
     default:
       content = '<div>' + (feature.properties.name ?
-          '<span class="location">' + feature.properties.name + '</span>' : '') +
+          '<span class="location">' + feature.properties.name + '</span><br>' : '') +
         (feature.properties.title ?
-          '<strong>' + feature.properties.title + '</strong>' : '') +
+          '<strong>' + feature.properties.title + '</strong><br>' : '') +
         (feature.properties.description ?
-          '<span class="detail">' + feature.properties.description : '') +
+          '<span class="detail">' + feature.properties.description + '<br>' : '') +
         (feature.properties.capacity ?
           'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
       break;
+      
+//      case 'rppdistricts.i':
+//        content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
+//          feature.properties.description + '</div>';
+//      break;
     }
     info.innerHTML = content;
   };
@@ -476,7 +471,7 @@ var ParkingMap = ParkingMap || {};
 
   function empty() {
     //    console.log('Here is your stupid empty.');
-    info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
+    info.innerHTML = '';
   }
 
   // setup persistent state for sharing tools
@@ -502,7 +497,7 @@ var ParkingMap = ParkingMap || {};
 
     e.preventDefault();
 
-    // iOS doesn't support the copy command and fails silently
+    // iOS doesn't support the copy command and fails silently like a jerk
     if (!is.iOS) {
       // create off-screen textarea if needed
       if (!copyShareLinkTextarea) {

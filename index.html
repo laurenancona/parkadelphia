@@ -16,7 +16,7 @@ window.location.protocol = "https";
   <!--  OG & Metadata  -->
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <meta name="apple-mobile-web-app-capable" content="yes">
-<!--  <meta name="viewport" content="width=devicewidth, minimal-ui">-->
+  <!--  <meta name="viewport" content="width=devicewidth, minimal-ui">-->
   <meta property="og:title" content="Parkadelphia" />
   <meta property="og:url" content="https://parkadelphia.com" />
   <meta property="og:site_name" content="Parkadelphia" />
@@ -44,7 +44,7 @@ window.location.protocol = "https";
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
   <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
   <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css" rel="stylesheet">-->
-  
+
   <!--CUSTOM STYLES-->
   <link href="css/style.css" type="text/css" rel='stylesheet'>
   <link href="css/data.css" type="text/css" rel='stylesheet'>
@@ -79,10 +79,8 @@ bottom: 0;
 width: 100%;
 */
   }
-
   /*  Hide flash of unstyled markup */
-
-/*
+  /*
   body > .inner {
     opacity: 0;
   }
@@ -119,24 +117,24 @@ width: 100%;
   <!-- End Google Tag Manager -->
 
   <!-- TODO: Configure monitoring-->
-    <!-- Sentry -->
-    <!-- <script>
+  <!-- Sentry -->
+  <!-- <script>
         Raven.config('https://3dc95625e5a44d34afb875ba056cece7@app.getsentry.com/53368').install()
       </script> -->
-    <!-- End Sentry -->
+  <!-- End Sentry -->
 
   <!--BEGIN HEADER LAYOUT-->
   <div class="inner">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout-icon">
-<!--          <img src="img/hotlink-ok/icon_Icon.svg" width="20px" />-->
-          <span id="menu-icon" class="mdl-layout__drawer-button"><i class="ion-map"></i></span>
+          <!--          <img src="img/hotlink-ok/icon_Icon.svg" width="20px" />-->
+          <!--          <span id="menu-icon" class="mdl-layout__drawer-button"><i class="ion-map"></i></span>-->
         </div>
         <div class="mdl-layout__header-row">
           <span class="mdl-layout__title">
             <span class="app-title">
-              <a href="./">Parkadelphia</a>
+              Parkadelphia
             </span> &nbsp;
           </span>
           <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
@@ -150,14 +148,14 @@ width: 100%;
           </nav>
           <span id="help-icon" class="icons ion-help" style="font-size: 1.5rem;"></span>
         </div>
-        
+
         <div id="map-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="visibility:hidden"></div>
       </header>
 
       <!--SIDE DRAWER-->
 
       <div class="mdl-layout__drawer">
-        <img class="drawer-icon" src="img/hotlink-ok/icon_Icon.svg" style="width: 20px;"/>
+        <img class="drawer-icon" src="img/hotlink-ok/icon_Icon.svg" style="width: 20px;" />
         <span class="mdl-layout__title app-title">
           <a href="/">Parkadelphia</a>
         </span>
@@ -176,29 +174,33 @@ width: 100%;
             <div class="mdl-tabs__panel is-active" id="options">
 
               <h5>Residential Permits</h5>
-              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppblocks">
-                <input type="checkbox" id="rppblocks" class="mdl-switch__input" checked>
-                <span class="mdl-switch__label">Blocks</span>
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rpp">
+                <input type="checkbox" id="rpp" class="mdl-switch__input">
+                <span class="mdl-switch__label">Districts&nbsp;&nbsp;
+                  <img src="img/icons/rpp_pink.svg" width="12px"/>&nbsp;&nbsp;&nbsp;&nbsp;Blocks&nbsp;&nbsp;<img src="img/icons/rpp_blue.svg" width="12px"/></span>
               </label>
 
+              <!--
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
                 <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
                 <span class="mdl-switch__label">Districts</span>
               </label>
+-->
               <hr>
 
-              <h5>Meters</h5>
+              <h5>Metered Parking</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="meters">
                 <input type="checkbox" id="meters" class="mdl-switch__input" checked>
-                <span class="mdl-switch__label">Automobile</span>
+                <span class="mdl-switch__label">Automobile&nbsp;&nbsp;<img src="img/icons/meter_orange.svg" width="12px"/></span>
               </label>
-              <!--
-<label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
-<input type="checkbox" id="scooters" class="mdl-switch__input" disabled>
-<span class="mdl-switch__label">Motorcycle/Scooter<span id="bicycle" class="icon-menu"><i class="ion-android-bicycle"></i></span>
-</span>
-</label>
--->
+
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="scooters">
+                <input type="checkbox" id="scooters" class="mdl-switch__input">
+                <span class="mdl-switch__label"> Motorcycle/Scooter &nbsp;&nbsp;<img src="img/icons/scooter-24-circle-grey.svg" width="17px"/>
+                </span>
+                </span>
+              </label>
+              <!--            <span id="bicycle" class="icon-menu"><i class="ion-android-bicycle"></i>-->
               <hr>
               <h5>Lots</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
@@ -206,14 +208,20 @@ width: 100%;
                 <span class="mdl-switch__label">Residential Lots</span>
               </label>
 
-              <h5>Exceptions</h5>
+              <h5>Other Regulations</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
                 <input type="checkbox" id="valet" class="mdl-switch__input">
-                <span class="mdl-switch__label">Valet Parking</span>
+                <span class="mdl-switch__label">Valet Parking&nbsp;&nbsp;<img src="img/icons/valet-v-24-blue.svg" width="16px"/></span>
               </label>
+
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="snowroutes">
+                <input type="checkbox" id="snowroutes" class="mdl-switch__input">
+                <span class="mdl-switch__label">Snow Emergency Routes</span>
+              </label>
+
               <hr>
 
-              <h5>Map</h5>
+              <h5>Base Map</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="satellite">
                 <input type="checkbox" id="satellite" class="mdl-switch__input">
                 <span class="mdl-switch__label">Satellite</span>
@@ -255,6 +263,7 @@ width: 100%;
                   <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>On-street Metered parking blocks</s> 1/16</li>
                   <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Search by geolocation</s> 1/16</li>
                   <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;<s>Search by address</s>1/16</li>
+                  <li><span class="icon ion-android-checkbox-outline"> </span>&nbsp;Individual meter locations - in progress 2/16</li>
                   <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Truck/Package Delivery Zones</li>
                   <li><span class="icon ion-android-checkbox-outline-blank"> </span>&nbsp;Search by time, day, length and cost</li>
                 </ul>
@@ -271,7 +280,6 @@ width: 100%;
                   <li>Adel Ebied</li>
                   <li>Mark Wheeler</li>
                   <li>Chris Alfano, Code for Philly</li>
-                  <li>Mayor Michael Nutter</li>
                 </ul>
               <div>
             -->
@@ -284,11 +292,11 @@ width: 100%;
 
       <main class="mdl-layout__content">
         <!-- HERE LIES A MAP-->
-        <div class="map-wrapper">
-          <!-- Add Mapbox watermark -->
-          <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-          <div id="map"></div>
-        </div>
+        <!--        <div class="map-wrapper">-->
+        <!-- Add Mapbox watermark -->
+        <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
+        <div id="map"></div>
+        <!--        </div>-->
         <div id="geocoder-container" class="quiet"></div>
         <div id="info" class="info"></div>
 
@@ -316,9 +324,9 @@ width: 100%;
           </div>
         </footer>
 
+        <!--    </div>-->
+      </main>
     </div>
-    </main>
-  </div>
   </div>
   <!--END .INNER-->
   </div>
@@ -334,7 +342,7 @@ width: 100%;
     ParkingMap.allowFancyMap = true;
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-<!--  <script type="text/javascript" src="js/vendor/please-wait.js"></script>-->
+  <!--  <script type="text/javascript" src="js/vendor/please-wait.js"></script>-->
   <script src="js/appgl-dev.js"></script>
 </body>
 
