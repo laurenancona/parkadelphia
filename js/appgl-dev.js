@@ -6,11 +6,13 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rpp',
+  var layerNames = [
   'scooters', 
   'lots',
   'valet',
+  'snowroutes',
   'meters',
+  'rpp',
   'satellite'];
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpa2d4YWpubTAwdXR1eGttcmw5dXYyenIifQ.JeAAAiEbZq3OB4L0cShJMA';
@@ -103,7 +105,7 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
-    /* TODO: setTimeout instead of waiting for user to click
+    /* setTimeout instead of waiting for user to click
        from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
     */
 
@@ -217,11 +219,12 @@ var ParkingMap = ParkingMap || {};
      */
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
-        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'scooters': ['scooters.i', 'scooters.circle.i'],
+        'valet': ['valet.label.i', 'valet.circle.i'],
+        'snowroutes': ['snow_emergency_routes'],
         'lots': ['lots.i', 'lots.label'],
-        'valet': ['valet.label', 'valet.circle.i'],
         'meters': ['meterblocks.i', 'meters.i', 'meters.circle.i'],
+        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'satellite': ['satellite']
       };
 
@@ -356,11 +359,6 @@ var ParkingMap = ParkingMap || {};
         '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
       break;
 
-    case 'rppdistricts.i':
-      content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
-        feature.properties.description + '</div>';
-      break;
-
     case 'lots.i':
       content = '<div>' + (feature.properties.name ?
           '<span class="location">' + feature.properties.name + ' </span>' : '') +
@@ -385,6 +383,7 @@ var ParkingMap = ParkingMap || {};
       break;
 
     case 'valet.circle.i':
+    case 'valet.label.i':
       content = '<div>' + (feature.properties.Name ?
           '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
@@ -429,14 +428,19 @@ var ParkingMap = ParkingMap || {};
 
     default:
       content = '<div>' + (feature.properties.name ?
-          '<span class="location">' + feature.properties.name + '</span>' : '') +
+          '<span class="location">' + feature.properties.name + '</span><br>' : '') +
         (feature.properties.title ?
-          '<strong>' + feature.properties.title + '</strong>' : '') +
+          '<strong>' + feature.properties.title + '</strong><br>' : '') +
         (feature.properties.description ?
-          '<span class="detail">' + feature.properties.description : '') +
+          '<span class="detail">' + feature.properties.description + '<br>' : '') +
         (feature.properties.capacity ?
           'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
       break;
+      
+//      case 'rppdistricts.i':
+//        content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
+//          feature.properties.description + '</div>';
+//      break;
     }
     info.innerHTML = content;
   };

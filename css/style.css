@@ -468,7 +468,7 @@ body > div > div > div > div.mdl-layout__drawer.is-visible > span > img {
 }
 /*.mdl-layout__header-row,*/
 header.mdl-layout__header {
-  min-height: 42px!important;
+  min-height: 35px!important;
   z-index: inherit!important;
 }
 .mdl-layout__drawer>.mdl-layout__title {
