@@ -67,7 +67,7 @@
 display: none;
 }
 #geocoder-container {
-  top: 42px;
+  top: 36px;
 /*  display: none;*/
 /*  width: 100%;*/
 /*  margin-top: 10px;*/
@@ -315,7 +315,7 @@ p a {
 #status-icon {
   font-size: 1.1rem;
   top: 12px;
-/*  right: 10px;*/
+  right: 10px;
   float: right;
   position: absolute;
   color: #F2360C;

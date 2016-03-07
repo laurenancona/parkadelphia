@@ -17,7 +17,7 @@ window.location.protocol = "https";
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!--  <meta name="viewport" content="width=devicewidth, minimal-ui">-->
-  <meta property="og:title" content="Parkadelphia" />
+  <meta property="og:title" content="Parkadelphia | Demystify parking in Philadelphia" />
   <meta property="og:url" content="https://parkadelphia.com" />
   <meta property="og:site_name" content="Parkadelphia" />
   <meta property="og:image" content="" />
@@ -40,7 +40,7 @@ window.location.protocol = "https";
 
   <!--MAPBOX STYLES-->
 
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
   <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
   <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css" rel="stylesheet">-->
@@ -52,9 +52,9 @@ window.location.protocol = "https";
   <!--JS-->
 
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
-  <script src="js/mapbox-gl-dev.js"></script>
+<!--  <script src="js/mapbox-gl-dev.js"></script>-->
   <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
-  <!--  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script> -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script> 
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
 
   <script defer src="js/vendor/material_1-1-0.min.js"></script>
@@ -124,7 +124,7 @@ width: 100%;
   <!-- End Sentry -->
 
   <!--BEGIN HEADER LAYOUT-->
-  <div class="inner">
+<!--  <div class="inner">-->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout-icon">
@@ -136,11 +136,6 @@ width: 100%;
             <span class="app-title">
               Parkadelphia
             </span> &nbsp;
-          </span>
-          <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
-            <span class="mdl-tooltip" for="status-icon">
-              Warning: since this jawn is in <b>beta</b>, don't depend on the data.
-            </span>
           </span>
           <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
@@ -292,13 +287,19 @@ width: 100%;
 
       <main class="mdl-layout__content">
         <!-- HERE LIES A MAP-->
-        <!--        <div class="map-wrapper">-->
+        <div class="map-wrapper">
         <!-- Add Mapbox watermark -->
         <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-        <div id="map"></div>
-        <!--        </div>-->
+          <div id="map">
+            <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
+              <span class="mdl-tooltip" for="status-icon">
+                Warning: since this jawn is in <b>beta</b>, don't depend on the data.
+              </span>
+            </span>
+          </div>
         <div id="geocoder-container" class="quiet"></div>
         <div id="info" class="info"></div>
+        </div>
 
         <footer class="">
           <div id="bottom-icons" class="">
@@ -327,7 +328,7 @@ width: 100%;
         <!--    </div>-->
       </main>
     </div>
-  </div>
+<!--  </div>-->
   <!--END .INNER-->
   </div>
 

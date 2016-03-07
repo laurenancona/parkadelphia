@@ -217,14 +217,15 @@ var ParkingMap = ParkingMap || {};
      *  loaded when selected (instead of loading everything first, 
      *  then disabling after UI state check)
      */
+//    map.on('load', function () {
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
-        'scooters': ['scooters.i', 'scooters.circle.i'],
-        'valet': ['valet.label.i', 'valet.circle.i'],
-        'snowroutes': ['snow_emergency_routes'],
+        'scooters': ['scooters.i'],
+        'valet': ['valet.i'],
+        'snowroutes': ['snow_emergency_routes', 'snow_emergency_routes.label'],
         'lots': ['lots.i', 'lots.label'],
-        'meters': ['meterblocks.i', 'meters.i', 'meters.circle.i'],
-        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
+        'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters_circle.i'],
+        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'satellite': ['satellite']
       };
 
@@ -382,8 +383,7 @@ var ParkingMap = ParkingMap || {};
           '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
       break;
 
-    case 'valet.circle.i':
-    case 'valet.label.i':
+    case 'valet.i':
       content = '<div>' + (feature.properties.Name ?
           '<span class="location">' + feature.properties.Name + '</span>' : '') +
         (feature.properties.Hours ?
