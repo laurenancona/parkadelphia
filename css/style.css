@@ -543,6 +543,7 @@ overflow-y: hidden;
   margin-top: 2px!important;
   color: #eee!important;
   letter-spacing: .3rem!important;
+  vertical-align: middle;
 }
 .mdl-tooltip {
   letter-spacing: normal!important;
@@ -591,7 +592,7 @@ mdl-layout__header.mdl-layout__drawer-button {
 }
 .info {
   position: absolute;
-  bottom: 30px;
+  bottom: 38px;
   font-size: .8rem;
   color: white;
   width: 100%!important;

@@ -96,7 +96,7 @@ var ParkingMap = ParkingMap || {};
       if (map.loaded()) {
         var point = getPoint(evt);
         featuresAt(map, point, {
-          radius: 10
+          radius: 7
         }, function (err, features) {
           if (err) throw err;
           ParkingMap.map._container.classList.toggle('interacting', features.length > 0);
@@ -119,9 +119,9 @@ var ParkingMap = ParkingMap || {};
         console.log(p);
         if (p > 0) {
           map.flyTo({
-            center: [-75.1650, 39.9433],
-            zoom: 13,
-            speed: 0.2,
+            center: [-75.1646, 39.9516],
+            zoom: 15,
+            speed: 0.3,
             bearing: 9.2,
             pitch: 0
           });
@@ -187,7 +187,7 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
             layerName = feature.layer.id;
-            if (layerName === 'meterblocks.i') {
+            if (layerName === 'meters') {
               showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
@@ -229,7 +229,13 @@ var ParkingMap = ParkingMap || {};
         'satellite': ['satellite']
       };
 
+      
 //      loading_screen.finish();
+        // Disable the default error handler
+        map.off('style.error', map.onError);
+        map.off('source.error', map.onError);
+        map.off('tile.error', map.onError);
+        map.off('layer.error', map.onError);
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -335,7 +341,7 @@ var ParkingMap = ParkingMap || {};
           geocoderInput.blur(); // blur so keyboard goes away
         }
 
-        // override Philadelphia bounding box bug by forcing center
+        // override janky Philadelphia bounding box bug by forcing center on point
         map.flyTo({
           center: center,
           zoom: 15
@@ -356,8 +362,11 @@ var ParkingMap = ParkingMap || {};
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-        content = '<div class="location"><span class="detail-icon"><img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + feature.properties.block_street + '</div>' +
-        '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
+        content = '<div class="location"><span class="detail-icon">' +
+          '<img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + 
+          feature.properties.block_street + '</div>' +
+        '<div class="side">Residential permit: ' + 
+          feature.properties.sos + '</div>';
       break;
 
     case 'lots.i':
@@ -393,38 +402,59 @@ var ParkingMap = ParkingMap || {};
         '</p></div>';
       break;
 
-      //    case 'meters.i':
-      //        content = '<div>' + (feature.properties.street ?
-      //          '<strong>' + feature.properties.street + '</strong>' : '') +
-      //        (feature.properties.from_day ?
-      //         '<p>' + feature.properties.from_day + '-' + feature.properties.to_day + '</p>' : '') +
-      //        (feature.properties.from_time ?
-      //         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
-      //      break;
-
-    case 'meterblocks.i':
-      var template = _.template(
-        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
-        '<% _.each(features,function(regulations,key){ %>' +
-        '<span class="location"><%= key %></span><br>' +
-        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
-        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
-        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
-        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
-        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
-        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
-        '<% }) %>' +
-        '<% }) %></span></div>');
-
-      var byStreet = _.groupBy(feature, function (value) {
-        return value.properties.street + ', ' + value.properties.side + ' Side';
-      });
-      content = template({
-        'features': byStreet
-      });
+    case 'meterblocks_n.i':
+    case 'meterblocks_s.i':
+    case 'meterblocks_e.i':
+    case 'meterblocks_w.i':
+      content = '<div>' + (feature.properties.l_hund_block_label ?
+          '<span class="location">' + feature.properties.l_hund_block_label + ', ' + 
+            feature.properties.side + ' side</span><br>' : '') +
+        '<span class="detail">' + 
+        '<span class="regulations">' +
+        '<span class="rate">' + feature.properties.rate + '</span>' +
+        (feature.properties.rate1 ?
+          feature.properties.rate1 : '') +
+        (feature.properties.rate2 ?
+         '<br>' + feature.properties.rate2 : '') +
+        (feature.properties.rate3 ?
+         '<br>' + feature.properties.rate3 + '<br>' : '') +
+        '</span>' +
+        '<span class="no-parking">' +
+        (feature.properties.no_parking_message ?
+          feature.properties.no_parking_message + '<br>' : '') + 
+        (feature.properties.no_parking1 ?
+          feature.properties.no_parking1 + '<br>' : '') + 
+        (feature.properties.no_parking2 ?
+          feature.properties.no_parking2 : '') + 
+        '</span>' + '</span>' + '</div><br>';
       break;
+
+//    case 'meterblocks_n.i':
+//    case 'meterblocks_s.i':
+//    case 'meterblocks_e.i':
+//    case 'meterblocks_w.i':
+//      var template = _.template(
+//        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
+//        '<% _.each(features,function(regulations,key){ %>' +
+//        '<span class="location"><%= key %></span><br>' +
+//        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+//        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
+//        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
+//        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+//        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
+//        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
+//        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
+//        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
+//        '<% }) %>' +
+//        '<% }) %></span></div>');
+//
+//      var byStreet = _.groupBy(feature, function (value) {
+//        return value.properties.street + ', ' + value.properties.side + ' Side';
+//      });
+//      content = template({
+//        'features': byStreet
+//      });
+//      break;
 
     default:
       content = '<div>' + (feature.properties.name ?

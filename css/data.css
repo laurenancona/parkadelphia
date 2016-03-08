@@ -6,7 +6,7 @@
   font-family: 'montserrat', sans-serif;
   font-size: 1rem;
   line-height: .8;
-  /*padding-top: 8px;*/
+  padding: 8px 0px;
 
 }
 .side {
@@ -21,12 +21,20 @@
 }
 .detail {
   font-family: 'Open Sans', 'sans-serif'!important;
-  margin-top: 0px!important;
+  margin-top: 8px!important;
   line-height: 1.2rem;
   font-weight: 200;
   font-size: .7rem;
   letter-spacing: .07rem;
-/*  max-width: 350px;*/
+  line-height: 1.1rem;
+/*  text-align: left;*/
+/*  float: left;*/
+/*  padding-left: 20px;*/
+  width: 320px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  display: block;
 }
 .limit {
   border-left: 1px dotted white;
@@ -34,5 +42,26 @@
 }
 .rate {
   border-right: 1px dotted white;
-  padding-right: 5px;
+  display: block;
+  float: left;
+  height: 40px;
+  margin-right: 10px;
+/*  margin-left: 20%;*/
+  padding-right: 20px;
+  position: relative;
+  width: 50px;
+  font-size: 1.2rem;
+}
+.regulations {
+  margin-left: 20px;
+  text-align: left;
+  float: left;  
+}
+.period {
+  font-size: .5rem;
+}
+.no-parking {
+  margin-top: 5px;
+  text-align: left;
+  float: left;
 }
