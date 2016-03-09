@@ -32,14 +32,12 @@ window.location.protocol = "https";
   <!-- Depends -->
 
   <!-- CSS -->
-
   <link rel="stylesheet" href="css/vendor/material-lime-lt-blue_1-1-0.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/vendor/please-wait.css" />
 
   <!--MAPBOX STYLES-->
-
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
   <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
@@ -50,18 +48,16 @@ window.location.protocol = "https";
   <link href="css/data.css" type="text/css" rel='stylesheet'>
 
   <!--JS-->
-
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
-<!--  <script src="js/mapbox-gl-dev.js"></script>-->
+  <!--  <script src="js/mapbox-gl-dev.js"></script>-->
   <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script> 
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script> 
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
 
   <script defer src="js/vendor/material_1-1-0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
   <!--ICONS-->
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
@@ -80,21 +76,20 @@ width: 100%;
 */
   }
   /*  Hide flash of unstyled markup */
-  /*
+  
   body > .inner {
-    opacity: 0;
+    opacity: .5;
   }
   body.pg-loaded > .inner {
     display: block;
     opacity: 1;
   }
-*/
+
 </style>
 
 <body>
 
   <!-- COUNT ALL THE THINGS -->
-
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6WFRN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
@@ -124,13 +119,10 @@ width: 100%;
   <!-- End Sentry -->
 
   <!--BEGIN HEADER LAYOUT-->
-<!--  <div class="inner">-->
+  <div class="inner">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
-        <div class="mdl-layout-icon">
-          <!--          <img src="img/hotlink-ok/icon_Icon.svg" width="20px" />-->
-          <!--          <span id="menu-icon" class="mdl-layout__drawer-button"><i class="ion-map"></i></span>-->
-        </div>
+        <div class="mdl-layout-icon"></div>
         <div class="mdl-layout__header-row">
           <span class="mdl-layout__title">
             <span class="app-title">
@@ -169,18 +161,17 @@ width: 100%;
             <div class="mdl-tabs__panel is-active" id="options">
 
               <h5>Residential Permits</h5>
-              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rpp">
-                <input type="checkbox" id="rpp" class="mdl-switch__input">
-                <span class="mdl-switch__label">Districts&nbsp;&nbsp;
-                  <img src="img/icons/rpp_pink.svg" width="12px"/>&nbsp;&nbsp;&nbsp;&nbsp;Blocks&nbsp;&nbsp;<img src="img/icons/rpp_blue.svg" width="12px"/></span>
-              </label>
-
-              <!--
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rppdistricts">
                 <input type="checkbox" id="rppdistricts" class="mdl-switch__input">
-                <span class="mdl-switch__label">Districts</span>
+                <span class="mdl-switch__label">Districts&nbsp;&nbsp;
+                  <img src="img/icons/rpp_pink.svg" width="12px"/></span>
               </label>
--->
+              
+              <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rpp">
+                <input type="checkbox" id="rpp" class="mdl-switch__input">
+                <span class="mdl-switch__label">Blocks&nbsp;&nbsp;<img src="img/icons/rpp_blue.svg" width="12px"/></span>
+              </label>
+
               <hr>
 
               <h5>Metered Parking</h5>
@@ -328,7 +319,7 @@ width: 100%;
         <!--    </div>-->
       </main>
     </div>
-<!--  </div>-->
+  </div>
   <!--END .INNER-->
   </div>
 
@@ -340,10 +331,10 @@ width: 100%;
 
   <script>
     var ParkingMap = ParkingMap || {};
-    ParkingMap.allowFancyMap = true;
+    ParkingMap.allowFancyMap = true;    
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <!--  <script type="text/javascript" src="js/vendor/please-wait.js"></script>-->
+    <script type="text/javascript" src="js/vendor/please-wait.js"></script>
   <script src="js/appgl-dev.js"></script>
 </body>
 

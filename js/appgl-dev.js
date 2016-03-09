@@ -13,6 +13,7 @@ var ParkingMap = ParkingMap || {};
   'snowroutes',
   'meters',
   'rpp',
+  'rppdistricts',
   'satellite'];
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpa2d4YWpubTAwdXR1eGttcmw5dXYyenIifQ.JeAAAiEbZq3OB4L0cShJMA';
@@ -84,7 +85,7 @@ var ParkingMap = ParkingMap || {};
       hash: true,
       touchRotate: false
     });
-
+    
     // Change cursor state when hovering on interactive features
 
     var getPoint = function (evt) {
@@ -114,6 +115,7 @@ var ParkingMap = ParkingMap || {};
     });
 
     function goHome() {
+//      debugger
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
@@ -225,17 +227,19 @@ var ParkingMap = ParkingMap || {};
         'snowroutes': ['snow_emergency_routes', 'snow_emergency_routes.label'],
         'lots': ['lots.i', 'lots.label'],
         'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters_circle.i'],
-        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label', 'rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
+        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
+        'rppdistricts': ['rppdistricts', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'satellite': ['satellite']
       };
-
+            
+      loading_screen.finish();
+      map.resize();
       
-//      loading_screen.finish();
         // Disable the default error handler
-        map.off('style.error', map.onError);
-        map.off('source.error', map.onError);
-        map.off('tile.error', map.onError);
-        map.off('layer.error', map.onError);
+//        map.off('style.error', map.onError);
+//        map.off('source.error', map.onError);
+//        map.off('tile.error', map.onError);
+//        map.off('layer.error', map.onError);
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -479,11 +483,11 @@ var ParkingMap = ParkingMap || {};
 
   //  Show a loading screen because we are currently doing it a bit backwards
 
-//  loading_screen = pleaseWait({
-//    logo: "img/hotlink-ok/load-logo-01.svg",
-//    backgroundColor: '#404040',
-//    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
-//  });
+  loading_screen = pleaseWait({
+    logo: "img/hotlink-ok/load-logo-01.svg",
+    backgroundColor: '#404040',
+    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
+  });
 
   //  TODO: remove extra else below
 
