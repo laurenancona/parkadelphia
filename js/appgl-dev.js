@@ -236,10 +236,10 @@ var ParkingMap = ParkingMap || {};
       map.resize();
       
         // Disable the default error handler
-//        map.off('style.error', map.onError);
-//        map.off('source.error', map.onError);
-//        map.off('tile.error', map.onError);
-//        map.off('layer.error', map.onError);
+        map.off('style.error', map.onError);
+        map.off('source.error', map.onError);
+        map.off('tile.error', map.onError);
+        map.off('layer.error', map.onError);
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
