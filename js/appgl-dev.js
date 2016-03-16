@@ -315,7 +315,9 @@ var ParkingMap = ParkingMap || {};
         mapProgressDom.style.visibility = '';
         geoLocating = true;
 
-        navigator.geolocation.getCurrentPosition(function(position) {
+        // locate user and watch for movement
+        // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
+        navigator.geolocation.watchPosition(function(position) {
           var myLocation = {
             type: 'Point',
             coordinates: [position.coords.longitude, position.coords.latitude]
