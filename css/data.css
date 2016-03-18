@@ -25,15 +25,16 @@
   font-weight: 200;
   font-size: .7rem;
   letter-spacing: .07rem;
-  line-height: 1.1rem;
-  /* text-align: left; */
+  /* line-height: 1.1rem; */
+  text-align: left;
   /* float: left; */
-  padding-left: 20px;
-  width: 320px;
+  /* padding-left: 20px; */
+  width: 310px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 5px;
   position: relative;
-  /* display: block; */
+  display: block;
 }
 .limit {
   border-left: 1px dotted white;
@@ -41,6 +42,7 @@
 }
 .rate {
   border-right: 1px dotted white;
+  text-transform: lowercase;
   display: block;
   float: left;
   height: 40px;
@@ -53,9 +55,9 @@
   text-align: center;
 }
 .regulations {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   text-align: left;
-  float: left;  
+  float: left;
 }
 .period {
   font-size: .5rem;

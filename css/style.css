@@ -125,7 +125,7 @@ color: #eee;
 .close {
   top: 10px!important;
   right: 10px!important;
-  position: relative;
+  position: absolute;
 }
 form#51738395059163 {
   margin-top: 0px;
@@ -204,6 +204,11 @@ footer {
 }
 a {
   color: inherit!important;
+}
+dialog li {
+  color: #eee;
+  line-height: 1.4rem;
+  font-size: 1rem;
 }
 li a {
   /*  font-size: 1.6em!important;*/
@@ -467,16 +472,6 @@ body > div > div > div > header > img,
 /*  width: 18px!important;*/
   margin-top: -3px!important;
   background-color: none!important;
-  /*
-  transform: rotate(180deg) ;
-  -webkit-transform: rotate(180deg) ;
-  -moz-transform: rotate(180deg) ;
-  -o-transform: rotate(180deg) ;
-  -ms-transform: rotate(180deg) ;
-  width: 28px!important;
-  padding-left: 15px!important;
-  margin-top: 4px!important;
-  */
 }
  .mdl-button.mdl-js-button.mdl-button--icon {
     margin-top: 7px!important;
@@ -647,6 +642,7 @@ mdl-layout__header.mdl-layout__drawer-button {
   /*  background: #434343;*/
   width: 100%;
   padding: 5px 7px;
+  bottom: -10px;
 }
 
 #meter-info {

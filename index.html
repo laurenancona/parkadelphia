@@ -327,68 +327,17 @@ window.location.protocol = "https";
   <button type="button" class="mdl-button close">
     <i class="material-icons">clear</i>
   </button>
-  <h4 class="mdl-dialog__title">Feedback</h4>
+  <h4 class="mdl-dialog__title">How to use this jawn</h4>
   <div class="mdl-dialog__content">
-    <iframe
-            id="JotFormIFrame"
-            onload="window.parent.scrollTo(0,0)"
-            allowtransparency="true"
-            src="https://form.jotform.com/51738395059163"
-            frameborder="0"
-            style="width:100%;
-                   height:751px;
-                   border:none;"
-            scrolling="no">
-    </iframe>
-    <script type="text/javascript">
-      window.handleIFrameMessage = function(e) {
-        var args = e.data.split(":");
-        var iframe = document.getElementById("JotFormIFrame");
-        if (!iframe)
-          return;
-        switch (args[0]) {
-          case "scrollIntoView":
-            iframe.scrollIntoView();
-            break;
-          case "setHeight":
-            iframe.style.height = args[1] + "px";
-            break;
-          case "collapseErrorPage":
-            if (iframe.clientHeight > window.innerHeight) {
-              iframe.style.height = window.innerHeight + "px";
-            }
-            break;
-          case "reloadPage":
-            window.location.reload();
-            break;
-        }
-        var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
-        if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
-          var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
-          iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
-        }
-      };
-      if (window.addEventListener) {
-        window.addEventListener("message", handleIFrameMessage, false);
-      } else if (window.attachEvent) {
-        window.attachEvent("onmessage", handleIFrameMessage);
-      }
-      if(window.location.href && window.location.href.indexOf("?") > -1) {
-        var ifr = document.getElementById("JotFormIFrame");
-        var get = window.location.href.substr(window.location.href.indexOf("?") + 1);
-        if(ifr && get.length > 0) {
-          var src = ifr.src;
-          src = src.indexOf("?") > -1 ? src + "&" + get : src  + "?" + get;
-          ifr.src = src;
-        }
-      }
-    </script>
+    <ul>
+      <li>Thing 1</li>
+      <li>Thing 2</li>
+      <li>Thing 3</li>
+    </ul>
+    
   </div>
-  <div class="mdl-dialog__actions">
+  <div class="mdl-dialog__actions--full-width">
 <!--    <button type="button" class="mdl-button">Agree</button>-->
-    <button type="button" class="mdl-button close">
-      <i class="material-icons">clear</i>
-    </button>
   </div>
 </dialog>
 
