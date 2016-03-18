@@ -67,18 +67,11 @@ window.location.protocol = "https";
 </head>
 
 <style>
-  #map {
-    /*
-position: absolute;
-top: 54px;
-bottom: 0;
-width: 100%;
-*/
-  }
+  
   /*  Hide flash of unstyled markup */
   
   body > .inner {
-    opacity: .5;
+    opacity: .1;
   }
   body.pg-loaded > .inner {
     display: block;
@@ -119,6 +112,7 @@ width: 100%;
   <!-- End Sentry -->
 
   <!--BEGIN HEADER LAYOUT-->
+  <!-- INNER CLASS FOR LOAD SCREEN-->
   <div class="inner">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -133,9 +127,8 @@ width: 100%;
           <nav class="mdl-navigation">
             <!--SEARCH?-->
           </nav>
-          <span id="help-icon" class="icons ion-help" style="font-size: 1.5rem;"></span>
+          <span id="show-dialog" type="button" class="icons ion-help help-icon mdl-button"></span>
         </div>
-
         <div id="map-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="visibility:hidden"></div>
       </header>
 
@@ -143,9 +136,7 @@ width: 100%;
 
       <div class="mdl-layout__drawer">
         <img class="drawer-icon" src="img/hotlink-ok/icon_Icon.svg" style="width: 20px;" />
-        <span class="mdl-layout__title app-title">
-          <a href="/">Parkadelphia</a>
-        </span>
+        <span class="mdl-layout__title app-title">Parkadelphia</a></span>
         <nav class="mdl-navigation">
 
           <!-- TAB MENU -->
@@ -166,7 +157,7 @@ width: 100%;
                 <span class="mdl-switch__label">Districts&nbsp;&nbsp;
                   <img src="img/icons/rpp_pink.svg" width="12px"/></span>
               </label>
-              
+
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rpp">
                 <input type="checkbox" id="rpp" class="mdl-switch__input">
                 <span class="mdl-switch__label">Blocks&nbsp;&nbsp;<img src="img/icons/rpp_blue.svg" width="12px"/></span>
@@ -273,25 +264,30 @@ width: 100%;
           </div>
         </nav>
       </div>
-
-      <!--WHERE THE MAGIC HAPPENS-->
-
+      <!--MAP AND INFO-->
       <main class="mdl-layout__content">
         <!-- HERE LIES A MAP-->
         <div class="map-wrapper">
-        <!-- Add Mapbox watermark -->
-        <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
-          <div id="map">
-            <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
-              <span class="mdl-tooltip" for="status-icon">
-                Warning: since this jawn is in <b>beta</b>, don't depend on the data.
+          <!-- Add Mapbox watermark -->
+          <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
+            <div id="map">
+              <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;">
+                <span class="mdl-tooltip" for="status-icon">
+                  Warning: since this jawn is in <b>beta</b>, don't depend on the data.
+                </span>
               </span>
-            </span>
-          </div>
-        <div id="geocoder-container" class="quiet"></div>
-        <div id="info" class="info"></div>
-        </div>
+            </div>
 
+          <!--GEOCODER SEARCH BAR-->
+          <div id="geocoder-container" class="quiet"></div>
+
+          <!--INFO BOX-->
+          <div id="info-wrapper">
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone"></div>
+            <div id="infoblock" class="info mdl-cell mdl-cell--4-col"></div>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone"></div>
+          </div>
+        </div>
         <footer class="">
           <div id="bottom-icons" class="">
             <div id="icon-group">
@@ -299,10 +295,8 @@ width: 100%;
               <div id="locate" class="icon-menu mdl-button"><i class="icon ion-location"></i></div>
               <div id="search" class="icon-menu mdl-button"><i class="icon ion-search"></i></div>
               <!-- <div id="settings" class="icon-menu"><a href="#"><i class=" icon ion-ios-settings-strong"></i></a></div>-->
-
               <div id="share" class="icon-menu mdl-button"><i class="icon ion-android-share-alt"></i></div>
-
-              <ul class="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect" for="share">
+              <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="share">
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-facebook"><i class="icon ion-social-facebook"></i> <span class="share-label">Facebook</span></a></li>
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-twitter"><i class="icon ion-social-twitter"></i> <span class="share-label">Twitter</span></a></li>
                 <li class="mdl-menu__item share-icon"><a target="_blank" id="share-reddit"><i class="icon ion-social-reddit"></i> <span class="share-label">Reddit</span></a></li>
@@ -316,7 +310,7 @@ width: 100%;
           </div>
         </footer>
 
-        <!--    </div>-->
+        <!-- </div>-->
       </main>
     </div>
   </div>
@@ -328,6 +322,89 @@ width: 100%;
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
   </div>
+
+<dialog class="mdl-dialog">
+  <button type="button" class="mdl-button close">
+    <i class="material-icons">clear</i>
+  </button>
+  <h4 class="mdl-dialog__title">Feedback</h4>
+  <div class="mdl-dialog__content">
+    <iframe
+            id="JotFormIFrame"
+            onload="window.parent.scrollTo(0,0)"
+            allowtransparency="true"
+            src="https://form.jotform.com/51738395059163"
+            frameborder="0"
+            style="width:100%;
+                   height:751px;
+                   border:none;"
+            scrolling="no">
+    </iframe>
+    <script type="text/javascript">
+      window.handleIFrameMessage = function(e) {
+        var args = e.data.split(":");
+        var iframe = document.getElementById("JotFormIFrame");
+        if (!iframe)
+          return;
+        switch (args[0]) {
+          case "scrollIntoView":
+            iframe.scrollIntoView();
+            break;
+          case "setHeight":
+            iframe.style.height = args[1] + "px";
+            break;
+          case "collapseErrorPage":
+            if (iframe.clientHeight > window.innerHeight) {
+              iframe.style.height = window.innerHeight + "px";
+            }
+            break;
+          case "reloadPage":
+            window.location.reload();
+            break;
+        }
+        var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+        if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+          var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
+          iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+        }
+      };
+      if (window.addEventListener) {
+        window.addEventListener("message", handleIFrameMessage, false);
+      } else if (window.attachEvent) {
+        window.attachEvent("onmessage", handleIFrameMessage);
+      }
+      if(window.location.href && window.location.href.indexOf("?") > -1) {
+        var ifr = document.getElementById("JotFormIFrame");
+        var get = window.location.href.substr(window.location.href.indexOf("?") + 1);
+        if(ifr && get.length > 0) {
+          var src = ifr.src;
+          src = src.indexOf("?") > -1 ? src + "&" + get : src  + "?" + get;
+          ifr.src = src;
+        }
+      }
+    </script>
+  </div>
+  <div class="mdl-dialog__actions">
+<!--    <button type="button" class="mdl-button">Agree</button>-->
+    <button type="button" class="mdl-button close">
+      <i class="material-icons">clear</i>
+    </button>
+  </div>
+</dialog>
+
+<script>
+  var dialog = document.querySelector('dialog');
+  var showDialogButton = document.querySelector('#show-dialog');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  showDialogButton.addEventListener('click', function() {
+    dialog.showModal();
+  });
+  dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.close();
+  });
+</script>
 
   <script>
     var ParkingMap = ParkingMap || {};
