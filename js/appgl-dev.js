@@ -200,6 +200,17 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
+    
+    // Show a help dialog when question icon is clicked
+    
+//    var button = document.querySelector('button');
+//    var dialog = document.querySelector('dialog');
+//    button.addEventListener('click', function() {
+//      dialog.showModal();
+//      /* Or dialog.show(); to show the dialog without a backdrop. */
+//    });
+    
+    
 
     var updateLayerVisibility = function (layerName) {
       var toggledLayers = mapLayers[layerName] || [];
@@ -209,7 +220,7 @@ var ParkingMap = ParkingMap || {};
         });
       } else {
         toggledLayers.forEach(function (layer) {
-          map.setLayoutProperty(layer.id, 'visibility', 'none');
+          map.setLayoutProperty(layer.id, 'visibility', 'none')
         });
       }
     };
@@ -299,7 +310,8 @@ var ParkingMap = ParkingMap || {};
       // Add Geolocator via HTML5 api
 
       var geoLocating = false;
-
+//      var watchID;
+      
       document.getElementById('locate').addEventListener('click', function(evt) {
         if (!navigator.geolocation) {
           alert('no location 4 u!!!!1');
@@ -308,6 +320,9 @@ var ParkingMap = ParkingMap || {};
 
         // bail if we're already waiting for the location
         if (geoLocating) {
+        /*  console.log("Stopping watchID "+watchID)
+          navigator.geolocation.clearWatch(watchID);
+          geoLocating = false; */
           return;
         }
 
@@ -317,7 +332,8 @@ var ParkingMap = ParkingMap || {};
 
         // locate user and watch for movement
         // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
-        navigator.geolocation.watchPosition(function(position) {
+        // watchID = navigator.geolocation.watchPosition(function(position) {
+          navigator.geolocation.watchPosition(function(position) {
           var myLocation = {
             type: 'Point',
             coordinates: [position.coords.longitude, position.coords.latitude]
@@ -478,7 +494,7 @@ var ParkingMap = ParkingMap || {};
 //          feature.properties.description + '</div>';
 //      break;
     }
-    info.innerHTML = content;
+    infoblock.innerHTML = content;
   };
 
   ParkingMap.allowFancyMap = true;
@@ -507,7 +523,7 @@ var ParkingMap = ParkingMap || {};
 
   function empty() {
     //    console.log('Here is your stupid empty.');
-    info.innerHTML = '';
+    infoblock.innerHTML = '';
   }
 
   // setup persistent state for sharing tools
