@@ -115,7 +115,7 @@ var ParkingMap = ParkingMap || {};
     });
 
     function goHome() {
-//      debugger
+    // debugger
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
@@ -130,24 +130,6 @@ var ParkingMap = ParkingMap || {};
         }
       }
     }
-
-    // Flatten out pitch on first click for functional use
-
-    //    ParkingMap.map.on('click', function (evt) {
-    //      if (map.loaded()) {
-    //        var p = map.getPitch();
-    //        console.log(p);
-    //        if (p > 0) {
-    //          map.flyTo({
-    //            center: [-75.1650, 39.9433],
-    //            zoom: 13,
-    //            speed: 0.2,
-    //            bearing: 9.2,
-    //            pitch: 0
-    //          });
-    //        }
-    //      }
-    //    });
 
     // Add/remove class for bottom button onClicks
     // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
