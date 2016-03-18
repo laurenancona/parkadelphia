@@ -67,14 +67,14 @@
 display: none;
 }
 #geocoder-container {
-  top: 36px;
-/*  display: none;*/
-/*  width: 100%;*/
-/*  margin-top: 10px;*/
+  top: 35px;
+  /*  display: none;*/
+  /*  width: 100%;*/
+  /*  margin-top: 10px;*/
   position: fixed!important;
   width: 100%;
-/*  bottom: 80px;*/
-/*  z-index: 10000!important;*/
+  /*  bottom: 80px;*/
+  /*  z-index: 10000!important;*/
 }
 #geocoder-container > div {
   min-width:100%;
@@ -110,10 +110,29 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #404040;
+  background-color: #404040!important;
   line-height: 15px!important;
 }
-
+dialog.mdl-dialog {
+  color: #eee;
+  background-color:#46474A!important;
+  height: 90%!important;
+  width: 80%;
+}
+dialog.mdl-dialog p{
+color: #eee;
+}
+.close {
+  top: 10px!important;
+  right: 10px!important;
+  position: relative;
+}
+form#51738395059163 {
+  margin-top: 0px;
+}
+.direct-embed-widgets {
+  z-index: 1!important;
+}
 .map-wrapper {
   position: absolute;
   display: block;
@@ -130,12 +149,16 @@ footer {
   position: fixed;
   bottom: 0px!important;
 }
-#help-icon {
-  right: 20px;
-  top: 10px;
+.help-icon {
+  right: 0px;
+  /*  top: 10px;*/
+  float: right;
   color: white;
   position: absolute;
-  font-size: 1.5 rem!important;
+  font-size: 1.3rem!important;
+  z-index: 1000;
+  width: 20px!important;
+  min-width: 30px!important;
 }
 .share-icon {
 /*width: 20px;*/
@@ -313,12 +336,15 @@ p a {
   color: white;
 }
 #status-icon {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   top: 12px;
-  right: 10px;
+  right: 23px;
   float: right;
   position: absolute;
-  color: #F2360C;
+  color: #F28B0C;
+  /* outline: 1px solid white; */
+  z-index: 10000;
+  stroke: black!important;
 }
 
 /*.legend label,
@@ -540,7 +566,7 @@ overflow-y: hidden;
   margin-left: auto;
 }
 .app-title {
-  margin-top: 2px!important;
+  margin-top: 3px!important;
   color: #eee!important;
   letter-spacing: .3rem!important;
   vertical-align: middle;
@@ -601,10 +627,8 @@ mdl-layout__header.mdl-layout__drawer-button {
   overflow: auto;
   margin-left: auto;
   margin-right: auto;
-/*  background-color: #71767E;*/
   background-color: #434343;
   text-align: center;
-  padding: 5px 0px;
 } 
 
 .info p {
@@ -619,13 +643,10 @@ mdl-layout__header.mdl-layout__drawer-button {
   /*  text-decoration: none;*/
 }
 
-#info div {
+#infoblock {
   /*  background: #434343;*/
-/*  background: #71767E;*/
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-/*  padding: 5px 7px;*/
+  width: 100%;
+  padding: 5px 7px;
 }
 
 #meter-info {
@@ -637,7 +658,6 @@ mdl-layout__header.mdl-layout__drawer-button {
 /*ICONS*/
 
 i.material-icons {
-/*  opacity: 0!important;*/
 }
 #map.interacting .mapboxgl-canvas-container.mapboxgl-interactive,
 #map.interacting .mapboxgl-ctrl-nav-compass,
