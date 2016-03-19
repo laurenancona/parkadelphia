@@ -285,7 +285,7 @@ var ParkingMap = ParkingMap || {};
         "type": "circle",
         "paint": {
           "circle-radius": 6,
-          "circle-color": "#F2360C"
+          "circle-color": "#EFFC1C"
         }
       });
       
@@ -315,7 +315,7 @@ var ParkingMap = ParkingMap || {};
         // locate user and watch for movement
         // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
         // watchID = navigator.geolocation.watchPosition(function(position) {
-          navigator.geolocation.getCurrent8Position(function(position) {
+          navigator.geolocation.getCurrentPosition(function(position) {
           var myLocation = {
             type: 'Point',
             coordinates: [position.coords.longitude, position.coords.latitude]
