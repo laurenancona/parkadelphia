@@ -423,7 +423,7 @@ var ParkingMap = ParkingMap || {};
         (feature.properties.rate3 ?
          '<br>' + feature.properties.rate3 + '<br>' : '') +
         '</span>' +
-        '<span class="loading-icons"></span>'
+        '<span class="loading-icons"></span>' + 
         '<span class="no-parking">' +
         (feature.properties.no_parking_message ?
           feature.properties.no_parking_message + '<br>' : '') + 
