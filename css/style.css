@@ -348,7 +348,7 @@ p a {
   position: absolute;
   color: #F28B0C;
   /* outline: 1px solid white; */
-  z-index: 10000;
+  z-index: 2;
   stroke: black!important;
 }
 
@@ -437,7 +437,7 @@ p a {
 }
 .mdl-menu__container {
   bottom: 42px;
-  background-color: #404040;
+  /* background-color: #404040; */
   color: white;
 }
 .mdl-menu--top-left {
@@ -446,6 +446,9 @@ p a {
 }
 .mdl-menu__item:hover {
   background-color: #4A4A4A;
+}
+.mdl-menu__outline {
+  background-color: #404040;
 }
 .mdl-grid {
   padding: 0px!important;
@@ -641,8 +644,8 @@ mdl-layout__header.mdl-layout__drawer-button {
 #infoblock {
   /*  background: #434343;*/
   width: 100%;
-  padding: 5px 7px;
-  bottom: -10px;
+  /* padding: 5px 7px; */
+  /* bottom: -10px; */
 }
 
 #meter-info {
@@ -654,6 +657,7 @@ mdl-layout__header.mdl-layout__drawer-button {
 /*ICONS*/
 
 i.material-icons {
+  z-index: inherit;
 }
 #map.interacting .mapboxgl-canvas-container.mapboxgl-interactive,
 #map.interacting .mapboxgl-ctrl-nav-compass,

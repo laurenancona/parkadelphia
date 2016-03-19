@@ -58,6 +58,8 @@
   /* margin-left: 20px; */
   text-align: left;
   float: left;
+  width: 280px;
+  margin-bottom: 8px;
 }
 .period {
   font-size: .5rem;
@@ -67,3 +69,17 @@
   text-align: left;
   float: left;
 }
+.loading-icons {
+  border-right: 1px dotted white;
+  text-transform: lowercase;
+  display: block;
+  float: left;
+  height: 40px;
+  margin-right: 10px;
+  /* margin-left: 20%; */
+  padding-right: 20px;
+  position: relative;
+  width: 50px;
+  font-size: 1.2rem;
+  text-align: center;
+} 

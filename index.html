@@ -40,8 +40,6 @@ window.location.protocol = "https";
   <!--MAPBOX STYLES-->
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
-  <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css" rel="stylesheet">-->
-  <!-- <link href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css" rel="stylesheet">-->
 
   <!--CUSTOM STYLES-->
   <link href="css/style.css" type="text/css" rel='stylesheet'>
@@ -143,8 +141,8 @@ window.location.protocol = "https";
 
           <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
             <div class="mdl-tabs__tab-bar">
-              <a href="#options" class="mdl-tabs__tab is-active">Options</a>
-              <a href="#about" class="mdl-tabs__tab">About</a>
+              <a href="#options" class="mdl-tabs__tab is-active"><i class="icon ion-ios-settings-strong"></i></a>
+              <a href="#about" class="mdl-tabs__tab"><i class="material-icons">info_outline</i></a>
             </div>
 
             <!-- OPTIONS TAB -->
@@ -182,7 +180,7 @@ window.location.protocol = "https";
               <h5>Lots</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
                 <input type="checkbox" id="lots" class="mdl-switch__input">
-                <span class="mdl-switch__label">Residential Lots</span>
+                <span class="mdl-switch__label">City Lots</span>
               </label>
 
               <h5>Other Regulations</h5>
@@ -211,7 +209,7 @@ window.location.protocol = "https";
               <br>
               <p>Search for street parking information in Philadelphia, PA. This application uses open data released by the Philadelphia Parking Authority in conjunction with the City of Philadelphia, available via <a href="http://opendataphilly.org">OpenDataPhilly</a>.</p>
               <p>Have an idea? <a href="https://twitter.com/laurenancona" />Feedback</a> is welcome, as is help updating layers.</p>
-              <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a></p>
+              <p>Made possible with the generous support of <a href="Mapbox">Mapbox</a>.</p>
 
               <hr>
 
@@ -324,9 +322,11 @@ window.location.protocol = "https";
   </div>
 
 <dialog class="mdl-dialog">
-  <button type="button" class="mdl-button close">
-    <i class="material-icons">clear</i>
-  </button>
+  <div class="mdl-dialog__actions">
+<!--    <button type="button" class="mdl-button close">-->
+      <i class="material-icons close">clear</i>
+<!--    </button>-->
+  </div>
   <h4 class="mdl-dialog__title">How to use this jawn</h4>
   <div class="mdl-dialog__content">
     <ul>
@@ -334,10 +334,7 @@ window.location.protocol = "https";
       <li>Thing 2</li>
       <li>Thing 3</li>
     </ul>
-    
-  </div>
-  <div class="mdl-dialog__actions--full-width">
-<!--    <button type="button" class="mdl-button">Agree</button>-->
+    <!--    <button type="button" class="mdl-button">Agree</button>-->
   </div>
 </dialog>
 

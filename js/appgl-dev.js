@@ -259,7 +259,7 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-    // Add Geocoder
+    // Add Mapbox Geocoder
 
     var geocoder = new mapboxgl.Geocoder({
       container: 'geocoder-container'
@@ -285,11 +285,11 @@ var ParkingMap = ParkingMap || {};
         "type": "circle",
         "paint": {
           "circle-radius": 6,
-          "circle-color": "rgb(205,220,57)"
+          "circle-color": "#F2360C"
         }
       });
       
-      // Add Geolocator via HTML5 api
+      // Add Geolocator via HTML5 API
 
       var geoLocating = false;
 //      var watchID;
@@ -315,7 +315,7 @@ var ParkingMap = ParkingMap || {};
         // locate user and watch for movement
         // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
         // watchID = navigator.geolocation.watchPosition(function(position) {
-          navigator.geolocation.watchPosition(function(position) {
+          navigator.geolocation.getCurrent8Position(function(position) {
           var myLocation = {
             type: 'Point',
             coordinates: [position.coords.longitude, position.coords.latitude]
@@ -423,6 +423,7 @@ var ParkingMap = ParkingMap || {};
         (feature.properties.rate3 ?
          '<br>' + feature.properties.rate3 + '<br>' : '') +
         '</span>' +
+        '<span class="loading-icons"></span>'
         '<span class="no-parking">' +
         (feature.properties.no_parking_message ?
           feature.properties.no_parking_message + '<br>' : '') + 
