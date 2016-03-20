@@ -28,7 +28,6 @@ window.location.protocol = "https";
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <!--  <link rel="image_src" href="" />-->
 
-
   <!-- Depends -->
 
   <!-- CSS -->
@@ -41,14 +40,9 @@ window.location.protocol = "https";
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.1.0/mapbox-gl-geocoder.css' type='text/css' />
 
-  <!--CUSTOM STYLES-->
-  <link href="css/style.css" type="text/css" rel='stylesheet'>
-  <link href="css/data.css" type="text/css" rel='stylesheet'>
-
   <!--JS-->
   <!-- Use local version of MAPBOXGL.JS 0.12.3 with error handling that doesn't break things -->
   <!--  <script src="js/mapbox-gl-dev.js"></script>-->
-  <!--  <script src='js/mbgl.Control.Locate.js'></script>-->
   <script src='js/vendor/mapbox-gl_0-15-0.js'></script> 
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
 
@@ -58,6 +52,10 @@ window.location.protocol = "https";
   <!--ICONS-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+  
+  <!--CUSTOM STYLES-->
+  <link href="css/style.css" type="text/css" rel='stylesheet'>
+  <link href="css/data.css" type="text/css" rel='stylesheet'>
 
   <!--TODO: Monitoring-->
   <!--  <script src="//cdn.ravenjs.com/1.1.22/raven.min.js"></script>-->
@@ -180,7 +178,7 @@ window.location.protocol = "https";
               <h5>Lots</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
                 <input type="checkbox" id="lots" class="mdl-switch__input">
-                <span class="mdl-switch__label">City Lots</span>
+                <span class="mdl-switch__label">City Lots&nbsp;&nbsp;<i class="material-icons">stop</i></span>
               </label>
 
               <h5>Other Regulations</h5>
@@ -270,7 +268,7 @@ window.location.protocol = "https";
           <a href="https://mapbox.com/about/maps" class='mapbox-maplogo' target="_blank">MapBox</a>
             <div id="map">
               <span id="status-icon" class="icons ion-alert-circled" style="color:#F2360C, font-size: 1.5rem;"></span>
-              <span><id="background" class="back material-icons">fiber_manual_record</i></span>
+              <span id="background" class="material-icons back">fiber_manual_record</i></span>
                 <span class="mdl-tooltip" for="status-icon">
                   Warning: since this jawn is in <b>beta</b>, don't depend on the data.
               </span>
@@ -284,7 +282,7 @@ window.location.protocol = "https";
           <div id="info-wrapper">
             <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone"></div>
             <div id="infoblock" class="info mdl-cell mdl-cell--4-col"></div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone"></div>
+<!--            <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone"></div>-->
           </div>
         </div>
         <footer class="">

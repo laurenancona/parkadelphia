@@ -2,12 +2,14 @@
 
 .location {
   letter-spacing: .1rem;
-  font-weight: bold;
+  font-weight: 100;
   font-family: 'montserrat', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: .8;
-  margin-top:5px;
-
+  margin-top: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px dotted white;
+  display: block;
 }
 .side {
   font-size: .6rem;
@@ -32,54 +34,91 @@
   width: 310px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 5px;
   position: relative;
   display: block;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted #eee;
+}
+.tariff {
+  /* margin-top: 8px; */
+  text-align: left;
+  float: left;
+  display: block;
+  padding-left: 13px;
+  border-left: 1px dotted #eee;
+}
+.exceptions {
+  margin-right: auto;
+  margin-left: auto;
+  border-top: 1px dotted white;
+  padding-top: 3px;
+  /* float: left; */
+  margin-bottom: 10px;
+  width: 300px;
+  display: inline-block;
+  line-height: 1.3rem;
 }
 .limit {
   border-left: 1px dotted white;
   padding-left: 5px;
 }
 .rate {
-  border-right: 1px dotted white;
+  /* border-right: 1px dotted white; */
   text-transform: lowercase;
   display: block;
   float: left;
   height: 40px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   /* margin-left: 20%; */
-  padding-right: 20px;
+  padding-right: 10px;
   position: relative;
-  width: 50px;
+  width: 80px;
   font-size: 1.2rem;
   text-align: center;
 }
 .regulations {
-  /* margin-left: 20px; */
-  text-align: left;
-  float: left;
-  width: 280px;
+  margin-left: auto;
+  /* text-align: left; */
+  /* float: left; */
+  width: 300px;
   margin-bottom: 8px;
+  /* padding-left: 10px; */
+  margin-right: auto;
+  /* border-left: 1px dotted #eee; */
+  /* margin-right: auto; */
+  line-height: 1.3rem;
+  display: inline-block;
 }
 .period {
   font-size: .5rem;
 }
 .no-parking {
-  margin-top: 5px;
+  margin-top: 8px;
   text-align: left;
   float: left;
+  display: block;
+  padding-left: 13px;
+  border-left: 1px dotted #eee;
 }
 .loading-icons {
-  border-right: 1px dotted white;
-  text-transform: lowercase;
+  /* text-transform: lowercase; */
   display: block;
   float: left;
   height: 40px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   /* margin-left: 20%; */
-  padding-right: 20px;
+  padding-right: 10px;
   position: relative;
-  width: 50px;
+  width: 80px;
   font-size: 1.2rem;
   text-align: center;
 } 
+.loading-icons .material-icons {
+  color: #EEE;
+  /* font-size: 1.4rem; */
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  position: absolute;
+  margin-top: 8px;
+}

@@ -13,15 +13,18 @@
 }
 .back{
   top: -1px;
-  color: #9299A5;
+  color: #757575;
   position: absolute;
   float: right;
   display: block;
+  right: 22px;
+  top: 12px;
+  z-index: 1;
+  font-size: 19px;
 }
 .spinner {
   width: 40px;
   height: 40px;
-
   position: relative;
   margin: 100px auto;
 }
@@ -80,11 +83,12 @@ display: none;
   position: fixed!important;
   width: 100%;
   /*  bottom: 80px;*/
-  /*  z-index: 10000!important;*/
+  z-index: 10000!important;
 }
 #geocoder-container > div {
   min-width:100%;
-/*  margin-left:25%;*/
+  /*  margin-left:25%;*/
+  /* z-index: 9; */
 }
 .mapboxgl-ctrl-geocoder {
   border-radius: 0;
@@ -106,18 +110,20 @@ div#placeholder {
   color: black;
 }
 html {
-/*
+  /*
   margin: 0 auto;
   padding: 0;
   overflow-x: hidden;
 */
-}
+  }
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #404040!important;
+  color: white;
+  background-color: #40403B!important;
   line-height: 15px!important;
+  font-family: 'Open Sans';
 }
 dialog.mdl-dialog {
   color: #eee;
@@ -157,7 +163,7 @@ footer {
 }
 .help-icon {
   right: 0px;
-  /*  top: 10px;*/
+  top: 1px;
   float: right;
   color: white;
   position: absolute;
@@ -459,7 +465,7 @@ p a {
   padding: 0px!important;
 }
 .mdl-cell {
-  margin: 0px!important;
+  /* margin: 0px!important; */
 }
 .mdl-layout {
   z-index:auto;
@@ -625,8 +631,8 @@ mdl-layout__header.mdl-layout__drawer-button {
   position: absolute;
   bottom: 38px;
   font-size: .8rem;
-  color: white;
-  width: 100%!important;
+  color: #eee;
+  /* width: 100%!important; */
   z-index: 3;
   max-height: 200px;
   overflow: auto;
@@ -653,6 +659,8 @@ mdl-layout__header.mdl-layout__drawer-button {
   width: 100%;
   /* padding: 5px 7px; */
   /* bottom: -10px; */
+  margin-bottom: 0px;
+  letter-spacing: .05rem;
 }
 
 #meter-info {
@@ -663,8 +671,11 @@ mdl-layout__header.mdl-layout__drawer-button {
 
 /*ICONS*/
 
-i.material-icons {
-  z-index:;
+#back i.material-icons {
+  color: white;
+  left: 10px;
+  top: 6px;
+  position: absolute;
 }
 #map.interacting .mapboxgl-canvas-container.mapboxgl-interactive,
 #map.interacting .mapboxgl-ctrl-nav-compass,
