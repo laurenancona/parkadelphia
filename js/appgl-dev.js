@@ -6,15 +6,19 @@ var ParkingMap = ParkingMap || {};
   'use strict';
 
   var mapLayers = {};
-  var layerNames = ['rppblocks',
-  'rppdistricts',
-  //'scooters', 
+  var layerNames = [
+  'scooters', 
   'lots',
   'valet',
+  'snowroutes',
   'meters',
+  'rpp',
+  'rppdistricts',
   'satellite'];
 
-  var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpZjMxbWtoeDI2MjlzdW0zanUyZGt5eXAifQ.0yDBBkfLr5famdg4bPgtbw';
+  var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpa2d4YWpubTAwdXR1eGttcmw5dXYyenIifQ.JeAAAiEbZq3OB4L0cShJMA';
+
+  var mapProgressDom = document.getElementById('map-progress');
 
   // some basic platform detection
   var is = {
@@ -81,7 +85,7 @@ var ParkingMap = ParkingMap || {};
       hash: true,
       touchRotate: false
     });
-
+    
     // Change cursor state when hovering on interactive features
 
     var getPoint = function (evt) {
@@ -93,7 +97,7 @@ var ParkingMap = ParkingMap || {};
       if (map.loaded()) {
         var point = getPoint(evt);
         featuresAt(map, point, {
-          radius: 10
+          radius: 7
         }, function (err, features) {
           if (err) throw err;
           ParkingMap.map._container.classList.toggle('interacting', features.length > 0);
@@ -102,7 +106,7 @@ var ParkingMap = ParkingMap || {};
       }
     });
 
-    /* TODO: setTimeout instead of waiting for user to click
+    /* setTimeout instead of waiting for user to click
        from https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout:
     */
 
@@ -111,14 +115,15 @@ var ParkingMap = ParkingMap || {};
     });
 
     function goHome() {
+    // debugger
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
         if (p > 0) {
           map.flyTo({
-            center: [-75.1650, 39.9433],
-            zoom: 13,
-            speed: 0.2,
+            center: [-75.1646, 39.9516],
+            zoom: 15,
+            speed: 0.3,
             bearing: 9.2,
             pitch: 0
           });
@@ -126,28 +131,10 @@ var ParkingMap = ParkingMap || {};
       }
     }
 
-    // Flatten out pitch on first click for functional use
-
-    //    ParkingMap.map.on('click', function (evt) {
-    //      if (map.loaded()) {
-    //        var p = map.getPitch();
-    //        console.log(p);
-    //        if (p > 0) {
-    //          map.flyTo({
-    //            center: [-75.1650, 39.9433],
-    //            zoom: 13,
-    //            speed: 0.2,
-    //            bearing: 9.2,
-    //            pitch: 0
-    //          });
-    //        }
-    //      }
-    //    });
-
     // Add/remove class for bottom button onClicks
-    // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList:
+    // From https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
-    // if class 'quiet' is set remove it, otherwise add it
+    // if class 'quiet' is set, remove it. Otherwise add it:
     var geocoderCt = document.getElementById('geocoder-container'),
         geocoderInput;
 
@@ -161,14 +148,14 @@ var ParkingMap = ParkingMap || {};
       geocoderInput.focus();
       geocoderInput.setSelectionRange(0, 9999);
     });
-    //
-    //        //  add/remove 'quiet', depending on test conditional, i less than 10
-    //        div.classList.toggle("visible", i < 10 );
-    //
-    //        alert(div.classList.contains("foo"));
-    //
-    //        div.classList.add("foo","bar"); //add multiple classes
-
+    
+    //  add/remove 'quiet', depending on test conditional, i less than 10
+    
+    // div.classList.toggle("visible", i < 10 );
+    // alert(div.classList.contains("foo"));
+    // div.classList.add("foo","bar"); //add multiple classes
+    
+    // Listen for clicks on features & pass data to templates
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
         var point = getPoint(evt);
@@ -184,7 +171,7 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
             layerName = feature.layer.id;
-            if (layerName === 'meters.i') {
+            if (layerName === 'meters') {
               showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
@@ -195,6 +182,17 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
+    
+    // Show a help dialog when question icon is clicked
+    
+//    var button = document.querySelector('button');
+//    var dialog = document.querySelector('dialog');
+//    button.addEventListener('click', function() {
+//      dialog.showModal();
+//      /* Or dialog.show(); to show the dialog without a backdrop. */
+//    });
+    
+    
 
     var updateLayerVisibility = function (layerName) {
       var toggledLayers = mapLayers[layerName] || [];
@@ -204,7 +202,7 @@ var ParkingMap = ParkingMap || {};
         });
       } else {
         toggledLayers.forEach(function (layer) {
-          map.setLayoutProperty(layer.id, 'visibility', 'none');
+          map.setLayoutProperty(layer.id, 'visibility', 'none')
         });
       }
     };
@@ -214,22 +212,27 @@ var ParkingMap = ParkingMap || {};
      *  loaded when selected (instead of loading everything first, 
      *  then disabling after UI state check)
      */
+//    map.on('load', function () {
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
-        'rppblocks': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
-        'rppdistricts': ['rppdistricts.i', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
-        // 'scooters': ['scooters.i'],
+        'scooters': ['scooters.i'],
+        'valet': ['valet.i'],
+        'snowroutes': ['snow_emergency_routes', 'snow_emergency_routes.label'],
         'lots': ['lots.i', 'lots.label'],
-        'valet': ['valet.i', 'valet.circle.i'],
-        'meters': ['meters.i'],
+        'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters_circle.i'],
+        'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
+        'rppdistricts': ['rppdistricts', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'satellite': ['satellite']
       };
-
-      //      map.on('load', function () {
-      //        map.addControl(new mbgl.Control.Locate({position: 'top-left'}));
-      //      });
-
-//      loading_screen.finish();
+            
+      loading_screen.finish();
+      map.resize();
+      
+        // Disable the default error handler
+        map.off('style.error', map.onError);
+        map.off('source.error', map.onError);
+        map.off('tile.error', map.onError);
+        map.off('layer.error', map.onError);
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -256,7 +259,8 @@ var ParkingMap = ParkingMap || {};
       });
     });
 
-    // Add Geocoder
+    // Add Mapbox Geocoder
+
     var geocoder = new mapboxgl.Geocoder({
       container: 'geocoder-container'
     });
@@ -264,7 +268,8 @@ var ParkingMap = ParkingMap || {};
     map.addControl(geocoder);
 
     // After the map style has loaded on the page, add a source layer and default
-    // styling for a single point.
+    // styling for a single point. 
+
     map.on('style.load', function () {
       map.addSource('single-point', {
         "type": "geojson",
@@ -280,9 +285,53 @@ var ParkingMap = ParkingMap || {};
         "type": "circle",
         "paint": {
           "circle-radius": 6,
-          "circle-color": "rgb(205,220,57)"
+          "circle-color": "#EFFC1C"
         }
       });
+      
+      // Add Geolocator via HTML5 API
+
+      var geoLocating = false;
+//      var watchID;
+      
+      document.getElementById('locate').addEventListener('click', function(evt) {
+        if (!navigator.geolocation) {
+          alert('no location 4 u!!!!1');
+          return;
+        }
+
+        // bail if we're already waiting for the location
+        if (geoLocating) {
+        /*  console.log("Stopping watchID "+watchID)
+          navigator.geolocation.clearWatch(watchID);
+          geoLocating = false; */
+          return;
+        }
+
+        // show a progress bar while we look for you
+        mapProgressDom.style.visibility = '';
+        geoLocating = true;
+
+        // locate user and watch for movement
+        // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
+        // watchID = navigator.geolocation.watchPosition(function(position) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+          var myLocation = {
+            type: 'Point',
+            coordinates: [position.coords.longitude, position.coords.latitude]
+          };
+          mapProgressDom.style.visibility = 'hidden';
+          console.log('got position: lon=%o, lat=%o', position.coords.longitude, position.coords.latitude);
+          geoLocating = false;
+          map.getSource('single-point').setData(myLocation); 
+          map.flyTo({
+            center: myLocation.coordinates,
+            zoom: 15
+          });
+        }, function() {
+          alert('current postion not available');
+        });
+      })
 
       // Listen for the `geocoder.input` event that is triggered when a user
       // makes a selection and add a marker that matches the result.
@@ -293,10 +342,10 @@ var ParkingMap = ParkingMap || {};
         console.log(center);
         
         if (geocoderInput) {
-          geocoderInput.blur();
+          geocoderInput.blur(); // blur so keyboard goes away
         }
 
-        // override Philadelphia bounding box bug by forcing center
+        // override janky Philadelphia bounding box bug by forcing center on point
         map.flyTo({
           center: center,
           zoom: 15
@@ -307,9 +356,8 @@ var ParkingMap = ParkingMap || {};
     // disable map rotation using touch gesture because that shit's cray
     map.touchZoomRotate.disableRotation();
 
-    //        map.addControl(new mapboxgl.Navigation());
+    // map.addControl(new mapboxgl.Navigation());
   };
-
 
   var showInfo = function (tpl, feature) {
     console.log('Here is your stupid info', tpl);
@@ -318,13 +366,11 @@ var ParkingMap = ParkingMap || {};
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-        content = '<div class="location"><span class="detail-icon"><img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + feature.properties.block_street + '</div>' +
-        '<div class="side">Residential permit: ' + feature.properties.sos + '</div>';
-      break;
-
-    case 'rppdistricts.i':
-      content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
-        feature.properties.description + '</div>';
+        content = '<div class="location"><span class="detail-icon">' +
+          '<img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + 
+          feature.properties.block_street + '</div>' +
+        '<div class="side">Residential permit: ' + 
+          feature.properties.sos + '</div>';
       break;
 
     case 'lots.i':
@@ -360,62 +406,89 @@ var ParkingMap = ParkingMap || {};
         '</p></div>';
       break;
 
-      //    case 'meters.i':
-      //        content = '<div>' + (feature.properties.street ?
-      //          '<strong>' + feature.properties.street + '</strong>' : '') +
-      //        (feature.properties.from_day ?
-      //         '<p>' + feature.properties.from_day + '-' + feature.properties.to_day + '</p>' : '') +
-      //        (feature.properties.from_time ?
-      //         '<p>' + feature.properties.from_time + '-' + feature.properties.to_time + '</p>' : '') + '</div>';
-      //      break;
-
-    case 'meters.i':
-      var template = _.template(
-        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
-        '<% _.each(features,function(regulations,key){ %>' +
-        '<span class="location"><%= key %></span><br>' +
-        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
-        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
-        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
-        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
-        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
-        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
-        '<% }) %>' +
-        '<% }) %></span></div>');
-
-      var byStreet = _.groupBy(feature, function (value) {
-        return value.properties.street + ', ' + value.properties.side + ' Side';
-      });
-      content = template({
-        'features': byStreet
-      });
+    case 'meterblocks_n.i':
+    case 'meterblocks_s.i':
+    case 'meterblocks_e.i':
+    case 'meterblocks_w.i':
+      content = '<div>' + (feature.properties.l_hund_block_label ?
+          '<span class="location">' + feature.properties.l_hund_block_label + ', ' + 
+            feature.properties.side + ' side</span><br>' : '') +
+        '<span class="detail">' + 
+        '<span class="regulations">' +
+        '<span class="rate">' + feature.properties.rate + '</span>' +
+        (feature.properties.rate1 ?
+          feature.properties.rate1 : '') +
+        (feature.properties.rate2 ?
+         '<br>' + feature.properties.rate2 : '') +
+        (feature.properties.rate3 ?
+         '<br>' + feature.properties.rate3 + '<br>' : '') +
+        '</span>' +
+        '<span class="loading-icons"></span>' + 
+        '<span class="no-parking">' +
+        (feature.properties.no_parking_message ?
+          feature.properties.no_parking_message + '<br>' : '') + 
+        (feature.properties.no_parking1 ?
+          feature.properties.no_parking1 + '<br>' : '') + 
+        (feature.properties.no_parking2 ?
+          feature.properties.no_parking2 : '') + 
+        '</span>' + '</span>' + '</div><br>';
       break;
+
+//    case 'meterblocks_n.i':
+//    case 'meterblocks_s.i':
+//    case 'meterblocks_e.i':
+//    case 'meterblocks_w.i':
+//      var template = _.template(
+//        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
+//        '<% _.each(features,function(regulations,key){ %>' +
+//        '<span class="location"><%= key %></span><br>' +
+//        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+//        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
+//        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
+//        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+//        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
+//        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
+//        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
+//        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
+//        '<% }) %>' +
+//        '<% }) %></span></div>');
+//
+//      var byStreet = _.groupBy(feature, function (value) {
+//        return value.properties.street + ', ' + value.properties.side + ' Side';
+//      });
+//      content = template({
+//        'features': byStreet
+//      });
+//      break;
 
     default:
       content = '<div>' + (feature.properties.name ?
-          '<span class="location">' + feature.properties.name + '</span>' : '') +
+          '<span class="location">' + feature.properties.name + '</span><br>' : '') +
         (feature.properties.title ?
-          '<strong>' + feature.properties.title + '</strong>' : '') +
+          '<strong>' + feature.properties.title + '</strong><br>' : '') +
         (feature.properties.description ?
-          '<span class="detail">' + feature.properties.description : '') +
+          '<span class="detail">' + feature.properties.description + '<br>' : '') +
         (feature.properties.capacity ?
           'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
       break;
+      
+//      case 'rppdistricts.i':
+//        content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
+//          feature.properties.description + '</div>';
+//      break;
     }
-    info.innerHTML = content;
+    infoblock.innerHTML = content;
   };
 
   ParkingMap.allowFancyMap = true;
 
   //  Show a loading screen because we are currently doing it a bit backwards
 
-//  loading_screen = pleaseWait({
-//    logo: "img/hotlink-ok/load-logo-01.svg",
-//    backgroundColor: '#404040',
-//    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
-//  });
+  loading_screen = pleaseWait({
+    logo: "img/hotlink-ok/load-logo-01.svg",
+    backgroundColor: '#404040',
+    loadingHtml: "<div class='loading_text'>Mapping Philadelphia's parking regulations</div><div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
+  });
 
   //  TODO: remove extra else below
 
@@ -433,9 +506,8 @@ var ParkingMap = ParkingMap || {};
 
   function empty() {
     //    console.log('Here is your stupid empty.');
-    info.innerHTML = '<!--<div><p><strong>Choose layers at left, then click features for info</strong></p></div>-->';
+    infoblock.innerHTML = '';
   }
-
 
   // setup persistent state for sharing tools
   var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia'),
@@ -460,7 +532,7 @@ var ParkingMap = ParkingMap || {};
 
     e.preventDefault();
 
-    // iOS doesn't support the copy command and fails silently
+    // iOS doesn't support the copy command and fails silently like a jerk
     if (!is.iOS) {
       // create off-screen textarea if needed
       if (!copyShareLinkTextarea) {
