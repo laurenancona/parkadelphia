@@ -149,7 +149,7 @@ var ParkingMap = ParkingMap || {};
       geocoderInput.setSelectionRange(0, 9999);
     });
     
-    //  add/remove 'quiet', depending on test conditional, i less than 10
+    // add/remove 'quiet', depending on test conditional, i less than 10
     
     // div.classList.toggle("visible", i < 10 );
     // alert(div.classList.contains("foo"));
@@ -182,17 +182,6 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
-    
-    // Show a help dialog when question icon is clicked
-    
-//    var button = document.querySelector('button');
-//    var dialog = document.querySelector('dialog');
-//    button.addEventListener('click', function() {
-//      dialog.showModal();
-//      /* Or dialog.show(); to show the dialog without a backdrop. */
-//    });
-    
-    
 
     var updateLayerVisibility = function (layerName) {
       var toggledLayers = mapLayers[layerName] || [];
@@ -410,28 +399,72 @@ var ParkingMap = ParkingMap || {};
     case 'meterblocks_s.i':
     case 'meterblocks_e.i':
     case 'meterblocks_w.i':
-      content = '<div>' + (feature.properties.l_hund_block_label ?
-          '<span class="location">' + feature.properties.l_hund_block_label + ', ' + 
-            feature.properties.side + ' side</span><br>' : '') +
-        '<span class="detail">' + 
-        '<span class="regulations">' +
-        '<span class="rate">' + feature.properties.rate + '</span>' +
-        (feature.properties.rate1 ?
-          feature.properties.rate1 : '') +
-        (feature.properties.rate2 ?
-         '<br>' + feature.properties.rate2 : '') +
-        (feature.properties.rate3 ?
-         '<br>' + feature.properties.rate3 + '<br>' : '') +
-        '</span>' +
-        '<span class="loading-icons"></span>' + 
-        '<span class="no-parking">' +
-        (feature.properties.no_parking_message ?
-          feature.properties.no_parking_message + '<br>' : '') + 
-        (feature.properties.no_parking1 ?
-          feature.properties.no_parking1 + '<br>' : '') + 
-        (feature.properties.no_parking2 ?
-          feature.properties.no_parking2 : '') + 
-        '</span>' + '</span>' + '</div><br>';
+      content = []; // TODO: do this outside the switch once all are converted
+      content.push('<div>');
+      
+      if (feature.properties.l_hund_block_label) {
+        content.push(
+          '<span class="location">',
+            feature.properties.l_hund_block_label,
+            ', ',
+            feature.properties.side,
+            ' side',
+          '</span>',
+          '<br>'
+        );
+      }
+       
+      content.push(
+        '<span class="regulations">',
+          '<span class="rate">',
+            feature.properties.rate,
+          '</span>',
+        
+          '<span class="tariff">',
+            feature.properties.rate1 || '',
+            (
+              feature.properties.rate2 ?
+              '<br>' + feature.properties.rate2 :
+              ''
+            ),
+            (
+              feature.properties.rate3 ?
+              '<br>' + feature.properties.rate3 :
+              ''
+            ),
+          '</span>',
+        '</span>'
+      );
+      
+      if (feature.properties.no_parking_message) { 
+        
+        content.push(
+          '<span class="exceptions">',
+          '<span class="loading-icons"><i class="material-icons">not_interested</i></span>',
+            '<span class="no-parking">',
+              (
+                feature.properties.no_parking_message 
+                ? feature.properties.no_parking_message + '<br>' 
+                : ''
+              ),
+              (
+                feature.properties.no_parking1
+                ? feature.properties.no_parking1 + '<br>'
+                : ''
+              ),
+              (
+                feature.properties.no_parking2 
+                ? feature.properties.no_parking2
+                : ''
+              ),
+            '</span>',
+          '</span>'
+        );
+      }
+        
+      content.push('</div>');
+        
+      content = content.join('');
       break;
 
 //    case 'meterblocks_n.i':
