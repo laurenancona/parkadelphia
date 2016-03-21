@@ -208,7 +208,7 @@ var ParkingMap = ParkingMap || {};
         'valet': ['valet.i'],
         'snowroutes': ['snow_emergency_routes', 'snow_emergency_routes.label'],
         'lots': ['lots.i', 'lots.label'],
-        'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters_circle.i'],
+        'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters.circle.i'],
         'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
         'satellite': ['satellite']
@@ -349,17 +349,19 @@ var ParkingMap = ParkingMap || {};
   };
 
   var showInfo = function (tpl, feature) {
-    console.log('Here is your stupid info', tpl);
+    console.log('Here is your info', tpl);
     var content;
 
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-        content = '<div class="location"><span class="detail-icon">' +
-          '<img src="img/icons/RPP.svg" style="width: 20px!important; padding-right:12px"/></span>' + 
-          feature.properties.block_street + '</div>' +
-        '<div class="side">Residential permit: ' + 
-          feature.properties.sos + '</div>';
+        content = '<div><span class="rpp"><span class="location">' + 
+          feature.properties.block_street + '&nbsp;&nbsp;' + 
+          '</span><br>' +          
+          '<span class="loading-icons material-icons"><img src="img/icons/RPP.svg"></span>' + 
+          '<span class="no-parking">' + feature.properties.sos + 
+          '<br>Residential Permit Parking</span>' +
+          '</span></div>';
       break;
 
     case 'lots.i':
@@ -406,40 +408,44 @@ var ParkingMap = ParkingMap || {};
         content.push(
           '<span class="location">',
             feature.properties.l_hund_block_label,
-            ', ',
-            feature.properties.side,
-            ' side',
           '</span>',
           '<br>'
         );
       }
        
       content.push(
-        '<span class="regulations">',
+        '<div class="regulations clearfix">',
+          '<span class="regulations-side">',
+          feature.properties.side,
+          ' side </span><br>',
           '<span class="rate">',
-            feature.properties.rate,
+          '<i class="material-icons">settings_input_hdmi</i>',
           '</span>',
         
           '<span class="tariff">',
-            feature.properties.rate1 || '',
             (
-              feature.properties.rate2 ?
-              '<br>' + feature.properties.rate2 :
-              ''
+              feature.properties.rate1 
+              ? feature.properties.rate1 + '&nbsp;&nbsp;' + feature.properties.rate
+              : ''
             ),
             (
-              feature.properties.rate3 ?
-              '<br>' + feature.properties.rate3 :
-              ''
+              feature.properties.rate2 
+              ? '<br>' + feature.properties.rate2 + '&nbsp;&nbsp;' + feature.properties.rate 
+              : ''
+            ),
+            (
+              feature.properties.rate3 
+              ? '<br>' + feature.properties.rate3 + '&nbsp;&nbsp;' + feature.properties.rate
+              : ''
             ),
           '</span>',
-        '</span>'
+        '</div>'
       );
       
       if (feature.properties.no_parking_message) { 
         
         content.push(
-          '<span class="exceptions">',
+          '<div class="exceptions">',
           '<span class="loading-icons"><i class="material-icons">not_interested</i></span>',
             '<span class="no-parking">',
               (
@@ -458,7 +464,7 @@ var ParkingMap = ParkingMap || {};
                 : ''
               ),
             '</span>',
-          '</span>'
+          '</div>'
         );
       }
         

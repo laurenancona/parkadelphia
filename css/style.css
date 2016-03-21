@@ -181,11 +181,10 @@ footer {
 }
 .detail-icon img {
   fill: white;
-  width: 12px;
+  width: 22px;
   margin-right: 10px;
   border-right: 1px dotted white;
   padding-right: 10px;
-  
 }
 .share-label {
   position: absolute;
@@ -634,7 +633,7 @@ mdl-layout__header.mdl-layout__drawer-button {
   color: #eee;
   /* width: 100%!important; */
   z-index: 3;
-  max-height: 200px;
+  max-height: 250px;
   overflow: auto;
   margin-left: auto;
   margin-right: auto;
