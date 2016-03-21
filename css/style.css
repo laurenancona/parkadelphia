@@ -505,10 +505,7 @@ header.mdl-layout__header {
   min-height: 35px!important;
   z-index: inherit!important;
 }
-.mdl-layout__drawer>.mdl-layout__title {
-/*  letter-spacing: .2rem!important;*/
-  line-height: 54px!important;
-}
+.mdl-layout__drawer>.mdl-layout__title {/*  letter-spacing: .2rem!important;*/line-height: 54px!important;margin-left: 35px;font-weight: 100;}
 
 /*This is a strange thing that obscures the #map on  iOS*/
 
@@ -528,8 +525,8 @@ overflow-y: hidden;
 .drawer-icon {
   width: 20px;
   position: absolute!important;
-  margin-top: 17px!important;
-  margin-left: 20px!important;
+  margin-top: 21px!important;
+  margin-left: 16px!important;
 }
 .mdl-navigation {
   padding-left: 15px!important;
@@ -576,6 +573,7 @@ overflow-y: hidden;
 }
 .app-title {
   margin-top: 3px!important;
+  /* margin-left: 35px; */
   color: #eee!important;
   letter-spacing: .3rem!important;
   vertical-align: middle;
