@@ -752,3 +752,22 @@ mdl-layout__header.mdl-layout__drawer-button {
 .mapboxgl-control-container a {
 /*  border-color: rgba(.75, .75, .75, .4);*/
 }
+#made-in-philly img {
+  width: 10px;
+}
+#made-in-philly {
+  position: absolute;
+  float: left;
+  left: 0px;
+  bottom: 39px;
+  z-index: 2;
+  /* display: block; */
+  color: white;
+  font-size: .8rem;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  background-color: rgba(146,153,165, 0.8);
+  border-top-right-radius: 2px;
+  padding-left: 3px;
+  font-family: 'Open Sans', sans-serif;
+}
