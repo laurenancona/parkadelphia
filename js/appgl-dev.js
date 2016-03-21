@@ -82,10 +82,13 @@ var ParkingMap = ParkingMap || {};
       maxZoom: 19,
       minZoom: 12,
       pitch: 60,
+      attributionControl: true,
       //    maxBounds: bounds,
       hash: true,
       touchRotate: false
     });
+    
+    
     
     // Change cursor state when hovering on interactive features
 

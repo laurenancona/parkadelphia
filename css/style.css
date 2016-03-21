@@ -302,9 +302,13 @@ p a {
 }
 #attrib {
   position: absolute;
-  float: left;
-  margin-bottom: 15px;
-  margin-left: 10px;
+  float: right;
+  bottom: 38px;
+  right: 4px;
+  font-size: .5rem;
+  color: #EEE;
+  display: block;
+  text-decoration: none!important;
 }
 #bottom-icons {
   position: fixed;
