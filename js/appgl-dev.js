@@ -14,6 +14,7 @@ var ParkingMap = ParkingMap || {};
   'meters',
   'rpp',
   'rppdistricts',
+  'meters-testing',
   'satellite'];
 
   var accessToken = 'pk.eyJ1IjoibGF1cmVuYW5jb25hIiwiYSI6ImNpa2d4YWpubTAwdXR1eGttcmw5dXYyenIifQ.JeAAAiEbZq3OB4L0cShJMA';
@@ -171,7 +172,7 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
             layerName = feature.layer.id;
-            if (layerName === 'meters') {
+            if (layerName === 'meters-testing') {
               showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
@@ -211,6 +212,7 @@ var ParkingMap = ParkingMap || {};
         'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters.circle.i'],
         'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
+        'meters-testing': ['meters-testing-side.i'],
         'satellite': ['satellite']
       };
             
@@ -474,32 +476,29 @@ var ParkingMap = ParkingMap || {};
       content = content.join('');
       break;
 
-//    case 'meterblocks_n.i':
-//    case 'meterblocks_s.i':
-//    case 'meterblocks_e.i':
-//    case 'meterblocks_w.i':
-//      var template = _.template(
-//        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
-//        '<% _.each(features,function(regulations,key){ %>' +
-//        '<span class="location"><%= key %></span><br>' +
-//        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
-//        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
-//        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-//        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
-//        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
-//        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
-//        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-//        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
-//        '<% }) %>' +
-//        '<% }) %></span></div>');
-//
-//      var byStreet = _.groupBy(feature, function (value) {
-//        return value.properties.street + ', ' + value.properties.side + ' Side';
-//      });
-//      content = template({
-//        'features': byStreet
-//      });
-//      break;
+    case 'meters-testing-side.i':
+      var template = _.template(
+        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
+        '<% _.each(features,function(regulations,key){ %>' +
+        '<span class="location"><%= key %></span><br>' +
+        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
+        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
+        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
+        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
+        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
+        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
+        '<% }) %>' +
+        '<% }) %></span></div>');
+
+      var byStreet = _.groupBy(feature, function (value) {
+        return value.properties.street + ', ' + value.properties.side + ' Side';
+      });
+      content = template({
+        'features': byStreet
+      });
+      break;
 
     default:
       content = '<div>' + (feature.properties.name ?
@@ -550,7 +549,7 @@ var ParkingMap = ParkingMap || {};
   }
 
   // setup persistent state for sharing tools
-  var encodedShareMessage = window.encodeURIComponent('Demystify Philly parking with Parkadelphia'),
+  var encodedShareMessage = window.encodeURIComponent('Philly parking, demystified.'),
       encodedShareUrl, copyShareLinkTextarea;
 
   // update hrefs when share menu button is clicked
