@@ -202,7 +202,7 @@ footer {
   list-style-type: none;
   line-height: 1.3rem;
 }
-#roadmap > ul > li {
+#roadmap > ul > li, #thank-you > ul > li {
   list-style-type: none!important;
   line-height: 1.2rem;
   margin-left: -24px;
