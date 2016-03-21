@@ -355,10 +355,11 @@ var ParkingMap = ParkingMap || {};
     switch (tpl) {
     case 'rppblocks_bothsides.i':
     case 'rppblocks_1side.i':
-        content = '<div><span class="rpp"><span class="location">' + 
+        content = '<div><span class="location">' + 
           feature.properties.block_street + '&nbsp;&nbsp;' + 
           '</span><br>' +          
-          '<span class="loading-icons material-icons"><img src="img/icons/RPP.svg"></span>' + 
+          '<span class="rpp"><span class="loading-icons material-icons">' +
+          '<img src="img/icons/RPP.svg"></span>' + 
           '<span class="no-parking">' + feature.properties.sos + 
           '<br>Residential Permit Parking</span>' +
           '</span></div>';

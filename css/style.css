@@ -17,8 +17,8 @@
   position: absolute;
   float: right;
   display: block;
-  right: 22px;
-  top: 12px;
+  right: 20px;
+  top: 15px;
   z-index: 1;
   font-size: 19px;
 }
@@ -161,13 +161,13 @@ footer {
   position: fixed;
   bottom: 0px!important;
 }
-.help-icon {
-  right: 0px;
-  top: 1px;
+.feedback-icon > a > i {
+  right: 12px;
+  top: 8px;
   float: right;
   color: white;
   position: absolute;
-  font-size: 1.3rem!important;
+  /* font-size: 1rem!important; */
   z-index: 1000;
   width: 20px!important;
   min-width: 30px!important;
@@ -352,9 +352,9 @@ p a {
   color: white;
 }
 #status-icon {
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   top: 12px;
-  right: 23px;
+  right: 19px;
   float: right;
   position: absolute;
   color: #EFFC1C;
@@ -640,7 +640,7 @@ mdl-layout__header.mdl-layout__drawer-button {
 } 
 
 .info p {
-  line-height: 1rem;
+  /* line-height: 1rem; */
   padding: 5px 10px;
   /*  text-decoration: none;*/
 }

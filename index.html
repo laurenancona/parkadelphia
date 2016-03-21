@@ -142,7 +142,9 @@ window.location.protocol = "https";
           <nav class="mdl-navigation">
             <!--SEARCH?-->
           </nav>
-          <span id="show-dialog" type="button" class="icons ion-help help-icon mdl-button"></span>
+          <span id="submenu" type="button" class="feedback-icon">
+            <a href="/feedback.html"><i class="material-icons">chat_bubble</i></a>
+          </span>
         </div>
         <div id="map-progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="visibility:hidden"></div>
       </header>
@@ -212,7 +214,7 @@ window.location.protocol = "https";
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="lots">
                 <input type="checkbox" id="lots" class="mdl-switch__input">
                 <span class="mdl-switch__label">City Lots&nbsp;&nbsp;
-                  <svg version="1.1" id="rpp-blocks-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  <svg version="1.1" id="city-lots-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                        width="24px" height="9px" viewBox="0 0 18 10" enable-background="new 0 0 18 10" xml:space="preserve">
                     <rect fill="#8CD9D9" width="24" height="9"/>
                   </svg>                
@@ -222,7 +224,7 @@ window.location.protocol = "https";
               <h5>Other Regulations</h5>
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="valet">
                 <input type="checkbox" id="valet" class="mdl-switch__input">
-                <span class="mdl-switch__label">Valet Parking&nbsp;&nbsp;<img src="img/icons/valet-v-24-blue.svg" width="16px"/></span>
+                <span class="mdl-switch__label">Valet Parking&nbsp;&nbsp; <strong>V</strong></span>
               </label>
 
               <label class="pad mdl-switch mdl-js-switch mdl-js-ripple-effect" for="snowroutes">
@@ -362,37 +364,6 @@ window.location.protocol = "https";
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
   </div>
-
-<dialog class="mdl-dialog">
-  <div class="mdl-dialog__actions">
-<!--    <button type="button" class="mdl-button close">-->
-      <i class="material-icons close">clear</i>
-<!--    </button>-->
-  </div>
-  <h4 class="mdl-dialog__title">How to use this jawn</h4>
-  <div class="mdl-dialog__content">
-    <ul>
-      <li>Thing 1</li>
-      <li>Thing 2</li>
-      <li>Thing 3</li>
-    </ul>
-    <!--    <button type="button" class="mdl-button">Agree</button>-->
-  </div>
-</dialog>
-
-<script>
-  var dialog = document.querySelector('dialog');
-  var showDialogButton = document.querySelector('#show-dialog');
-  if (! dialog.showModal) {
-    dialogPolyfill.registerDialog(dialog);
-  }
-  showDialogButton.addEventListener('click', function() {
-    dialog.showModal();
-  });
-  dialog.querySelector('.close').addEventListener('click', function() {
-    dialog.close();
-  });
-</script>
 
   <script>
     var ParkingMap = ParkingMap || {};
