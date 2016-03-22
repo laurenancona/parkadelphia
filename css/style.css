@@ -300,6 +300,9 @@ p a {
   text-transform: uppercase;
   text-align: center;
 }
+#attrib a {
+  text-decoration: none!important;
+}
 #attrib {
   position: absolute;
   float: right;
@@ -308,7 +311,6 @@ p a {
   font-size: .5rem;
   color: #EEE;
   display: block;
-  text-decoration: none!important;
 }
 #bottom-icons {
   position: fixed;
