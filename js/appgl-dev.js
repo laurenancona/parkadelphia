@@ -339,6 +339,9 @@ var ParkingMap = ParkingMap || {};
         map.getSource('single-point').setData(evt.result.geometry);
         var center = evt.result.geometry.coordinates;
         console.log(center);
+        dataLayer.push({'coordinates': center,
+                        'event': 'addressSearch'
+                       });
 
         if (geocoderInput) {
           geocoderInput.blur(); // blur so keyboard goes away
