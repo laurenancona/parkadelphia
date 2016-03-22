@@ -7,7 +7,7 @@ var ParkingMap = ParkingMap || {};
 
   var mapLayers = {};
   var layerNames = [
-  'scooters', 
+  'scooters',
   'lots',
   'valet',
   'snowroutes',
@@ -87,9 +87,9 @@ var ParkingMap = ParkingMap || {};
       hash: true,
       touchRotate: false
     });
-    
-    
-    
+
+
+
     // Change cursor state when hovering on interactive features
 
     var getPoint = function (evt) {
@@ -119,7 +119,7 @@ var ParkingMap = ParkingMap || {};
     });
 
     function goHome() {
-    // debugger
+      // debugger
       if (map.loaded()) {
         var p = map.getPitch();
         console.log(p);
@@ -140,7 +140,7 @@ var ParkingMap = ParkingMap || {};
 
     // if class 'quiet' is set, remove it. Otherwise add it:
     var geocoderCt = document.getElementById('geocoder-container'),
-        geocoderInput;
+      geocoderInput;
 
     document.getElementById('search').addEventListener('click', function (evt) {
       geocoderCt.classList.toggle('quiet');
@@ -152,13 +152,13 @@ var ParkingMap = ParkingMap || {};
       geocoderInput.focus();
       geocoderInput.setSelectionRange(0, 9999);
     });
-    
+
     // add/remove 'quiet', depending on test conditional, i less than 10
-    
+
     // div.classList.toggle("visible", i < 10 );
     // alert(div.classList.contains("foo"));
     // div.classList.add("foo","bar"); //add multiple classes
-    
+
     // Listen for clicks on features & pass data to templates
     ParkingMap.map.on('click', function (evt) {
       if (map.loaded()) {
@@ -205,7 +205,7 @@ var ParkingMap = ParkingMap || {};
      *  loaded when selected (instead of loading everything first, 
      *  then disabling after UI state check)
      */
-//    map.on('load', function () {
+    //    map.on('load', function () {
     map.on('load', function () {
       var layerAssociation = { //using '.i' in GL layernames we want to be interactive
         'scooters': ['scooters.i'],
@@ -215,18 +215,18 @@ var ParkingMap = ParkingMap || {};
         'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters.circle.i'],
         'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
-        'meters-testing': ['meters-testing-side.i'],
+        'meters-testing': ['meters-testing'], //
         'satellite': ['satellite']
       };
-            
+
       loading_screen.finish();
       map.resize();
-      
-        // Disable the default error handler
-        map.off('style.error', map.onError);
-        map.off('source.error', map.onError);
-        map.off('tile.error', map.onError);
-        map.off('layer.error', map.onError);
+
+      // Disable the default error handler
+      map.off('style.error', map.onError);
+      map.off('source.error', map.onError);
+      map.off('tile.error', map.onError);
+      map.off('layer.error', map.onError);
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -282,13 +282,13 @@ var ParkingMap = ParkingMap || {};
           "circle-color": "#EFFC1C"
         }
       });
-      
+
       // Add Geolocator via HTML5 API
 
       var geoLocating = false;
-//      var watchID;
-      
-      document.getElementById('locate').addEventListener('click', function(evt) {
+      //      var watchID;
+
+      document.getElementById('locate').addEventListener('click', function (evt) {
         if (!navigator.geolocation) {
           alert('no location 4 u!!!!1');
           return;
@@ -296,9 +296,9 @@ var ParkingMap = ParkingMap || {};
 
         // bail if we're already waiting for the location
         if (geoLocating) {
-        /*  console.log("Stopping watchID "+watchID)
-          navigator.geolocation.clearWatch(watchID);
-          geoLocating = false; */
+          /*  console.log("Stopping watchID "+watchID)
+            navigator.geolocation.clearWatch(watchID);
+            geoLocating = false; */
           return;
         }
 
@@ -315,7 +315,12 @@ var ParkingMap = ParkingMap || {};
             coordinates: [position.coords.longitude, position.coords.latitude]
           };
           mapProgressDom.style.visibility = 'hidden';
-          console.log('got position: lon=%o, lat=%o', position.coords.longitude, position.coords.latitude);
+          dataLayer.push({'coordinates': [position.coords.longitude + ', ' + position.coords.latitude],
+            'longitude': position.coords.longitude,
+            'latitude': position.coords.latitude,
+            'event': 'userLocated'
+                         });
+          console.log('got position: %o, %o', position.coords.longitude, position.coords.latitude);
           geoLocating = false;
           map.getSource('single-point').setData(myLocation);
           map.flyTo({
@@ -358,166 +363,148 @@ var ParkingMap = ParkingMap || {};
     var content;
 
     switch (tpl) {
-    case 'rppblocks_bothsides.i':
-    case 'rppblocks_1side.i':
-        content = '<div><span class="location">' + 
-          feature.properties.block_street + '&nbsp;&nbsp;' + 
-          '</span><br>' +          
+      case 'rppblocks_bothsides.i':
+      case 'rppblocks_1side.i':
+        content = '<div><span class="location">' +
+          feature.properties.block_street + '&nbsp;&nbsp;' +
+          '</span><br>' +
           '<span class="rpp"><span class="loading-icons material-icons">' +
-          '<img src="img/icons/RPP.svg"></span>' + 
-          '<span class="no-parking">' + feature.properties.sos + 
+          '<img src="img/icons/RPP.svg"></span>' +
+          '<span class="no-parking">' + feature.properties.sos +
           '<br>Residential Permit Parking</span>' +
           '</span></div>';
-      break;
+        break;
 
-    case 'lots.i':
-      content = '<div>' + (feature.properties.name ?
-          '<span class="location">' + feature.properties.name + ' </span>' : '') +
-        '<span class="detail">' + (feature.properties.description ?
-          feature.properties.description : '') +
-        (feature.properties.address ?
-          '<br>' + feature.properties.address : '') +
-        (feature.properties.type ?
-          '<br>' + feature.properties.type : '') +
-        (feature.properties.capacity ?
-         '&nbsp; | &nbsp;Capacity: ' + feature.properties.capacity : '') +
-        (feature.properties.hours ?
-          '<br>' + feature.properties.hours : '') +
-        (feature.properties.days ?
-          '<br>' + feature.properties.days : '') +
-        (feature.properties.times ?
-          ' &nbsp;' + feature.properties.times : '') +
-        (feature.properties.rates ?
-          '<br><span class="detail">Rates: ' + feature.properties.rates + '</span>' : '') +
-        (feature.properties.notes ?
-          '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
-      break;
+      case 'lots.i':
+        content = '<div>' + (feature.properties.name ?
+            '<span class="location">' + feature.properties.name + ' </span>' : '') +
+          '<span class="detail">' + (feature.properties.description ?
+            feature.properties.description : '') +
+          (feature.properties.address ?
+            '<br>' + feature.properties.address : '') +
+          (feature.properties.type ?
+            '<br>' + feature.properties.type : '') +
+          (feature.properties.capacity ?
+            '&nbsp; | &nbsp;Capacity: ' + feature.properties.capacity : '') +
+          (feature.properties.hours ?
+            '<br>' + feature.properties.hours : '') +
+          (feature.properties.days ?
+            '<br>' + feature.properties.days : '') +
+          (feature.properties.times ?
+            ' &nbsp;' + feature.properties.times : '') +
+          (feature.properties.rates ?
+            '<br><span class="detail">Rates: ' + feature.properties.rates + '</span>' : '') +
+          (feature.properties.notes ?
+            '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
+        break;
 
-    case 'valet.i':
-      content = '<div>' + (feature.properties.Name ?
-          '<span class="location">' + feature.properties.Name + '</span>' : '') +
-        (feature.properties.Hours ?
-          '<p class="detail">Hours: ' + feature.properties.Hours + '<br>' : '') +
-        (feature.properties.Spaces ?
-          'Spaces: ' + feature.properties.Spaces : '') +
-        '</p></div>';
-      break;
+      case 'valet.i':
+        content = '<div>' + (feature.properties.Name ?
+            '<span class="location">' + feature.properties.Name + '</span>' : '') +
+          (feature.properties.Hours ?
+            '<p class="detail">Hours: ' + feature.properties.Hours + '<br>' : '') +
+          (feature.properties.Spaces ?
+            'Spaces: ' + feature.properties.Spaces : '') +
+          '</p></div>';
+        break;
 
-    case 'meterblocks_n.i':
-    case 'meterblocks_s.i':
-    case 'meterblocks_e.i':
-    case 'meterblocks_w.i':
-      content = []; // TODO: do this outside the switch once all are converted
-      content.push('<div>');
-      
-      if (feature.properties.l_hund_block_label) {
-        content.push(
-          '<span class="location">',
+      case 'meterblocks_n.i':
+      case 'meterblocks_s.i':
+      case 'meterblocks_e.i':
+      case 'meterblocks_w.i':
+        content = []; // TODO: do this outside the switch once all are converted
+        content.push('<div>');
+
+        if (feature.properties.l_hund_block_label) {
+          content.push(
+            '<span class="location">',
             feature.properties.l_hund_block_label,
-          '</span>',
-          '<br>'
-        );
-      }
-       
-      content.push(
-        '<div class="regulations clearfix">',
+            '</span>',
+            '<br>'
+          );
+        }
+
+        content.push(
+          '<div class="regulations clearfix">',
           '<span class="regulations-side">',
           feature.properties.side,
           ' side </span><br>',
           '<span class="rate">',
           '<i class="material-icons">settings_input_hdmi</i>',
           '</span>',
-        
-          '<span class="tariff">',
-            (
-              feature.properties.rate1 
-              ? feature.properties.rate1 + '&nbsp;&nbsp;' + feature.properties.rate
-              : ''
-            ),
-            (
-              feature.properties.rate2 
-              ? '<br>' + feature.properties.rate2 + '&nbsp;&nbsp;' + feature.properties.rate 
-              : ''
-            ),
-            (
-              feature.properties.rate3 
-              ? '<br>' + feature.properties.rate3 + '&nbsp;&nbsp;' + feature.properties.rate
-              : ''
-            ),
+
+          '<span class="tariff">', (
+            feature.properties.rate1 ? feature.properties.rate1 + '&nbsp;&nbsp;' + feature.properties.rate : ''
+          ), (
+            feature.properties.rate2 ? '<br>' + feature.properties.rate2 + '&nbsp;&nbsp;' + feature.properties.rate : ''
+          ), (
+            feature.properties.rate3 ? '<br>' + feature.properties.rate3 + '&nbsp;&nbsp;' + feature.properties.rate : ''
+          ),
           '</span>',
-        '</div>'
-      );
-      
-      if (feature.properties.no_parking_message) { 
-        
-        content.push(
-          '<div class="exceptions">',
-          '<span class="loading-icons"><i class="material-icons">not_interested</i></span>',
-            '<span class="no-parking">',
-              (
-                feature.properties.no_parking_message 
-                ? feature.properties.no_parking_message + '<br>' 
-                : ''
-              ),
-              (
-                feature.properties.no_parking1
-                ? feature.properties.no_parking1 + '<br>'
-                : ''
-              ),
-              (
-                feature.properties.no_parking2 
-                ? feature.properties.no_parking2
-                : ''
-              ),
-            '</span>',
           '</div>'
         );
-      }
-        
-      content.push('</div>');
-        
-      content = content.join('');
-      break;
 
-    case 'meters-testing-side.i':
-      var template = _.template(
-        '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
-        '<% _.each(features,function(regulations,key){ %>' +
-        '<span class="location"><%= key %></span><br>' +
-        '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
-        '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
-        '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-        ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
-        ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
-        'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
-        '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-        '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
-        '<% }) %>' +
-        '<% }) %></span></div>');
+        if (feature.properties.no_parking_message) {
 
-      var byStreet = _.groupBy(feature, function (value) {
-        return value.properties.street + ', ' + value.properties.side + ' Side';
-      });
-      content = template({
-        'features': byStreet
-      });
-      break;
+          content.push(
+            '<div class="exceptions">',
+            '<span class="loading-icons"><i class="material-icons">not_interested</i></span>',
+            '<span class="no-parking">', (
+              feature.properties.no_parking_message ? feature.properties.no_parking_message + '<br>' : ''
+            ), (
+              feature.properties.no_parking1 ? feature.properties.no_parking1 + '<br>' : ''
+            ), (
+              feature.properties.no_parking2 ? feature.properties.no_parking2 : ''
+            ),
+            '</span>',
+            '</div>'
+          );
+        }
 
-    default:
-      content = '<div>' + (feature.properties.name ?
-          '<span class="location">' + feature.properties.name + '</span><br>' : '') +
-        (feature.properties.title ?
-          '<strong>' + feature.properties.title + '</strong><br>' : '') +
-        (feature.properties.description ?
-          '<span class="detail">' + feature.properties.description + '<br>' : '') +
-        (feature.properties.capacity ?
-          'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
-      break;
-      
-//      case 'rppdistricts.i':
-//        content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
-//          feature.properties.description + '</div>';
-//      break;
+        content.push('</div>');
+
+        content = content.join('');
+        break;
+
+      case 'meters-testing-side.i':
+        var template = _.template(
+          '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
+          '<% _.each(features,function(regulations,key){ %>' +
+          '<span class="location"><%= key %></span><br>' +
+          '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+          '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
+          '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
+          ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+          ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
+          'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
+          '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
+          '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
+          '<% }) %>' +
+          '<% }) %></span></div>');
+
+        var byStreet = _.groupBy(feature, function (value) {
+          return value.properties.street + ', ' + value.properties.side + ' Side';
+        });
+        content = template({
+          'features': byStreet
+        });
+        break;
+
+      default:
+        content = '<div>' + (feature.properties.name ?
+            '<span class="location">' + feature.properties.name + '</span><br>' : '') +
+          (feature.properties.title ?
+            '<strong>' + feature.properties.title + '</strong><br>' : '') +
+          (feature.properties.description ?
+            '<span class="detail">' + feature.properties.description + '<br>' : '') +
+          (feature.properties.capacity ?
+            'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
+        break;
+
+        //      case 'rppdistricts.i':
+        //        content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
+        //          feature.properties.description + '</div>';
+        //      break;
     }
     infoblock.innerHTML = content;
   };
@@ -553,10 +540,10 @@ var ParkingMap = ParkingMap || {};
 
   // setup persistent state for sharing tools
   var encodedShareMessage = window.encodeURIComponent('Philly parking, demystified.'),
-      encodedShareUrl, copyShareLinkTextarea;
+    encodedShareUrl, copyShareLinkTextarea;
 
   // update hrefs when share menu button is clicked
-  document.getElementById('share').addEventListener('click', function(e) {
+  document.getElementById('share').addEventListener('click', function (e) {
     // grab updated URL + hash for sharing
     encodedShareUrl = window.encodeURIComponent(location.href);
 
@@ -569,7 +556,7 @@ var ParkingMap = ParkingMap || {};
   // setup copy link tool
   var shareLinkDom = document.getElementById('share-link');
   shareLinkDom.href = '#share-link';
-  shareLinkDom.addEventListener('click', function(e) {
+  shareLinkDom.addEventListener('click', function (e) {
     var linkCopied = false;
 
     e.preventDefault();
