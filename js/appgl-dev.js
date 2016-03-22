@@ -175,7 +175,7 @@ var ParkingMap = ParkingMap || {};
           if (features.length > 0) { // if there are more than none features
             feature = features[0];
             layerName = feature.layer.id;
-            if (layerName === 'meters-testing') {
+            if (layerName === 'meters-testing-side.i') {
               showInfo(layerName, features);
             } else {
               showInfo(layerName, feature);
@@ -309,7 +309,7 @@ var ParkingMap = ParkingMap || {};
         // locate user and watch for movement
         // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
         // watchID = navigator.geolocation.watchPosition(function(position) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
           var myLocation = {
             type: 'Point',
             coordinates: [position.coords.longitude, position.coords.latitude]
@@ -317,12 +317,12 @@ var ParkingMap = ParkingMap || {};
           mapProgressDom.style.visibility = 'hidden';
           console.log('got position: lon=%o, lat=%o', position.coords.longitude, position.coords.latitude);
           geoLocating = false;
-          map.getSource('single-point').setData(myLocation); 
+          map.getSource('single-point').setData(myLocation);
           map.flyTo({
             center: myLocation.coordinates,
             zoom: 15
           });
-        }, function() {
+        }, function () {
           alert('current postion not available');
         });
       })
@@ -334,7 +334,7 @@ var ParkingMap = ParkingMap || {};
         map.getSource('single-point').setData(evt.result.geometry);
         var center = evt.result.geometry.coordinates;
         console.log(center);
-        
+
         if (geocoderInput) {
           geocoderInput.blur(); // blur so keyboard goes away
         }
