@@ -230,7 +230,7 @@ var ParkingMap = ParkingMap || {};
         'meters': ['meterblocks_n.i', 'meterblocks_s.i', 'meterblocks_e.i', 'meterblocks_w.i', 'meters.i', 'meters.circle.i'],
         'rpp': ['rppblocks_bothsides.i', 'rppblocks_1side.i', 'rppblocks.label'],
         'rppdistricts': ['rppdistricts', 'rppdistricts.line', 'rppdistricts.label', 'rppdistricts.line_case'],
-        'meters-testing': ['meters-testing'], //
+        'meters-testing': ['meters-testing-side.i'], //
         'satellite': ['satellite']
       };
 
@@ -485,27 +485,29 @@ var ParkingMap = ParkingMap || {};
         break;
 
       case 'meters-testing-side.i':
-        var template = _.template(
-          '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
-          '<% _.each(features,function(regulations,key){ %>' +
-          '<span class="location"><%= key %></span><br>' +
-          '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
-          '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
-          '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
-          ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
-          ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
-          'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
-          '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
-          '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
-          '<% }) %>' +
-          '<% }) %></span></div>');
-
-        var byStreet = _.groupBy(feature, function (value) {
-          return value.properties.street + ', ' + value.properties.side + ' Side';
-        });
-        content = template({
-          'features': byStreet
-        });
+        content = '<div class="detail">These blocks are still being verified.</div>'
+      break;
+//        var template = _.template(
+//          '<div id="meter-info" style="margin-left:auto;margin-right:auto;max-width:350px;">' +
+//          '<% _.each(features,function(regulations,key){ %>' +
+//          '<span class="location"><%= key %></span><br>' +
+//          '<span class="detail-icon"><img src="img/icons/meter.svg"/></span>' +
+//          '<span class="detail"><% _.each(regulations,function(regulation){ %>' +
+//          '<%= regulation.properties.from_day %> - <%= regulation.properties.to_day %> &nbsp;' +
+//          ' <%= regulation.properties.from_time %> - <%= regulation.properties.to_time %> &nbsp;' +
+//          ' $<%= regulation.properties.rate %> &nbsp;&nbsp;' +
+//          'Limit: <%= (regulation.properties.limit_hr ? regulation.properties.limit_hr + " hr" : "") %>' +
+//          '<%= (regulation.properties.limit_min ? regulation.properties.limit_min + " min" : "") %> &nbsp;' +
+//          '&nbsp; <small><%= regulation.properties.seg_id %></small><hr>' +
+//          '<% }) %>' +
+//          '<% }) %></span></div>');
+//
+//        var byStreet = _.groupBy(feature, function (value) {
+//          return value.properties.street + ', ' + value.properties.side + ' Side';
+//        });
+//        content = template({
+//          'features': byStreet
+//        });
         break;
 
       default:
