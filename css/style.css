@@ -412,29 +412,12 @@ p a {
   display: none;
 }
 
-.map-legend,
-.wax-legend {
-  position: fixed;
-  width: 195px;
-  left: 10px;
-  bottom: 10px;
-  background-color: #404040;
-  opacity: 1;
-  border-radius: 3px;
-  color: #CCC;
-  /*font-family: 'Cabin', sans-serif;*/
-  /*font-size: 10px;*/
+.mapboxgl-ctrl-geocoder ul > li.active > a {
+  background-color: #6B7173;
 }
 
-.map-legend a:link,
-.map-legend a:visited,
-.map-legend a:active,
-.map-legend a:hover {
-  color: #CCC;
-}
-
-.map-legend {
-  padding-left: 10px!important;
+.mapboxgl-ctrl-geocoder ul {
+  background-color: #444;
 }
 
 /*MDL OVERRIDES*/
