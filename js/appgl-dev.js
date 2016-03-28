@@ -182,7 +182,7 @@ var ParkingMap = ParkingMap || {};
         // Find what was clicked on
         featuresAt(map, point, {
           radius: 10
-            // includeGeometry: true // for recentering map onClick
+          // includeGeometry: true // for recentering map onClick
         }, function (err, features) {
           var layerName, feature;
 
@@ -192,8 +192,10 @@ var ParkingMap = ParkingMap || {};
             layerName = feature.layer.id;
             if (layerName === 'meters-testing-side.i') {
               showInfo(layerName, features);
+              console.log(layerName + ', ' + feature.properties.l_hund_block_label)
             } else {
               showInfo(layerName, feature);
+              console.log(layerName + ', ' + (feature.properties.l_hund_block_label || feature.properties.name || feature.properties.block_street || feature.properties.street))
             }
           } else {
             empty();
@@ -201,6 +203,20 @@ var ParkingMap = ParkingMap || {};
         });
       }
     });
+    
+    // Some simple coordinate logging for click events
+    // using Google Tag Manager's data layer
+    ParkingMap.map.on('click', function getInfo (data) {
+      var donde = data.lngLat.toArray();
+      var longitude = donde[0]
+      var latitude = donde[1]
+      console.log(longitude + ', ' + latitude);
+      dataLayer.push({
+        'longitude': longitude,
+        'latitude': latitude,
+        'event': 'getInfo'
+      });
+    })
 
     var updateLayerVisibility = function (layerName) {
       var toggledLayers = mapLayers[layerName] || [];
@@ -321,7 +337,7 @@ var ParkingMap = ParkingMap || {};
         mapProgressDom.style.visibility = '';
         geoLocating = true;
 
-        // locate user and watch for movement
+        // locate user TODO: watch for movement
         // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
         // watchID = navigator.geolocation.watchPosition(function(position) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -353,8 +369,12 @@ var ParkingMap = ParkingMap || {};
       geocoder.on('geocoder.input', function (evt) {
         map.getSource('single-point').setData(evt.result.geometry);
         var center = evt.result.geometry.coordinates;
-        console.log(center);
+        var longitude = center[0]
+        var latitude = center[1]
+        console.log(longitude + ', ' + latitude);
         dataLayer.push({'coordinates': center,
+                        'longitude': longitude,
+                        'latitude': latitude,
                         'event': 'addressSearch'
                        });
 
@@ -508,7 +528,7 @@ var ParkingMap = ParkingMap || {};
 //        content = template({
 //          'features': byStreet
 //        });
-        break;
+//        break;
 
       default:
         content = '<div>' + (feature.properties.name ?
@@ -558,6 +578,7 @@ var ParkingMap = ParkingMap || {};
     infoblock.innerHTML = '';
   }
 
+//  TODO: pull sharing into a separate module
   // setup persistent state for sharing tools
   var encodedShareMessage = window.encodeURIComponent('Philly parking, demystified.'),
     encodedShareUrl, copyShareLinkTextarea;
