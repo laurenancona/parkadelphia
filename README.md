@@ -1,5 +1,7 @@
 # parkadelphia-app
 
+[![Join the chat at https://gitter.im/laurenancona/parkadelphia](https://badges.gitter.im/laurenancona/parkadelphia.svg)](https://gitter.im/laurenancona/parkadelphia?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 #### Purpose
 
 1. Procure public data releases via the City's Open Data program to support analysis of relevant regulations.
