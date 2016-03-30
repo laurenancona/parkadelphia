@@ -435,7 +435,16 @@ var ParkingMap = ParkingMap || {};
           (feature.properties.notes ?
             '<br>' + feature.properties.notes + '<br>' : '') + '</span></div>';
         break;
-
+      
+      case 'scooters.i':
+        content = '<div>' + (feature.properties.name ?
+            '<span class="location">' + feature.properties.name + '</span>' : '') +
+          (feature.properties.side ?
+            '<br><span class="detail">' + feature.properties.side : '') +
+          (feature.properties.type ?
+            '<br>' + feature.properties.type + '</span></div>' : '');
+        break;
+            
       case 'valet.i':
         content = '<div>' + (feature.properties.Name ?
             '<span class="location">' + feature.properties.Name + '</span>' : '') +
@@ -540,11 +549,6 @@ var ParkingMap = ParkingMap || {};
           (feature.properties.capacity ?
             'Capacity: ' + feature.properties.capacity + '</p>' : '') + '</span></div>';
         break;
-
-        //      case 'rppdistricts.i':
-        //        content = '<div><span class="location">' + feature.properties.title + '</span><br>' +
-        //          feature.properties.description + '</div>';
-        //      break;
     }
     infoblock.innerHTML = content;
   };
