@@ -439,10 +439,12 @@ var ParkingMap = ParkingMap || {};
       case 'scooters.i':
         content = '<div>' + (feature.properties.name ?
             '<span class="location">' + feature.properties.name + '</span>' : '') +
-          (feature.properties.side ?
-            '<br><span class="detail">' + feature.properties.side : '') +
+            '<span class="loading-icons material-icons">' +
+          '<img src="img/icons/scooter-24-circle-grey.svg"></span>' +
           (feature.properties.type ?
-            '<br>' + feature.properties.type + '</span></div>' : '');
+            '<br><span class="detail">' + feature.properties.type : '') +
+          (feature.properties.side ?
+            '<br>' + feature.properties.side + '</span></div>' : '');
         break;
             
       case 'valet.i':
