@@ -333,10 +333,10 @@ var ParkingMap = ParkingMap || {};
                 "source": "analytics",
                 "type": "circle",
                 "paint": {
-                  "circle-radius": 8,
+                  "circle-radius": 13,
                   "circle-color": "yellow",
-                  "circle-opacity": .9,
-                  "circle-blur": .5
+                  "circle-opacity": .8,
+                  "circle-blur": .8
                 },
                 "filter": ["==", "event_action", "Address Search"] 
               });
@@ -347,10 +347,10 @@ var ParkingMap = ParkingMap || {};
                 "source": "analytics",
                 "type": "circle",
                 "paint": {
-                  "circle-radius": 8,
+                  "circle-radius": 13,
                   "circle-color": "hotpink",
-                  "circle-opacity": .9,
-                  "circle-blur": .5
+                  "circle-opacity": .8,
+                  "circle-blur": .8
                 },
                 "filter": ["==", "event_action", "User Located"] 
               });
@@ -491,12 +491,12 @@ var ParkingMap = ParkingMap || {};
       case 'scooters.i':
         content = '<div>' + (feature.properties.name ?
             '<span class="location">' + feature.properties.name + '</span>' : '') +
-            '<span class="loading-icons material-icons">' +
-          '<img src="img/icons/scooter-24-circle-grey.svg"></span>' +
+            '<span class="detail"><span class="rate">' +
+            '<img class = "loading-icons material-icons" src="img/icons/scooter-24-circle-grey.svg"></span>' +
           (feature.properties.type ?
-            '<br><span class="detail">' + feature.properties.type : '') +
+            '<br><span class="tariff">' + feature.properties.type : '') +
           (feature.properties.side ?
-            '<br>' + feature.properties.side + '</span></div>' : '');
+            '<br>' + feature.properties.side + '</span></span></div>' : '');
         break;
             
       case 'valet.i':
