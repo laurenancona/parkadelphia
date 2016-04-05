@@ -314,6 +314,58 @@ var ParkingMap = ParkingMap || {};
         }
       });
 
+      //get analytics data from S3
+      if (window.location.href.search("[?&]analytics=") != -1) {
+        
+        function processData() {
+          if (request.status == 200){
+            var data = JSON.parse(request.responseText);
+            var analyticsData = GeoJSON.parse(data.data, {Point: ['latitude', 'longitude']});
+
+            map.addSource("analytics", {
+              "type": "geojson",
+              "data": analyticsData
+            });
+
+             map.addLayer({
+                "id": "addressSearch",
+                "type": "symbol",
+                "source": "analytics",
+                "type": "circle",
+                "paint": {
+                  "circle-radius": 8,
+                  "circle-color": "yellow",
+                  "circle-opacity": .9,
+                  "circle-blur": .5
+                },
+                "filter": ["==", "event_action", "Address Search"] 
+              });
+
+              map.addLayer({
+                "id": "userLocated",
+                "type": "symbol",
+                "source": "analytics",
+                "type": "circle",
+                "paint": {
+                  "circle-radius": 8,
+                  "circle-color": "hotpink",
+                  "circle-opacity": .9,
+                  "circle-blur": .5
+                },
+                "filter": ["==", "event_action", "User Located"] 
+              });
+          }
+
+        }
+
+
+        var request = new XMLHttpRequest();
+
+        request.onload = processData;
+        request.open("GET", "https://s3.amazonaws.com/lauren-analytics-reporter/data/user-searches.json", true);
+        request.send();      
+      }
+
       // Add Geolocator via HTML5 API
 
       var geoLocating = false;
