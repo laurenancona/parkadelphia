@@ -103,8 +103,6 @@ var ParkingMap = ParkingMap || {};
       touchRotate: false
     });
 
-
-
     // Change cursor state when hovering on interactive features
 
     var getPoint = function (evt) {
@@ -167,12 +165,6 @@ var ParkingMap = ParkingMap || {};
       geocoderInput.focus();
       geocoderInput.setSelectionRange(0, 9999);
     });
-
-    // add/remove 'quiet', depending on test conditional, i less than 10
-
-    // div.classList.toggle("visible", i < 10 );
-    // alert(div.classList.contains("foo"));
-    // div.classList.add("foo","bar"); //add multiple classes
 
     // Listen for clicks on features & pass data to templates
     ParkingMap.map.on('click', function (evt) {
