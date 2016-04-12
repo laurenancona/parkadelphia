@@ -2,6 +2,8 @@
 
 [![Join the chat at https://gitter.im/laurenancona/parkadelphia](https://badges.gitter.im/laurenancona/parkadelphia.svg)](https://gitter.im/laurenancona/parkadelphia?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+*Note:* _If you're interested in working to create a draft specification for parking data, follow [this repository](https://github.com/laurenancona/open-parking-data-spec)
+
 #### Purpose
 
 1. Procure public data releases via the City's Open Data program to support analysis of relevant regulations.
@@ -9,19 +11,20 @@
 3. Using Google Tag Manager, Google Analytics, and [analytics-reporter](https://github.com/18F/analytics-reporter), collect and aggregate anonymous usage data via custom events. Data is made publicly available in an s3 bucket, refreshed daily with lookback of 30 days (for now), and rendered atop a second map view for simple analysis.
 
 #### Current Layers
- - Residential Permit Parking Blocks 
- - Residential Permit Districts (manually created)
- - Partial (Center City) Meter Coordinates (manually plotted)
- - Metered Automobile Parking 
- - Metered Motorcyle/Scooter Corrals (manually plotted)
- - City Owned/Managed Off-Street Lots/Garages (manually plotted)
- - Valet Parking Locations
- - Snow Emergency Routes
- TODO
- - Handicapped Spaces
- - Balance of Meter Coordinates
- - Updated RPP Blocks from data generated 3/22/16
-
+ - [ ] Residential Permit Parking Blocks 
+ - [ ] Residential Permit Districts (manually created)
+ - [ ] Partial (Center City) Meter Coordinates (manually plotted)
+ - [ ] Metered Automobile Parking 
+ - [ ] Metered Motorcyle/Scooter Corrals (manually plotted)
+ - [ ] City Owned/Managed Off-Street Lots/Garages (manually plotted)
+ - [ ] Valet Parking Locations
+ - [ ] Snow Emergency Routes
+ 
+##### TODO
+ - [ ] Handicapped Spaces
+ - [ ] Balance of Meter Coordinates
+ - [ ] Updated RPP Blocks from data generated 3/22/16
+ 
 
 #### Choosing layers to include
 
