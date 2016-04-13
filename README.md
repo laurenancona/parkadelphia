@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/laurenancona/parkadelphia](https://badges.gitter.im/laurenancona/parkadelphia.svg)](https://gitter.im/laurenancona/parkadelphia?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-*Note:* _If you're interested in working to create a draft specification for parking data, follow [this repository](https://github.com/laurenancona/open-parking-data-spec)
+*Note:* _If you're interested in working to create a draft specification for parking data, follow [this repository](https://github.com/laurenancona/open-parking-data-spec)_
 
 #### Purpose
 
