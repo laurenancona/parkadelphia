@@ -760,3 +760,20 @@ mdl-layout__header.mdl-layout__drawer-button {
   padding-left: 3px;
   font-family: 'Open Sans', sans-serif;
 }
+#analytics-legend {
+  left: 10px;
+  bottom: 60px;
+  position: fixed;
+  display: block;
+  width: 150px;
+  height: 100px;
+  background-color: #666;
+  opacity: 0.8;
+  z-index: 2;
+  padding: 3px;
+}
+#analytics-legend h6 {
+  text-align: center;
+  margin-top: 1px;
+  font-size: .7rem;
+}

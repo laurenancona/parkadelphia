@@ -319,15 +319,29 @@ var ParkingMap = ParkingMap || {};
               "data": analyticsData
             });
 
+            map.addLayer({
+              "id": "showInfo",
+              "type": "symbol",
+              "source": "analytics",
+              "type": "circle",
+              "paint": {
+                "circle-radius": 10,
+                "circle-color": "#EA4832",
+                "circle-opacity": .7,
+                "circle-blur": .8
+              },
+              "filter": ["==", "event_action", "Display Info"] 
+            });
+            
              map.addLayer({
                 "id": "addressSearch",
                 "type": "symbol",
                 "source": "analytics",
                 "type": "circle",
                 "paint": {
-                  "circle-radius": 13,
-                  "circle-color": "yellow",
-                  "circle-opacity": .8,
+                  "circle-radius": 10,
+                  "circle-color": "#40c4ff",
+                  "circle-opacity": .7 ,
                   "circle-blur": .8
                 },
                 "filter": ["==", "event_action", "Address Search"] 
@@ -339,15 +353,14 @@ var ParkingMap = ParkingMap || {};
                 "source": "analytics",
                 "type": "circle",
                 "paint": {
-                  "circle-radius": 13,
-                  "circle-color": "hotpink",
+                  "circle-radius": 10,
+                  "circle-color": "#98c626",
                   "circle-opacity": .8,
                   "circle-blur": .8
                 },
                 "filter": ["==", "event_action", "User Located"] 
               });
           }
-
         }
 
 
