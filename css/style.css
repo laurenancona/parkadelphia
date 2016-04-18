@@ -92,8 +92,8 @@ display: none;
 }
 .mapboxgl-ctrl-geocoder {
   border-radius: 0;
-  background-color: (158, 158, 158, 0.9);
-  widows: 100%;
+  background-color: rgba(0, 0, 0, 0.71)!important
+  width: 100%;
 /*  opacity: 0.9;*/
 }
 .mapboxgl-ctrl-geocoder input[type='text'] {

@@ -18,7 +18,7 @@ var loading_screen;
 var ParkingMap = ParkingMap || {};
 
 (function () {
-  'use strict';
+//  'use strict';
 
   var mapLayers = {};
   var layerNames = [
@@ -246,10 +246,10 @@ var ParkingMap = ParkingMap || {};
       map.resize();
 
       // Disable the default error handler
-//      map.off('style.error', map.onError);
-//      map.off('source.error', map.onError);
-//      map.off('tile.error', map.onError);
-//      map.off('layer.error', map.onError);
+      map.off('style.error', map.onError);
+      map.off('source.error', map.onError);
+      map.off('tile.error', map.onError);
+      map.off('layer.error', map.onError);
 
       layerNames.forEach(function (layerName, index) {
         // Associate the map layers with a layerName.
@@ -308,7 +308,7 @@ var ParkingMap = ParkingMap || {};
 
       //get analytics data from S3
       if (window.location.href.search("[?&]analytics=") != -1) {
-        
+
         function processData() {
           if (request.status == 200){
             var data = JSON.parse(request.responseText);
