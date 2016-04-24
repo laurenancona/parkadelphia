@@ -1,6 +1,7 @@
 # parkadelphia
 
-[![Join the chat at https://gitter.im/laurenancona/parkadelphia](https://badges.gitter.im/laurenancona/parkadelphia.svg)](https://gitter.im/laurenancona/parkadelphia?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/laurenancona/parkadelphia](https://badges.gitter.im/laurenancona/parkadelphia.svg)](https://gitter.im/laurenancona/parkadelphia?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)    [![](https://img.shields.io/badge/licence-GNU%20AGPLv3-blue.svg)](http://www.gnu.org/licenses/agpl-3.0.txt)
+
 
 *Note:* _If you're interested in working to create a draft specification for parking data, follow [this repository](https://github.com/laurenancona/open-parking-data-spec)_
 
