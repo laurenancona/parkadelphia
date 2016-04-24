@@ -12,14 +12,14 @@
 3. Using Google Tag Manager, Google Analytics, and [analytics-reporter](https://github.com/18F/analytics-reporter), collect and aggregate anonymous usage data via custom events. Data is made publicly available in an s3 bucket, refreshed daily with lookback of 30 days (for now), and rendered atop a second map view for simple analysis.
 
 #### Current Layers
- - [ ] Residential Permit Parking Blocks 
- - [ ] Residential Permit Districts (manually created)
- - [ ] Partial (Center City) Meter Coordinates (manually plotted)
- - [ ] Metered Automobile Parking 
- - [ ] Metered Motorcyle/Scooter Corrals (manually plotted)
- - [ ] City Owned/Managed Off-Street Lots/Garages (manually plotted)
- - [ ] Valet Parking Locations
- - [ ] Snow Emergency Routes
+ - [X] Residential Permit Parking Blocks 
+ - [X] Residential Permit Districts (manually created)
+ - [X] Partial (Center City) Meter Coordinates (manually plotted)
+ - [X] Metered Automobile Parking 
+ - [X] Metered Motorcyle/Scooter Corrals (manually plotted)
+ - [X] City Owned/Managed Off-Street Lots/Garages (manually plotted)
+ - [X] Valet Parking Locations
+ - [X] Snow Emergency Routes
  
 ##### TODO
  - [ ] Handicapped Spaces
